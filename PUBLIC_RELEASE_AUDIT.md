@@ -155,6 +155,124 @@ Known public examples from inventory:
 - atlaslattice/digital-surveillance-tools
 - atlaslattice/ai-recommendation-systems
 
+## Addendum — public repo rationalization plan
+
+Public visibility already happened for many repos. The job is therefore not only “what can become public?” but also:
+
+1. What should stay public as a credible standalone project?
+2. What should be moved private if visibility reversal is possible and justified?
+3. What should be harvested into Aluminum OS / UWS / Noosphere archive, then archived or deleted?
+4. What should be renamed or reframed because the repo name creates unnecessary volatility?
+
+### Public repo action categories
+
+| Category | Meaning |
+|---|---|
+| KEEP PUBLIC | Good standalone repo or harmless public-interest topic. Add README/license polish only. |
+| KEEP PUBLIC + CONTEXT | Can remain public, but needs a publication-context header or tone cleanup. |
+| HARVEST / MERGE | Useful material should be migrated into a canonical repo, then the original repo archived. |
+| CONSIDER PRIVATE | Public exposure may be reputationally or operationally noisy; make private if contents justify it. |
+| DELETE / EMPTY ARCHIVE | Empty, duplicate, or low-value shell repo. Delete only after confirming no unique history. |
+
+### Existing public repos — initial classification
+
+| Repo | Initial action | Rationale / destination |
+|---|---|---|
+| atlaslattice/sheldonbrain-rag-api | KEEP PUBLIC + CONTEXT | Core infrastructure/retrieval work. Add sober README and security note. |
+| atlaslattice/Sovereign-Shredder-Core | KEEP PUBLIC + CONTEXT | Name is intense; review for “shredder” misread. Reframe as secure document redaction/destruction if accurate. |
+| atlaslattice/A2A | KEEP PUBLIC | Likely protocol/integration repo. Add README that explains scope. |
+| atlaslattice/awesome-ai-ethics | KEEP PUBLIC | Low risk; good credibility surface. |
+| atlaslattice/ai-bias-detection | KEEP PUBLIC | Low-medium risk; standard ethics topic. |
+| atlaslattice/algorithmic-accountability | KEEP PUBLIC | Strong public-interest topic. |
+| atlaslattice/deepfake-detection | KEEP PUBLIC + CONTEXT | Defensive framing only. Avoid offensive generation language. |
+| atlaslattice/ai-transparency-toolkit | KEEP PUBLIC | Strong public-interest/tooling framing. |
+| atlaslattice/ethical-ai-guidelines | KEEP PUBLIC | Low risk. |
+| atlaslattice/ai-fairness-metrics | KEEP PUBLIC | Low-medium risk; good research topic. |
+| atlaslattice/machine-learning-bias | KEEP PUBLIC | Low-medium risk. |
+| atlaslattice/ai-labor-practices | KEEP PUBLIC + CONTEXT | Labor framing should be careful, not inflammatory. |
+| atlaslattice/content-moderation-ethics | KEEP PUBLIC + CONTEXT | Add trauma/labor disclaimer; avoid sensational claims. |
+| atlaslattice/ai-safety-research | KEEP PUBLIC | Credibility-positive if sober. |
+| atlaslattice/responsible-ai-toolkit | KEEP PUBLIC | Strong public-facing repo. |
+| atlaslattice/ai-governance-framework | KEEP PUBLIC | Strong public-facing repo. |
+| atlaslattice/explainable-ai-tools | KEEP PUBLIC | Low risk. |
+| atlaslattice/ai-risk-assessment | KEEP PUBLIC | Low-medium risk. |
+| atlaslattice/data-privacy-tools | KEEP PUBLIC + CONTEXT | Defensive/privacy framing. Avoid surveillance or evasion language. |
+| atlaslattice/ai-audit-framework | KEEP PUBLIC | Strong public-facing repo. |
+| atlaslattice/algorithmic-justice | KEEP PUBLIC + CONTEXT | Good topic, but add nonpartisan policy/research framing. |
+| atlaslattice/ai-worker-rights | KEEP PUBLIC + CONTEXT | Labor topic; keep sober and constructive. |
+| atlaslattice/tech-ethics-resources | KEEP PUBLIC | Low risk. |
+| atlaslattice/ai-impact-assessment | KEEP PUBLIC | Strong public-facing repo. |
+| atlaslattice/facial-recognition-ethics | KEEP PUBLIC + CONTEXT | Sensitive surveillance domain; policy/ethics framing required. |
+| atlaslattice/ai-surveillance-critique | KEEP PUBLIC + CONTEXT | Critique is valid; avoid evasion/sabotage implications. |
+| atlaslattice/gig-economy-analysis | KEEP PUBLIC + CONTEXT | Labor/economics framing. |
+| atlaslattice/platform-worker-rights | KEEP PUBLIC + CONTEXT | Labor framing. |
+| atlaslattice/ai-copyright-issues | KEEP PUBLIC + CONTEXT | Not legal advice disclaimer. |
+| atlaslattice/synthetic-media-ethics | KEEP PUBLIC | Public-interest topic. |
+| atlaslattice/ai-misinformation-detection | KEEP PUBLIC + CONTEXT | Defensive/detection framing only. |
+| atlaslattice/automated-decision-systems | KEEP PUBLIC | Standard governance topic. |
+| atlaslattice/ai-accountability-tools | KEEP PUBLIC | Strong public-facing repo. |
+| atlaslattice/digital-rights-toolkit | KEEP PUBLIC | Strong public-facing repo. |
+| atlaslattice/ai-regulation-tracker | KEEP PUBLIC + CONTEXT | Not legal advice; cite sources carefully. |
+| atlaslattice/tech-worker-organizing | KEEP PUBLIC + CONTEXT | Labor organizing can be public; avoid calls for sabotage/harassment. |
+| atlaslattice/ai-training-data-ethics | KEEP PUBLIC | Standard governance topic. |
+| atlaslattice/algorithmic-discrimination | KEEP PUBLIC + CONTEXT | Public-interest framing. |
+| atlaslattice/ai-policy-analysis | KEEP PUBLIC + CONTEXT | Nonpartisan/source-backed framing. |
+| atlaslattice/tech-accountability-framework | KEEP PUBLIC | Strong public-facing repo. |
+| atlaslattice/ai-employment-impact | KEEP PUBLIC + CONTEXT | Labor/economics framing. |
+| atlaslattice/digital-labor-rights | KEEP PUBLIC + CONTEXT | Labor framing. |
+| atlaslattice/ai-consent-framework | KEEP PUBLIC | Strong governance topic. |
+| atlaslattice/predictive-policing-critique | KEEP PUBLIC + CONTEXT | Sensitive public-sector topic; avoid evasion/operational claims. |
+| atlaslattice/ai-healthcare-ethics | KEEP PUBLIC + CONTEXT | Medical disclaimer needed. |
+| atlaslattice/automated-hiring-bias | KEEP PUBLIC + CONTEXT | Employment/legal disclaimer. |
+| atlaslattice/ai-credit-scoring-fairness | KEEP PUBLIC + CONTEXT | Financial/legal disclaimer. |
+| atlaslattice/social-media-algorithms | KEEP PUBLIC + CONTEXT | Platform-safety framing. |
+| atlaslattice/ai-content-moderation | KEEP PUBLIC + CONTEXT | Platform-safety and labor framing. |
+| atlaslattice/tech-monopoly-analysis | KEEP PUBLIC + CONTEXT | Source-backed policy/economics framing. |
+| atlaslattice/ai-pricing-discrimination | KEEP PUBLIC + CONTEXT | Financial/legal disclaimer; no accusations without sources. |
+| atlaslattice/digital-surveillance-tools | CONSIDER PRIVATE / REFRAME | Name can sound like tooling for surveillance. If defensive/critique, rename/reframe. |
+| atlaslattice/ai-recommendation-systems | KEEP PUBLIC | Standard topic; add safety framing if needed. |
+
+### Harvest / merge targets
+
+These public repos may be more powerful as sections inside canonical repositories rather than standalone fragments:
+
+| Source repo group | Destination |
+|---|---|
+| AI ethics / governance shells | `atlaslattice/noosphere-archive` or `atlaslattice/aluminum-os/docs/governance/` |
+| AI audit / accountability tools | `atlaslattice/uws` if executable, otherwise `aluminum-os/docs/governance/` |
+| Labor/economics repos | `noosphere-archive/labor/` or a future `regenerative-labor` repo |
+| Privacy/surveillance critique repos | `noosphere-archive/privacy-surveillance/` |
+| Healthcare/mental health repos | hold for a separate `health-governance` archive with strong disclaimers |
+| Banking/fintech/credit repos | hold for a separate `open-finance-interoperability` archive after tone review |
+
+### Public repo cleanup requests for agents/humans
+
+For each public repo, review:
+
+- Does README exist?
+- Does README explain the purpose in one sober paragraph?
+- Is there a license?
+- Is there any generated placeholder content that looks empty or spammy?
+- Does the repo name overpromise or sound hostile?
+- Does the repo contain secrets, private identifiers, or copied proprietary content?
+- Should the repo be archived after its useful content is harvested?
+
+### Naming guidance for volatile repos
+
+Avoid names that sound like revolutionary disruption, institutional attack, or operational harm.
+Prefer names that communicate public-interest research, interoperability, accountability, and governance.
+
+Examples:
+
+| Avoid | Prefer |
+|---|---|
+| bank killer app | open banking interoperability toolkit |
+| banking revolution | regenerative finance research archive |
+| fintech disruption | fintech accountability and interoperability |
+| surveillance tools | surveillance accountability research |
+| AI safety hypocrisy | AI safety accountability review |
+| labor exploitation | labor impact and platform accountability |
+
 ## Recommended next actions
 
 1. Add a standard README/publication context header to Batch 1 repos.
@@ -162,6 +280,8 @@ Known public examples from inventory:
 3. Only after explicit approval, publish Batch 1 via an allowlist.
 4. Patch Batch 2 with domain-specific disclaimers.
 5. Hold Batch 3 until manual review and possible repo rename/reframe.
+6. Review existing public repos for keep/context/harvest/private/delete action.
+7. Create a canonical `PUBLIC_PROFILE.md` explaining the atlaslattice portfolio as public-interest systems research.
 
 ## Allowlist template
 
