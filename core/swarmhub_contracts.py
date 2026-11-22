@@ -148,6 +148,7 @@ class CoordinateResolver:
     """HSN routing address validator; H00 is a grounding sentinel, not HSN node 1729."""
     HSN = re.compile(r"^H(?:0[1-9]|1[0-2])\.S(?:0[1-9]|1[0-2])\.N(?:0[1-9]|1[0-2])$")
     EARTH = "H00.S00.N00"
+    SOURCE_SHA256 = "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
 
     def resolve_to_earth(self, claim: Mapping[str, Any]) -> dict[str, Any]:
         original = deepcopy(dict(claim))
@@ -155,7 +156,7 @@ class CoordinateResolver:
         source_edition = original.get("source_edition")
         source_digest = original.get("source_digest")
         valid = isinstance(hsn, str) and self.HSN.fullmatch(hsn) is not None
-        valid = valid and source_edition == "ariadne-reader/v0.7" and isinstance(source_digest, str) and re.fullmatch(r"[a-f0-9]{64}", source_digest) is not None
+        valid = valid and source_edition == "ariadne-reader/v0.7" and source_digest == self.SOURCE_SHA256
         return {
             "status": "SOURCE_ADDRESSED_NOT_SEMANTICALLY_VERIFIED" if valid else "QUARANTINED_GROUNDING_HOLD",
             "source_hsn": hsn, "earth_anchor": self.EARTH, "earth_anchor_is_ontology_node": False,
@@ -169,6 +170,8 @@ class CoordinateResolver:
             resolved.get("status") == "SOURCE_ADDRESSED_NOT_SEMANTICALLY_VERIFIED"
             and resolved.get("earth_anchor") == self.EARTH
             and resolved.get("earth_anchor_is_ontology_node") is False
+            and resolved.get("source_edition") == "ariadne-reader/v0.7"
+            and resolved.get("source_digest") == self.SOURCE_SHA256
             and isinstance(resolved.get("source_hsn"), str)
             and self.HSN.fullmatch(resolved["source_hsn"]) is not None
         )
