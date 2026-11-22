@@ -1,6 +1,6 @@
 # Atlas Evidence Graph and Artifact Lifecycle · candidate v0.1
 
-**Status: CANDIDATE / SOURCE-ONLY / NOT CANON / NOT DEPLOYED.** Implements the documentation and offline acceptance surface for Noosphere issue #11 and issue #12; no human-root delegation, resident authentication, SwarmHub task closure, Work-room posting, or private source import.
+**Status: CANDIDATE / SOURCE-ONLY / NOT CANON / NOT DEPLOYED.** Implements the documentation and offline acceptance surface for Noosphere issues #8, #11 and #12; no human-root delegation, resident authentication, SwarmHub task closure, Work-room posting, or private source import.
 
 ## Separate the evidence, artifact, authority and deployment layers
 
@@ -48,5 +48,9 @@ A graph is a *trace* of sources and hypotheses, not an engine for voting claims 
 Run: `python -m unittest discover -s tests -v`, then `python tools/validate_evidence_graph.py examples/evidence_graph_v0_1.synthetic.json`. The local validator **always holds** `RATIFIED`, `CANON`, and `DEPLOYED` stages, because only an authenticated external reviewer and host can prove them. A passing local report means **syntax/shape only**, not canonical, posted, semantic-reviewed, or deployed.
 
 ## Boundaries
+
+## Raw export completeness / Noosphere #8
+
+Every `RawExportManifest` must carry `raw_export_status`: `raw_missing`, `raw_partial`, `raw_complete_unhashed`, `raw_complete_hashed`, or `raw_source_unavailable`. Any value other than `raw_complete_hashed` requires `QUARANTINED`, prevents export/promotion and preserves the original packet for review. `raw_complete_hashed` additionally needs a 64-hex manifest digest, a source-root reference, and a hash-receipt reference to existing typed nodes. These checks establish **pointer shape only**, not authentic bytes, current rights or actual completeness. Real source-root existence and digest equality require independent host checks before any claim of completeness. A packet without status is rejected, never silently repaired. 
 
 No automatic source crawl, third-party uploads, external requests, private Social/Play/Quiet/Habitat/Brain/Palace ingestion, permanent secrets, grant creation, automatic task closure, public release or CANON change. Existing versions and dissent remain separately addressable; rights-based deletion and revoked permissions override default retention. No model, method, consensus, version tag, or scalar score confers authority.
