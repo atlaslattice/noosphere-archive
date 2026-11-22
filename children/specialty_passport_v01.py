@@ -6,6 +6,7 @@ permission, qualified-expert attestation, background agent, or policy execution.
 from __future__ import annotations
 
 from collections import defaultdict
+from copy import deepcopy
 from datetime import datetime, timezone
 from hashlib import sha256
 import json
@@ -135,7 +136,7 @@ def append_revision(history: list[dict[str, Any]], candidate: dict[str, Any]) ->
     if not history:
         if candidate['revision'] != 1:
             _fail('initial revision must be 1')
-        return [candidate]
+        return [deepcopy(candidate)]
     for row in history:
         validate_passport(row)
     previous = history[-1]
@@ -147,7 +148,7 @@ def append_revision(history: list[dict[str, Any]], candidate: dict[str, Any]) ->
         _fail('stale or fabricated predecessor')
     if _timestamp(candidate['declared_at']) <= _timestamp(previous['declared_at']):
         _fail('new revision must have a later declaration timestamp')
-    return history + [candidate]
+    return deepcopy(history) + [deepcopy(candidate)]
 
 
 def match_task(passports: list[dict[str, Any]], coordinate: str, task_kind: str,
