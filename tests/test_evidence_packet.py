@@ -68,6 +68,17 @@ class EvidencePacketTests(unittest.TestCase):
         candidate["nodes"].append(copy.deepcopy(candidate["nodes"][0]))
         self.assertEqual(self.verdict(candidate)["disposition"], "HOLD")
 
+    def test_derived_from_is_type_checked_in_both_directions(self):
+        # Valid source->manifest->artifact ancestry remains reviewable.
+        self.assertEqual(self.verdict(self.good)["disposition"], "CANDIDATE_ONLY")
+        for source_id, target_id in (("g1", "s1"), ("m1", "g1"), ("r1", "r1")):
+            candidate = copy.deepcopy(self.good)
+            candidate["edges"][0]["from"] = source_id
+            candidate["edges"][0]["to"] = target_id
+            verdict = self.verdict(candidate)
+            self.assertEqual(verdict["disposition"], "HOLD", (source_id, target_id))
+            self.assertTrue(any("invalid node types for derived_from" in e for e in verdict["errors"]))
+
     def test_incorrect_relation_types_hold(self):
         candidate = copy.deepcopy(self.good)
         candidate["edges"][3]["from"] = "s1"  # supports must originate in Evidence
