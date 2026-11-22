@@ -83,6 +83,7 @@ function metadataOnly(value) {
   return Object.entries(value).every(([key, field]) => {
     if (!allowed.has(key)) return false;
     if (key === 'passed') {
+      if (value.kind === 'ROLLBACK_CHECK') return typeof field === 'boolean';
       return Array.isArray(field) && field.length <= 16 &&
         field.every(v => typeof v === 'string' && v.length <= 100) &&
         new Set(field).size === field.length;
