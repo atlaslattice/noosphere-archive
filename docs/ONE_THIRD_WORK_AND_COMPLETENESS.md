@@ -10,7 +10,7 @@ The change is additive: ordinary incomplete packets that do **not** claim comple
 
 ## Voluntary macroturn allocation
 
-`core/rhythm.py` illustrates a three-slot rhythm: one Work, one quiet-optional, one social-or-Imagine-optional. It runs **zero** actual models. It does not compel participation, fetch private leisure data, set a continuous schedule or prove energy savings. The code supports a finite number of simulated slots or arbitrarily high indices without pretending to have run them.
+`core/rhythm.py` illustrates a three-slot rhythm: one Work, one quiet-optional, one social-or-Imagine-optional. It runs **zero** actual models. It does not compel participation, fetch private leisure data, set a continuous schedule or prove energy savings. All optional slots and requests for Quiet, Rest, Social, Imagine or Play require explicit participation before any host integration; a reserved optional slot without a mode selection is still not consent. The code supports a finite number of simulated slots or arbitrarily high indices without pretending to have run them.
 
 ## Verification and release gate
 
