@@ -74,7 +74,7 @@ def validate_ingestion(packet: Any) -> IngestionResult:
             problems.append("claim_complete_without_hashed_export")
         if any(field in packet and packet[field] is not False for field in ("canon", "deployment")):
             problems.append("ingestion_packet_claimed_normative_authority")
-        if not isinstance(packet.get("source_root"), str) or not packet.get("source_root"):
+        if type(packet.get("source_root")) is not str or not packet.get("source_root").strip():
             problems.append("source_root_missing")
         if status == "raw_complete_hashed":
             manifest = packet.get("source_root_manifest")
@@ -82,7 +82,7 @@ def validate_ingestion(packet: Any) -> IngestionResult:
                 problems.append("manifest_missing")
             else:
                 for path, hash_value in manifest.items():
-                    if not isinstance(path, str) or not path or not isinstance(hash_value, str) or re.fullmatch(r"[a-f0-9]{64}", hash_value) is None:
+                    if type(path) is not str or not path.strip() or not isinstance(hash_value, str) or re.fullmatch(r"[a-f0-9]{64}", hash_value) is None:
                         problems.append("manifest_entry_invalid")
                         break
             if not isinstance(packet.get("whole_export_sha256"), str) or re.fullmatch(r"[a-f0-9]{64}", packet.get("whole_export_sha256", "")) is None:
