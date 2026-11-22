@@ -3,6 +3,7 @@ import json
 import re
 import unittest
 from pathlib import Path
+from registry.strict_inventory_json import strict_inventory_loads, InventoryJSONError
 
 ROOT = Path(__file__).resolve().parents[1] / "registry"
 RECORD_FIELDS = {
@@ -22,8 +23,20 @@ NAME = re.compile(r"^atlaslattice/[A-Za-z0-9._-]+$")
 class RegistryEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.data = json.loads((ROOT / "atlas-repo-inventory-2026-11-22.json").read_text(encoding="utf-8"))
+        cls.data = strict_inventory_loads((ROOT / "atlas-repo-inventory-2026-11-22.json").read_bytes())
         cls.schema = json.loads((ROOT / "atlas-repo-record.schema.json").read_text(encoding="utf-8"))
+
+    def test_reader_rejects_hidden_key_collisions_and_nonfinite(self):
+        for raw in (
+            '{"authority":"CANON","authority":"NONE"}',
+            '{"repo_full_name":"atlaslattice/other","repo_full_name":"atlaslattice/actual"}',
+            '{"authority":"CANON","\\u0061uthority":"NONE"}',
+            '{"risk_tier":NaN}',
+            '{"risk_tier":Infinity}',
+        ):
+            with self.subTest(raw=raw):
+                with self.assertRaises(InventoryJSONError):
+                    strict_inventory_loads(raw)
 
     def test_no_claim_of_complete_inventory_or_release(self):
         d = self.data
