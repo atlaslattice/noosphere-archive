@@ -73,6 +73,18 @@ class EvidencePacketTests(unittest.TestCase):
         candidate["edges"][3]["from"] = "s1"  # supports must originate in Evidence
         self.assertEqual(self.verdict(candidate)["disposition"], "HOLD")
 
+    def test_candidate_cannot_self_declare_ratified_stage(self):
+        candidate = copy.deepcopy(self.good)
+        candidate["lifecycle"]["stage"] = "RATIFIED"
+        self.assertEqual(self.verdict(candidate)["disposition"], "HOLD")
+
+    def test_malformed_values_fail_closed_without_crashing(self):
+        candidate = copy.deepcopy(self.good)
+        candidate["nodes"][0]["type"] = {"unexpected": "object"}
+        candidate["edges"][0]["from"] = ["not-a-string"]
+        candidate["edges"][0]["type"] = ["not-a-string"]
+        self.assertEqual(self.verdict(candidate)["disposition"], "HOLD")
+
     def test_claim_without_source_ref_holds(self):
         candidate = copy.deepcopy(self.good)
         candidate["nodes"][3].pop("source_ref")
