@@ -102,7 +102,7 @@ class TestPreservation(unittest.TestCase):
 
 class TestCoordinates(unittest.TestCase):
     def setUp(self):
-        self.c=CoordinateResolver();self.source={"hsn":"H12.S12.N12", "source_edition":"ariadne-reader/v0.7", "source_digest":"f"*64,"d_affinity":{"D":"D-4"}}
+        self.c=CoordinateResolver();self.source={"hsn":"H12.S12.N12", "source_edition":"ariadne-reader/v0.7", "source_digest":CoordinateResolver.SOURCE_SHA256,"d_affinity":{"D":"D-4"}}
 
     def test_grounded(self):
         x=self.c.resolve_to_earth(self.source)
@@ -113,6 +113,14 @@ class TestCoordinates(unittest.TestCase):
     def test_zero_not_node(self):
         x=self.c.resolve_to_earth(dict(self.source,hsn="H00.S00.N00"))
         self.assertEqual(x["status"],"QUARANTINED_GROUNDING_HOLD")
+
+    def test_incorrect_registry_digest(self):
+        self.assertFalse(self.c.validate_grounding(self.c.resolve_to_earth(dict(self.source,source_digest="f"*64))))
+
+    def test_forged_resolved_digest(self):
+        r=self.c.resolve_to_earth(self.source)
+        r["source_digest"]="f"*64
+        self.assertFalse(self.c.validate_grounding(r))
 
     def test_incorrect_edition(self):
         self.assertFalse(self.c.validate_grounding(self.c.resolve_to_earth(dict(self.source,source_edition="historical-YinYang"))))
