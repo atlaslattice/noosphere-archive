@@ -26,7 +26,7 @@ def _unique_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 
 
 def _reject_nonfinite(_: str) -> None:
-    raise InventoryJSONError("NONFINITE_REGISTRY_VALUE")
+    raise InventoryJSONError("NONFINITE_NUMBER")
 
 
 def _reject_float(_: str) -> None:
