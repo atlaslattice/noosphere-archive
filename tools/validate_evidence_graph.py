@@ -31,6 +31,7 @@ EDGE_TYPES = {
     "preserved_as": ({"Artifact", "Claim", "Evidence", "Contradiction"}, {"Artifact", "Receipt", "RawExportManifest"}),
     "quarantined_as": ({"Artifact", "Claim", "Evidence"}, {"Artifact", "Receipt"}),
 }
+RAW_EXPORT_STATES = frozenset({"raw_missing", "raw_partial", "raw_complete_unhashed", "raw_complete_hashed", "raw_source_unavailable"})
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 IDENT = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.:\-/]{0,159}$")
 
@@ -81,6 +82,19 @@ def validate_graph(doc):
             bad(path + ".flags", "INVALID_FLAGS")
         elif len(flags) != len(set(flags)):
             bad(path + ".flags", "DUPLICATE_FLAG")
+        if n.get("type") == "RawExportManifest":
+            raw_status = n.get("raw_export_status")
+            if raw_status not in RAW_EXPORT_STATES:
+                bad(path + ".raw_export_status", "RAW_EXPORT_STATUS_REQUIRED")
+            elif raw_status != "raw_complete_hashed" and "QUARANTINED" not in flags:
+                bad(path + ".flags", "INCOMPLETE_RAW_REQUIRES_QUARANTINE")
+            if raw_status == "raw_complete_hashed":
+                if not isinstance(n.get("manifest_digest_sha256"), str) or not SHA256.fullmatch(n["manifest_digest_sha256"]):
+                    bad(path + ".manifest_digest_sha256", "COMPLETE_EXPORT_REQUIRES_HASH")
+                if not isinstance(n.get("source_root_ref"), str) or not n["source_root_ref"]:
+                    bad(path + ".source_root_ref", "COMPLETE_EXPORT_REQUIRES_ROOT")
+                if not isinstance(n.get("hash_receipt_ref"), str) or not n["hash_receipt_ref"]:
+                    bad(path + ".hash_receipt_ref", "COMPLETE_EXPORT_REQUIRES_RECEIPT")
         if n.get("type") == "SourceSurface":
             src = n.get("source")
             if not isinstance(src, dict):
@@ -96,6 +110,14 @@ def validate_graph(doc):
                     bad(path + ".source.scope", "PRIVATE_OR_UNVERIFIED_SOURCE")
                 if not isinstance(src.get("observed_at"), str) or not src["observed_at"].strip():
                     bad(path + ".source.observed_at", "OBSERVATION_DATE_REQUIRED")
+    for ident, node in by_id.items():
+        if node.get("type") == "RawExportManifest" and node.get("raw_export_status") == "raw_complete_hashed":
+            src = by_id.get(node.get("source_root_ref"))
+            receipt = by_id.get(node.get("hash_receipt_ref"))
+            if not src or src.get("type") != "SourceSurface":
+                bad(f"nodes[{ident}].source_root_ref", "INVALID_SOURCE_ROOT_REF")
+            if not receipt or receipt.get("type") != "Receipt":
+                bad(f"nodes[{ident}].hash_receipt_ref", "INVALID_HASH_RECEIPT_REF")
     seen_edges = set()
     for i, e in enumerate(edges):
         path = f"edges[{i}]"
