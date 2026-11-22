@@ -77,7 +77,7 @@ def validate_graph(doc):
         stage = n.get("state")
         if type(stage) is not str or stage not in STATES:
             bad(path + ".state", "UNKNOWN_STATE")
-        if n.get("state") in {"RATIFIED", "CANON", "DEPLOYED"}:
+        if type(stage) is str and stage in {"RATIFIED", "CANON", "DEPLOYED"}:
             bad(path + ".state", "HOST_ATTESTATION_REQUIRED")
         flags = n.get("flags", [])
         if not isinstance(flags, list) or any(not isinstance(f, str) or f not in FLAGS for f in flags):
