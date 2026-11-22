@@ -1,0 +1,27 @@
+{
+  "schema_version": "atlas.evidence.graph/v0.1",
+  "graph_id": "synthetic:evidence-chain-v01",
+  "purpose": "PUBLIC_EVIDENCE_REVIEW",
+  "nodes": [
+    {"id": "source:demo", "type": "SourceSurface", "label": "Synthetic fixture; NOT an actual paper or authorization", "state": "RAW", "source": {"url": "https://example.org/synthetic-fixture", "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "rights": "SYNTHETIC ONLY", "scope": "SYNTHETIC_FIXTURE", "observed_at": "2026-11-22"}},
+    {"id": "manifest:demo", "type": "RawExportManifest", "label": "Synthetic source capture manifest", "state": "RAW"},
+    {"id": "artifact:demo", "type": "Artifact", "label": "Hypothetical extracted observation", "state": "PARSED"},
+    {"id": "claim:demo", "type": "Claim", "label": "Hypothetical proposition; NOT established truth", "state": "CANDIDATE", "flags": ["CONTRADICTED"]},
+    {"id": "evidence:demo", "type": "Evidence", "label": "Hypothetical data showing one favorable metric", "state": "REVIEWED"},
+    {"id": "contradiction:demo", "type": "Contradiction", "label": "Adverse synthetic measurement remains preserved", "state": "REVIEWED"},
+    {"id": "review:demo", "type": "ReviewLane", "label": "Pending human review, no peer receipt", "state": "CANDIDATE"},
+    {"id": "gate:demo", "type": "CanonGate", "label": "Authority request, NOT approval", "state": "CANDIDATE"},
+    {"id": "receipt:demo", "type": "Receipt", "label": "Synthetic source preservation record, not deployment", "state": "RAW"}
+  ],
+  "edges": [
+    {"from": "manifest:demo", "to": "source:demo", "type": "derived_from"},
+    {"from": "artifact:demo", "to": "manifest:demo", "type": "derived_from"},
+    {"from": "artifact:demo", "to": "claim:demo", "type": "claims"},
+    {"from": "evidence:demo", "to": "source:demo", "type": "derived_from"},
+    {"from": "evidence:demo", "to": "claim:demo", "type": "supports"},
+    {"from": "contradiction:demo", "to": "claim:demo", "type": "contradicts"},
+    {"from": "claim:demo", "to": "review:demo", "type": "reviewed_by"},
+    {"from": "claim:demo", "to": "gate:demo", "type": "gated_by"},
+    {"from": "artifact:demo", "to": "receipt:demo", "type": "preserved_as"}
+  ]
+}
