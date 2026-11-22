@@ -22,7 +22,7 @@ python -m registry.public_registry --issue https://github.com/atlaslattice/noosp
 python -m unittest discover -s tests -p 'test_public_registry.py' -v
 ```
 
-All commands are read-only. Validation checks source pagination, strict public scope, exact canonical GitHub URLs, unique repository IDs/names, unexpected private fields, required HOLD statuses, and distinct role/mapping/provenance concepts. Failed validation yields `HOLD` and exit code 2. The lookup tool never fetches source content or asserts an issue exists, and cannot merge, close, promote or deploy.
+All commands are read-only. Validation checks source pagination, strict public scope, exact canonical GitHub URLs, unique repository IDs/names, unexpected private fields, required HOLD statuses, and distinct role/mapping/provenance concepts. Failed validation yields `HOLD` and exit code 2. The JSON input parser rejects duplicate keys at any nesting level, non-finite numbers, wrong root types, excessive nesting and source snapshots larger than 4 MiB before using any record; this prevents a later `public`/authority flag from hiding earlier contradictory metadata. The lookup tool never fetches source content or asserts an issue exists, and cannot merge, close, promote or deploy.
 
 ## Status ladder
 
