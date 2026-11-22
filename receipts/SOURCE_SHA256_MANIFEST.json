@@ -1,0 +1,18 @@
+{
+  "files": {
+    "README_CONTINUITY.md": "d76cb00d01e1faacb254bb577cfdd7f92983f5ee5bd2440030a2d19e5dce312e",
+    "continuity/__init__.py": "48a7326b82f0cc89c47bedd4b270a7b2ffa64f503a9626e5cc191e787e83c86f",
+    "continuity/demo.py": "1f86b13628d3f03423bc96d5054cc0d4dad5b31598ae495484dc74803a213af2",
+    "continuity/portable.py": "f4ea855cd41aa8d39fd388f554403818033462347912c85b66362d1d25af5d86",
+    "docs/public-safety-disclaimer.md": "2919f5fa6ad2cd5929cb69934daddf5edba793fd0d3bc8b751c417ce82e2054a",
+    "examples/example-memory-bundle.redacted.json": "cc9a2bbb354ce7f15882003944733fb959abf6d42a6f179d434bfd28aaa6ec20",
+    "examples/example-rehydration-contract.json": "f4882748f4023155a08d39f4b0cbe579ce5fcdb09d35ed74edc66a3d3949ba11",
+    "receipts/demo.json": "d8a8d35f130b7f2bff28d2377938114bba4551d28241cb2b8b491cf141a922c9",
+    "receipts/unittest.txt": "f11293934082b64d061290a406dba15c3ef35a40495eb29f00f57c99fd8ecde4",
+    "schemas/memory-bundle-v0.schema.json": "b3d4984222063c86963e4b96b0e003e8c0ab8443e74501b352f36f4cbad63b6b",
+    "schemas/rehydration-contract-v0.schema.json": "86ddc2e4fa4578905a9aa463e005d417580f50f06c84ebd5625050845d9e750a",
+    "specs/digital-continuity-protocol-v0.md": "71882ccc516dea9740318083eb5966d277b9900cace1007d0f895246b7ca10dc",
+    "tests/test_continuity_protocol.py": "71c6f3a84aa86cc08fe61c252f7a6322ebc437ee441ec28d2107bf4894a94e7e"
+  },
+  "status": "LOCAL_SOURCE_VERIFIED_NOT_DEPLOYED"
+}

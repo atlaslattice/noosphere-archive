@@ -1,0 +1,46 @@
+test_bool_version_hold (test_continuity_protocol.ContinuityProtocolTests.test_bool_version_hold) ... ok
+test_bundle_valid_and_digest (test_continuity_protocol.ContinuityProtocolTests.test_bundle_valid_and_digest) ... ok
+test_claim_missing_reference_hold (test_continuity_protocol.ContinuityProtocolTests.test_claim_missing_reference_hold) ... ok
+test_contract_autonomous_hold (test_continuity_protocol.ContinuityProtocolTests.test_contract_autonomous_hold) ... ok
+test_contract_claims_identity_hold (test_continuity_protocol.ContinuityProtocolTests.test_contract_claims_identity_hold) ... ok
+test_contract_requires_review_hold (test_continuity_protocol.ContinuityProtocolTests.test_contract_requires_review_hold) ... ok
+test_deterministic_seal (test_continuity_protocol.ContinuityProtocolTests.test_deterministic_seal) ... ok
+test_duplicate_claim_ids_hold (test_continuity_protocol.ContinuityProtocolTests.test_duplicate_claim_ids_hold) ... ok
+test_duplicate_claim_refs_hold (test_continuity_protocol.ContinuityProtocolTests.test_duplicate_claim_refs_hold) ... ok
+test_duplicate_sources_hold (test_continuity_protocol.ContinuityProtocolTests.test_duplicate_sources_hold) ... ok
+test_fork_collision_hold (test_continuity_protocol.ContinuityProtocolTests.test_fork_collision_hold) ... ok
+test_fork_retains_parent_and_source (test_continuity_protocol.ContinuityProtocolTests.test_fork_retains_parent_and_source) ... ok
+test_hsn_address_not_autotruth (test_continuity_protocol.ContinuityProtocolTests.test_hsn_address_not_autotruth) ... ok
+test_invalid_time_hold (test_continuity_protocol.ContinuityProtocolTests.test_invalid_time_hold) ... ok
+test_license_missing_hold (test_continuity_protocol.ContinuityProtocolTests.test_license_missing_hold) ... ok
+test_missing_registry_hold (test_continuity_protocol.ContinuityProtocolTests.test_missing_registry_hold) ... ok
+test_negative_version_hold (test_continuity_protocol.ContinuityProtocolTests.test_negative_version_hold) ... ok
+test_nested_private_key_hold (test_continuity_protocol.ContinuityProtocolTests.test_nested_private_key_hold) ... ok
+test_no_private_dream_text_field_allowed (test_continuity_protocol.ContinuityProtocolTests.test_no_private_dream_text_field_allowed) ... ok
+test_no_raw_message_text_field_allowed (test_continuity_protocol.ContinuityProtocolTests.test_no_raw_message_text_field_allowed) ... ok
+test_non_json_rejected (test_continuity_protocol.ContinuityProtocolTests.test_non_json_rejected) ... ok
+test_nonfinite_rejected (test_continuity_protocol.ContinuityProtocolTests.test_nonfinite_rejected) ... ok
+test_parent_cycle_hold (test_continuity_protocol.ContinuityProtocolTests.test_parent_cycle_hold) ... ok
+test_privacy_mode_no_relax_by_hsn_label (test_continuity_protocol.ContinuityProtocolTests.test_privacy_mode_no_relax_by_hsn_label) ... ok
+test_private_class_hold (test_continuity_protocol.ContinuityProtocolTests.test_private_class_hold) ... ok
+test_private_source_origin_hold (test_continuity_protocol.ContinuityProtocolTests.test_private_source_origin_hold) ... ok
+test_registry_content_hold (test_continuity_protocol.ContinuityProtocolTests.test_registry_content_hold) ... ok
+test_rehydration_prepared_not_executed (test_continuity_protocol.ContinuityProtocolTests.test_rehydration_prepared_not_executed) ... ok
+test_schema_validator_if_installed (test_continuity_protocol.ContinuityProtocolTests.test_schema_validator_if_installed) ... ok
+test_signature_not_claimed (test_continuity_protocol.ContinuityProtocolTests.test_signature_not_claimed) ... ok
+test_source_incomplete_hold (test_continuity_protocol.ContinuityProtocolTests.test_source_incomplete_hold) ... ok
+test_source_missing_hold (test_continuity_protocol.ContinuityProtocolTests.test_source_missing_hold) ... ok
+test_source_without_permission_hold (test_continuity_protocol.ContinuityProtocolTests.test_source_without_permission_hold) ... ok
+test_status_invented_hold (test_continuity_protocol.ContinuityProtocolTests.test_status_invented_hold) ... ok
+test_tamper_detected (test_continuity_protocol.ContinuityProtocolTests.test_tamper_detected) ... ok
+test_unhashable_claim_status_hold (test_continuity_protocol.ContinuityProtocolTests.test_unhashable_claim_status_hold) ... ok
+test_unhashable_reference_hold (test_continuity_protocol.ContinuityProtocolTests.test_unhashable_reference_hold) ... ok
+test_unjustified_persona_claim_hold (test_continuity_protocol.ContinuityProtocolTests.test_unjustified_persona_claim_hold) ... ok
+test_unknown_keys_hold (test_continuity_protocol.ContinuityProtocolTests.test_unknown_keys_hold) ... ok
+test_unratified_authority_only (test_continuity_protocol.ContinuityProtocolTests.test_unratified_authority_only) ... ok
+test_wrong_bundle_digest_hold (test_continuity_protocol.ContinuityProtocolTests.test_wrong_bundle_digest_hold) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 0.848s
+
+OK

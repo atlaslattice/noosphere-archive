@@ -1,0 +1,5 @@
+# Public safety and originality boundary — Digital Continuity Protocol v0
+
+This software preserves **textual and structured project context**, not consciousness, personal identity, legal permission, or a model's continuous existence. No individual, agent, child, pet, client, family member, or deceased person may be recreated, represented, contacted, or publicly exposed from a memory bundle without separate, contemporaneous legal/affected-party authorization. Claimed consent or a source hash in a packet is never the host's signed permission.
+
+This public example uses synthetic project information only; never publish user secrets, private health/financial/legal records, passwords, source conversations, third-party identity data or protected Play/Social/Imagine/Quiet/Brain/Palace/Habitat text. Before any real publication perform consent, rights, PII/sensitive-content and source-license review, provenance checks, and an independent human decision. Nothing auto-promotes to CANON or production. Hashes support integrity, not factual truth, ownership or authorship. A candidate's apparent usefulness does not override privacy or withdrawal.

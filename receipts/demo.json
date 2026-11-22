@@ -1,0 +1,33 @@
+{
+  "fork": {
+    "authority": "NONE",
+    "consent_attested": false,
+    "digest": "9e53fb08d37735531ebb2c0bdc63e67f6f460be4984c0480d69d33167889117e",
+    "host_release_authorized": false,
+    "identity_attested": false,
+    "status": "VERIFIED_STRUCTURE_ONLY"
+  },
+  "preparation": {
+    "authority": "NONE",
+    "claim_ids": [
+      "c-demo-01"
+    ],
+    "identity_attested": false,
+    "model_woken": false,
+    "private_source_imported": false,
+    "required_human_approval": "CURRENT_HOST_AND_AFFECTED_PARTY",
+    "source_digest": "8ed5ee1488881853d3995db9725f14a6d262abefc462c996bc84a89cdf881481",
+    "source_ids": [
+      "s-demo-01"
+    ],
+    "status": "PREPARED_NOT_EXECUTED"
+  },
+  "verified": {
+    "authority": "NONE",
+    "consent_attested": false,
+    "digest": "8ed5ee1488881853d3995db9725f14a6d262abefc462c996bc84a89cdf881481",
+    "host_release_authorized": false,
+    "identity_attested": false,
+    "status": "VERIFIED_STRUCTURE_ONLY"
+  }
+}

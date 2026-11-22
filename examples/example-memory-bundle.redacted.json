@@ -1,0 +1,48 @@
+{
+  "authority": "NONE",
+  "bundle_id": "demo.synthetic.project-001",
+  "claims": [
+    {
+      "claim_id": "c-demo-01",
+      "does_not_prove": "No personal continuity, consenting identity, scientific validation, or live host permissions.",
+      "source_ids": [
+        "s-demo-01"
+      ],
+      "statement": "A synthetic archive may preserve source identifiers without raw conversation content.",
+      "status": "DERIVED_CANDIDATE"
+    }
+  ],
+  "created_at": "2026-11-22T19:00:00Z",
+  "integrity": {
+    "algorithm": "SHA-256-JSON-PYTHON-LOCAL",
+    "digest": "8ed5ee1488881853d3995db9725f14a6d262abefc462c996bc84a89cdf881481"
+  },
+  "ontology": {
+    "edition": "source-reported-example-v0.7",
+    "namespace": "ariadne-reader/v0.7",
+    "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "privacy_class": "PUBLIC_REDACTED_SYNTHETIC",
+  "profile": {
+    "description": "Fictional demonstration of source-addressed project continuity without private messages.",
+    "ontology_tags": [
+      "H12.S01.N01 — example label only",
+      "no automatic HSN/GF7 equivalence"
+    ],
+    "project": "Synthetic Atlas Seed Library"
+  },
+  "rehydration_contract": "contract.synthetic.001",
+  "schema": "atlas.digital-continuity.memory-bundle/v0",
+  "sources": [
+    {
+      "export_status": "raw_complete_hashed",
+      "license": "Synthetic example only",
+      "locator": "synthetic:atlas-demo#1",
+      "origin": "PUBLIC_SYNTHETIC",
+      "permission": "SOURCE_REPORTED_PUBLIC",
+      "source_id": "s-demo-01",
+      "source_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+    }
+  ],
+  "version": 1
+}

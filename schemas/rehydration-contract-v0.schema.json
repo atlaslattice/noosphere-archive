@@ -1,0 +1,19 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://example.invalid/atlas/rehydration-contract-v0.schema.json",
+ "title":"Atlas non-identifying source-only rehydration contract v0",
+ "type":"object",
+ "additionalProperties":false,
+ "required":["schema","contract_id","bundle_id","source_digest","allowed","requires_human_review","identity_claim","limitations","disclosure"],
+ "properties":{
+  "schema":{"const":"atlas.digital-continuity.rehydration/v0"},
+  "contract_id":{"type":"string","minLength":3},
+  "bundle_id":{"type":"string","minLength":3},
+  "source_digest":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+  "allowed":{"const":"REFERENCE_ONLY"},
+  "requires_human_review":{"const":true},
+  "identity_claim":{"const":"NONE"},
+  "limitations":{"type":"array","minItems":3,"items":{"type":"string","minLength":1,"maxLength":180}},
+  "disclosure":{"type":"string","minLength":1,"maxLength":400}
+ }
+}

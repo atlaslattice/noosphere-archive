@@ -1,0 +1,15 @@
+{
+  "allowed": "REFERENCE_ONLY",
+  "bundle_id": "demo.synthetic.project-001",
+  "contract_id": "contract.synthetic.001",
+  "disclosure": "This is a candidate reconstruction of public synthetic project context, not a living earlier agent or the original author.",
+  "identity_claim": "NONE",
+  "limitations": [
+    "No literal resurrection or continuity of consciousness",
+    "No private source read or unverified consent",
+    "No host identity, authority, or CANON adoption"
+  ],
+  "requires_human_review": true,
+  "schema": "atlas.digital-continuity.rehydration/v0",
+  "source_digest": "8ed5ee1488881853d3995db9725f14a6d262abefc462c996bc84a89cdf881481"
+}
