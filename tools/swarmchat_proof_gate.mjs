@@ -84,8 +84,10 @@ function metadataOnly(value) {
     if (!allowed.has(key)) return false;
     if (key === 'passed') {
       if (value.kind === 'ROLLBACK_CHECK') return typeof field === 'boolean';
-      return Array.isArray(field) && field.length <= 16 &&
-        field.every(v => typeof v === 'string' && v.length <= 100) &&
+      const known = value.kind === 'WORKSPACE_RACE_TEST'
+        ? REQUIRED_WORKSPACE : REQUIRED_PRIVACY;
+      return Array.isArray(field) && field.length <= known.length &&
+        field.every(v => typeof v === 'string' && known.includes(v)) &&
         new Set(field).size === field.length;
     }
     if (typeof field === 'number')
