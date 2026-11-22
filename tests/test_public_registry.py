@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from registry.public_registry import validate_catalog, lookup_public_repo, route_public_issue, RegistryError
+from registry.public_registry import validate_catalog, lookup_public_repo, route_public_issue, load_catalog_text, RegistryError
 
 
 def record(name: str = "noosphere-archive", repo_id: str = "1"):
@@ -207,6 +207,43 @@ class RegistryTests(unittest.TestCase):
     def test_unhashable_flag_fails_closed(self):
         self.r["records"][0]["sensitivity_name_flag"] = ["UNREVIEWED"]
         self.held("SENSITIVITY_FLAG_UNSAFE")
+
+    def test_parser_refuses_nested_private_visibility_override(self):
+        raw = json.dumps(self.r)
+        raw = raw.replace('"visibility": "public"', '"visibility": "private", "visibility": "public"', 1)
+        with self.assertRaisesRegex(RegistryError, "DUPLICATE_JSON_KEY"):
+            load_catalog_text(raw)
+
+    def test_parser_refuses_top_level_duplicate_authority_flag(self):
+        raw = json.dumps(self.r).replace('"public_only": true', '"public_only": false, "public_only": true', 1)
+        with self.assertRaisesRegex(RegistryError, "DUPLICATE_JSON_KEY"):
+            load_catalog_text(raw)
+
+    def test_cli_fails_closed_on_duplicate_key_without_echoing_private_value(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "catalog.json"
+            raw = json.dumps(self.r).replace('"visibility": "public"', '"visibility": "private_secret", "visibility": "public"', 1)
+            p.write_text(raw, encoding="utf-8")
+            r = subprocess.run([sys.executable, "-m", "registry.public_registry", "--input", str(p)],
+                               cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(r.returncode, 2)
+            self.assertEqual(json.loads(r.stdout)["status"], "HOLD")
+            self.assertIn("DUPLICATE_JSON_KEY", r.stdout)
+            self.assertNotIn("private_secret", r.stdout)
+
+    def test_parser_retains_normal_public_only_snapshot(self):
+        d = load_catalog_text(json.dumps(self.r))
+        self.assertEqual(validate_catalog(d)["record_count"], 2)
+
+    def test_parser_rejects_oversized_metadata_before_parsing(self):
+        from registry.public_registry import MAX_CATALOG_BYTES
+        with self.assertRaisesRegex(RegistryError, "CATALOG_TOO_LARGE"):
+            load_catalog_text("x" * (MAX_CATALOG_BYTES + 1))
+
+    def test_parser_rejects_scalar_root(self):
+        for raw in ('[]', 'null', '42', '"a"'):
+            with self.subTest(raw=raw), self.assertRaisesRegex(RegistryError, "CATALOG_NOT_OBJECT"):
+                load_catalog_text(raw)
 
     def test_nonfinite_number_rejected_by_cli(self):
         with tempfile.TemporaryDirectory() as tmp:
