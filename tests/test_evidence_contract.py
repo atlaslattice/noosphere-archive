@@ -91,6 +91,18 @@ class EvidenceContractTests(unittest.TestCase):
     def test_unhashed_export_forced_quarantine(self):
         self.assertIn("INCOMPLETE_RAW_REQUIRES_QUARANTINE", self.broken(lambda d: d["nodes"][1].update(raw_export_status="raw_complete_unhashed")))
 
+    def test_malformed_manifest_flags_are_held_not_exceptions(self):
+        # Regression: older implementation did membership on None/int/bool and could crash.
+        for raw_status in ("raw_missing", "raw_partial", "raw_complete_unhashed", "raw_source_unavailable"):
+            for bad_flags in (None, 0, False, {}, "QUARANTINED"):
+                with self.subTest(raw_status=raw_status, bad_flags=repr(bad_flags)):
+                    data = copy.deepcopy(self.example)
+                    data["nodes"][1]["raw_export_status"] = raw_status
+                    data["nodes"][1]["flags"] = bad_flags
+                    errors = {e["code"] for e in validate_graph(data)}
+                    self.assertIn("INVALID_FLAGS", errors)
+                    self.assertIn("INCOMPLETE_RAW_REQUIRES_QUARANTINE", errors)
+
     def test_quarantined_partial_preserved(self):
         data = copy.deepcopy(self.example)
         data["nodes"][1].update(raw_export_status="raw_partial", flags=["QUARANTINED"])
