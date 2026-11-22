@@ -51,8 +51,22 @@ def parse_text(s: str) -> Any:
     return json.loads(s, object_pairs_hook=unique_pairs, parse_constant=lambda _: (_ for _ in ()).throw(ContinuityHold("NONFINITE_JSON_NUMBER")))
 
 
+def _snapshot_plain_json(value: Any) -> Any:
+    """Freeze Python caller input into primitive JSON once, before validation.
+
+    No identity/authorship validation; prevents caller-owned mutable objects or
+    custom equality/deepcopy hooks changing bytes after the checked boundary.
+    """
+    try:
+        return parse_text(json.dumps(value, sort_keys=True, ensure_ascii=False,
+                                     separators=(",", ":"), allow_nan=False))
+    except (TypeError, ValueError, OverflowError, RecursionError, UnicodeError) as exc:
+        raise ContinuityHold("NON_JSON_OR_MUTABLE_INPUT_HOLD") from exc
+
+
 def validate_bundle(raw: Any) -> dict[str, Any]:
     """Fail closed on wrong scope or claims; never return private source bodies."""
+    raw = _snapshot_plain_json(raw)
     require(type(raw) is dict and set(raw) == BUNDLE_FIELDS, "BUNDLE_FIELDS_INVALID")
     require(raw["schema_version"] == SCHEMA and raw["status"] == "CANDIDATE_NOT_CANON", "BUNDLE_SCHEMA_OR_STATUS_MISMATCH")
     require(string(raw["bundle_id"]) and re.fullmatch(r"[a-z][a-z0-9_-]{2,80}",raw["bundle_id"]) is not None, "BUNDLE_ID_INVALID")
@@ -94,6 +108,7 @@ def validate_bundle(raw: Any) -> dict[str, Any]:
 
 
 def validate_contract(raw: Any) -> dict[str, Any]:
+    raw = _snapshot_plain_json(raw)
     require(type(raw) is dict and set(raw)==CONTRACT_FIELDS, "CONTRACT_FIELDS_INVALID")
     require(raw["schema_version"]=="atlas.rehydration-contract/v0" and raw["contract_id"]=="atlas.rehydration-contract/v0-demo" and raw["bundle_schema"]==SCHEMA, "CONTRACT_SCHEMA_MISMATCH")
     require(raw["identity_claim"]=="ARCHIVAL_CONTEXT_ONLY" and raw["source_rights_policy"]=="HOST_CHECK_READ_AND_RETURN" and raw["opt_out"]=="SUPPORTED_NOT_OBSERVED", "CONTRACT_RIGHTS_OR_IDENTITY_HOLD")
@@ -103,6 +118,7 @@ def validate_contract(raw: Any) -> dict[str, Any]:
 
 
 def prepare_fork(raw: dict[str,Any]) -> dict[str,Any]:
+    raw = _snapshot_plain_json(raw)
     validate_bundle(raw)
     fork=deepcopy(raw)
     fork["fork"]["parent_sha256"]=canonical_sha256(raw)
