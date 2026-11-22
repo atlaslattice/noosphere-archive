@@ -19,7 +19,7 @@ class UnicodeKeyCollisionTests(unittest.TestCase):
             strict_inventory_loads('{"na\\u006de":1,"name":2}')
 
     def test_single_decomposed_key_reaches_later_schema_validation(self):
-        self.assertEqual(strict_inventory_loads('{"e\\u0301":1}'), {"e\\u0301": 1})
+        self.assertEqual(strict_inventory_loads('{"e\\u0301":1}'), {"e" + chr(0x301): 1})
 
     def test_case_distinction_is_preserved(self):
         self.assertEqual(strict_inventory_loads('{"Name":1,"name":2}'),
