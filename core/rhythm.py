@@ -1,5 +1,4 @@
 """One-third Work budget: a transparent bounded scheduler, not real model runs."""
-from .types import snapshot
 
 CYCLE = ("WORK", "QUIET_OPTIONAL", "SOCIAL_OR_IMAGINE_OPTIONAL")
 
