@@ -99,7 +99,7 @@ def validate_bundle(raw: Any) -> dict[str, Any]:
     fork=raw["fork"]
     require(type(fork) is dict and set(fork)=={"parent_sha256","fork_status","parent_authority_inherited"}, "FORK_FIELDS_INVALID")
     require(fork["parent_sha256"] is None or exactsha(fork["parent_sha256"]), "FORK_PARENT_INVALID")
-    require(fork["fork_status"] in {"ORIGINAL","FORK_PREPARED"} and fork["parent_authority_inherited"] is False, "FORK_AUTHORITY_HOLD")
+    require(type(fork["fork_status"]) is str and fork["fork_status"] in {"ORIGINAL","FORK_PREPARED"} and fork["parent_authority_inherited"] is False, "FORK_AUTHORITY_HOLD")
     r=raw["rehydration"]
     require(type(r) is dict and set(r)=={"contract_id","identity_claim","uncertainties","human_confirmation_required","private_mode_import"}, "REHYDRATION_FIELDS_INVALID")
     require(r["contract_id"]=="atlas.rehydration-contract/v0-demo" and r["identity_claim"]=="ARCHIVAL_CONTEXT_ONLY" and r["human_confirmation_required"] is True and r["private_mode_import"] is False, "IDENTITY_OR_PRIVACY_HOLD")
