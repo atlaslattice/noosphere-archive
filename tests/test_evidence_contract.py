@@ -123,5 +123,82 @@ class EvidenceContractTests(unittest.TestCase):
             self.assertNotIn("import " + forbidden, source)
 
 
+    def test_malformed_node_types_fail_closed(self):
+        for value in ([], {}, ["SourceSurface"], True):
+            with self.subTest(value=repr(value)):
+                self.assertIn("UNKNOWN_NODE_TYPE", self.broken(
+                    lambda d: d["nodes"][0].update(type=value)))
+
+    def test_malformed_workflow_states_fail_closed(self):
+        for value in ([], {}, ["RAW"]):
+            with self.subTest(value=repr(value)):
+                self.assertIn("UNKNOWN_STATE", self.broken(
+                    lambda d: d["nodes"][3].update(state=value)))
+
+    def test_malformed_raw_export_status_fail_closed(self):
+        for value in ([], {}, ["raw_complete_hashed"]):
+            with self.subTest(value=repr(value)):
+                self.assertIn("RAW_EXPORT_STATUS_REQUIRED", self.broken(
+                    lambda d: d["nodes"][1].update(raw_export_status=value)))
+
+    def test_malformed_source_scope_fail_closed(self):
+        for value in ([], {}, ["PUBLIC_METADATA"]):
+            with self.subTest(value=repr(value)):
+                self.assertIn("PRIVATE_OR_UNVERIFIED_SOURCE", self.broken(
+                    lambda d: d["nodes"][0]["source"].update(scope=value)))
+
+    def test_malformed_manifest_reference_keys_fail_closed(self):
+        for field, code in (("source_root_ref", "INVALID_SOURCE_ROOT_REF"),
+                            ("hash_receipt_ref", "INVALID_HASH_RECEIPT_REF")):
+            for value in ([], {}, ["source:demo"]):
+                with self.subTest(field=field, value=repr(value)):
+                    self.assertIn(code, self.broken(
+                        lambda d: d["nodes"][1].update({field: value})))
+
+    def test_malformed_edge_fields_fail_closed(self):
+        for key in ("from", "to", "type"):
+            for value in ([], {}, ["derived_from"], True):
+                with self.subTest(key=key, value=repr(value)):
+                    self.assertIn("EDGE_FIELDS_MUST_BE_STRINGS", self.broken(
+                        lambda d: d["edges"][0].update({key: value})))
+
+    def test_malformed_edge_node_types_do_not_crash(self):
+        errors = self.broken(lambda d: d["nodes"][0].update(type=[]))
+        self.assertIn("UNKNOWN_NODE_TYPE", errors)
+        self.assertIn("INVALID_EDGE_DIRECTION", errors)
+
+    def test_cli_rejects_decoded_duplicate_json_keys(self):
+        import io
+        import tempfile
+        from contextlib import redirect_stdout
+        from validate_evidence_graph import main
+        cases = (
+            '{"purpose":"PLAY_TO_WORK","purpose":"PUBLIC_EVIDENCE_REVIEW"}',
+            '{"purpose":"PLAY_TO_WORK","\\u0070urpose":"PUBLIC_EVIDENCE_REVIEW"}',
+            '{"source":{"scope":"PRIVATE_BRAIN","scope":"PUBLIC_METADATA"}}',
+        )
+        with tempfile.TemporaryDirectory() as td:
+            target = Path(td) / "duplicate.json"
+            for raw in cases:
+                with self.subTest(raw=raw):
+                    target.write_text(raw, encoding="utf-8")
+                    sink = io.StringIO()
+                    with redirect_stdout(sink):
+                        rc = main([str(target)])
+                    self.assertEqual(rc, 2)
+                    self.assertEqual(json.loads(sink.getvalue())["status"], "INVALID")
+
+    def test_cli_still_accepts_the_synthetic_fixture(self):
+        import io
+        from contextlib import redirect_stdout
+        from validate_evidence_graph import main
+        sink = io.StringIO()
+        with redirect_stdout(sink):
+            rc = main([str(ROOT / "examples/evidence_graph_v0_1.synthetic.json")])
+        self.assertEqual(rc, 0)
+        self.assertEqual(json.loads(sink.getvalue())["status"], "LOCAL_SHAPE_PASS_NOT_APPROVED")
+
+
+
 if __name__ == "__main__":
     unittest.main()
