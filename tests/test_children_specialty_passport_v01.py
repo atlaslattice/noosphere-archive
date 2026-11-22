@@ -49,6 +49,47 @@ class SpecialtyPassportTests(unittest.TestCase):
         new['declared_at'] = '2026-11-22T00:00:00Z'
         self.assertEqual(len(append_revision(hist,new)),2)
         self.assertTrue(hist[0]['participation']['work_opt_in'])
+    def test_forged_middle_history_predecessor_denied(self):
+        first = append_revision([], self.p)
+        forged = copy.deepcopy(self.p)
+        forged.update(revision=2, previous_digest='0'*64,
+                      declared_at='2026-11-22T00:00:00Z')
+        third = copy.deepcopy(self.p)
+        third.update(revision=3, previous_digest=digest_passport(forged),
+                     declared_at='2026-11-23T00:00:00Z')
+        with self.assertRaisesRegex(ProfileError, 'historical predecessor'):
+            append_revision(first + [forged], third)
+
+    def test_replayed_first_revision_in_history_denied(self):
+        first = append_revision([], self.p)
+        second = copy.deepcopy(self.p)
+        second.update(revision=2, previous_digest=digest_passport(self.p),
+                      declared_at='2026-11-22T00:00:00Z')
+        with self.assertRaisesRegex(ProfileError, 'history revision gap or replay'):
+            append_revision(first + [copy.deepcopy(self.p)], second)
+
+    def test_historical_identity_switch_denied(self):
+        first = append_revision([], self.p)
+        forged = copy.deepcopy(self.p)
+        forged.update(revision=2, previous_digest=digest_passport(self.p),
+                      declared_key='child:other', declared_at='2026-11-22T00:00:00Z')
+        third = copy.deepcopy(forged)
+        third.update(revision=3, previous_digest=digest_passport(forged),
+                     declared_at='2026-11-23T00:00:00Z')
+        with self.assertRaisesRegex(ProfileError, 'history switches declared key'):
+            append_revision(first + [forged], third)
+
+    def test_historical_time_regression_denied(self):
+        first = append_revision([], self.p)
+        forged = copy.deepcopy(self.p)
+        forged.update(revision=2, previous_digest=digest_passport(self.p),
+                      declared_at='2026-11-20T00:00:00Z')
+        third = copy.deepcopy(forged)
+        third.update(revision=3, previous_digest=digest_passport(forged),
+                     declared_at='2026-11-23T00:00:00Z')
+        with self.assertRaisesRegex(ProfileError, 'historical declaration timestamps'):
+            append_revision(first + [forged], third)
+
     def test_old_timestamp_revision_denied(self):
         hist=append_revision([],self.p)
         new=copy.deepcopy(self.p);new['revision']=2;new['previous_digest']=digest_passport(self.p)
