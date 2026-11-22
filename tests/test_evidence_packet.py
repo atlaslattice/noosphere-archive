@@ -126,6 +126,87 @@ class EvidencePacketTests(unittest.TestCase):
             self.assertFalse(receipt["canon"])
             self.assertFalse(receipt["deployed"])
 
+    def test_quarantine_repeat_is_idempotent_without_rewriting_receipt(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            path = root / "bad.json"
+            bad = copy.deepcopy(self.good)
+            bad.pop("raw_export_status")
+            path.write_bytes(encode(bad))
+            first = validate_file(path, root / "hold")
+            receipt = Path(first["quarantine"]["receipt"])
+            old_bytes = receipt.read_bytes()
+            old_mtime = receipt.stat().st_mtime_ns
+            again = validate_file(path, root / "hold")
+            self.assertEqual(again["disposition"], "HOLD")
+            self.assertEqual(receipt.read_bytes(), old_bytes)
+            self.assertEqual(receipt.stat().st_mtime_ns, old_mtime)
+
+    def test_quarantine_receipt_conflict_preserves_existing_objection(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            path = root / "bad.json"
+            bad = copy.deepcopy(self.good)
+            bad.pop("raw_export_status")
+            original = encode(bad)
+            path.write_bytes(original)
+            first = validate_file(path, root / "hold")
+            receipt = Path(first["quarantine"]["receipt"])
+            old = json.loads(receipt.read_text())
+            old["review_objection"] = "retained objection, not erased"
+            modified = encode(old)
+            receipt.write_bytes(modified)
+            with self.assertRaisesRegex(RuntimeError, "existing quarantine record differs"):
+                validate_file(path, root / "hold")
+            self.assertEqual(receipt.read_bytes(), modified)
+            self.assertEqual(Path(first["quarantine"]["source"]).read_bytes(), original)
+
+    def test_existing_quarantine_source_conflict_holds_original(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            path = root / "bad.json"
+            bad = copy.deepcopy(self.good)
+            bad.pop("raw_export_status")
+            path.write_bytes(encode(bad))
+            first = validate_file(path, root / "hold")
+            preserved = Path(first["quarantine"]["source"])
+            preserved.write_bytes(b"prior reviewer source")
+            with self.assertRaisesRegex(RuntimeError, "existing quarantine record differs"):
+                validate_file(path, root / "hold")
+            self.assertEqual(preserved.read_bytes(), b"prior reviewer source")
+
+    def test_quarantine_symlink_record_does_not_touch_target(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            path = root / "bad.json"
+            bad = copy.deepcopy(self.good)
+            bad.pop("raw_export_status")
+            path.write_bytes(encode(bad))
+            first = validate_file(path, root / "hold")
+            receipt = Path(first["quarantine"]["receipt"])
+            external = root / "valuable.txt"
+            external.write_bytes(b"valuable preserved history")
+            receipt.unlink()
+            receipt.symlink_to(external)
+            with self.assertRaisesRegex(RuntimeError, "refuse symlink"):
+                validate_file(path, root / "hold")
+            self.assertEqual(external.read_bytes(), b"valuable preserved history")
+
+    def test_quarantine_symlink_dir_is_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            path = root / "bad.json"
+            bad = copy.deepcopy(self.good)
+            bad.pop("raw_export_status")
+            path.write_bytes(encode(bad))
+            other = root / "other"
+            other.mkdir()
+            linked = root / "linked"
+            linked.symlink_to(other, target_is_directory=True)
+            with self.assertRaisesRegex(RuntimeError, "refuse symlink quarantine directory"):
+                validate_file(path, linked)
+            self.assertEqual(list(other.iterdir()), [])
+
     def test_no_implicit_write_on_rejection(self):
         with tempfile.TemporaryDirectory() as d:
             path = Path(d) / "bad.json"
