@@ -1,0 +1,58 @@
+{
+  "schema_version": "atlas.memory-bundle/v0",
+  "bundle_id": "synthetic_project_rainbarrel",
+  "recorded_at": "2026-11-22",
+  "subject": {
+    "kind": "PROJECT_SYNTHETIC",
+    "opaque_subject_id": "fictional-no-person"
+  },
+  "context_summary": "Fictional rain-barrel classroom project. No real person, private memory, actual experiment or scientific claim is represented.",
+  "ontology": {
+    "registry": "ariadne-reader",
+    "edition": "v0.7",
+    "digest_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+    "addresses": [
+      "H02.S01.N01"
+    ]
+  },
+  "sources": [
+    {
+      "ref": "synthetic://classroom-rainbarrel-001",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "scope": "PUBLIC_SYNTHETIC",
+      "source_status": "SOURCE_POINTER_ONLY",
+      "authorship": "SELF_DECLARED"
+    }
+  ],
+  "permissions": {
+    "data_class": "PUBLIC_SYNTHETIC",
+    "allowed_purposes": [
+      "LOCAL_REPLAY_DEMO"
+    ],
+    "read_grant": "HOST_NOT_ATTESTED",
+    "return_grant": "HOST_NOT_ATTESTED",
+    "revocation_epoch": 0,
+    "public_release_authorized": false
+  },
+  "provenance": {
+    "author_claim": "SELF_DECLARED",
+    "source_edition": "synthetic-demo-v0",
+    "raw_export_status": "SOURCE_POINTER_ONLY",
+    "observed_revision": "synthetic-original"
+  },
+  "fork": {
+    "parent_sha256": null,
+    "fork_status": "ORIGINAL",
+    "parent_authority_inherited": false
+  },
+  "rehydration": {
+    "contract_id": "atlas.rehydration-contract/v0-demo",
+    "identity_claim": "ARCHIVAL_CONTEXT_ONLY",
+    "uncertainties": [
+      "The source pointer is synthetic and no original content has been recovered."
+    ],
+    "human_confirmation_required": true,
+    "private_mode_import": false
+  },
+  "status": "CANDIDATE_NOT_CANON"
+}
