@@ -9,6 +9,7 @@ from copy import deepcopy
 from hashlib import sha256
 import argparse
 import json
+import math
 import re
 from pathlib import Path
 from typing import Any
@@ -41,6 +42,15 @@ def canonical_sha256(obj: Any) -> str:
     return sha256(json.dumps(obj,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False).encode("utf-8")).hexdigest()
 
 
+def _finite_json_float(value: str) -> float:
+    number = float(value)
+    if not math.isfinite(number):
+        raise ContinuityHold("NONFINITE_JSON_NUMBER")
+    if number == 0.0 and any(c in "123456789" for c in value.lower().split("e", 1)[0]):
+        raise ContinuityHold("UNDERFLOW_JSON_NUMBER")
+    return number
+
+
 def parse_text(s: str) -> Any:
     def unique_pairs(pairs):
         out = {}
@@ -48,7 +58,9 @@ def parse_text(s: str) -> Any:
             if k in out: raise ContinuityHold("DUPLICATE_JSON_KEY")
             out[k]=v
         return out
-    return json.loads(s, object_pairs_hook=unique_pairs, parse_constant=lambda _: (_ for _ in ()).throw(ContinuityHold("NONFINITE_JSON_NUMBER")))
+    return json.loads(s, object_pairs_hook=unique_pairs,
+                      parse_constant=lambda _: (_ for _ in ()).throw(ContinuityHold("NONFINITE_JSON_NUMBER")),
+                      parse_float=_finite_json_float)
 
 
 def _snapshot_plain_json(value: Any) -> Any:
