@@ -1,0 +1,13 @@
+# Atlas PR review pass 08/10 · Manus #295–291
+
+Authenticated PR metadata and paths only. No Play/Brain/Palace body retrieval or claims of independent resident review.
+
+| PR | Title | State | Head SHA | Paths | Gate |
+|---|---|---|---|---|---|
+| [#295](https://github.com/atlaslattice/manus-artifacts/pull/295) | research(djk): DragonSeek v0.7 primary monitoring DOCX audit + lossless industrial unit semantics | open draft/mergeable | `d71343920fb0095d101493d4d302856a039db944` | `research/dragonseek_2_0/DJK_2025_monitoring_summary_register_v07.csv`, `research/dragonseek_2_0/DJK_DEEPSEEK_FULL_REVIEW_V07_2026-10-10.md`, `research/dragonseek_2_0/V07_HANDOFF_RECEIPT_2026-10-10.md`, `research/dragonseek_2_0/semantic_contract_v07.py`, `research/dragonseek_2_0/tests/test_semantic_contract_v07.py` | VERSION_LINEAGE_AND_SEMANTIC_HOLD |
+| [#294](https://github.com/atlaslattice/manus-artifacts/pull/294) | research(djk): DragonSeek v0.6 food safety, strict manifest gates, regional boundaries, standards and capacity receipts | open draft/mergeable | `7587721f175ae398456625c1f276782c4a3779f9` | `research/dragonseek_2_0/DJK_DEEPSEEK_FULL_REVIEW_V06_2026-10-10.md`, `research/dragonseek_2_0/tests/test_v06_integrity_gates.py`, `research/dragonseek_2_0/v06_integrity_gates.py` | VERSION_LINEAGE_AND_SEMANTIC_HOLD |
+| [#293](https://github.com/atlaslattice/manus-artifacts/pull/293) | research(djk): v0.5 DeepSeek review closure, local industrial receipts and atomic ledger prototype | open draft/mergeable | `98e8b99e0bbbe69723f1fce2537f485315a45c6c` | `research/dragonseek_2_0/DJK_DEEPSEEK_FULL_REVIEW_V05_2026-10-10.md`, `research/dragonseek_2_0/scope_ledger_v05.py`, `research/dragonseek_2_0/tests/test_scope_ledger_v05.py` | VERSION_LINEAGE_AND_SEMANTIC_HOLD |
+| [#292](https://github.com/atlaslattice/manus-artifacts/pull/292) | research(djk): v0.4 self-contained Mandarin DeepSeek handoff, local 2025 environmental lead | open draft/mergeable | `c7026f6b381816ffeefb40d392d2619e7a600409` | `research/dragonseek_2_0/DJK_DEEPSEEK_OFFLINE_FULL_HANDOFF_V04_2026-10-10.md` | VERSION_LINEAGE_AND_SEMANTIC_HOLD |
+| [#291](https://github.com/atlaslattice/manus-artifacts/pull/291) | research(djk): v0.3 Qingdao-vs-Dongjiakou evidence audit and BIO01-E geo guards | open draft/conflict | `7611a3435385fe635af8871f38e641f8bb81c9e0` | `.github/workflows/djk_geo_scope_v03.yml`, `research/dragonseek_2_0/DJK_QINGDAO_SCOPE_EVIDENCE_V03_2026-10-10.md`, `research/dragonseek_2_0/bio01e_scope_guard_v03.py`, `research/dragonseek_2_0/tests/test_bio01e_scope_guard_v03.py` | VERSION_LINEAGE_AND_SEMANTIC_HOLD |
+
+Review original model/policy/date/version changes before integration; do not assume every source is independent. All are source-inspected, NOT tested or merge-approved.
