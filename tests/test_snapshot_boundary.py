@@ -53,6 +53,14 @@ class MutableInputBoundaryTests(unittest.TestCase):
         self.assertTrue(x['sources'][0]['ref'].startswith('synthetic://'))
         self.assertFalse(r['source_bodies_returned'])
 
+    def test_unhashable_fork_status_is_held_not_crashed(self):
+        for invalid in ([], {}, {"untrusted": True}):
+            with self.subTest(invalid=repr(invalid)):
+                bundle=fixture('example-memory-bundle.redacted.json')
+                bundle['fork']['fork_status']=invalid
+                with self.assertRaisesRegex(ContinuityHold, 'FORK_AUTHORITY_HOLD'):
+                    validate_bundle(bundle)
+
     def test_non_json_caller_objects_hold(self):
         x=fixture('example-memory-bundle.redacted.json')
         x['context_summary']=object()
