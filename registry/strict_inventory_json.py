@@ -47,11 +47,16 @@ def strict_inventory_loads(raw: str | bytes) -> Any:
         payload = raw.encode("utf-8") if type(raw) is str else raw
         if len(payload) > MAX_INVENTORY_BYTES:
             raise InventoryJSONError("REGISTRY_BYTES_EXCEEDED")
-        return json.loads(payload.decode("utf-8"),
-                          object_pairs_hook=_unique_pairs,
-                          parse_constant=_reject_nonfinite,
-                          parse_float=_reject_float,
-                          parse_int=_bounded_int)
+        parsed = json.loads(payload.decode("utf-8"),
+                            object_pairs_hook=_unique_pairs,
+                            parse_constant=_reject_nonfinite,
+                            parse_float=_reject_float,
+                            parse_int=_bounded_int)
+        # JSON escape sequences may encode *unpaired* surrogates, which
+        # Python accepts but which cannot round-trip as Unicode scalar UTF-8.
+        # Deny them before carrying ambiguous text into a provenance digest.
+        json.dumps(parsed, ensure_ascii=False, allow_nan=False).encode("utf-8")
+        return parsed
     except InventoryJSONError:
         raise
     except (UnicodeError, RecursionError, OverflowError, ValueError) as exc:
