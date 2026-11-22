@@ -45,7 +45,7 @@ class IngestionClaimCompleteness(unittest.TestCase):
 
 class IngestionWhitespaceIdentityGate(unittest.TestCase):
     def test_missing_source_root_cannot_hide_as_whitespace(self):
-        for blank in (" ", "\\t", "\\n  "):
+        for blank in (" ", "\t", "\n  "):
             with self.subTest(blank=repr(blank)):
                 p = {"source_root": blank, "raw_export_status": "raw_partial"}
                 r = validate_ingestion(p)
