@@ -115,19 +115,34 @@ def inspect_packet(raw: bytes) -> dict[str, Any]:
     }
 
 
+def _write_once_or_identical(path: Path, payload: bytes) -> None:
+    """Owner-controlled local preservation: never silently overwrite a review file.
+
+    Exclusive creation prevents a second writer from replacing a preexisting file.
+    This does not establish protection against a malicious directory owner or
+    supply remote host authenticity/transactional durability.
+    """
+    if path.is_symlink():
+        raise RuntimeError("refuse symlink in quarantine destination")
+    try:
+        with path.open("xb") as destination:
+            destination.write(payload)
+    except FileExistsError:
+        if path.is_symlink() or not path.is_file() or path.read_bytes() != payload:
+            raise RuntimeError("existing quarantine record differs; preserve prior review")
+
+
 def validate_file(path: Path, quarantine_dir: Path | None = None) -> dict[str, Any]:
     raw = path.read_bytes()
     verdict = inspect_packet(raw)
     if verdict["disposition"] == "HOLD" and quarantine_dir is not None:
+        if quarantine_dir.is_symlink():
+            raise RuntimeError("refuse symlink quarantine directory")
         quarantine_dir.mkdir(parents=True, exist_ok=True)
         digest = verdict["sha256"]
         preserved = quarantine_dir / (digest + ".source")
         receipt = quarantine_dir / (digest + ".hold.json")
-        if preserved.exists():
-            if preserved.read_bytes() != raw:
-                raise RuntimeError("existing review artifact has different bytes")
-        else:
-            preserved.write_bytes(raw)
+        _write_once_or_identical(preserved, raw)
         record = {
             "disposition": "HOLD",
             "sha256": digest,
@@ -139,7 +154,7 @@ def validate_file(path: Path, quarantine_dir: Path | None = None) -> dict[str, A
             "canon": False,
             "deployed": False,
         }
-        receipt.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+        _write_once_or_identical(receipt, (json.dumps(record, indent=2) + "\n").encode("utf-8"))
         verdict["quarantine"] = {"source": str(preserved), "receipt": str(receipt)}
     return verdict
 
