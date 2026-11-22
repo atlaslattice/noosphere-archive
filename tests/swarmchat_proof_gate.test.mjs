@@ -173,3 +173,35 @@ test('missing expiry or unsigned callback cannot be promoted',()=>{
   f.put('CALLBACK_DELIVERED',{conversationId:'thread-b',seq:7,requestId:'request-1',nonce:'nonce-12345678901234567890',occurredAt:1100});
   assert.equal(status(f,'a2a'),'HOLD_INCOMPLETE_OR_MISMATCH');
 });
+
+test('unknown signed metadata keys are rejected even without blacklist words',()=>{
+  const samples=['apiKey','password','sourceUri','privateMemo','hiddenContent'];
+  for (const name of samples) {
+    const f=fixture();
+    f.put('MODEL_ACTIVATED',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',
+      [name]:'SYNTHETIC_VALUE'});
+    const result=evaluate(f.bundle,f.trust);
+    assert.equal(result.acceptedReceiptCount,0,name);
+    assert.equal(result.rejected.length,1,name);
+  }
+});
+test('signed unexpected nested blob cannot bypass exact receipt schema',()=>{
+  const f=fixture();
+  f.put('PUBLISH',{deploymentId:'x',host:'h',buildSha:'a'.repeat(64),
+    details:{unlisted:'SYNTHETIC_PRIVATE_SENTINEL'}});
+  assert.equal(evaluate(f.bundle,f.trust).acceptedReceiptCount,0);
+});
+test('approved passed array must consist of unique bounded strings',()=>{
+  for (const passed of [['duplicate','duplicate'],['x'.repeat(101)],['ok',42]]) {
+    const f=fixture();
+    f.put('PRIVACY_HOST_TEST',{disposable:true,suiteId:'s',buildSha:'b'.repeat(64),
+      unauthorizedStoreTouches:0,passed});
+    assert.equal(evaluate(f.bundle,f.trust).acceptedReceiptCount,0);
+  }
+});
+test('supported signed metadata still decodes with exact field allowlists',()=>{
+  const f=fixture();addIdentity(f);addExchange(f);addWorkspace(f);addPrivacy(f);addDeployment(f);
+  const r=evaluate(f.bundle,f.trust);
+  assert.equal(r.acceptedReceiptCount,19);assert.equal(r.rejected.length,0);
+  assert.equal(r.productionPromotionAllowed,false);
+});
