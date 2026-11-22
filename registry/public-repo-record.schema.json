@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:atlas:public-repo-record:v0.1",
+  "title": "Atlas public repository source-only record",
+  "description": "Structural guide only; Python validator additionally checks cross-field URL equality, list uniqueness and page reconciliation. No hosted permissions, semantic HSN mapping or public release approval.",
+  "type": "object",
+  "properties": {
+    "repo_full_name": {
+      "type": "string",
+      "pattern": "^atlaslattice/[A-Za-z0-9_.-]{1,100}$"
+    },
+    "repository_id": {
+      "type": "string",
+      "pattern": "^[0-9]{1,25}$"
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https://github\\.com/atlaslattice/[A-Za-z0-9_.-]{1,100}$"
+    },
+    "visibility": {
+      "const": "public"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "default_branch": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 181
+    },
+    "role_candidate": {
+      "enum": [
+        "core_substrate",
+        "domain_research",
+        "governance_archive",
+        "unclassified_public_repo"
+      ]
+    },
+    "sensitivity_name_flag": {
+      "enum": [
+        "NAME_ONLY_SENSITIVE_REVIEW_CANDIDATE",
+        "UNREVIEWED"
+      ]
+    },
+    "readiness": {
+      "const": "HOLD_FOR_SOURCE_AND_RIGHTS_REVIEW"
+    },
+    "provenance_status": {
+      "const": "GITHUB_PUBLIC_METADATA_OBSERVED"
+    },
+    "runtime_status": {
+      "const": "NOT_VERIFIED"
+    },
+    "canon_status": {
+      "const": "NOT_CANON"
+    },
+    "sphere144_tags": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "related_core_repos": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "notes": {
+      "type": "null"
+    }
+  },
+  "required": [
+    "repo_full_name",
+    "repository_id",
+    "url",
+    "visibility",
+    "archived",
+    "default_branch",
+    "role_candidate",
+    "sensitivity_name_flag",
+    "readiness",
+    "provenance_status",
+    "runtime_status",
+    "canon_status",
+    "sphere144_tags",
+    "related_core_repos",
+    "notes"
+  ],
+  "additionalProperties": false
+}

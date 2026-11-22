@@ -1,0 +1,32 @@
+name: Public Repository Registry — offline
+on:
+  pull_request:
+    paths:
+      - 'registry/**'
+      - 'tests/test_public_registry.py'
+      - '.github/workflows/public-repo-registry.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-public-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate exact public snapshot without network or secrets
+        run: |
+          export PYTHONDONTWRITEBYTECODE=1
+          python -m registry.public_registry
+          python -m unittest discover -s tests -p 'test_public_registry.py' -v
+      - name: Preserve authority boundary
+        run: echo 'SOURCE METADATA ONLY; no private repo/Work content, CANON, deployment or grant was validated'
