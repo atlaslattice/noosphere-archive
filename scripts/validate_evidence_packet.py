@@ -77,7 +77,7 @@ def inspect_packet(raw: bytes) -> dict[str, Any]:
                         errors.append(f"nodes[{i}]: duplicate node id {node_id}")
                     else:
                         ids[node_id] = kind
-                if kind in REQUIRES_SOURCE_REF and not node.get("source_ref"):
+                if isinstance(kind, str) and kind in REQUIRES_SOURCE_REF and not node.get("source_ref"):
                     errors.append(f"nodes[{i}] ({kind}): source_ref is required")
             if isinstance(edges, list):
                 seen = set()
@@ -89,6 +89,8 @@ def inspect_packet(raw: bytes) -> dict[str, Any]:
                         errors.append(f"edges[{i}]: missing from node {a}")
                     if isinstance(b, str) and b not in ids:
                         errors.append(f"edges[{i}]: missing to node {b}")
+                    if not all(isinstance(value, str) for value in (a, b, relation)):
+                        continue  # JSON Schema already records malformed values
                     fingerprint = (a, b, relation)
                     if fingerprint in seen:
                         errors.append(f"edges[{i}]: duplicate edge")
@@ -96,7 +98,7 @@ def inspect_packet(raw: bytes) -> dict[str, Any]:
                     allowed = EDGE_TYPES.get(relation)
                     if allowed and a in ids and b in ids:
                         src, dst = allowed
-                        if ids[a] not in src or ids[b] not in dst:
+                        if not isinstance(ids[a], str) or not isinstance(ids[b], str) or ids[a] not in src or ids[b] not in dst:
                             errors.append(f"edges[{i}]: invalid node types for {relation}: {ids[a]} -> {ids[b]}")
 
     return {
