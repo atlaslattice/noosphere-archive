@@ -139,7 +139,7 @@ def prepare_rehydration(bundle: Any, contract: Any) -> dict:
     bundle_snapshot = _json_copy(bundle)
     contract_snapshot = _json_copy(contract)
     verification=verify_bundle(bundle_snapshot)
-    _keys(contract,{'schema','contract_id','bundle_id','source_digest','allowed','requires_human_review',
+    _keys(contract_snapshot,{'schema','contract_id','bundle_id','source_digest','allowed','requires_human_review',
                     'identity_claim','limitations','disclosure'},
           {'schema','contract_id','bundle_id','source_digest','allowed','requires_human_review','identity_claim','limitations','disclosure'},
           'CONTRACT_SHAPE_HOLD')
