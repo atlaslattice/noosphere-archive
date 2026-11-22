@@ -108,14 +108,16 @@ def validate_graph(doc):
                     bad(path + ".source.sha256", "SOURCE_HASH_REQUIRED")
                 if not isinstance(src.get("rights"), str) or not src["rights"].strip():
                     bad(path + ".source.rights", "RIGHTS_UNKNOWN")
-                if src.get("scope") not in {"PUBLIC_METADATA", "SYNTHETIC_FIXTURE"}:
+                scope = src.get("scope")
+                if type(scope) is not str or scope not in {"PUBLIC_METADATA", "SYNTHETIC_FIXTURE"}:
                     bad(path + ".source.scope", "PRIVATE_OR_UNVERIFIED_SOURCE")
                 if not isinstance(src.get("observed_at"), str) or not src["observed_at"].strip():
                     bad(path + ".source.observed_at", "OBSERVATION_DATE_REQUIRED")
     for ident, node in by_id.items():
         if node.get("type") == "RawExportManifest" and node.get("raw_export_status") == "raw_complete_hashed":
-            src = by_id.get(node.get("source_root_ref"))
-            receipt = by_id.get(node.get("hash_receipt_ref"))
+            source_ref, receipt_ref = node.get("source_root_ref"), node.get("hash_receipt_ref")
+            src = by_id.get(source_ref) if type(source_ref) is str else None
+            receipt = by_id.get(receipt_ref) if type(receipt_ref) is str else None
             if not src or src.get("type") != "SourceSurface":
                 bad(f"nodes[{ident}].source_root_ref", "INVALID_SOURCE_ROOT_REF")
             if not receipt or receipt.get("type") != "Receipt":
