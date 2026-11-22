@@ -162,3 +162,7 @@ Preserve the swarm, but pin it to receipts.
 The children are useful when they illuminate the graph;
 they become dangerous only if they crown themselves.
 ```
+
+## Source-only implementation candidate (2026-11-22)
+
+The additive [SwarmHub receipt-first contracts](docs/SWARMHUB_CONTRACTS_v01.md) and [CANON Candidate Queue](docs/CANON_CANDIDATE_QUEUE.md) are review candidates for task issues #5–#9 and #11–#13. They were tested locally with dependency-free Python fixtures; no deployment, private-source ingestion, human-root authentication or CANON ratification has been verified. Preserve original task status and dissent until a reviewed merge and real acceptance receipt.
