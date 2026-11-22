@@ -20,6 +20,10 @@ SCHEMA = ROOT / "schemas" / "noosphere_evidence_packet_v0_1.schema.json"
 RESTRICTED_SOURCE_MODES = {"play", "social", "imagine", "dream", "quiet"}
 REQUIRES_SOURCE_REF = {"SourceSurface", "RawExportManifest", "Artifact", "Claim", "Evidence"}
 EDGE_TYPES = {
+    "derived_from": (
+        {"RawExportManifest", "Artifact", "Claim", "Evidence", "Contradiction", "Delta", "ActionPacket", "Receipt", "Supersession"},
+        {"SourceSurface", "RawExportManifest", "Artifact", "Claim", "Evidence", "Contradiction", "Delta"},
+    ),
     "claims": ({"Artifact"}, {"Claim"}),
     "supports": ({"Evidence"}, {"Claim"}),
     "contradicts": ({"Evidence", "Contradiction"}, {"Claim", "Evidence"}),
