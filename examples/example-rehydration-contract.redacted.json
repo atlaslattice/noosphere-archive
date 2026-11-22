@@ -1,0 +1,18 @@
+{
+  "schema_version": "atlas.rehydration-contract/v0",
+  "contract_id": "atlas.rehydration-contract/v0-demo",
+  "bundle_schema": "atlas.memory-bundle/v0",
+  "allowed_reconstruction": [
+    "ATTRIBUTE_VERBATIM_SOURCE_POINTERS",
+    "DRAFT_HUMAN_REVIEW_SUMMARY"
+  ],
+  "uncertainty_mandatory": [
+    "Unverified content is not reconstructed as fact."
+  ],
+  "human_confirmation_required": true,
+  "identity_claim": "ARCHIVAL_CONTEXT_ONLY",
+  "source_rights_policy": "HOST_CHECK_READ_AND_RETURN",
+  "opt_out": "SUPPORTED_NOT_OBSERVED",
+  "promotions": "NONE",
+  "disclosure": "NOT_PERSON_OR_CONSCIOUSNESS"
+}
