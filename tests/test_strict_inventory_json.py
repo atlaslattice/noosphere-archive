@@ -22,7 +22,7 @@ class StrictPublicRegistryInput(unittest.TestCase):
     def test_nan_infinity_denied(self):
         for bad in ("NaN", "Infinity", "-Infinity"):
             with self.subTest(bad=bad):
-                with self.assertRaisesRegex(InventoryJSONError, "NONFINITE_REGISTRY_VALUE"):
+                with self.assertRaisesRegex(InventoryJSONError, "NONFINITE_NUMBER"):
                     strict_inventory_loads('{"value":'+bad+'}')
 
     def test_numeric_overflow_denied(self):
