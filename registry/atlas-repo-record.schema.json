@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas public repository registry record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "repo_full_name",
+    "url",
+    "visibility",
+    "default_branch",
+    "archived",
+    "role",
+    "risk_tier",
+    "public_readiness",
+    "provenance_status",
+    "runtime_status",
+    "canon_status",
+    "sphere144_tags",
+    "related_core_repos",
+    "evidence_scope",
+    "heuristic_role_unreviewed"
+  ],
+  "properties": {
+    "repo_full_name": {
+      "type": "string",
+      "pattern": "^atlaslattice/[A-Za-z0-9._-]+$"
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https://github.com/atlaslattice/"
+    },
+    "visibility": {
+      "const": "public"
+    },
+    "default_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "role": {
+      "enum": [
+        "core_substrate",
+        "archive",
+        "domain_research",
+        "public_seed"
+      ]
+    },
+    "risk_tier": {
+      "enum": [
+        "medium",
+        "high"
+      ]
+    },
+    "public_readiness": {
+      "enum": [
+        "HOLD_FOR_REVIEW",
+        "NEEDS_CONTEXT_REVIEW"
+      ]
+    },
+    "provenance_status": {
+      "const": "INVENTORIED_METADATA_ONLY"
+    },
+    "runtime_status": {
+      "const": "UNVERIFIED"
+    },
+    "canon_status": {
+      "const": "NOT_CANON"
+    },
+    "sphere144_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_core_repos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_scope": {
+      "const": "GITHUB_REPOSITORY_METADATA_ONLY"
+    },
+    "heuristic_role_unreviewed": {
+      "const": true
+    }
+  }
+}
