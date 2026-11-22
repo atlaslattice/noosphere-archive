@@ -43,6 +43,34 @@ class IngestionClaimCompleteness(unittest.TestCase):
                 self.assertIn("ingestion_packet_claimed_normative_authority", r.reasons)
 
 
+class IngestionTypedAuthorityFlags(unittest.TestCase):
+    def test_complete_claim_requires_boolean_type(self):
+        for bad in (0, 1, "yes", "false", [], {}, None):
+            with self.subTest(value=repr(bad)):
+                p = {"source_root": "synthetic:root", "raw_export_status": "raw_partial",
+                     "claim_complete": bad}
+                r = validate_ingestion(p)
+                self.assertEqual(r.state, "QUARANTINED")
+                self.assertIn("claim_complete_flag_untyped", r.reasons)
+                self.assertEqual(r.payload, p)
+
+    def test_normative_claim_requires_literal_false_if_present(self):
+        for field in ("canon", "deployment"):
+            for bad in (0, 1, "yes", [], {}, None, True):
+                with self.subTest(field=field, value=repr(bad)):
+                    p = {"source_root": "synthetic:root", "raw_export_status": "raw_partial", field: bad}
+                    r = validate_ingestion(p)
+                    self.assertEqual(r.state, "QUARANTINED")
+                    self.assertIn("ingestion_packet_claimed_normative_authority", r.reasons)
+
+    def test_literal_false_flags_preserve_honest_incomplete_intake(self):
+        p = {"source_root": "synthetic:root", "raw_export_status": "raw_partial",
+             "claim_complete": False, "canon": False, "deployment": False}
+        r = validate_ingestion(p)
+        self.assertEqual(r.state, "SOURCE_REPORTED_ONLY")
+        self.assertEqual(r.authority, "none")
+
+
 class OneThirdWorkScheduling(unittest.TestCase):
     def test_exactly_one_work_slot_per_three(self):
         for cycles in (3, 6, 30, 300):
