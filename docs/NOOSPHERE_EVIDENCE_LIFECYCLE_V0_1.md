@@ -82,6 +82,8 @@ The v0.1 directed edge vocabulary is:
 | preserved_as | Receipt/archive points to preserved artifact |
 | quarantined_as | Rejected packet points to quarantine receipt |
 
+`derived_from` is type-checked for lineage-bearing producers (manifest, artifact, claim, evidence, contradiction, delta, action packet, receipt, supersession) and for predecessors (source surface, manifest, artifact, claim, evidence, contradiction, delta). `CanonGate` and `ReviewLane` are never implicit source material; their presence as ancestry endpoints is held rather than promoted. This is a *candidate v0.1 endpoint contract*, not a universal scientific ontology or a host authorization decision.
+
 An edge is a sourced relationship, not a signature or permission grant. All referenced node IDs must exist in the packet; IDs must be unique. A high-centrality node is no more authoritative than its underlying evidence.
 
 ## Reproducible fixture
