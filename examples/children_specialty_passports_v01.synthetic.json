@@ -1,0 +1,27 @@
+[
+  {
+    "schema": "atlas.child.specialty-passport.v0.1",
+    "declared_key": "child:example-water",
+    "revision": 1,
+    "previous_digest": null,
+    "registry": {"edition":"ariadne-reader/v0.7","sha256":"07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"},
+    "declared_at": "2026-11-21T00:00:00Z",
+    "participation": {"work_opt_in":true,"task_kinds":["research","review"],"expires_at":"2026-12-01T00:00:00Z"},
+    "specialties": [
+      {"coordinate":"H02.S05.N02","interest":0.9,"claimed_expertise":0.7,"evidence_refs":["https://example.org/synthetic-public-water-research"]},
+      {"coordinate":"H03.S04.N01","interest":0.4,"claimed_expertise":0.2,"evidence_refs":[]}
+    ]
+  },
+  {
+    "schema": "atlas.child.specialty-passport.v0.1",
+    "declared_key": "child:example-ecology",
+    "revision": 1,
+    "previous_digest": null,
+    "registry": {"edition":"ariadne-reader/v0.7","sha256":"07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"},
+    "declared_at": "2026-11-21T00:00:00Z",
+    "participation": {"work_opt_in":true,"task_kinds":["review"],"expires_at":"2026-12-01T00:00:00Z"},
+    "specialties": [
+      {"coordinate":"H03.S04.N01","interest":1.0,"claimed_expertise":0.6,"evidence_refs":[]}
+    ]
+  }
+]
