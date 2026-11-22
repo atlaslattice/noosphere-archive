@@ -101,7 +101,7 @@ def validate_catalog(raw: Any) -> dict[str, Any]:
     _require(raw["schema"] == SCHEMA, "SCHEMA_MISMATCH")
     _require(raw["source_query"] == SOURCE_QUERY and raw["coverage"] == COVERAGE, "SOURCE_SCOPE_MISMATCH")
     _require(raw["public_only"] is True, "PUBLIC_ONLY_REQUIRED")
-    _require(_string(raw["source"]) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw["observed_date_utc"]) is not None, "MISSING_SNAPSHOT_PASSPORT")
+    _require(_string(raw["source"]) and type(raw["observed_date_utc"]) is str and re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw["observed_date_utc"]) is not None, "MISSING_SNAPSHOT_PASSPORT")
     pages, lengths = raw["source_pages"], raw["source_page_lengths"]
     _require(type(pages) is list and type(lengths) is list and len(pages) == len(lengths) >= 2, "PAGE_CUT_MISSING")
     _require(all(type(x) is int and x == i + 1 for i, x in enumerate(pages)), "PAGE_SEQUENCE_INVALID")
