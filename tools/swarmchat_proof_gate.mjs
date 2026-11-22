@@ -200,12 +200,25 @@ export function evaluate(bundle, trust) {
     && typeof x.deploymentId === 'string' && typeof x.host === 'string');
   const serve = first(rows, 'SERVED', x => pub && exactlySame(x, pub,
     ['host','deploymentId','buildSha']) && x.occurredAt >= pub.occurredAt);
-  const roll = first(rows, 'ROLLBACK_CHECK', x => pub && x.host === pub.host
-    && x.deploymentId === pub.deploymentId && x.disposable === true
+  const roll = first(rows, 'ROLLBACK_CHECK', x => pub && exactlySame(x, pub,
+    ['host','deploymentId','buildSha']) && x.disposable === true
     && x.passed === true && x.occurredAt >= pub.occurredAt);
-  const owner = first(rows, 'OWNER_APPROVAL', x => pub && x.buildSha === pub.buildSha
-    && x.deploymentId === pub.deploymentId && x.approved === true
+  const owner = first(rows, 'OWNER_APPROVAL', x => pub && exactlySame(x, pub,
+    ['host','deploymentId','buildSha']) && x.approved === true
     && x.occurredAt >= pub.occurredAt);
+
+  // One runId is one evidence cohort. A coherent release must not combine
+  // privacy tests, rollback checks or approvals for different build bytes.
+  // Independently useful partial gates remain classified as NOT_OBSERVED/HOLD.
+  const buildScopedKinds = new Set([
+    'PRIVACY_HOST_TEST','PRIVACY_AUDIT_TEST','PUBLISH','SERVED',
+    'ROLLBACK_CHECK','OWNER_APPROVAL'
+  ]);
+  const buildPins = new Set(rows.filter(r => buildScopedKinds.has(r.kind))
+    .map(r => r.buildSha));
+  const oneBuildPerRun = buildPins.size <= 1 &&
+    !buildPins.has(undefined) && [...buildPins].every(v =>
+      typeof v === 'string' && HEX64.test(v));
 
   const gates = {
     identity: verdict(['PLATFORM_BIND','SESSION_AUDIT'],identityOk,rows,bundle),
@@ -214,9 +227,10 @@ export function evaluate(bundle, trust) {
     workspace: verdict(['WORKSPACE_APPEND','WORKSPACE_READBACK','WORKSPACE_RACE_TEST'],
       wa && wr && wc && wa._kid !== wr._kid,rows,bundle),
     privacy: verdict(['PRIVACY_HOST_TEST','PRIVACY_AUDIT_TEST'],
-      hs && as && hs._kid !== as._kid,rows,bundle),
+      hs && as && hs._kid !== as._kid && oneBuildPerRun,rows,bundle),
     deployment: verdict(['PUBLISH','SERVED','ROLLBACK_CHECK','OWNER_APPROVAL'],
-      pub && serve && roll && owner && pub._kid !== serve._kid,rows,bundle)
+      pub && serve && roll && owner && pub._kid !== serve._kid
+      && oneBuildPerRun,rows,bundle)
   };
   // A consistent signed bundle is evidence about what signers CLAIMED, not a
   // live host probe. Operator must validate issuer trust and original logs.
