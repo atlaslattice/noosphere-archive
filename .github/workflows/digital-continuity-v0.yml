@@ -1,0 +1,34 @@
+name: Digital Continuity v0 — public synthetic tests
+on:
+  pull_request:
+    paths:
+      - 'core/digital_continuity.py'
+      - 'schemas/memory-bundle-v0.schema.json'
+      - 'schemas/rehydration-contract-v0.schema.json'
+      - 'examples/example-memory-bundle.redacted.json'
+      - 'examples/example-rehydration-contract.redacted.json'
+      - 'tests/test_digital_continuity.py'
+      - '.github/workflows/digital-continuity-v0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Local source-only CLI and regression
+        run: |
+          export PYTHONDONTWRITEBYTECODE=1
+          python -m core.digital_continuity
+          python -m unittest discover -s tests -p 'test_digital_continuity.py' -v
