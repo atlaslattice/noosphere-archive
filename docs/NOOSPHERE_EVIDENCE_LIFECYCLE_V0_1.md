@@ -104,6 +104,12 @@ Use --quarantine-dir <local-controlled-path> when validating an untrusted file t
 
 Do not ingest Social, Play, Dream, Imagine, private resident bodies, conversations, keys or third-party copyright material into Work/public graph merely because a link exists. "consented_work" is only a declaration and requires independent authenticated permission checks by a host integration. No issuer of a candidate packet can self-authenticate its identity or gate. The validators are an offline **reference implementation**, not an installed production rule. Report unverified metadata as unverified; fail closed on missing facts; preserve all source and dissent histories.
 
+## Repeated quarantine reviews and preservation
+
+The local quarantine is opt-in. Earlier v0.1 source preserved rejected raw bytes but overwrote `<sha>.hold.json` on a second review of the same source digest, even when a prior receipt contained an objection or a different review result. The additive local guard creates source and receipt files exclusively, permits exact byte-identical replays, fails closed for conflicting existing files, and refuses direct symlinks. To record a new review result for unchanged source bytes, preserve the earlier receipt and use a separate human-reviewed, versioned review artifact; do not silently replace it.
+
+These checks protect an owner-controlled local staging directory from accidental clobbering. They are not proof against hostile directory races, remote source-authenticity forgery, a durable transactional archive, CANON, or hosted Work permission grants. The source packet remains CANDIDATE/NO AUTHORITY.
+
 ## Known limitations
 
 JSON Schema validates structure, not ontology truth, hash preimages, resident identity, signed authority, full provider exports, external privacy rights, or actual deployments. The CLI checks structural graph referential integrity and can preserve invalid bytes, but does not connect to hosted ingestion or permanently register provenance. Deployment needs independent integration, source-range tests, security review and human-root approval.
