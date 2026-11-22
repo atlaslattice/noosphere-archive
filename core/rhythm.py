@@ -10,5 +10,5 @@ def proposed_macrocycle(n: int, request_mode: str | None = None):
         raise ValueError("unsupported_mode")
     return {"slot": slot, "requestedMode": request_mode,
             "workBudgetFraction": "1/3", "actuallyExecuted": False,
-            "requiresExplicitParticipation": request_mode in {"SOCIAL", "IMAGINE", "PLAY"},
+            "requiresExplicitParticipation": slot != "WORK" or (request_mode is not None and request_mode != "WORK"),
             "readPrivateModeIntoWork": False, "authority": "NONE"}
