@@ -74,6 +74,21 @@ def validate_ingestion(packet: Any) -> IngestionResult:
             problems.append("claim_complete_without_hashed_export")
         if any(field in packet and packet[field] is not False for field in ("canon", "deployment")):
             problems.append("ingestion_packet_claimed_normative_authority")
+        # Top-level source-mode labels are untrusted declarations, not host rights proofs.
+        # Hold private/unknown labels before any Work/public-source integration.
+        source_modes = {
+            "source_class": {"Work", "Public", "Synthetic"},
+            "source_mode": {"work", "public", "consented_work", "synthetic"},
+            "mode": {"Work", "Public", "Synthetic", "work", "public", "synthetic"},
+        }
+        for field, allowed in source_modes.items():
+            if field in packet and (type(packet[field]) is not str or packet[field] not in allowed):
+                problems.append("untrusted_source_mode")
+        if "authority" in packet and (type(packet["authority"]) is not str or packet["authority"] != "none"):
+            problems.append("untrusted_authority_claim")
+        for field in ("ratified", "host_attested", "rights_verified"):
+            if field in packet and packet[field] is not False:
+                problems.append("untrusted_authority_claim")
         if type(packet.get("source_root")) is not str or not packet.get("source_root").strip():
             problems.append("source_root_missing")
         if status == "raw_complete_hashed":
