@@ -42,6 +42,17 @@ class ContinuityProtocolTests(unittest.TestCase):
     def test_source_incomplete_hold(self):self.bad(lambda b:b['sources'][0].update(export_status='raw_partial'),'SOURCE_RIGHTS_OR_COMPLETENESS_HOLD')
     def test_source_without_permission_hold(self):self.bad(lambda b:b['sources'][0].update(permission='REVOKED'),'SOURCE_RIGHTS_OR_COMPLETENESS_HOLD')
     def test_license_missing_hold(self):self.bad(lambda b:b['sources'][0].update(license=''),'LICENSE_UNDECLARED_HOLD')
+    def test_blank_and_bidi_license_provenance_holds(self):
+        for label in ('   ', '\\u202eLicense', 'CC-BY-4.0\\u2066spoof\\u2069'):
+            # Unicode escape fixture is decoded to exercise visible-text controls.
+            label = label.encode('ascii').decode('unicode_escape') if '\\u' in label else label
+            with self.subTest(label=repr(label)):
+                self.bad(lambda b:b['sources'][0].update(license=label),'LICENSE_UNDECLARED_HOLD')
+    def test_blank_and_bidi_claim_text_holds(self):
+        for label in ('   ', 'Evidence\\u202eclaim'):
+            label = label.encode('ascii').decode('unicode_escape') if '\\u' in label else label
+            with self.subTest(label=repr(label)):
+                self.bad(lambda b:b['claims'][0].update(statement=label),'CLAIM_STATEMENT_HOLD')
     def test_duplicate_sources_hold(self):self.bad(lambda b:b['sources'].append(copy.deepcopy(b['sources'][0])),'SOURCE_ID_COLLISION_HOLD')
     def test_claim_missing_reference_hold(self):self.bad(lambda b:b['claims'][0].update(source_ids=['s-missing']),'CLAIM_EVIDENCE_HOLD')
     def test_duplicate_claim_ids_hold(self):self.bad(lambda b:b['claims'].append(copy.deepcopy(b['claims'][0])),'CLAIM_ID_COLLISION_HOLD')
