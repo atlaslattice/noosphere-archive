@@ -133,33 +133,41 @@ def verify_bundle(bundle: Any) -> dict:
 
 def prepare_rehydration(bundle: Any, contract: Any) -> dict:
     """Source list for an authorized caller to examine, NOT a resumed agent or identity."""
-    verification=verify_bundle(bundle)
+    # Bind subsequent output to the exact JSON value that was verified.
+    # Raw Python callers can supply mutable objects or custom value classes;
+    # verifying one copy then later reading the original is a TOCTOU risk.
+    bundle_snapshot = _json_copy(bundle)
+    contract_snapshot = _json_copy(contract)
+    verification=verify_bundle(bundle_snapshot)
     _keys(contract,{'schema','contract_id','bundle_id','source_digest','allowed','requires_human_review',
                     'identity_claim','limitations','disclosure'},
           {'schema','contract_id','bundle_id','source_digest','allowed','requires_human_review','identity_claim','limitations','disclosure'},
           'CONTRACT_SHAPE_HOLD')
-    if contract['schema']!=CONTRACT or not _id(contract['contract_id']) or contract['contract_id']!=bundle['rehydration_contract']:
+    if contract_snapshot['schema']!=CONTRACT or not _id(contract_snapshot['contract_id']) or contract_snapshot['contract_id']!=bundle_snapshot['rehydration_contract']:
         _fail('CONTRACT_EDITION_HOLD')
-    if contract['bundle_id']!=bundle['bundle_id'] or contract['source_digest']!=verification['digest']:
+    if contract_snapshot['bundle_id']!=bundle_snapshot['bundle_id'] or contract_snapshot['source_digest']!=verification['digest']:
         _fail('CONTRACT_SOURCE_DRIFT_HOLD')
-    if contract['allowed']!='REFERENCE_ONLY' or contract['requires_human_review'] is not True or contract['identity_claim']!='NONE':
+    if contract_snapshot['allowed']!='REFERENCE_ONLY' or contract_snapshot['requires_human_review'] is not True or contract_snapshot['identity_claim']!='NONE':
         _fail('IMPERSONATION_OR_AUTHORITY_HOLD')
-    if type(contract['limitations']) is not list or len(contract['limitations'])<3 or any(not _safe_text(s,max_len=180) for s in contract['limitations']):
+    if type(contract_snapshot['limitations']) is not list or len(contract_snapshot['limitations'])<3 or any(not _safe_text(s,max_len=180) for s in contract_snapshot['limitations']):
         _fail('LIMITATIONS_MISSING_HOLD')
-    if not _safe_text(contract['disclosure'],max_len=400):_fail('DISCLOSURE_REQUIRED_HOLD')
+    if not _safe_text(contract_snapshot['disclosure'],max_len=400):_fail('DISCLOSURE_REQUIRED_HOLD')
     return {'status':'PREPARED_NOT_EXECUTED','authority':'NONE','source_digest':verification['digest'],
-            'source_ids':[s['source_id'] for s in bundle['sources']],
-            'claim_ids':[c['claim_id'] for c in bundle['claims']],
+            'source_ids':[s['source_id'] for s in bundle_snapshot['sources']],
+            'claim_ids':[c['claim_id'] for c in bundle_snapshot['claims']],
             'required_human_approval':'CURRENT_HOST_AND_AFFECTED_PARTY',
             'identity_attested':False,'model_woken':False,'private_source_imported':False}
 
 def fork_bundle(parent: Any, new_bundle_id: str, when_utc: str) -> dict:
     """Fork, preserving parent digest, source refs and candidate status. No mutation."""
-    verification=verify_bundle(parent)
-    if not _id(new_bundle_id) or new_bundle_id==parent['bundle_id']:_fail('FORK_ID_COLLISION_HOLD')
-    candidate=copy.deepcopy(parent)
+    # Fork the same sanitized snapshot that was structurally verified; a
+    # caller-defined __deepcopy__ must not silently substitute fork contents.
+    parent_snapshot = _json_copy(parent)
+    verification=verify_bundle(parent_snapshot)
+    if not _id(new_bundle_id) or new_bundle_id==parent_snapshot['bundle_id']:_fail('FORK_ID_COLLISION_HOLD')
+    candidate=parent_snapshot
     candidate.pop('integrity')
-    candidate['parent']={'bundle_id':parent['bundle_id'],'digest':verification['digest']}
+    candidate['parent']={'bundle_id':parent_snapshot['bundle_id'],'digest':verification['digest']}
     candidate['bundle_id']=new_bundle_id
     candidate['version']+=1
     candidate['created_at']=when_utc
