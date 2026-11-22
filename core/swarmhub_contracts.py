@@ -193,10 +193,12 @@ class Sentinel:
                 reasons.append("noncandidate_or_consequential_action")
             if packet.get("canon") is not False or packet.get("deployment") is not False or packet.get("authority") != "none":
                 reasons.append("candidate_boundary_violation")
-            if packet.get("source_class") in ("Play", "Social", "Imagine", "Quiet", "Brain", "Palace", "Habitat", "Dream"):
-                reasons.append("private_mode_requires_separate_consent_and_purpose")
-            if packet.get("raw_export_status") is None and packet.get("kind") == "IngestionPacket":
-                reasons.append("raw_export_status_required")
+            if packet.get("source_class") != "Work":
+                reasons.append("work_source_classification_required")
+            if packet.get("kind") == "IngestionPacket":
+                ingestion = validate_ingestion(packet)
+                if ingestion.state == "QUARANTINED":
+                    reasons.append("ingestion_validation_failed")
             if packet.get("mutation") in ("DELETE", "OVERWRITE", "FORCE_MERGE", "REVOKE_GRANTS"):
                 reasons.append("destructive_mutation_requires_human_review")
         return {
