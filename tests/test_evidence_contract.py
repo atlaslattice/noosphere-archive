@@ -85,6 +85,38 @@ class EvidenceContractTests(unittest.TestCase):
     def test_duplicate_flag(self):
         self.assertIn("DUPLICATE_FLAG", self.broken(lambda d: d["nodes"][3].update(flags=["CONTRADICTED", "CONTRADICTED"])))
 
+    def test_raw_export_status_missing(self):
+        self.assertIn("RAW_EXPORT_STATUS_REQUIRED", self.broken(lambda d: d["nodes"][1].pop("raw_export_status")))
+
+    def test_unhashed_export_forced_quarantine(self):
+        self.assertIn("INCOMPLETE_RAW_REQUIRES_QUARANTINE", self.broken(lambda d: d["nodes"][1].update(raw_export_status="raw_complete_unhashed")))
+
+    def test_quarantined_partial_preserved(self):
+        data = copy.deepcopy(self.example)
+        data["nodes"][1].update(raw_export_status="raw_partial", flags=["QUARANTINED"])
+        self.assertEqual(validate_graph(data), [])
+
+    def test_completed_export_requires_digest(self):
+        self.assertIn("COMPLETE_EXPORT_REQUIRES_HASH", self.broken(lambda d: d["nodes"][1].update(manifest_digest_sha256="not-a-digest")))
+
+    def test_completed_export_requires_source_ref(self):
+        self.assertIn("INVALID_SOURCE_ROOT_REF", self.broken(lambda d: d["nodes"][1].update(source_root_ref="other:missing")))
+
+    def test_completed_export_requires_receipt_ref(self):
+        self.assertIn("INVALID_HASH_RECEIPT_REF", self.broken(lambda d: d["nodes"][1].update(hash_receipt_ref="other:missing")))
+
+    def test_json_schema_requires_raw_export_status(self):
+        import importlib.util
+        if not importlib.util.find_spec("jsonschema"):
+            self.skipTest("optional jsonschema not installed")
+        from jsonschema import Draft202012Validator
+        Draft202012Validator.check_schema(self.schema)
+        validate = Draft202012Validator(self.schema)
+        self.assertEqual(list(validate.iter_errors(self.example)), [])
+        broken = copy.deepcopy(self.example)
+        broken["nodes"][1].pop("raw_export_status")
+        self.assertTrue(list(validate.iter_errors(broken)))
+
     def test_no_network_imports(self):
         source = (ROOT / "tools/validate_evidence_graph.py").read_text()
         for forbidden in ("requests", "urllib.request", "subprocess", "os.system"):
