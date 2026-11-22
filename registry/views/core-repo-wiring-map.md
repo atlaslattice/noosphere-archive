@@ -15,6 +15,10 @@
 
 The source registry stores **no reviewed semantic links**; this table is a nonbinding, owner-review routing plan. Each link points only to public GitHub repository metadata. Do not infer private repository existence, access, live system deployment, source equivalence, endorsement or authority from this map.
 
+## Verified public pointer links (Wave B, documents only)
+
+Two public-only, readback-verified cross-repository links are now present: [Manus PR #308](https://github.com/atlaslattice/manus-artifacts/pull/308) and [Sheldonbrain PR #7](https://github.com/atlaslattice/sheldonbrain-rag-api/pull/7). Their exact merge commits, public doc blobs and remaining gates are preserved in the [reciprocal pointer receipt](reciprocal_public_pointer_receipts_2026-11-22.md). **This does not constitute reciprocal runtime API integration, semantic HSN mapping, host permission verification, CANON or deployment.**
+
 ## Wire-up receipt requirements (not yet satisfied)
 
 `{repo,commitSHA,path,sourceEdition,readRights,returnRights,sourceSHA,proposedLinkType,reviewerEvidence,conflictStatus,rollbackPlan}` plus separate signed-in owner approval and verified host receipt before a consequential write. Provenance integrity alone is not a permission grant.
