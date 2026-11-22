@@ -44,14 +44,14 @@ class StrictPublicRegistryInput(unittest.TestCase):
     def test_unpaired_unicode_escape_is_denied(self):
         # Python json.loads accepts these escaped non-scalar code points,
         # but no conforming UTF-8 serialization can represent them.
-        for bad in (b'{"note":"\\\\ud800"}', b'{"note":"\\\\udc00"}',
-                    b'{"\\\\ud800":1}', b'{"nested":["\\\\udfff"]}'):
+        for bad in (b'{"note":"\\ud800"}', b'{"note":"\\udc00"}',
+                    b'{"\\ud800":1}', b'{"nested":["\\udfff"]}'):
             with self.subTest(raw=bad):
                 with self.assertRaisesRegex(InventoryJSONError, 'REGISTRY_JSON_INVALID'):
                     strict_inventory_loads(bad)
 
     def test_valid_surrogate_pair_remains_accepted(self):
-        self.assertEqual(strict_inventory_loads(b'{"note":"\\\\ud83d\\\\ude00"}'),
+        self.assertEqual(strict_inventory_loads(b'{"note":"\\ud83d\\ude00"}'),
                          {'note': chr(0x1f600)})
 
     def test_bad_utf8_denied(self):
