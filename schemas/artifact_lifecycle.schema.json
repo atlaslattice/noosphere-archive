@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/atlaslattice/noosphere-archive/blob/main/schemas/artifact_lifecycle.schema.json",
+  "title": "Atlas candidate artifact lifecycle v0.1 (shape only, not approval)",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["artifact_id", "continuum_id", "source_ref", "raw_export_status", "stage", "flags", "canon", "deployment", "authority", "preservation_ref", "dissent_refs", "governance"],
+  "properties": {
+    "artifact_id": {"type": "string", "minLength": 1},
+    "continuum_id": {"type": "string", "minLength": 1},
+    "source_ref": {"type": "string", "minLength": 1},
+    "raw_export_status": {"enum": ["complete", "partial", "summary_only", "stub", "missing", "unknown"]},
+    "stage": {"enum": ["RAW", "PARSED", "CLAIM", "CANDIDATE", "REVIEWED", "RATIFIED", "CANON", "DEPLOYED"]},
+    "flags": {"type": "array", "uniqueItems": true, "items": {"enum": ["CONTRADICTED", "SUPERSEDED", "QUARANTINED"]}},
+    "canon": {"type": "boolean"},
+    "deployment": {"type": "boolean"},
+    "authority": {"enum": ["none", "human-root", "explicit-delegation"]},
+    "preservation_ref": {"type": "string", "minLength": 1},
+    "predecessor_ref": {"type": ["string", "null"], "minLength": 1},
+    "dissent_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "resolution_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "governance": {
+      "type": "object", "additionalProperties": true,
+      "required": ["required", "decision_status"],
+      "properties": {
+        "required": {"type": "boolean"},
+        "decision_status": {"enum": ["not_granted", "pending", "approved", "rejected"]},
+        "human_root_receipt": {"type": "string", "minLength": 1},
+        "approved_scope": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"stage": {"enum": ["RATIFIED", "CANON", "DEPLOYED"]}}, "required": ["stage"]},
+     "then": {"properties": {"governance": {"properties": {"required": {"const": true}, "decision_status": {"const": "approved"}}, "required": ["human_root_receipt", "approved_scope"]}}}},
+    {"if": {"properties": {"stage": {"const": "CANON"}}, "required": ["stage"]},
+     "then": {"properties": {"canon": {"const": true}}}},
+    {"if": {"properties": {"stage": {"const": "DEPLOYED"}}, "required": ["stage"]},
+     "then": {"properties": {"deployment": {"const": true}}}},
+    {"if": {"properties": {"canon": {"const": true}}, "required": ["canon"]},
+     "then": {"properties": {"governance": {"properties": {"required": {"const": true}, "decision_status": {"const": "approved"}}, "required": ["human_root_receipt", "approved_scope"]}}}},
+    {"if": {"properties": {"deployment": {"const": true}}, "required": ["deployment"]},
+     "then": {"properties": {"governance": {"properties": {"required": {"const": true}, "decision_status": {"const": "approved"}}, "required": ["human_root_receipt", "approved_scope"]}}}}
+  ],
+  "$comment": "Structural evidence declaration only. Approval receipts are not authenticated by JSON Schema. Never auto-promote or transfer private Play content to Work."
+}
