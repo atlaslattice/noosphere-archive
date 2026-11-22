@@ -154,6 +154,14 @@ class TestSentinelAndOrchestrator(unittest.TestCase):
     def test_unhashable_action_hold(self):
         self.assertFalse(self.s.review_packet(dict(self.packet,requested_action=["PREPARE"]))["allowed"])
 
+    def test_missing_source_class_denied(self):
+        no_class=dict(self.packet); del no_class["source_class"]
+        self.assertFalse(self.s.review_packet(no_class)["allowed"])
+
+    def test_ingestion_malformed_manifest_denied(self):
+        p=dict(self.packet,kind="IngestionPacket",raw_export_status="raw_complete_hashed",source_root="work:room#12")
+        self.assertFalse(self.s.review_packet(p)["allowed"])
+
     def test_leisure_denied(self):
         for mode in ["Play","Social","Imagine","Quiet","Brain","Palace","Habitat","Dream"]:
             with self.subTest(mode=mode): self.assertFalse(self.s.review_packet(dict(self.packet,source_class=mode))["allowed"])
