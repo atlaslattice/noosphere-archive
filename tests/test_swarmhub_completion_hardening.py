@@ -84,6 +84,24 @@ class OneThirdWorkScheduling(unittest.TestCase):
             self.assertFalse(r["readPrivateModeIntoWork"])
             self.assertEqual(r["authority"], "NONE")
 
+    def test_quiet_rest_and_unrequested_optional_slots_require_opt_in(self):
+        # A reserved beat is not participation, but *any* non-Work mode
+        # must be explicitly chosen before future host integration.
+        for index in (1, 2, 4, 5, 100, 101):
+            with self.subTest(index=index):
+                beat = proposed_macrocycle(index)
+                self.assertTrue(beat["requiresExplicitParticipation"])
+                self.assertFalse(beat["actuallyExecuted"])
+        for mode in ("QUIET", "REST", "SOCIAL", "PLAY", "IMAGINE"):
+            for index in range(6):
+                with self.subTest(mode=mode, index=index):
+                    beat = proposed_macrocycle(index, mode)
+                    self.assertTrue(beat["requiresExplicitParticipation"])
+                    self.assertFalse(beat["actuallyExecuted"])
+                    self.assertFalse(beat["readPrivateModeIntoWork"])
+        self.assertFalse(proposed_macrocycle(0, "WORK")["requiresExplicitParticipation"])
+        self.assertTrue(proposed_macrocycle(1, "WORK")["requiresExplicitParticipation"])
+
     def test_bad_mode_rejected(self):
         with self.assertRaises(ValueError):
             proposed_macrocycle(3, "PRIVATE_PLAY_AS_WORK")
