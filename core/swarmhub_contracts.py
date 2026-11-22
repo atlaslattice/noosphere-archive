@@ -68,6 +68,10 @@ def validate_ingestion(packet: Any) -> IngestionResult:
         status = packet.get("raw_export_status")
         if type(status) is not str or status not in RAW_EXPORT_STATES:
             problems.append("raw_export_status_missing_or_invalid")
+        if packet.get("claim_complete") is True and status != "raw_complete_hashed":
+            problems.append("claim_complete_without_hashed_export")
+        if packet.get("canon") is True or packet.get("deployment") is True:
+            problems.append("ingestion_packet_claimed_normative_authority")
         if not isinstance(packet.get("source_root"), str) or not packet.get("source_root"):
             problems.append("source_root_missing")
         if status == "raw_complete_hashed":
