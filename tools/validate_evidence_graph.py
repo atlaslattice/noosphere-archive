@@ -69,11 +69,13 @@ def validate_graph(doc):
         if ident in by_id:
             bad(path + ".id", "DUPLICATE_NODE_ID")
         by_id[ident] = n
-        if n.get("type") not in NODE_TYPES:
+        node_type = n.get("type")
+        if type(node_type) is not str or node_type not in NODE_TYPES:
             bad(path + ".type", "UNKNOWN_NODE_TYPE")
         if not isinstance(n.get("label"), str) or not n["label"].strip():
             bad(path + ".label", "MISSING_LABEL")
-        if n.get("state") not in STATES:
+        stage = n.get("state")
+        if type(stage) is not str or stage not in STATES:
             bad(path + ".state", "UNKNOWN_STATE")
         if n.get("state") in {"RATIFIED", "CANON", "DEPLOYED"}:
             bad(path + ".state", "HOST_ATTESTATION_REQUIRED")
@@ -84,7 +86,7 @@ def validate_graph(doc):
             bad(path + ".flags", "DUPLICATE_FLAG")
         if n.get("type") == "RawExportManifest":
             raw_status = n.get("raw_export_status")
-            if raw_status not in RAW_EXPORT_STATES:
+            if type(raw_status) is not str or raw_status not in RAW_EXPORT_STATES:
                 bad(path + ".raw_export_status", "RAW_EXPORT_STATUS_REQUIRED")
             elif raw_status != "raw_complete_hashed" and "QUARANTINED" not in flags:
                 bad(path + ".flags", "INCOMPLETE_RAW_REQUIRES_QUARANTINE")
@@ -125,6 +127,9 @@ def validate_graph(doc):
             bad(path, "INVALID_EDGE")
             continue
         src, target, kind = e.get("from"), e.get("to"), e.get("type")
+        if any(type(value) is not str for value in (src, target, kind)):
+            bad(path, "EDGE_FIELDS_MUST_BE_STRINGS")
+            continue
         if src not in by_id or target not in by_id:
             bad(path, "DANGLING_EDGE")
             continue
@@ -138,7 +143,10 @@ def validate_graph(doc):
             bad(path + ".type", "UNKNOWN_EDGE_TYPE")
             continue
         allowed_sources, allowed_targets = EDGE_TYPES[kind]
-        if (allowed_sources is not None and by_id[src].get("type") not in allowed_sources) or by_id[target].get("type") not in allowed_targets:
+        from_type, to_type = by_id[src].get("type"), by_id[target].get("type")
+        if (type(from_type) is not str or type(to_type) is not str or
+                (allowed_sources is not None and from_type not in allowed_sources) or
+                to_type not in allowed_targets):
             bad(path + ".type", "INVALID_EDGE_DIRECTION")
     # A claim cannot become evidence solely by being assigned a label or graph edge.
     for ident, node in by_id.items():
@@ -155,13 +163,23 @@ def validate_graph(doc):
     return errors
 
 
+def _reject_duplicate_keys(pairs):
+    """Reject repeated object names before JSON loses their evidence."""
+    out = {}
+    for key, value in pairs:
+        if key in out:
+            raise ValueError("DUPLICATE_JSON_KEY")
+        out[key] = value
+    return out
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("graph", type=Path, help="candidate JSON graph")
     args = parser.parse_args(argv)
     try:
-        doc = json.loads(args.graph.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as e:
+        doc = json.loads(args.graph.read_text(encoding="utf-8"), object_pairs_hook=_reject_duplicate_keys)
+    except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as e:
         print(json.dumps({"status": "INVALID", "errors": [{"path": "$", "code": "FILE_OR_JSON_ERROR"}]}))
         return 2
     violations = validate_graph(doc)
