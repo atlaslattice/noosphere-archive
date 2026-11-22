@@ -61,5 +61,18 @@ class OneThirdWorkScheduling(unittest.TestCase):
             proposed_macrocycle(3, "PRIVATE_PLAY_AS_WORK")
 
 
+    def test_boolean_or_noninteger_cycle_index_is_rejected(self):
+        for bad in (True, False, 2.5, "3", [], {}, None):
+            with self.subTest(value=repr(bad)):
+                with self.assertRaisesRegex(ValueError, "nonnegative_cycle_index_required"):
+                    proposed_macrocycle(bad)
+
+    def test_unhashable_or_nonstring_optional_mode_is_rejected(self):
+        for bad in ([], {}, ["WORK"], {"mode":"WORK"}, True, 0):
+            with self.subTest(value=repr(bad)):
+                with self.assertRaisesRegex(ValueError, "unsupported_mode"):
+                    proposed_macrocycle(0, bad)
+
+
 if __name__ == "__main__":
     unittest.main()
