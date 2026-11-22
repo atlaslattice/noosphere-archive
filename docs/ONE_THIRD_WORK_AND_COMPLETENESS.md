@@ -17,3 +17,9 @@ The change is additive: ordinary incomplete packets that do **not** claim comple
 Review the source diff, run existing `python -m unittest discover -s tests -v` alongside the new focused tests, then independently review permissions, source-root hashing, owner approval, host logs and rollout before any production integration. Tests are synthetic and do not close source completeness or identity/rights gates.
 
 Related source ticket: [noosphere-archive #8](https://github.com/atlaslattice/noosphere-archive/issues/8). The sibling lifecycle/graph work lives in a distinct merged baseline and [PR #14](https://github.com/atlaslattice/noosphere-archive/pull/14); preserve that history.
+
+## Source-mode/authority classification is not permission
+
+An offline IngestionResult previously returned SOURCE_REPORTED_ONLY for a caller-asserted private `source_class: Play`, `source_mode: quiet`, or `authority: CANON`. This is not host authorization, but retaining contradictory assertions without a HOLD can mislead a later adapter. The additive gate now holds explicit unknown/private `source_class`, `source_mode`, or `mode` declarations, forged `authority`, and asserted `ratified`, `host_attested`, or `rights_verified` claims. Existing inputs lacking those optional declarations retain their earlier behavior; allowed self-declared Work/public/synthetic labels remain SOURCE_REPORTED_ONLY, not authenticated rights.
+
+The check only observes top-level metadata. It does not inspect or import private material, establish provenance, authenticate host principals or participants, prove consent, supersede owner-approved Work ACLs, or close the original source-rights gates. Independent source and rights-at-effect verification remains required before any hosted ingestion.
