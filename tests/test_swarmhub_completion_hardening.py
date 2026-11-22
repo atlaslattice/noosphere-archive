@@ -43,6 +43,31 @@ class IngestionClaimCompleteness(unittest.TestCase):
                 self.assertIn("ingestion_packet_claimed_normative_authority", r.reasons)
 
 
+class IngestionWhitespaceIdentityGate(unittest.TestCase):
+    def test_missing_source_root_cannot_hide_as_whitespace(self):
+        for blank in (" ", "\\t", "\\n  "):
+            with self.subTest(blank=repr(blank)):
+                p = {"source_root": blank, "raw_export_status": "raw_partial"}
+                r = validate_ingestion(p)
+                self.assertEqual(r.state, "QUARANTINED")
+                self.assertIn("source_root_missing", r.reasons)
+                self.assertEqual(r.payload, p)
+
+    def test_manifest_entry_cannot_hide_as_whitespace(self):
+        p = {"source_root": "synthetic:root", "raw_export_status": "raw_complete_hashed",
+             "source_root_manifest": {"  ": "a" * 64}, "whole_export_sha256": "b" * 64}
+        r = validate_ingestion(p)
+        self.assertEqual(r.state, "QUARANTINED")
+        self.assertIn("manifest_entry_invalid", r.reasons)
+
+    def test_legitimate_spaces_in_filename_remain_accepted_as_source_reported(self):
+        p = {"source_root": "synthetic:root", "raw_export_status": "raw_complete_hashed",
+             "source_root_manifest": {"data sheet.txt": "a" * 64}, "whole_export_sha256": "b" * 64}
+        r = validate_ingestion(p)
+        self.assertEqual(r.state, "SOURCE_REPORTED_ONLY")
+        self.assertEqual(r.authority, "none")
+
+
 class IngestionTypedAuthorityFlags(unittest.TestCase):
     def test_complete_claim_requires_boolean_type(self):
         for bad in (0, 1, "yes", "false", [], {}, None):
