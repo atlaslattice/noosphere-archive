@@ -1,0 +1,32 @@
+{
+  "schema": "atlas.public-repo-snapshot-structural-receipt/v0.1",
+  "observed_date_utc": "2026-11-22",
+  "checked_repository_count": 272,
+  "excluded_nonpublic_count": 1,
+  "source_page_counts": [
+    100,
+    100,
+    73,
+    0
+  ],
+  "source_git_blob_sha": "8c03e455a45971f3be8782095c748f64416dc114",
+  "source_scope": "EXACT_PUBLIC_METADATA_SOURCE_CUT",
+  "structural_validation": "PASS_STRUCTURAL_ONLY",
+  "checks": [
+    "PUBLIC_ONLY",
+    "UNIQUE_NAMES_AND_IDS",
+    "CANONICAL_URLS",
+    "SOURCE_PAGINATION",
+    "STRICT_RECORD_FIELDS",
+    "HOLD_BY_DEFAULT",
+    "NO_SEMANTIC_MAPPING",
+    "NO_RUNTIME_OR_CANON_AUTHORITY"
+  ],
+  "issues_count": 0,
+  "limitations": [
+    "Not a real-time proof of repository privacy or host permissions",
+    "Not a complete private or organization census",
+    "Candidate roles and naming flags are not content review",
+    "Does not attest signed-in human participation or deploy/authorize any system"
+  ]
+}
