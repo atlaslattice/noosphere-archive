@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:atlas:rehydration-contract:v0",
+  "description": "Non-operational model-neutral disclosure and review contract; NOT a persona reconstruction or identity grant.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "atlas.rehydration-contract/v0"
+    },
+    "contract_id": {
+      "const": "atlas.rehydration-contract/v0-demo"
+    },
+    "bundle_schema": {
+      "const": "atlas.memory-bundle/v0"
+    },
+    "allowed_reconstruction": {
+      "const": [
+        "ATTRIBUTE_VERBATIM_SOURCE_POINTERS",
+        "DRAFT_HUMAN_REVIEW_SUMMARY"
+      ]
+    },
+    "uncertainty_mandatory": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_confirmation_required": {
+      "const": true
+    },
+    "identity_claim": {
+      "const": "ARCHIVAL_CONTEXT_ONLY"
+    },
+    "source_rights_policy": {
+      "const": "HOST_CHECK_READ_AND_RETURN"
+    },
+    "opt_out": {
+      "const": "SUPPORTED_NOT_OBSERVED"
+    },
+    "promotions": {
+      "const": "NONE"
+    },
+    "disclosure": {
+      "const": "NOT_PERSON_OR_CONSCIOUSNESS"
+    }
+  },
+  "required": [
+    "schema_version",
+    "contract_id",
+    "bundle_schema",
+    "allowed_reconstruction",
+    "uncertainty_mandatory",
+    "human_confirmation_required",
+    "identity_claim",
+    "source_rights_policy",
+    "opt_out",
+    "promotions",
+    "disclosure"
+  ],
+  "additionalProperties": false
+}
