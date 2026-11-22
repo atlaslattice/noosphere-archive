@@ -95,8 +95,7 @@
             "PARSED",
             "CLAIM",
             "CANDIDATE",
-            "REVIEWED",
-            "RATIFIED"
+            "REVIEWED"
           ]
         },
         "flags": {
