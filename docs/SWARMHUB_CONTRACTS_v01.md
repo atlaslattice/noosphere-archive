@@ -33,9 +33,9 @@ Hashing in this Python module is deterministic for JSON-compatible objects; it d
 
 ## Example graph
 
-`SourceSurface:DOI` ←(`derived_from`)— `Claim:CriticalLoad` ←(`reviewed_by`)— `Receipt:LocalReview`.
+`SourceSurface:DOI` ←(`derived_from`)— `Artifact:Paper` —(`claims`)→ `Claim:CriticalLoad` ←(`supports`)— `Evidence:MeasuredPoint` —(`reviewed_by`)→ `ReviewLane:Specialist` —(`implemented_as`)→ `Receipt:LocalReview`.
 
-A separate `Contradiction:IndependentStudy` —(`contradicts`)→ `Claim:CriticalLoad` stays alongside the support. Neither edge is permission to release a private source or deploy a device.
+A separate `Contradiction:IndependentStudy` —(`contradicts`)→ `Claim:CriticalLoad` stays alongside the support. `CanonGate:NotAdopted` can be referenced with a `gated_by` edge to an `ActionPacket:Prepared`—it never grants a right to act. Neither any edge nor a centrality score is permission to release a private source or deploy a device.
 
 ## Known release blockers
 
