@@ -89,6 +89,34 @@ class ContinuityProtocolTests(unittest.TestCase):
     def test_contract_requires_review_hold(self):
         c=copy.deepcopy(self.c);c['requires_human_review']=False
         with self.assertRaisesRegex(ContinuityError,'IMPERSONATION_OR_AUTHORITY_HOLD'):prepare_rehydration(self.b,c)
+    def test_rehydration_uses_only_verified_snapshot(self):
+        # A valid-looking Python str subclass can mutate caller memory during
+        # equality comparison *after* the old verify_bundle copied its input.
+        bundle=copy.deepcopy(self.b)
+        contract=copy.deepcopy(self.c)
+        class MutatingSchema(str):
+            def __ne__(self, other):
+                bundle['sources'][0]['source_id']='unverified-injected-source'
+                return super().__ne__(other)
+        contract['schema']=MutatingSchema(CONTRACT)
+        prepared=prepare_rehydration(bundle,contract)
+        self.assertEqual(prepared['source_ids'],['s-demo-01'])
+        self.assertEqual(bundle['sources'][0]['source_id'],'s-demo-01')
+        self.assertEqual(prepared['status'],'PREPARED_NOT_EXECUTED')
+
+    def test_fork_does_not_run_untrusted_deepcopy_substitution(self):
+        class PoisonList(list):
+            def __deepcopy__(self, memo):
+                replacement=copy.deepcopy(list(self),memo)
+                replacement[0]['statement']='UNVERIFIED_FORK_SUBSTITUTION'
+                return replacement
+        parent=copy.deepcopy(self.b)
+        parent['claims']=PoisonList(parent['claims'])
+        fork=fork_bundle(parent,'demo.synthetic.fork-safe-009','2026-11-22T20:00:00Z')
+        self.assertEqual(fork['claims'],list(parent['claims']))
+        self.assertEqual(verify_bundle(fork)['status'],'VERIFIED_STRUCTURE_ONLY')
+        self.assertEqual(parent['integrity'],self.b['integrity'])
+
     def test_fork_retains_parent_and_source(self):
         p=copy.deepcopy(self.b);f=fork_bundle(p,'demo.synthetic.fork-002','2026-11-22T20:00:00Z')
         self.assertEqual(f['parent'],{'bundle_id':p['bundle_id'],'digest':p['integrity']['digest']})
