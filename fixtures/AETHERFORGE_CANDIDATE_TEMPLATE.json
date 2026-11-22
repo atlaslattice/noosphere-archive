@@ -1,0 +1,17 @@
+{
+  "schema": "atlas.swarmhub.candidate.v0.1",
+  "candidate_id": "AETHERFORGE_EXAMPLE_NOT_ACTUAL_OUTPUT",
+  "sourceMode": "play",
+  "artifact_source": "PROPOSED_SOURCE_REF_NOT_FETCHED",
+  "why_useful": "Illustrative mechanic may inspire a later, consented hypothesis",
+  "evidence_refs": [],
+  "risks": ["Unverified lore and private context; do not copy into Work"],
+  "contradictions": [],
+  "review_required": ["Source rights", "Independent scientific/creative distinction", "Human-root for any normative/operational change"],
+  "canon": false,
+  "deployment": false,
+  "authority": "NONE",
+  "workIngestAuthorized": false,
+  "status": "CANDIDATE_UNREVIEWED",
+  "originalPreserved": true
+}

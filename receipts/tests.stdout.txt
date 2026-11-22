@@ -1,0 +1,42 @@
+test_duplicate (test_swarmhub_p0.TestCanonQueue.test_duplicate) ... ok
+test_insert_never_ratifed (test_swarmhub_p0.TestCanonQueue.test_insert_never_ratifed) ... ok
+test_play_grant_not_inferred (test_swarmhub_p0.TestCanonQueue.test_play_grant_not_inferred) ... ok
+test_untrusted_authority (test_swarmhub_p0.TestCanonQueue.test_untrusted_authority) ... ok
+test_untrusted_promotion_fails (test_swarmhub_p0.TestCanonQueue.test_untrusted_promotion_fails) ... ok
+test_earth_routing_not_node (test_swarmhub_p0.TestCoordinate.test_earth_routing_not_node) ... ok
+test_invalid_hsn_quarantined (test_swarmhub_p0.TestCoordinate.test_invalid_hsn_quarantined) ... ok
+test_no_authority_passthrough (test_swarmhub_p0.TestCoordinate.test_no_authority_passthrough) ... ok
+test_no_cross_registry_inference (test_swarmhub_p0.TestCoordinate.test_no_cross_registry_inference) ... ok
+test_payload_tamper (test_swarmhub_p0.TestCoordinate.test_payload_tamper) ... ok
+test_whole_1728_syntax (test_swarmhub_p0.TestCoordinate.test_whole_1728_syntax) ... ok
+test_wrong_edition (test_swarmhub_p0.TestCoordinate.test_wrong_edition) ... ok
+test_hash_syntax (test_swarmhub_p0.TestIngestion.test_hash_syntax) ... ok
+test_hashed_complete_not_host_verified (test_swarmhub_p0.TestIngestion.test_hashed_complete_not_host_verified) ... ok
+test_missing_raw_status (test_swarmhub_p0.TestIngestion.test_missing_raw_status) ... ok
+test_no_auto_canon (test_swarmhub_p0.TestIngestion.test_no_auto_canon) ... ok
+test_no_false_complete (test_swarmhub_p0.TestIngestion.test_no_false_complete) ... ok
+test_no_manifest (test_swarmhub_p0.TestIngestion.test_no_manifest) ... ok
+test_source_incomplete_can_be_received_without_completeness (test_swarmhub_p0.TestIngestion.test_source_incomplete_can_be_received_without_completeness) ... ok
+test_injected_reviewer_routes_not_runs (test_swarmhub_p0.TestOrchestrator.test_injected_reviewer_routes_not_runs) ... ok
+test_malicious_reviewer_cannot_grant (test_swarmhub_p0.TestOrchestrator.test_malicious_reviewer_cannot_grant) ... ok
+test_no_sentinel_hold (test_swarmhub_p0.TestOrchestrator.test_no_sentinel_hold) ... ok
+test_reviewer_blocks (test_swarmhub_p0.TestOrchestrator.test_reviewer_blocks) ... ok
+test_destructive_always_retained (test_swarmhub_p0.TestPreservation.test_destructive_always_retained) ... ok
+test_mutating_caller_does_not_erase (test_swarmhub_p0.TestPreservation.test_mutating_caller_does_not_erase) ... ok
+test_no_source (test_swarmhub_p0.TestPreservation.test_no_source) ... ok
+test_quarantine_preserves_original (test_swarmhub_p0.TestPreservation.test_quarantine_preserves_original) ... ok
+test_superseded_old_reachable (test_swarmhub_p0.TestPreservation.test_superseded_old_reachable) ... ok
+test_no_private_auto_ingest (test_swarmhub_p0.TestRhythm.test_no_private_auto_ingest) ... ok
+test_not_actual_runs (test_swarmhub_p0.TestRhythm.test_not_actual_runs) ... ok
+test_one_third_work_in_300_slots (test_swarmhub_p0.TestRhythm.test_one_third_work_in_300_slots) ... ok
+test_allow_route_only (test_swarmhub_p0.TestSentinel.test_allow_route_only) ... ok
+test_bad_input (test_swarmhub_p0.TestSentinel.test_bad_input) ... ok
+test_no_play_to_work (test_swarmhub_p0.TestSentinel.test_no_play_to_work) ... ok
+test_source_required (test_swarmhub_p0.TestSentinel.test_source_required) ... ok
+test_unauthorized_actions (test_swarmhub_p0.TestSentinel.test_unauthorized_actions) ... ok
+test_wrong_authority (test_swarmhub_p0.TestSentinel.test_wrong_authority) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.023s
+
+OK

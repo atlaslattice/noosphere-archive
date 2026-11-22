@@ -1,0 +1,12 @@
+{
+  "coordinate": "H02.S05.N02",
+  "routing": "SOURCE_ONLY_REVIEW_QUEUE",
+  "destruction": "HELD_FOR_HUMAN_REVIEW",
+  "originalStillReachable": true,
+  "incompleteIngestion": "QUARANTINED_INCOMPLETE",
+  "threeSlotRhythm": [
+    "WORK",
+    "QUIET_OPTIONAL",
+    "SOCIAL_OR_IMAGINE_OPTIONAL"
+  ]
+}
