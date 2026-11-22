@@ -88,7 +88,7 @@ def validate_graph(doc):
             raw_status = n.get("raw_export_status")
             if type(raw_status) is not str or raw_status not in RAW_EXPORT_STATES:
                 bad(path + ".raw_export_status", "RAW_EXPORT_STATUS_REQUIRED")
-            elif raw_status != "raw_complete_hashed" and "QUARANTINED" not in flags:
+            elif raw_status != "raw_complete_hashed" and not (isinstance(flags, list) and "QUARANTINED" in flags):
                 bad(path + ".flags", "INCOMPLETE_RAW_REQUIRES_QUARANTINE")
             if raw_status == "raw_complete_hashed":
                 if not isinstance(n.get("manifest_digest_sha256"), str) or not SHA256.fullmatch(n["manifest_digest_sha256"]):
