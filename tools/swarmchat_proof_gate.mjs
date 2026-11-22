@@ -50,16 +50,49 @@ function b64read(value) {
   if (b.toString('base64url') !== value) throw new Error('noncanonical base64url');
   return b;
 }
-function metadataOnly(value, depth = 0) {
-  if (depth > 10) return false;
-  if (Array.isArray(value)) return value.every(v => metadataOnly(v, depth + 1));
-  if (value && typeof value === 'object') {
-    return Object.entries(value).every(([k,v]) =>
-      !/(^body$|raw_?text|private_?content|message_?body|secret|access_?token|palace_?body|source_uri|private_?title)/i.test(k)
-      && metadataOnly(v, depth + 1));
-  }
-  return value === null || ['string', 'boolean'].includes(typeof value)
-      || (typeof value === 'number' && Number.isFinite(value));
+// v0.1 uses explicit, per-kind, top-level signed metadata fields.
+// Unknown keys HOLD even if they do not match a sensitive-word blacklist.
+const COMMON_METADATA_FIELDS = Object.freeze([
+  'schema','kind','environment','tenant','room','runId','occurredAt'
+]);
+const METADATA_FIELDS = Object.freeze({
+  PLATFORM_BIND: ['subject','assurance','originMode','conversationId','principalId','memberId'],
+  SESSION_AUDIT: ['conversationId','principalId','memberId'],
+  POST_STORE: ['conversationId','originMode','seq','requestId'],
+  CALLBACK_DELIVERED: ['conversationId','seq','requestId','nonce','leaseExpiresAt'],
+  MODEL_ACTIVATED: ['conversationId','nonce'],
+  RECEIVER_ACK: ['conversationId','nonce','requestId','seq'],
+  REPLY_STORE: ['conversationId','seq','parentSeq','requestId'],
+  REPLY_READBACK: ['seq','parentSeq','requestId'],
+  WORKSPACE_APPEND: ['itemId','revision','digest'],
+  WORKSPACE_READBACK: ['itemId','revision','digest'],
+  WORKSPACE_RACE_TEST: ['itemId','disposable','passed'],
+  PRIVACY_HOST_TEST: ['disposable','suiteId','buildSha','unauthorizedStoreTouches','passed'],
+  PRIVACY_AUDIT_TEST: ['disposable','suiteId','buildSha','unauthorizedStoreTouches','passed'],
+  PUBLISH: ['deploymentId','host','buildSha'],
+  SERVED: ['deploymentId','host','buildSha'],
+  ROLLBACK_CHECK: ['deploymentId','host','buildSha','disposable','passed'],
+  OWNER_APPROVAL: ['deploymentId','host','buildSha','approved']
+});
+function metadataOnly(value) {
+  if (!value || Object.getPrototypeOf(value) !== Object.prototype ||
+      typeof value.kind !== 'string') return false;
+  const fields = METADATA_FIELDS[value.kind];
+  if (!fields) return false;
+  const allowed = new Set([...COMMON_METADATA_FIELDS, ...fields]);
+  return Object.entries(value).every(([key, field]) => {
+    if (!allowed.has(key)) return false;
+    if (key === 'passed') {
+      return Array.isArray(field) && field.length <= 16 &&
+        field.every(v => typeof v === 'string' && v.length <= 100) &&
+        new Set(field).size === field.length;
+    }
+    if (typeof field === 'number')
+      return Number.isSafeInteger(field) && field >= 0;
+    if (typeof field === 'string')
+      return field.length <= 512;
+    return typeof field === 'boolean';
+  });
 }
 function exactlySame(a, b, fields) { return fields.every(k => a?.[k] === b?.[k]); }
 function first(rows, type, test = () => true) {
