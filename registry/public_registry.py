@@ -13,6 +13,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Mapping
 from urllib.parse import urlsplit
+from registry.strict_inventory_json import InventoryJSONError, strict_inventory_loads
 
 SCHEMA = "atlas.public-repository-registry/v0.1"
 SOURCE_QUERY = "org:atlaslattice"
@@ -159,11 +160,11 @@ def main(argv: list[str] | None = None) -> int:
     group.add_argument("--issue", help="exact public GitHub issue or pull URL")
     args = ap.parse_args(argv)
     try:
-        raw = json.loads(args.input.read_text(encoding="utf-8"), parse_constant=lambda _: (_ for _ in ()).throw(RegistryError("NONFINITE_NUMBER")))
+        raw = strict_inventory_loads(args.input.read_bytes())
         result = route_public_issue(raw, args.issue) if args.issue is not None else lookup_public_repo(raw, args.lookup) if args.lookup is not None else validate_catalog(raw)
         print(json.dumps(result, indent=2, sort_keys=True))
         return 0
-    except (RegistryError, json.JSONDecodeError, OSError, UnicodeError) as exc:
+    except (RegistryError, InventoryJSONError, json.JSONDecodeError, OSError, UnicodeError) as exc:
         print(json.dumps({"status": "HOLD", "reason": type(exc).__name__ + ": " + str(exc)}))
         return 2
 
