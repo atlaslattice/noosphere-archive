@@ -9,6 +9,7 @@ import copy
 import hashlib
 import json
 import re
+import unicodedata
 from typing import Any
 
 SCHEMA = 'atlas.digital-continuity.memory-bundle/v0'
@@ -56,7 +57,9 @@ def _sha(x: Any) -> bool:
     return type(x) is str and _SHA.fullmatch(x) is not None
 
 def _safe_text(x: Any, *, max_len: int = 300) -> bool:
-    return type(x) is str and 1 <= len(x) <= max_len and all(ord(c)>=32 for c in x)
+    return (type(x) is str and 1 <= len(x) <= max_len and bool(x.strip())
+            and all(ord(c) >= 32 and unicodedata.category(c) not in
+                    {'Cc', 'Cf', 'Cs', 'Zl', 'Zp'} for c in x))
 
 def _base_checks(bundle: Any) -> None:
     _keys(bundle,_ALLOWED_BUNDLE,_ALLOWED_BUNDLE-{'parent','integrity'},'BUNDLE_SHAPE_HOLD')
