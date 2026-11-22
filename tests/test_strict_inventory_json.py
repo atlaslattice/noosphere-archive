@@ -1,12 +1,23 @@
 """No GitHub calls, secrets, or writable external state."""
 import json
 import unittest
+from pathlib import Path
+from registry.public_registry import RegistryError, validate_catalog
 from registry.strict_inventory_json import (
     InventoryJSONError, MAX_INVENTORY_BYTES, strict_inventory_loads,
 )
 
 
 class StrictPublicRegistryInput(unittest.TestCase):
+    def test_nontext_snapshot_date_is_rejected_as_registry_hold(self):
+        src = Path(__file__).resolve().parents[1] / "registry" / "public_repo_inventory_2026-11-22.json"
+        baseline = json.loads(src.read_text(encoding="utf-8"))
+        for invalid in (None, True, 20261122, [], {}):
+            with self.subTest(value=repr(invalid)):
+                candidate = dict(baseline, observed_date_utc=invalid)
+                with self.assertRaisesRegex(RegistryError, "MISSING_SNAPSHOT_PASSPORT"):
+                    validate_catalog(candidate)
+
     def test_valid_python_literal_types(self):
         self.assertEqual(strict_inventory_loads('{"name":"atlaslattice/noosphere-archive","archived":false,"count":272}'),
                          {"name":"atlaslattice/noosphere-archive","archived":False,"count":272})
