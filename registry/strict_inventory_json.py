@@ -7,6 +7,7 @@ public-repository validation. This is NOT a schema, rights or source attestation
 from __future__ import annotations
 
 import json
+import unicodedata
 from typing import Any
 
 MAX_INVENTORY_BYTES = 4 * 1024 * 1024
@@ -18,9 +19,16 @@ class InventoryJSONError(ValueError):
 
 def _unique_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     result: dict[str, Any] = {}
+    canonical_keys: set[str] = set()
     for key, value in pairs:
+        # One spelling per normalized key; other languages / storage layers
+        # may NFC-normalize an equivalent label and silently overwrite it.
         if key in result:
             raise InventoryJSONError("DUPLICATE_REGISTRY_KEY")
+        canonical = unicodedata.normalize("NFC", key)
+        if canonical in canonical_keys:
+            raise InventoryJSONError("CANONICAL_EQUIVALENT_REGISTRY_KEY")
+        canonical_keys.add(canonical)
         result[key] = value
     return result
 
