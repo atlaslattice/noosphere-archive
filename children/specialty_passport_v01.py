@@ -137,8 +137,24 @@ def append_revision(history: list[dict[str, Any]], candidate: dict[str, Any]) ->
         if candidate['revision'] != 1:
             _fail('initial revision must be 1')
         return [deepcopy(candidate)]
-    for row in history:
+    # Checking only the latest predecessor lets forged/replayed history pass.
+    # All historical revisions must form a contiguous, time-ordered hash chain.
+    declared_key = None
+    prior = None
+    for position, row in enumerate(history, start=1):
         validate_passport(row)
+        if row['revision'] != position:
+            _fail('history revision gap or replay')
+        if declared_key is None:
+            declared_key = row['declared_key']
+        elif row['declared_key'] != declared_key:
+            _fail('history switches declared key')
+        if prior is not None:
+            if row['previous_digest'] != digest_passport(prior):
+                _fail('broken historical predecessor digest')
+            if _timestamp(row['declared_at']) <= _timestamp(prior['declared_at']):
+                _fail('historical declaration timestamps out of order')
+        prior = row
     previous = history[-1]
     if candidate['declared_key'] != previous['declared_key']:
         _fail('cannot change declared key in a revision chain')
