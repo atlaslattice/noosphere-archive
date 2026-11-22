@@ -232,6 +232,15 @@ class RegistryTests(unittest.TestCase):
             self.assertEqual(a.returncode, 2)
             self.assertEqual(json.loads(a.stdout)["status"], "HOLD")
 
+    def test_record_schema_matches_strict_runtime_fields(self):
+        schema = json.loads((ROOT / "registry/public-repo-record.schema.json").read_text(encoding="utf-8"))
+        from registry.public_registry import EXPECTED_RECORD_KEYS
+        self.assertEqual(set(schema["required"]), EXPECTED_RECORD_KEYS)
+        self.assertEqual(set(schema["properties"]), EXPECTED_RECORD_KEYS)
+        self.assertFalse(schema["additionalProperties"])
+        self.assertEqual(schema["properties"]["visibility"]["const"], "public")
+        self.assertEqual(schema["properties"]["sphere144_tags"]["maxItems"], 0)
+
     def test_cli_synthetic(self):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "catalog.json"
