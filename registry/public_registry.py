@@ -36,6 +36,7 @@ EXPECTED_RECORD_KEYS = frozenset({
 NAME = re.compile(r"atlaslattice/[A-Za-z0-9_.-]{1,100}\Z")
 BRANCH = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.\/-]{0,180}\Z")
 ISSUE_URL = re.compile(r"https://github\.com/(atlaslattice/[A-Za-z0-9_.-]{1,100})/(issues|pull)/(\d{1,12})\Z")
+MAX_CATALOG_BYTES = 4 * 1024 * 1024  # public metadata import size guard
 
 
 class RegistryError(ValueError):
@@ -53,6 +54,29 @@ def _string(v: Any) -> bool:
 
 def _natural(v: Any) -> bool:
     return type(v) is int and v >= 0  # reject booleans
+
+
+def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """Do not let a later public flag shadow earlier non-public metadata."""
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise RegistryError("DUPLICATE_JSON_KEY")
+        result[key] = value
+    return result
+
+
+def load_catalog_text(source_text: str) -> dict[str, Any]:
+    """Parse untrusted public metadata without duplicate-key or NaN ambiguity."""
+    _require(type(source_text) is str, "CATALOG_TEXT_REQUIRED")
+    _require(len(source_text.encode("utf-8")) <= MAX_CATALOG_BYTES, "CATALOG_TOO_LARGE")
+    try:
+        value = json.loads(source_text, object_pairs_hook=_reject_duplicate_keys,
+                           parse_constant=lambda _: (_ for _ in ()).throw(RegistryError("NONFINITE_NUMBER")))
+    except RecursionError as exc:
+        raise RegistryError("CATALOG_NESTING_TOO_DEEP") from exc
+    _require(type(value) is dict, "CATALOG_NOT_OBJECT")
+    return value
 
 
 def _reject_redirect_or_query(url: str, fullname: str) -> None:
@@ -159,7 +183,7 @@ def main(argv: list[str] | None = None) -> int:
     group.add_argument("--issue", help="exact public GitHub issue or pull URL")
     args = ap.parse_args(argv)
     try:
-        raw = json.loads(args.input.read_text(encoding="utf-8"), parse_constant=lambda _: (_ for _ in ()).throw(RegistryError("NONFINITE_NUMBER")))
+        raw = load_catalog_text(args.input.read_text(encoding="utf-8"))
         result = route_public_issue(raw, args.issue) if args.issue is not None else lookup_public_repo(raw, args.lookup) if args.lookup is not None else validate_catalog(raw)
         print(json.dumps(result, indent=2, sort_keys=True))
         return 0
