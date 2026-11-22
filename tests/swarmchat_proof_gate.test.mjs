@@ -205,3 +205,22 @@ test('supported signed metadata still decodes with exact field allowlists',()=>{
   assert.equal(r.acceptedReceiptCount,19);assert.equal(r.rejected.length,0);
   assert.equal(r.productionPromotionAllowed,false);
 });
+
+
+test('signed passed labels may not smuggle arbitrary text',()=>{
+  for (const kind of ['PRIVACY_HOST_TEST','WORKSPACE_RACE_TEST']) {
+    const f=fixture();
+    const extra = kind==='PRIVACY_HOST_TEST'
+      ? {disposable:true,suiteId:'s',buildSha:'b'.repeat(64),unauthorizedStoreTouches:0}
+      : {itemId:'candidate-a',disposable:true};
+    f.put(kind,{...extra,passed:['SYNTHETIC_PRIVATE_SENTINEL']});
+    assert.equal(evaluate(f.bundle,f.trust).acceptedReceiptCount,0,kind);
+  }
+});
+test('strict passed vocabulary does not reject recognized privacy/workspace controls',()=>{
+  const f=fixture();addWorkspace(f);addPrivacy(f);
+  const out=evaluate(f.bundle,f.trust);
+  assert.equal(out.rejected.length,0);
+  assert.equal(out.gates.workspace.status,'SYNTHETIC_OR_NONPRODUCTION_ONLY');
+  assert.equal(out.gates.privacy.status,'SYNTHETIC_OR_NONPRODUCTION_ONLY');
+});
