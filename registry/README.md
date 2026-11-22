@@ -11,6 +11,8 @@ This registry is the public-only, non-destructive Wave A deliverable for [Noosph
 - Heuristic `role_candidate` and `sensitivity_name_flag` are **inferred from public repo names only**; neither is semantic content review. `readiness = HOLD_FOR_SOURCE_AND_RIGHTS_REVIEW` even for a repository that is already public. `sphere144_tags` and `related_core_repos` deliberately remain empty until a genuine source/rights/semantic crosswalk.
 - Public repository search does not enumerate inaccessible, unindexed or private repositories reliably. Do not infer their nonexistence. A registry URL is not a valid access token.
 
+The sidecar `public-repo-record.schema.json` documents the same strict public-only record fields as the executable Python validator. Schema presence is not a claim that a host applies it.
+
 ## Run locally, with Python standard library only
 
 ```bash
