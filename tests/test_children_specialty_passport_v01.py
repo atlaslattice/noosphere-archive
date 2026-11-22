@@ -68,6 +68,17 @@ class SpecialtyPassportTests(unittest.TestCase):
     def test_evidence_pointers_cannot_become_host_proof(self):
         self.p['specialties'][0]['evidence_refs']=['https://example.org/public-document']
         self.assertEqual(match_task([self.p],'H02.S05.N02','review','2026-11-22T00:00:00Z')['candidates'][0]['host_identity'],'UNVERIFIED')
+    def test_caller_mutation_cannot_rewrite_initial_snapshot(self):
+        h=append_revision([],self.p)
+        self.p['specialties'][0]['interest']=0
+        self.assertEqual(h[0]['specialties'][0]['interest'],0.9)
+    def test_caller_mutation_cannot_rewrite_later_snapshot(self):
+        h=append_revision([],self.p)
+        rev=copy.deepcopy(self.p);rev['revision']=2;rev['previous_digest']=digest_passport(self.p)
+        rev['declared_at']='2026-11-22T00:00:00Z'
+        h2=append_revision(h,rev)
+        rev['participation']['work_opt_in']=False
+        self.assertTrue(h2[1]['participation']['work_opt_in'])
     def test_wrong_revision_hash_denied(self):
         hist=append_revision([],self.p)
         new=copy.deepcopy(self.p);new['revision']=2;new['previous_digest']='0'*64
