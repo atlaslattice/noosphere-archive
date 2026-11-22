@@ -170,4 +170,30 @@ class SpecialtyPassportTests(unittest.TestCase):
         self.p['specialties'][0]['evidence_refs']=['https://private.example.com/secret?token=1']
         self.assertRejected(self.p)
 
+class CanonicalTimestampTests(unittest.TestCase):
+    def setUp(self):
+        self.p = copy.deepcopy(DATA[0])
+
+    def test_iso_week_date_alias_rejected(self):
+        self.p['declared_at'] = '2026-W48-1T00:00:00+00:00'
+        with self.assertRaises(ProfileError): validate_passport(self.p)
+
+    def test_space_separator_rejected(self):
+        self.p['declared_at'] = '2026-11-21 00:00:00+00:00'
+        with self.assertRaises(ProfileError): validate_passport(self.p)
+
+    def test_precision_truncation_denied(self):
+        self.p['declared_at'] = '2026-11-21T00:00:00.1234567Z'
+        with self.assertRaises(ProfileError): validate_passport(self.p)
+
+    def test_canonical_fraction_and_offset_accepted(self):
+        self.p['declared_at'] = '2026-11-21T00:00:00.123456+00:00'
+        validate_passport(self.p)
+
+    def test_nonstring_datetime_not_a_wire_timestamp(self):
+        from datetime import datetime, timezone
+        self.p['declared_at'] = datetime.now(timezone.utc)
+        with self.assertRaises(ProfileError): validate_passport(self.p)
+
+
 if __name__ == '__main__': unittest.main()
