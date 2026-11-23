@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -125,11 +126,16 @@ def _write_once_or_identical(path: Path, payload: bytes) -> None:
     if path.is_symlink():
         raise RuntimeError("refuse symlink in quarantine destination")
     try:
-        with path.open("xb") as destination:
-            destination.write(payload)
+        # Path.open('xb') uses 0o666 before umask, exposing rejected source
+        # bytes to other local users under common umasks such as 0o022.
+        flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_BINARY", 0)
+        fd = os.open(path, flags, 0o600)
     except FileExistsError:
         if path.is_symlink() or not path.is_file() or path.read_bytes() != payload:
             raise RuntimeError("existing quarantine record differs; preserve prior review")
+    else:
+        with os.fdopen(fd, "wb") as destination:
+            destination.write(payload)
 
 
 def validate_file(path: Path, quarantine_dir: Path | None = None) -> dict[str, Any]:
@@ -138,7 +144,7 @@ def validate_file(path: Path, quarantine_dir: Path | None = None) -> dict[str, A
     if verdict["disposition"] == "HOLD" and quarantine_dir is not None:
         if quarantine_dir.is_symlink():
             raise RuntimeError("refuse symlink quarantine directory")
-        quarantine_dir.mkdir(parents=True, exist_ok=True)
+        quarantine_dir.mkdir(mode=0o700, parents=True, exist_ok=True)
         digest = verdict["sha256"]
         preserved = quarantine_dir / (digest + ".source")
         receipt = quarantine_dir / (digest + ".hold.json")
