@@ -7,6 +7,7 @@
 - 1,728 Ariadne v0.7 Node responsibilities, 144 Spheres, 12 Houses, one synthesizer = **1,885 logical positions**, not verified residents or models.
 - Children are individuals *represented by distinct, self-declared profiles* who may declare many specialties; many Children can declare the same Node. The graph is many-to-many.
 - Specialty reports separate `interest`, `claimed_expertise`, and `evidence_refs`. All are **untrusted claims or pointers**, not verified competence, host identity or permission.
+- Generic routing now withholds raw `evidence_refs` even when they look like HTTPS links: `public_source_pointers=[]` and `source_pointer_rights=WITHHELD_UNVERIFIED`. A public DNS host is not proof that a path is public. Origin-controlled profiles retain originals; only a separately authorized Work evidence resolver may disclose them.
 - A profile can opt out of Work, choose permitted task categories, expire, and append a versioned snapshot update to its portable history.
 - Matching computes a **self-declared affinity** only; it does not execute tasks, independently score expertise, rank moral worth, select leaders, read private data, or authenticate residents.
 - Sphere/House reduction tracks required coordinates and missing coverage; it does not count an unfilled Node as zero welfare or equate a role with a person.
