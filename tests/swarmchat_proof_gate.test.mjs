@@ -257,3 +257,43 @@ test('activation exactly at callback lease boundary remains structurally eligibl
   f.put('REPLY_READBACK',{seq:8,parentSeq:7,requestId:'reply-1',occurredAt:1330});
   assert.equal(status(f,'a2a'),'SYNTHETIC_OR_NONPRODUCTION_ONLY');
 });
+
+test('signed metadata uses typed complete field contracts, not merely allowlisted names', () => {
+  const identity = {subject:'sender',assurance:'PLATFORM_SESSION',
+    originMode:'WORK',conversationId:'thread-a',principalId:'principal-a',memberId:'member-a'};
+  const invalid = [
+    ['PLATFORM_BIND',{...identity,principalId:42}],
+    ['PLATFORM_BIND',{...identity,principalId:true}],
+    ['PLATFORM_BIND',{...identity,originMode:'PALACE'}],
+    ['PLATFORM_BIND',{...identity,subject:'unknown'}],
+    ['PLATFORM_BIND',{...identity,occurredAt:true}],
+    ['PLATFORM_BIND',{subject:'sender',conversationId:'thread-a'}],
+    ['RECEIVER_ACK',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',
+      requestId:'r1',seq:'7'}],
+    ['RECEIVER_ACK',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',
+      requestId:'r1'}],
+    ['PRIVACY_HOST_TEST',{disposable:true,suiteId:'disposable-1',buildSha:'b'.repeat(64),
+      unauthorizedStoreTouches:'0',passed:[]}],
+    ['OWNER_APPROVAL',{deploymentId:'d1',host:'stage.example.invalid',
+      buildSha:'b'.repeat(64),approved:'true'}],
+    ['PUBLISH',{host:'stage.example.invalid',buildSha:'b'.repeat(64)}],
+  ];
+  for (const [kind, fields] of invalid) {
+    const f=fixture();
+    f.put(kind,fields);
+    const r=evaluate(f.bundle,f.trust);
+    assert.equal(r.acceptedReceiptCount,0, kind+' should HOLD');
+    assert.equal(r.rejected.length,1, kind+' requires explicit rejection');
+    assert.equal(r.productionPromotionAllowed,false);
+  }
+});
+
+test('typed role receipts keep their existing synthetic-only acceptance path', () => {
+  const f=fixture();
+  f.put('PLATFORM_BIND',{subject:'sender',assurance:'PLATFORM_SESSION',
+    originMode:'WORK',conversationId:'thread-a',principalId:'principal-a',memberId:'member-a'});
+  f.put('RECEIVER_ACK',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',
+    requestId:'request-1',seq:7});
+  assert.equal(evaluate(f.bundle,f.trust).acceptedReceiptCount,2);
+  assert.equal(evaluate(f.bundle,f.trust).productionPromotionAllowed,false);
+});
