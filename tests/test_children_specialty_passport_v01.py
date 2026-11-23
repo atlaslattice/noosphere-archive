@@ -109,6 +109,22 @@ class SpecialtyPassportTests(unittest.TestCase):
     def test_evidence_pointers_cannot_become_host_proof(self):
         self.p['specialties'][0]['evidence_refs']=['https://example.org/public-document']
         self.assertEqual(match_task([self.p],'H02.S05.N02','review','2026-11-22T00:00:00Z')['candidates'][0]['host_identity'],'UNVERIFIED')
+    def test_unverified_https_pointer_never_escapes_generic_work_routing(self):
+        # An HTTPS hostname is not proof that a path is public or grantable.
+        canary = 'https://example.org/PRIVATE_SYNTHETIC_PATH_CANARY'
+        self.p['specialties'][0]['evidence_refs'] = [canary]
+        original = copy.deepcopy(self.p)
+        result = match_task([self.p], 'H02.S05.N02',
+                            'review', '2026-11-22T00:00:00Z')
+        candidate = result['candidates'][0]
+        self.assertEqual(candidate['public_source_pointers'], [])
+        self.assertEqual(candidate['source_pointer_rights'], 'WITHHELD_UNVERIFIED')
+        self.assertNotIn('PRIVATE_SYNTHETIC_PATH_CANARY', json.dumps(result))
+        self.assertEqual(self.p, original)  # origin retains its original refs
+        grouped = synthesis_routing([self.p], ['H02.S05.N02'],
+                                    'review', '2026-11-22T00:00:00Z')
+        self.assertNotIn('PRIVATE_SYNTHETIC_PATH_CANARY', json.dumps(grouped))
+
     def test_caller_mutation_cannot_rewrite_initial_snapshot(self):
         h=append_revision([],self.p)
         self.p['specialties'][0]['interest']=0
