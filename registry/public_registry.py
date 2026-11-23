@@ -70,7 +70,8 @@ def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 def load_catalog_text(source_text: str) -> dict[str, Any]:
     """Parse untrusted public metadata without duplicate-key or NaN ambiguity."""
     _require(type(source_text) is str, "CATALOG_TEXT_REQUIRED")
-    _require(len(source_text.encode("utf-8")) <= MAX_CATALOG_BYTES, "CATALOG_TOO_LARGE")
+    # Delegate UTF-8, byte-limit and surrogate checks to the strict parser so
+    # malformed Python text becomes a structured HOLD rather than a raw exception.
     try:
         value = strict_inventory_loads(source_text)
     except InventoryJSONError as exc:
@@ -192,7 +193,12 @@ def main(argv: list[str] | None = None) -> int:
         result = route_public_issue(raw, args.issue) if args.issue is not None else lookup_public_repo(raw, args.lookup) if args.lookup is not None else validate_catalog(raw)
         print(json.dumps(result, indent=2, sort_keys=True))
         return 0
-    except (RegistryError, json.JSONDecodeError, OSError, UnicodeError) as exc:
+    except (OSError, UnicodeError):
+        # File/encoding exceptions can include sensitive local paths or bytes.
+        # Never surface those details in a public or downstream CLI receipt.
+        print(json.dumps({"status": "HOLD", "reason": "INPUT_READ_FAILED"}))
+        return 2
+    except (RegistryError, json.JSONDecodeError) as exc:
         print(json.dumps({"status": "HOLD", "reason": type(exc).__name__ + ": " + str(exc)}))
         return 2
 
