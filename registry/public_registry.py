@@ -82,6 +82,8 @@ def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 def load_catalog_text(source_text: str) -> dict[str, Any]:
     """Parse untrusted public metadata without duplicate-key or NaN ambiguity."""
     _require(type(source_text) is str, "CATALOG_TEXT_REQUIRED")
+    # Reject enormous caller strings before allocating an equally enormous UTF-8 copy.
+    _require(len(source_text) <= MAX_CATALOG_BYTES, "CATALOG_TOO_LARGE")
     # Delegate UTF-8, byte-limit and surrogate checks to the strict parser so
     # malformed Python text becomes a structured HOLD rather than a raw exception.
     try:
@@ -193,6 +195,19 @@ def route_public_issue(raw: Mapping[str, Any], url: str) -> dict[str, Any]:
     }
 
 
+def _read_bounded_catalog_text(path: Path) -> str:
+    """Read at most the documented size limit plus a sentinel byte.
+
+    The former Path.read_text() allocated the complete untrusted file before
+    checking MAX_CATALOG_BYTES inside the JSON decoder. This gate precedes
+    decoding and never returns the input path in an error.
+    """
+    with path.open("rb") as stream:
+        payload = stream.read(MAX_CATALOG_BYTES + 1)
+    _require(len(payload) <= MAX_CATALOG_BYTES, "CATALOG_TOO_LARGE")
+    return payload.decode("utf-8")
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Offline, public-only Noosphere repo source registry")
     ap.add_argument("--input", type=Path, default=Path(__file__).resolve().parent / "public_repo_inventory_2026-11-22.json")
@@ -201,7 +216,7 @@ def main(argv: list[str] | None = None) -> int:
     group.add_argument("--issue", help="exact public GitHub issue or pull URL")
     args = ap.parse_args(argv)
     try:
-        raw = load_catalog_text(args.input.read_text(encoding="utf-8"))
+        raw = load_catalog_text(_read_bounded_catalog_text(args.input))
         result = route_public_issue(raw, args.issue) if args.issue is not None else lookup_public_repo(raw, args.lookup) if args.lookup is not None else validate_catalog(raw)
         print(json.dumps(result, indent=2, sort_keys=True))
         return 0
