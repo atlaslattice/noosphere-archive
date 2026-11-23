@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from datetime import date
 from collections import Counter
 from pathlib import Path
 from typing import Any, Mapping
@@ -57,6 +58,17 @@ def _natural(v: Any) -> bool:
     return type(v) is int and v >= 0  # reject booleans
 
 
+def _valid_snapshot_date(value: Any) -> bool:
+    """Require a real Gregorian calendar day, not merely YYYY-MM-DD digits."""
+    if type(value) is not str or re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", value) is None:
+        return False
+    try:
+        date.fromisoformat(value)
+    except ValueError:
+        return False
+    return True
+
+
 def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     """Do not let a later public flag shadow earlier non-public metadata."""
     result: dict[str, Any] = {}
@@ -102,7 +114,7 @@ def validate_catalog(raw: Any) -> dict[str, Any]:
     _require(raw["schema"] == SCHEMA, "SCHEMA_MISMATCH")
     _require(raw["source_query"] == SOURCE_QUERY and raw["coverage"] == COVERAGE, "SOURCE_SCOPE_MISMATCH")
     _require(raw["public_only"] is True, "PUBLIC_ONLY_REQUIRED")
-    _require(_string(raw["source"]) and type(raw["observed_date_utc"]) is str and re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw["observed_date_utc"]) is not None, "MISSING_SNAPSHOT_PASSPORT")
+    _require(_string(raw["source"]) and _valid_snapshot_date(raw["observed_date_utc"]), "MISSING_SNAPSHOT_PASSPORT")
     pages, lengths = raw["source_pages"], raw["source_page_lengths"]
     _require(type(pages) is list and type(lengths) is list and len(pages) == len(lengths) >= 2, "PAGE_CUT_MISSING")
     _require(all(type(x) is int and x == i + 1 for i, x in enumerate(pages)), "PAGE_SEQUENCE_INVALID")
