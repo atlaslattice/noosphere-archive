@@ -1,8 +1,11 @@
 """No GitHub calls, secrets, or writable external state."""
 import json
+import subprocess
+import sys
+import tempfile
 import unittest
 from pathlib import Path
-from registry.public_registry import RegistryError, validate_catalog
+from registry.public_registry import RegistryError, validate_catalog, load_catalog_text
 from registry.strict_inventory_json import (
     InventoryJSONError, MAX_INVENTORY_BYTES, strict_inventory_loads,
 )
@@ -89,6 +92,40 @@ class StrictPublicRegistryInput(unittest.TestCase):
     def test_rejects_duplicate_keys_after_json_escaping(self):
         with self.assertRaisesRegex(InventoryJSONError, "DUPLICATE_REGISTRY_KEY"):
             strict_inventory_loads('{"a":1,"\\u0061":2}')
+
+    def test_python_unpaired_surrogate_is_a_structured_catalog_hold(self):
+        # Simulates a malformed in-process caller; no private source involved.
+        with self.assertRaisesRegex(RegistryError, "^REGISTRY_JSON_INVALID$"):
+            load_catalog_text('{"note":"' + chr(0xD800) + '"}')
+
+    def test_cli_missing_file_does_not_disclose_path(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            marker = "synthetic_secret_local_path_do_not_echo.json"
+            missing = Path(tmp) / marker
+            run = subprocess.run(
+                [sys.executable, "-m", "registry.public_registry", "--input", str(missing)],
+                cwd=Path(__file__).resolve().parents[1], capture_output=True, text=True,
+                check=False,
+            )
+            self.assertEqual(run.returncode, 2)
+            self.assertEqual(json.loads(run.stdout),
+                             {"status": "HOLD", "reason": "INPUT_READ_FAILED"})
+            self.assertNotIn(marker, run.stdout + run.stderr)
+
+    def test_cli_invalid_utf8_does_not_disclose_filename(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            marker = "synthetic_secret_invalid_utf8_do_not_echo.json"
+            invalid = Path(tmp) / marker
+            invalid.write_bytes(b"\\xff")
+            run = subprocess.run(
+                [sys.executable, "-m", "registry.public_registry", "--input", str(invalid)],
+                cwd=Path(__file__).resolve().parents[1], capture_output=True, text=True,
+                check=False,
+            )
+            self.assertEqual(run.returncode, 2)
+            self.assertEqual(json.loads(run.stdout),
+                             {"status": "HOLD", "reason": "INPUT_READ_FAILED"})
+            self.assertNotIn(marker, run.stdout + run.stderr)
 
 
 if __name__ == "__main__":
