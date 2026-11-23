@@ -163,10 +163,12 @@ export function evaluate(bundle, trust) {
     && exactlySame(x, post, ['requestId','seq','room'])
     && x.conversationId === ib.conversationId && typeof x.nonce === 'string'
     && x.nonce.length >= 16 && x.occurredAt >= post.occurredAt
+    && Number.isSafeInteger(x.leaseExpiresAt)
     && x.occurredAt <= x.leaseExpiresAt);
   const activation = first(rows, 'MODEL_ACTIVATED', x => callback
     && exactlySame(x, callback, ['nonce','conversationId','room'])
-    && x.occurredAt >= callback.occurredAt);
+    && x.occurredAt >= callback.occurredAt
+    && x.occurredAt <= callback.leaseExpiresAt);
   const ack = first(rows, 'RECEIVER_ACK', x => activation && callback
     && exactlySame(x, callback, ['nonce','conversationId','room','requestId','seq'])
     && x.occurredAt >= activation.occurredAt);
