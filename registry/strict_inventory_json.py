@@ -51,6 +51,11 @@ def _bounded_int(value: str) -> int:
 def strict_inventory_loads(raw: str | bytes) -> Any:
     if type(raw) not in (str, bytes):
         raise InventoryJSONError("REGISTRY_TEXT_REQUIRED")
+    # Every Unicode scalar needs at least one UTF-8 byte. Reject oversized
+    # caller text before allocating an encoded copy; retain the byte check
+    # for multibyte text that fits the character bound.
+    if len(raw) > MAX_INVENTORY_BYTES:
+        raise InventoryJSONError("REGISTRY_BYTES_EXCEEDED")
     try:
         payload = raw.encode("utf-8") if type(raw) is str else raw
         if len(payload) > MAX_INVENTORY_BYTES:
