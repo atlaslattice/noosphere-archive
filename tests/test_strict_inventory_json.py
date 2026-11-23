@@ -116,7 +116,7 @@ class StrictPublicRegistryInput(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             marker = "synthetic_secret_invalid_utf8_do_not_echo.json"
             invalid = Path(tmp) / marker
-            invalid.write_bytes(b"\\xff")
+            invalid.write_bytes(bytes([0xff]))
             run = subprocess.run(
                 [sys.executable, "-m", "registry.public_registry", "--input", str(invalid)],
                 cwd=Path(__file__).resolve().parents[1], capture_output=True, text=True,
