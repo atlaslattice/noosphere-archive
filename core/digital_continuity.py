@@ -64,6 +64,20 @@ def _require_scalar_unicode(value: Any) -> None:
             pending.extend(current.keys())
             pending.extend(current.values())
 
+def _strict_json_int(value: str) -> int:
+    """Fail closed on integer literals beyond the runtime-safe decimal digit cap.
+
+    This bounds parsing even on Python builds with the stdlib int digit limit
+    disabled. It does not change small/ordinary JSON integer semantics.
+    """
+    if len(value.lstrip("-")) > 4300:
+        raise ContinuityHold("OVERSIZED_JSON_INTEGER")
+    try:
+        return int(value)
+    except ValueError as exc:
+        raise ContinuityHold("OVERSIZED_JSON_INTEGER") from exc
+
+
 def parse_text(s: str) -> Any:
     def unique_pairs(pairs):
         out = {}
@@ -73,7 +87,7 @@ def parse_text(s: str) -> Any:
         return out
     result = json.loads(s, object_pairs_hook=unique_pairs,
                         parse_constant=lambda _: (_ for _ in ()).throw(ContinuityHold("NONFINITE_JSON_NUMBER")),
-                        parse_float=_finite_json_float)
+                        parse_float=_finite_json_float, parse_int=_strict_json_int)
     _require_scalar_unicode(result)
     return result
 
