@@ -1,0 +1,36 @@
+name: SwarmChat source evidence proof checks
+on:
+  pull_request:
+    paths:
+      - 'tools/swarmchat_proof_gate.mjs'
+      - 'tools/swarmchat_observation_gate.mjs'
+      - 'tests/swarmchat_proof_gate.test.mjs'
+      - 'tests/swarmchat_build_lineage.test.mjs'
+      - 'tests/swarmchat_observation_gate.test.mjs'
+      - 'docs/SWARMCHAT_HOST_ACCEPTANCE_v02.md'
+      - '.github/workflows/swarmchat-proof-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-negative-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Offline signed claims, build lineage and broker observation
+        run: |
+          node --test tests/swarmchat_proof_gate.test.mjs tests/swarmchat_build_lineage.test.mjs tests/swarmchat_observation_gate.test.mjs
+      - name: No-arguments proof CLI must fail closed
+        run: |
+          set +e
+          node tools/swarmchat_proof_gate.mjs
+          exitcode=$?
+          set -e
+          test "$exitcode" -eq 2
