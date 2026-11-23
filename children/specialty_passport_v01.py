@@ -70,6 +70,10 @@ def _source_ref(ref: Any):
     # urlsplit silently strips some control characters; reject before parsing.
     if any(ord(ch) < 32 or ord(ch) == 127 for ch in ref):
         _fail('source reference contains control characters')
+    # A lone UTF-16 surrogate is not a Unicode scalar value: it can pass
+    # URL syntax checks but crash the later UTF-8 digest with UnicodeEncodeError.
+    if any(0xD800 <= ord(ch) <= 0xDFFF for ch in ref):
+        _fail('source reference contains invalid Unicode surrogate')
     try:
         s = urlsplit(ref)
         host, port = s.hostname, s.port
