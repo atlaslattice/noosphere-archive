@@ -247,9 +247,13 @@ test('callback lease must be a safe integer, not a coercible signed string',()=>
 });
 test('activation exactly at callback lease boundary remains structurally eligible',()=>{
   const f=fixture();addIdentity(f);addExchange(f);
-  f.bundle.receipts=f.bundle.receipts.filter(e=>JSON.parse(
-    Buffer.from(e.payload_b64,'base64url')).kind!=='MODEL_ACTIVATED');
-  f.put('MODEL_ACTIVATED',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',
-    occurredAt:1300});
+  const drop=new Set(['MODEL_ACTIVATED','RECEIVER_ACK','REPLY_STORE','REPLY_READBACK']);
+  f.bundle.receipts=f.bundle.receipts.filter(e=>!drop.has(
+    JSON.parse(Buffer.from(e.payload_b64,'base64url')).kind));
+  f.put('MODEL_ACTIVATED',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',occurredAt:1300});
+  f.put('RECEIVER_ACK',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',
+    requestId:'request-1',seq:7,occurredAt:1310});
+  f.put('REPLY_STORE',{conversationId:'thread-b',seq:8,parentSeq:7,requestId:'reply-1',occurredAt:1320});
+  f.put('REPLY_READBACK',{seq:8,parentSeq:7,requestId:'reply-1',occurredAt:1330});
   assert.equal(status(f,'a2a'),'SYNTHETIC_OR_NONPRODUCTION_ONLY');
 });
