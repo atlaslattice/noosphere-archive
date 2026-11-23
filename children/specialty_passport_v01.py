@@ -220,7 +220,11 @@ def match_task(passports: list[dict[str, Any]], coordinate: str, task_kind: str,
                             'routing_affinity_self_reported': rank,
                             'interest_self_reported': s['interest'],
                             'expertise_self_reported': s['claimed_expertise'],
-                            'public_source_pointers': list(s['evidence_refs']),
+                            # A plausible HTTPS hostname does not attest public rights on its path.
+                             # Keep original pointers in the source-controlled profile;
+                             # never copy them into a generalized Work routing result.
+                             'public_source_pointers': [],
+                             'source_pointer_rights': 'WITHHELD_UNVERIFIED',
                             'confidence_class': 'SELF_REPORTED_ONLY',
                             'role_lease': 'NOT_GRANTED', 'host_identity': 'UNVERIFIED'})
     results.sort(key=lambda v: (-v['routing_affinity_self_reported'], v['declared_key']))
