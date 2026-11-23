@@ -113,3 +113,25 @@ These checks protect an owner-controlled local staging directory from accidental
 ## Known limitations
 
 JSON Schema validates structure, not ontology truth, hash preimages, resident identity, signed authority, full provider exports, external privacy rights, or actual deployments. The CLI checks structural graph referential integrity and can preserve invalid bytes, but does not connect to hosted ingestion or permanently register provenance. Deployment needs independent integration, source-range tests, security review and human-root approval.
+
+## Owner-only permissions on opt-in local quarantine (2026-11-23)
+
+A focused synthetic privacy check showed the earlier local writer used
+`Path.open("xb")` and `mkdir()` defaults; under a typical POSIX
+`umask 022` this made newly preserved rejected source bytes and receipts
+mode **0644**, and their newly created directory mode **0755**.
+The revised source creates each new quarantine file **0600** with an
+exclusive `os.open(O_CREAT|O_EXCL)` before writing, and asks for **0700**
+on a newly created final review directory. Two POSIX regression methods
+cover new directories and files in an existing permissive directory.
+Byte-identical replay, preserved conflicting receipts and direct-symlink
+refusal remain unchanged.
+
+This is a local confidentiality hardening **only**, not secure storage
+attestation: existing directories are not silently chmod'd or audited,
+existing old files retain their prior permissions, intermediate parents,
+ACLs and remote mounts require an operator's own review, and the prior
+known local filesystem race limitations remain. Do not place restricted
+source bodies in a publicly shared tree; this draft is not a hosted Work
+intake or licensed source-rights grant. Actual source/rights approval,
+independent CI, and selected-spine reconciliation remain HELD.
