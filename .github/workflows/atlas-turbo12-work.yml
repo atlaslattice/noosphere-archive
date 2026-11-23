@@ -1,0 +1,24 @@
+name: Atlas Turbo12 source-only Work handoff tests
+on:
+  pull_request:
+    paths:
+      - 'tools/atlas-turbo-12/work-handoff.mjs'
+      - 'tests/atlas_turbo12_work_handoff.test.mjs'
+      - 'docs/ATLAS_TURBO12_CIVILIZATIONAL_HANDOFF.md'
+      - '.github/workflows/atlas-turbo12-work.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  non-authorizing-source-checks:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test tests/atlas_turbo12_work_handoff.test.mjs
