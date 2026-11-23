@@ -121,6 +121,11 @@ def validate_catalog(raw: Any) -> dict[str, Any]:
     _require(type(pages) is list and type(lengths) is list and len(pages) == len(lengths) >= 2, "PAGE_CUT_MISSING")
     _require(all(type(x) is int and x == i + 1 for i, x in enumerate(pages)), "PAGE_SEQUENCE_INVALID")
     _require(all(_natural(n) for n in lengths) and lengths[-1] == 0, "INCOMPLETE_PAGE_FRONTIER")
+    # GitHub repository search returns at most 100 results per page. A
+    # non-final empty page is a completed frontier, not a later live page.
+    # Treat impossible page partitions as source-cut HOLDs, not as evidence
+    # of a comprehensive/publicly ready repository census.
+    _require(all(0 < n <= 100 for n in lengths[:-1]), "PAGE_LENGTH_INVALID")
     _require(_natural(raw["records_count"]) and _natural(raw["excluded_nonpublic_count"]), "COUNTS_NOT_INTEGER")
     _require(type(raw["notes"]) is list and all(_string(x) for x in raw["notes"]), "SOURCE_NOTES_INVALID")
     records = raw["records"]
