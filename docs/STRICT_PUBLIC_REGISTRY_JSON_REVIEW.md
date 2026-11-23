@@ -23,3 +23,17 @@ Source-only review found two boundary defects in the existing draft implementati
 GitHub source commits: https://github.com/atlaslattice/noosphere-archive/commit/21407412ce561dea9ef7db8d37c462ede36da8d2 ; https://github.com/atlaslattice/noosphere-archive/commit/6077da10c6bff482ee515b1b338be3f414082c5c ; correction https://github.com/atlaslattice/noosphere-archive/commit/dd596d32e632fff80ac3ae6873c86f8580de113e .
 
 **HOLD:** exact-head full repository tests, fresh CI runner admission/step logs (issue #28), owner source-rights and code review before merger. This does not change source ownership, licensing, GitHub visibility, permission, CANON, public release, deployment or any private-data admission decision.
+
+## 2026-11-22 addendum — validate real snapshot calendar dates
+
+The old public-only validator tested `observed_date_utc` against a digit-pattern but accepted impossible dates, including `2026-02-29`, `2026-13-01` and `2026-04-31`, while still emitting `PUBLIC_METADATA_STRUCTURALLY_VALID_NOT_LIVE_VERIFIED`. On the exact pre-change Git blob `877a53ef320bee16e2a91253446680b314d209b0`, six of twelve targeted independent synthetic tests failed (including CLI's invalid-date HOLD case).
+
+An additive fail-closed `_valid_snapshot_date` helper uses strict ASCII `YYYY-MM-DD` and Python stdlib `date.fromisoformat`; invalid dates return the existing `MISSING_SNAPSHOT_PASSPORT` code. The valid historical cut `2026-11-22` and leap day `2024-02-29` remain accepted; public pointer routing, original 272-record snapshot, source/page counts, issue permissions and rights gates are not rewritten.
+
+Exact locally reconstructed source was Git blob-verified before testing. Locally **41 distinct offline unittest methods PASS in ordinary Python and 41 PASS in optimized `-O`**: 29 independent exact-parser tests (including 1,000 deterministic synthetic JSON round-trips) and 12 public-registry snapshot/CLI/rights-boundary methods. `compileall` passed. This is a partial two-module offline reconstruction with synthetic metadata, NOT a full checked-out PR suite, real public inventory re-validation, hosted CI pass or owner rights approval.
+
+Source fix: https://github.com/atlaslattice/noosphere-archive/commit/5428fc0d133e4faa675e52bfc88667be1d25a167 (`registry/public_registry.py` blob `7f39d4fa4319f0b4dd0fbc0941273e99b6fabad6`).
+Authored 12 regression tests: https://github.com/atlaslattice/noosphere-archive/commit/d80e860b8ea605d237f96d55674435f25a579be2 (`tests/test_snapshot_calendar_date.py` blob `d8f3de00efe69e1cb482ef99588e1c0c38bffa34`).
+The unchanged strict parser blob is `3e911d5846e90c611a9875a69e4ba698be1935ac`. GitHub readback matched all three blobs. Original issue #3 and CI blocker #28 remain OPEN; PR #26 remains DRAFT/UNMERGED. Original predecessor draft #22 CLOSED but retained. No independent peer approval, full integrated CI, hostname/rights attestation, CANON adoption or production change is claimed.
+
+Shared GitHub Actions gate remains HELD: Noosphere run https://github.com/atlaslattice/noosphere-archive/actions/runs/45098142667 and Providers run https://github.com/atlaslattice/atlas-lattice-providers/actions/runs/45103832079 had failed jobs with zero exposed steps. GitHub billing lock is only an external documented candidate until the account owner supplies exact native check-run annotation; no payment, settings change or rerun authorized by this source-only fix.
