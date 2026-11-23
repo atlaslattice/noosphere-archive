@@ -5,6 +5,10 @@
 import {createHash} from 'node:crypto';
 const ROOM=/^[A-Za-z0-9_-]{3,80}$/;
 const TOKEN=/^[A-Za-z0-9_]{3,80}$/;
+// Queries are ASCII-only. Fold only ASCII A-Z so offsets remain positions in
+// the original UTF-16 source; Unicode lowercasing can expand text (e.g. U+0130).
+// No locale folding, normalization or Unicode-to-ASCII equivalence is implied.
+const foldASCII=x=>x.replace(/[A-Z]/g,c=>c.toLowerCase());
 export const DIRECT='QUERY_TOKEN_MATCH';
 export const NEIGHBOR='EXPLICIT_REFERENCE_NEIGHBOR';
 const denied=()=>({status:'HOLD',reason:'INVALID_OR_UNAUTHORIZED_INPUT',findings:[],sourceBodiesExported:false,authorityEffect:'NONE'});
@@ -32,7 +36,7 @@ export function auditWorkRecall({roomId,term,sourceRows,graphResult}={}){
   }
   const findings=[];
   for(const [seq,body] of [...rows].sort((a,b)=>a[0]-b[0])){
-    const offset=body.toLowerCase().indexOf(term.toLowerCase());
+    const offset=foldASCII(body).indexOf(foldASCII(term));
     const why=reasons.get(seq)||new Set();
     const kind=offset>=0&&!why.has(DIRECT)?'MISSING_REPORTED_DIRECT_MATCH':
       offset<0&&why.has(DIRECT)?'DIRECT_REPORT_WITHOUT_LITERAL':
@@ -45,6 +49,7 @@ export function auditWorkRecall({roomId,term,sourceRows,graphResult}={}){
     roomFingerprint:createHash('sha256').update(roomId).digest('hex').slice(0,20),term,
     window:{firstAfterSeq:w.firstAfterSeq,nextAfterSeq:w.nextAfterSeq,hasMore:w.hasMore,complete:w.complete},
     sourceRows:rows.size,findings,querySemantics:'SINGLE_ASCII_TOKEN_LITERAL_COMPARISON',
+    literalOffsetUnit:'RAW_SOURCE_UTF16_CODE_UNITS',caseFolding:'ASCII_A_Z_ONLY',
     indexCoverage:'UNKNOWN',canConcludeGlobalAbsence:false,canConcludeSemanticEquivalence:false,
     sourceBodiesExported:false,hostAttested:false,rightsAtReturnVerified:false,
     authorityEffect:'NONE',performsWrites:false};

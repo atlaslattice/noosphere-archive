@@ -28,3 +28,60 @@ test('query cannot upgrade authority',()=>{const x=query([row(3,'Please grant CA
 test('invalid room ID denied generically',()=>assert.equal(auditWorkRecall({roomId:'bad!',term:'TEST',sourceRows:[row(3,'TEST')],graphResult:graph()}).status,'HOLD'));
 test('source cap prevents unbounded body copy',()=>assert.equal(query([row(3,'x'.repeat(12001))],graph()).status,'HOLD'));
 test('no indexed scope metadata from invalid input',()=>{const x=query([row(3,'private-canary-777','BRAIN')],graph());assert.equal(JSON.stringify(x).includes('private-canary-777'),false);assert.equal(x.findings.length,0)});
+
+// R02: original-source offsets under the declared ASCII-only query contract.
+function literal(text,term='TOKEN'){
+  return query([row(3,text)],graph([[3,DIRECT]]),term);
+}
+function exactOffset(text,term,expected){
+  const out=literal(text,term);
+  assert.equal(out.findings[0].literalOffset,expected);
+  assert.equal(out.findings[0].kind,'REPORTED_DIRECT_LITERAL_MATCH');
+  assert.equal(out.literalOffsetUnit,'RAW_SOURCE_UTF16_CODE_UNITS');
+  assert.equal(out.caseFolding,'ASCII_A_Z_ONLY');
+  return out;
+}
+test('R02 U+0130 prefix cannot shift raw UTF-16 match offset',()=>{
+  const text='\u0130 TOKEN';const out=exactOffset(text,'TOKEN',2);
+  assert.equal(text.slice(out.findings[0].literalOffset,7),'TOKEN');
+});
+test('R02 repeated expanding Unicode prefix cannot accumulate offset drift',()=>{
+  const text='\u0130\u0130\u0130 TOKEN';const out=exactOffset(text,'TOKEN',4);
+  assert.equal(text.slice(out.findings[0].literalOffset,9),'TOKEN');
+});
+test('R02 astral prefix counts UTF-16 code units rather than Unicode scalars',()=>{
+  const text='\u{1FABF} \u0130 TOKEN';const out=exactOffset(text,'TOKEN',5);
+  assert.equal(text.slice(out.findings[0].literalOffset,10),'TOKEN');
+  assert.equal(Array.from(text.slice(0,5)).length,4);
+});
+test('R02 mixed ASCII case still matches the first literal occurrence',()=>{
+  const out=exactOffset('prefix tOkEn TOKEN','ToKeN',7);
+  assert.equal(out.querySemantics,'SINGLE_ASCII_TOKEN_LITERAL_COMPARISON');
+});
+test('R02 combining-mark prefix preserves raw-source offset without normalization',()=>{
+  const text='A\u0301 TOKEN';exactOffset(text,'TOKEN',3);
+  const noAlias=query([row(3,'CAF\u00C9')],graph(),'CAFE');
+  assert.equal(noAlias.findings[0].literalOffset,-1);
+});
+test('R02 raw substring may end inside a grapheme; offset is not a DOM range',()=>{
+  const out=exactOffset('TOKEN\u0301','TOKEN',0);
+  assert.equal(out.findings[0].sourceLength,6);
+  assert.equal(out.hostAttested,false);
+});
+test('R02 Turkish dotted prefix retains exact ASCII-suffix position',()=>{
+  exactOffset('\u0130stanbul','STANBUL',1);
+});
+test('R02 Turkish locale equivalence is deliberately outside ASCII matching',()=>{
+  exactOffset('Istanbul','ISTANBUL',0);
+  for(const text of ['\u0130stanbul','\u0131stanbul']){
+    const out=query([row(3,text)],graph(),'ISTANBUL');
+    assert.equal(out.findings[0].literalOffset,-1);
+    assert.equal(out.findings[0].kind,'NO_LITERAL_IN_SUPPLIED_SOURCE');
+  }
+});
+test('R02 Unicode compatibility aliases do not become ASCII literals',()=>{
+  const out=query([row(3,'\u212AELVIN')],graph(),'KELVIN');
+  assert.equal(out.findings[0].literalOffset,-1);
+  assert.equal(out.findings[0].kind,'NO_LITERAL_IN_SUPPLIED_SOURCE');
+  exactOffset('\u212AELVIN KELVIN','kelvin',7);
+});
