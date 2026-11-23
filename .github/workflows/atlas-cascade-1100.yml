@@ -1,0 +1,33 @@
+name: Atlas cascade 1100 source-only regression
+on:
+  pull_request:
+    paths:
+      - 'tools/atlas_cascade_lab.mjs'
+      - 'tools/audit_atlas_cascade.py'
+      - 'tests/atlas_cascade_lab.test.mjs'
+      - 'tests/test_audit_atlas_cascade.py'
+      - 'docs/ATLAS_CASCADE_1100_v01.md'
+      - '.github/workflows/atlas-cascade-1100.yml'
+permissions:
+  contents: read
+jobs:
+  offline-cascade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run 100 primary + 1000 resumed Work-only synthetic trials
+        run: node tools/atlas_cascade_lab.mjs --output dist > /dev/null
+      - name: Node source gate tests
+        run: node --test tests/atlas_cascade_lab.test.mjs
+      - name: Node jitless negative tests
+        run: node --jitless --test tests/atlas_cascade_lab.test.mjs
+      - name: Independent Python audit
+        run: python tools/audit_atlas_cascade.py dist/stage100.json dist/stage1100.json dist/summary.json
+      - name: Independent Python mutation tests
+        run: python -m unittest discover -s tests -p 'test_audit_atlas_cascade.py' -v
