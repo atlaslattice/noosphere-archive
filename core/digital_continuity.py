@@ -51,6 +51,19 @@ def _finite_json_float(value: str) -> float:
     return number
 
 
+def _require_scalar_unicode(value: Any) -> None:
+    """Reject unpaired UTF-16 surrogate code points in JSON keys and values."""
+    pending = [value]
+    while pending:
+        current = pending.pop()
+        if type(current) is str:
+            require(re.search(r"[\ud800-\udfff]", current) is None, "INVALID_UNICODE_SCALAR")
+        elif type(current) is list:
+            pending.extend(current)
+        elif type(current) is dict:
+            pending.extend(current.keys())
+            pending.extend(current.values())
+
 def parse_text(s: str) -> Any:
     def unique_pairs(pairs):
         out = {}
@@ -58,9 +71,11 @@ def parse_text(s: str) -> Any:
             if k in out: raise ContinuityHold("DUPLICATE_JSON_KEY")
             out[k]=v
         return out
-    return json.loads(s, object_pairs_hook=unique_pairs,
-                      parse_constant=lambda _: (_ for _ in ()).throw(ContinuityHold("NONFINITE_JSON_NUMBER")),
-                      parse_float=_finite_json_float)
+    result = json.loads(s, object_pairs_hook=unique_pairs,
+                        parse_constant=lambda _: (_ for _ in ()).throw(ContinuityHold("NONFINITE_JSON_NUMBER")),
+                        parse_float=_finite_json_float)
+    _require_scalar_unicode(result)
+    return result
 
 
 def _snapshot_plain_json(value: Any) -> Any:
