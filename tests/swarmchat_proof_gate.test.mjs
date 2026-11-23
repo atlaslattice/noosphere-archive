@@ -224,3 +224,32 @@ test('strict passed vocabulary does not reject recognized privacy/workspace cont
   assert.equal(out.gates.workspace.status,'SYNTHETIC_OR_NONPRODUCTION_ONLY');
   assert.equal(out.gates.privacy.status,'SYNTHETIC_OR_NONPRODUCTION_ONLY');
 });
+
+test('callback activation after signed lease expiration cannot prove A2A',()=>{
+  const f=fixture();addIdentity(f);addExchange(f);
+  const drop=new Set(['MODEL_ACTIVATED','RECEIVER_ACK','REPLY_STORE','REPLY_READBACK']);
+  f.bundle.receipts=f.bundle.receipts.filter(e=>!drop.has(
+    JSON.parse(Buffer.from(e.payload_b64,'base64url')).kind));
+  f.put('MODEL_ACTIVATED',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',occurredAt:1301});
+  f.put('RECEIVER_ACK',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',
+    requestId:'request-1',seq:7,occurredAt:1310});
+  f.put('REPLY_STORE',{conversationId:'thread-b',seq:8,parentSeq:7,requestId:'reply-1',occurredAt:1320});
+  f.put('REPLY_READBACK',{seq:8,parentSeq:7,requestId:'reply-1',occurredAt:1330});
+  assert.equal(status(f,'a2a'),'HOLD_INCOMPLETE_OR_MISMATCH');
+});
+test('callback lease must be a safe integer, not a coercible signed string',()=>{
+  const f=fixture();addIdentity(f);addExchange(f);
+  f.bundle.receipts=f.bundle.receipts.filter(e=>JSON.parse(
+    Buffer.from(e.payload_b64,'base64url')).kind!=='CALLBACK_DELIVERED');
+  f.put('CALLBACK_DELIVERED',{conversationId:'thread-b',seq:7,requestId:'request-1',
+    nonce:'nonce-12345678901234567890',leaseExpiresAt:'1300',occurredAt:1100});
+  assert.equal(status(f,'a2a'),'HOLD_INCOMPLETE_OR_MISMATCH');
+});
+test('activation exactly at callback lease boundary remains structurally eligible',()=>{
+  const f=fixture();addIdentity(f);addExchange(f);
+  f.bundle.receipts=f.bundle.receipts.filter(e=>JSON.parse(
+    Buffer.from(e.payload_b64,'base64url')).kind!=='MODEL_ACTIVATED');
+  f.put('MODEL_ACTIVATED',{conversationId:'thread-b',nonce:'nonce-12345678901234567890',
+    occurredAt:1300});
+  assert.equal(status(f,'a2a'),'SYNTHETIC_OR_NONPRODUCTION_ONLY');
+});
