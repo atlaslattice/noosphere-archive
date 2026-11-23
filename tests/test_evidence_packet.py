@@ -1,6 +1,8 @@
 """Non-destructive synthetic acceptance tests for issues #8, #11 and #12."""
 import copy
 import json
+import os
+import stat
 import tempfile
 import unittest
 from pathlib import Path
@@ -214,6 +216,42 @@ class EvidencePacketTests(unittest.TestCase):
             self.assertEqual(validate_file(path)["disposition"], "HOLD")
             self.assertEqual([x.name for x in Path(d).iterdir()], ["bad.json"])
 
+
+    @unittest.skipUnless(os.name == "posix", "POSIX permission masks")
+    def test_new_quarantine_records_are_owner_only_under_common_umask(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            path = root / "invalid.json"
+            bad = copy.deepcopy(self.good)
+            bad.pop("raw_export_status")
+            path.write_bytes(encode(bad))
+            previous = os.umask(0o022)
+            try:
+                v = validate_file(path, root / "private-review")
+            finally:
+                os.umask(previous)
+            folder = root / "private-review"
+            self.assertEqual(stat.S_IMODE(folder.stat().st_mode) & 0o077, 0)
+            for key in ("source", "receipt"):
+                preserved = Path(v["quarantine"][key])
+                self.assertEqual(stat.S_IMODE(preserved.stat().st_mode) & 0o077, 0)
+            self.assertEqual(Path(v["quarantine"]["source"]).read_bytes(), path.read_bytes())
+
+    @unittest.skipUnless(os.name == "posix", "POSIX permission masks")
+    def test_existing_permissive_quarantine_dir_still_gets_private_new_files(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            path = root / "invalid.json"
+            bad = copy.deepcopy(self.good)
+            bad.pop("raw_export_status")
+            path.write_bytes(encode(bad))
+            folder = root / "preexisting"
+            folder.mkdir()
+            folder.chmod(0o755)
+            v = validate_file(path, folder)
+            self.assertEqual(stat.S_IMODE(folder.stat().st_mode), 0o755)  # no silent chmod
+            for key in ("source", "receipt"):
+                self.assertEqual(stat.S_IMODE(Path(v["quarantine"][key]).stat().st_mode) & 0o077, 0)
 
 if __name__ == "__main__":
     unittest.main()
