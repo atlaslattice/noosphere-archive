@@ -1,11 +1,14 @@
 """No GitHub calls, secrets, or writable external state."""
 import json
+import contextlib
+import io
+from unittest.mock import patch
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
-from registry.public_registry import RegistryError, validate_catalog, load_catalog_text
+from registry.public_registry import RegistryError, validate_catalog, load_catalog_text, _read_bounded_catalog_text, main
 from registry.strict_inventory_json import (
     InventoryJSONError, MAX_INVENTORY_BYTES, strict_inventory_loads,
 )
@@ -20,6 +23,39 @@ class StrictPublicRegistryInput(unittest.TestCase):
                 candidate = dict(baseline, observed_date_utc=invalid)
                 with self.assertRaisesRegex(RegistryError, "MISSING_SNAPSHOT_PASSPORT"):
                     validate_catalog(candidate)
+
+    def test_cli_size_gate_before_complete_file_read(self):
+        # The prior CLI used Path.read_text(), allocating the entire supplied file.
+        with tempfile.TemporaryDirectory() as tmp:
+            candidate = Path(tmp) / "public-synthetic-oversize.json"
+            candidate.write_bytes(b" " * (MAX_INVENTORY_BYTES + 1))
+            with self.assertRaisesRegex(RegistryError, "^CATALOG_TOO_LARGE$"):
+                _read_bounded_catalog_text(candidate)
+            out = io.StringIO()
+            # If the CLI regresses to its prior unbounded Path.read_text,
+            # this assertion fails even when the downstream parser later HOLDS.
+            with patch.object(Path, "read_text", side_effect=AssertionError("UNBOUNDED_READ")), contextlib.redirect_stdout(out):
+                result = main(["--input", str(candidate)])
+            self.assertEqual(result, 2)
+            self.assertEqual(json.loads(out.getvalue()),
+                             {"status": "HOLD", "reason": "RegistryError: CATALOG_TOO_LARGE"})
+
+    def test_exact_byte_limit_has_no_false_size_failure(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            candidate = Path(tmp) / "public-exact-limit.json"
+            candidate.write_bytes(b" " * MAX_INVENTORY_BYTES)
+            self.assertEqual(len(_read_bounded_catalog_text(candidate)), MAX_INVENTORY_BYTES)
+
+    def test_multibyte_utf8_byte_limit_not_character_limit(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            candidate = Path(tmp) / "public-multibyte-limit.json"
+            candidate.write_bytes("é".encode("utf-8") * (MAX_INVENTORY_BYTES // 2 + 1))
+            with self.assertRaisesRegex(RegistryError, "^CATALOG_TOO_LARGE$"):
+                _read_bounded_catalog_text(candidate)
+
+    def test_direct_huge_string_hold_precedes_json_decode(self):
+        with self.assertRaisesRegex(RegistryError, "^CATALOG_TOO_LARGE$"):
+            load_catalog_text(" " * (MAX_INVENTORY_BYTES + 1))
 
     def test_valid_python_literal_types(self):
         self.assertEqual(strict_inventory_loads('{"name":"atlaslattice/noosphere-archive","archived":false,"count":272}'),
