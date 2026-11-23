@@ -104,7 +104,9 @@ def validate_ingestion(packet: Any) -> IngestionResult:
                 problems.append("whole_export_digest_missing")
     try:
         hashed = digest(original)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, UnicodeError):
+        # Invalid Unicode scalars cannot be encoded for a UTF-8 digest. HOLD
+        # the reported packet instead of leaking an uncaught exception.
         hashed = None
         problems.append("payload_not_json_serializable")
     return IngestionResult("QUARANTINED" if problems else "SOURCE_REPORTED_ONLY", tuple(dict.fromkeys(problems)), original, hashed)
