@@ -85,9 +85,13 @@ def parse_text(s: str) -> Any:
             if k in out: raise ContinuityHold("DUPLICATE_JSON_KEY")
             out[k]=v
         return out
-    result = json.loads(s, object_pairs_hook=unique_pairs,
-                        parse_constant=lambda _: (_ for _ in ()).throw(ContinuityHold("NONFINITE_JSON_NUMBER")),
-                        parse_float=_finite_json_float, parse_int=_strict_json_int)
+    try:
+        result = json.loads(s, object_pairs_hook=unique_pairs,
+                            parse_constant=lambda _: (_ for _ in ()).throw(ContinuityHold("NONFINITE_JSON_NUMBER")),
+                            parse_float=_finite_json_float, parse_int=_strict_json_int)
+    except RecursionError as exc:
+        # The decoder nesting ceiling is runtime-dependent; preserve a typed HOLD.
+        raise ContinuityHold("JSON_NESTING_LIMIT") from exc
     _require_scalar_unicode(result)
     return result
 
