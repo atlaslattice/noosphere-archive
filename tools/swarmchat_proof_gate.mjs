@@ -77,9 +77,13 @@ const METADATA_FIELDS = Object.freeze({
 function metadataOnly(value) {
   if (!value || Object.getPrototypeOf(value) !== Object.prototype ||
       typeof value.kind !== 'string') return false;
-  const fields = METADATA_FIELDS[value.kind];
+  const fields = Object.hasOwn(METADATA_FIELDS, value.kind)
+    ? METADATA_FIELDS[value.kind] : null;
   if (!fields) return false;
-  const allowed = new Set([...COMMON_METADATA_FIELDS, ...fields]);
+  const required = [...COMMON_METADATA_FIELDS, ...fields];
+  // Incomplete signed rows cannot count as observed host evidence.
+  if (!required.every(key => Object.hasOwn(value, key))) return false;
+  const allowed = new Set(required);
   return Object.entries(value).every(([key, field]) => {
     if (!allowed.has(key)) return false;
     if (key === 'passed') {
@@ -90,11 +94,18 @@ function metadataOnly(value) {
         field.every(v => typeof v === 'string' && known.includes(v)) &&
         new Set(field).size === field.length;
     }
-    if (typeof field === 'number')
+    if (['occurredAt','seq','parentSeq','leaseExpiresAt','revision'].includes(key))
+      return Number.isSafeInteger(field) && field > 0;
+    if (key === 'unauthorizedStoreTouches')
       return Number.isSafeInteger(field) && field >= 0;
-    if (typeof field === 'string')
-      return field.length <= 512;
-    return typeof field === 'boolean';
+    if (['disposable','approved'].includes(key))
+      return typeof field === 'boolean';
+    if (key === 'subject') return field === 'sender' || field === 'receiver';
+    if (key === 'assurance') return field === 'PLATFORM_SESSION';
+    if (key === 'originMode') return field === 'WORK';
+    if (key === 'digest' || key === 'buildSha')
+      return typeof field === 'string' && HEX64.test(field);
+    return typeof field === 'string' && field.length > 0 && field.length <= 512;
   });
 }
 function exactlySame(a, b, fields) { return fields.every(k => a?.[k] === b?.[k]); }
