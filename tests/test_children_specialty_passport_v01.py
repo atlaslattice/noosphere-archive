@@ -36,6 +36,22 @@ class SpecialtyPassportTests(unittest.TestCase):
         self.p['specialties'][0]['evidence_refs'] = ['file:///secret']; self.assertRejected(self.p)
     def test_query_in_source_url_denied(self):
         self.p['specialties'][0]['evidence_refs'] = ['https://example.org/a?secret=1']; self.assertRejected(self.p)
+    def test_surrogate_pointer_fails_closed_before_digest(self):
+        # Synthetic malformed Unicode only: no URL resolution or external fetch.
+        for cp in (0xD800, 0xDFFF):
+            with self.subTest(codepoint=cp):
+                packet = copy.deepcopy(self.p)
+                packet['specialties'][0]['evidence_refs'] = ['https://example.org/doc/' + chr(cp)]
+                with self.assertRaises(ProfileError):
+                    validate_passport(packet)
+                with self.assertRaises(ProfileError):
+                    digest_passport(packet)
+
+    def test_valid_unicode_scalar_pointer_still_hashes(self):
+        self.p['specialties'][0]['evidence_refs'] = ['https://example.org/évidence']
+        self.assertEqual(validate_passport(self.p)['source_status'], 'SELF_DECLARED_NOT_ATTESTED')
+        self.assertEqual(len(digest_passport(self.p)), 64)
+
     def test_no_work_kinds_with_optin_denied(self):
         self.p['participation']['task_kinds'] = []; self.assertRejected(self.p)
     def test_naive_time_denied(self):
