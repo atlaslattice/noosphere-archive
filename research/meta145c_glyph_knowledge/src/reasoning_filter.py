@@ -8,6 +8,7 @@ change model weights, train, publish to CANON or create authenticated experts.
 from __future__ import annotations
 from hashlib import sha256
 import json
+import math
 import re
 from .gf8 import Plate,driven_glyph,reference_for_gf7,mode_hz,measurement_comparison
 from .glyph import REGISTRY_SHA,hsn_parts,gf7_parts
@@ -57,6 +58,7 @@ def prepare_reasoning_context(*,hsn:str,gf7:str,plate:Plate,drive_hz:float,
 
 def with_local_review_tip(packet:dict, memory:LocalMemory)->dict:
     if packet.get('schema')!='atlas.gf8.reasoning-filter/v1':raise ValueError('INVALID_PACKET')
+    safe_explanation(packet)  # Never re-seal an altered or unreceipted context.
     verified=memory.verify()
     if verified['status']!='LOCAL_HASH_CHAIN_VERIFIED':raise ValueError('MEMORY_TAMPERED')
     # Memory hint is neither retrieval content nor authenticated review itself.
@@ -80,6 +82,15 @@ def safe_explanation(packet:dict)->str:
             'No model weights changed; request source and rights review before reliance.')
 
 
+def _finite_number(value)->bool:
+    if type(value) not in (int,float):
+        return False
+    try:
+        return math.isfinite(value)
+    except OverflowError:
+        return False
+
+
 def postflight_claim_gate(packet:dict,claim:dict)->dict:
     """Bounded validation of structured claims offered by ANY model for the wrapper.
 
@@ -93,7 +104,7 @@ def postflight_claim_gate(packet:dict,claim:dict)->dict:
         return {'status':'HOLD_UNSUPPORTED_CLAIM_KIND','authority':'NONE'}
     freq=claim.get('frequency_hz')
     expected=packet['physical_model_output'].get('nearest_mode',{}).get('frequency_hz')
-    if type(freq) not in (int,float) or type(expected) not in (int,float) or abs(freq-expected)>max(1e-8,1e-8*expected):
+    if not _finite_number(freq) or not _finite_number(expected) or abs(freq-expected)>max(1e-8,1e-8*expected):
         return {'status':'HOLD_NUMERICAL_CONTRADICTION','authority':'NONE'}
     if claim.get('model_status')!=packet['physical_model_output']['status']:
         return {'status':'HOLD_EVIDENCE_GRADE_CONTRADICTION','authority':'NONE'}
