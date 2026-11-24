@@ -26,7 +26,7 @@ def _hold(reason='INVALID_OR_UNVERIFIED_SOURCE'):
 def prepare_holdout(records, links, *, lineage_complete=False, embargo=12):
     """Return a no-authority aggregate review pointer or a generic HOLD.
 
-    Equality of caller-supplied family/prior/shock IDs and declared transitive
+    Equality of caller-supplied family/prior/shock IDs, source digests, and declared transitive
     links is a NEGATIVE check, not trusted proof that omitted links do not exist.
     """
     if type(lineage_complete) is not bool or not lineage_complete:
@@ -70,7 +70,7 @@ def prepare_holdout(records, links, *, lineage_complete=False, embargo=12):
         pa,pb = root(a),root(b)
         if pa != pb:
             parent[max(pa,pb)] = min(pa,pb)
-    for key in ('family','prior','shock'):
+    for key in ('family','prior','shock','sourceSha'):
         groups = {}
         for rec in records:
             if rec[key] in groups:
