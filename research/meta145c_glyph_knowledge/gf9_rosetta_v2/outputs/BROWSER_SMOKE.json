@@ -1,0 +1,83 @@
+{
+  "checks": [
+    {
+      "name": "title",
+      "passed": true
+    },
+    {
+      "name": "all modules initially",
+      "passed": true
+    },
+    {
+      "name": "chapters twelve",
+      "passed": true
+    },
+    {
+      "name": "trials text",
+      "passed": true
+    },
+    {
+      "name": "accepted count",
+      "passed": true
+    },
+    {
+      "name": "benchmarks four bars",
+      "passed": true
+    },
+    {
+      "name": "specific node search",
+      "passed": true
+    },
+    {
+      "name": "sphere ID filter",
+      "passed": true
+    },
+    {
+      "name": "resonance chapter",
+      "passed": true
+    },
+    {
+      "name": "mode caption",
+      "passed": true
+    },
+    {
+      "name": "source node preserved",
+      "passed": true
+    },
+    {
+      "name": "roles clear",
+      "passed": true
+    },
+    {
+      "name": "canvas drawn",
+      "passed": true
+    },
+    {
+      "name": "counterexample HOLD status",
+      "passed": true
+    },
+    {
+      "name": "empty search accessible",
+      "passed": true
+    },
+    {
+      "name": "restore 144",
+      "passed": true
+    },
+    {
+      "name": "zero network requests",
+      "passed": true
+    },
+    {
+      "name": "zero JS exceptions",
+      "passed": true
+    }
+  ],
+  "passed": 18,
+  "total": 18,
+  "page_errors": [],
+  "network_requests": [],
+  "html_sha256": "275507fde16076d21671275d30c4c7c5eabb079db9baca4f13d78a704688af85",
+  "actual_browser": "PLAYWRIGHT_CHROMIUM_SET_CONTENT_OFFLINE",
+  "hosted": false
+}

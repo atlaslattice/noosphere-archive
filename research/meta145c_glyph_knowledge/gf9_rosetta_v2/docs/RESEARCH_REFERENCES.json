@@ -1,0 +1,17 @@
+{
+  "schema": "atlas.gf9-r2.source-ledger/v1",
+  "accessed_context_date": "2026-11-23",
+  "rights": "METADATA_ONLY_SOURCE_Links_NO_BULK_TEXT_IMPORT",
+  "sources": [
+    {"id":"gf8","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC6812332/","use":"Reference thin plate models; GF8 pinned local solver remains original source","status":"CONTEXT_ONLY_NOT_LAB_CALIBRATION"},
+    {"id":"iso15924","url":"https://www.unicode.org/iso15924/","use":"Structured script identifiers","status":"REFERENCE_ONLY"},
+    {"id":"unicode_cuneiform","url":"https://www.unicode.org/versions/Unicode18.0.0/core-spec/chapter-11/","use":"Historic cuneiform writing systems, not source translations","status":"REFERENCE_ONLY"},
+    {"id":"oracc_atf","url":"https://oracc.museum.upenn.edu/doc/help/editinginatf/primer/","use":"Separate sign/transliteration/language evidence","status":"REFERENCE_ONLY"},
+    {"id":"unicode_uax15","url":"https://www.unicode.org/reports/tr15/","use":"Normalization invariants","status":"REFERENCE_ONLY"},
+    {"id":"unicode_uax29","url":"https://www.unicode.org/reports/tr29/","use":"Grapheme cluster invariants","status":"REFERENCE_ONLY"},
+    {"id":"unicode_egyptian","url":"https://www.unicode.org/reports/tr57/","use":"Egyptian hieroglyph metadata","status":"REFERENCE_ONLY"},
+    {"id":"unicode_maya","url":"https://www.unicode.org/events/utw/2026/talks/developing-an-encoding-for-maya-hieroglyphs/","use":"Digital status and community collaboration","status":"REFERENCE_ONLY"},
+    {"id":"w3c_provo","url":"https://www.w3.org/TR/prov-o/","use":"Evidence provenance entity/activity agent relationships","status":"REFERENCE_ONLY"},
+    {"id":"tolkien_estate","url":"https://www.tolkienestate.com/frequently-asked-questions-and-links/","use":"Protected invented language/script rights; avoid verbatim replication","status":"ORIGINAL_ART_DIRECTION_ONLY"}
+  ]
+}
