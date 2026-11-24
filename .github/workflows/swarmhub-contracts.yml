@@ -3,7 +3,11 @@ on:
   pull_request:
     paths:
       - 'core/**'
-      - 'tests/test_swarmhub_contracts.py'
+      - 'tests/**'
+      - 'tools/contract_crosswalk.py'
+      - 'schemas/**'
+      - 'examples/**'
+      - 'registry/**'
       - 'docs/SWARMHUB_CONTRACTS_v01.md'
       - 'docs/CANON_CANDIDATE_QUEUE.md'
       - '.github/workflows/swarmhub-contracts.yml'
