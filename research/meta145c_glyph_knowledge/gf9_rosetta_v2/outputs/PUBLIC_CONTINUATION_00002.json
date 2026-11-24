@@ -1,0 +1,59 @@
+{
+  "schema": "atlas.gf9-r2.public-continuation/v1",
+  "status": "REVIEW_ONLY_SYNTHETIC_NOT_HOSTED",
+  "source_pr": 42,
+  "source_commit": "b98790a8baa0e1f7c7abb89211f319c7000c6653",
+  "source_registry_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+  "prior": {
+    "count": 15144,
+    "tip": "fcb37d2bcdf5525541211b1bc2cf738ae118693047ca067a8190feb49c4e6028"
+  },
+  "continuation": {
+    "batch": 2,
+    "trials": 144,
+    "accepted_raw": 27,
+    "rejected": 117,
+    "postflight_holds": 58
+  },
+  "checkpoint": {
+    "count": 15288,
+    "accepted_raw": 3532,
+    "rejected": 11756,
+    "tip": "098110acd39bdf11a252ec2b82543ce051b5a81f248d24774347a66482c02572",
+    "sha256": "b234ff86934ee0b22b47893fef996bbeebacd9a60226b6d2650637f488576a74",
+    "log_sha256": "1ac5739fd988ab2f594c78411ab9bb4a7a9f2f5fc7d6609f78d910e8ee29e4b5",
+    "private_receipt_sha256": "e9c01aef0e872519e5fc597f4d16788e896ac611e1af0602916899d83281399f"
+  },
+  "history": "ANCHOR_AND_RECORDED_DECISION_REPLAY_PASS_NOT_SIGNED_OR_HISTORICAL_FRAME_RESIMULATION",
+  "lesson_fixtures": 1728,
+  "script_metadata_profiles": 18,
+  "numeric_all_12_pass_raw": {
+    "before": 124,
+    "after": 119,
+    "promotion": "HOLD"
+  },
+  "heldout": {
+    "frames_each": 1728,
+    "wire_bytes_each": 1141776,
+    "legacy_exact": 1481,
+    "bitwise_majority_exact": 1690,
+    "paired_improvements": 209,
+    "paired_regressions": 0,
+    "wrong_objects_each": 0,
+    "seed_namespace": "GF9-R2-BIT-MAJORITY-HOLDOUT-01",
+    "channel": "SYNTHETIC_INDEPENDENT_BYTE_BIT_ERRORS_ONLY"
+  },
+  "test_counts": {
+    "normal": 34,
+    "optimized": 34
+  },
+  "physical_measurements": 0,
+  "translations": 0,
+  "resident_conversations": 0,
+  "host_changes": 0,
+  "source_blobs": {
+    "src/continuation_guard.py": "3532a252530b8a2825b10e8a1a7deb6838eece0b",
+    "tests/test_continuation_guard.py": "d0cdb293135a6ad3a30cf823f6408ce2e124a718"
+  },
+  "next_falsifier": "Matched-wire-budget correlated and burst errors against competent ECC; retain HOLD on raw policy promotions."
+}
