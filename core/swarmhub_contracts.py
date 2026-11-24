@@ -299,3 +299,16 @@ def prepare_excellence_work(reference_bytes: bytes, expected_reference_sha256: s
                                     task_id=task_id, room_id=room_id, mode=mode)
     return Orchestrator(Sentinel()).route(packet)
 
+
+def prepare_civilization_kernel_work(reference_bytes: bytes, expected_reference_sha256: str, *,
+                                      house_id: str, room_id: str, mode: str = "WORK") -> dict[str, Any]:
+    """Prepare an optional pinned R01 supporting-kernel candidate through Sentinel.
+
+    Source metadata only. Current host READ/RETURN checks and kernel execution
+    remain with the canonical runtime; this helper posts and promotes nothing.
+    """
+    from .civilization_kernel_reference import prepare_kernel_reference
+    packet = prepare_kernel_reference(reference_bytes, expected_reference_sha256,
+                                      house_id=house_id, room_id=room_id, mode=mode)
+    return Orchestrator(Sentinel()).route(packet)
+
