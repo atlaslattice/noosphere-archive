@@ -11,6 +11,7 @@ This folder contains the unchanged META145C public source as a standalone test d
 - `src/reasoning_filter.py`: deterministic source-pin/rights-scope-safe context preparation and postflight numeric status verification. Model weights are never touched.
 - `src/build_gf8_viewer.py`: fully offline interactive HTML with the 12 GF7 frequency ranges, 12 mode choices, 12 material/aspect contexts, model HOLD flags, and fixed-plate driven resonance patterns.
 - `tests/test_gf8.py`, `tests/test_calibration.py`, `tests/browser_smoke.py`: public synthetic physics, security, memory, and Chromium smoke tests.
+- `tests/test_reasoning_filter_integrity.py`: 16 public regressions for numerical-claim and review-refresh integrity, with exact original/repaired replay in `docs/GF8_CLAIM_REGRESSION.md`.
 - `docs/FREQUENCY_MODEL.md`, `docs/WRAPPER_CONTRACT.md`: calculations and safe integration contract.
 
 ## Reproduce (Python stdlib, except Chromium test)
