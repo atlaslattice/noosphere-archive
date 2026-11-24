@@ -2,7 +2,9 @@
 
 Native1728 connects the existing BEAST20 runtime, source-pinned federation, META145 selection, and native Atlas/SwarmChat tool surfaces. The recorded local experiment evaluated **1,728 configurations**, selected **one worker, 2,048 memo entries and 400-object read chunks**, and measured that choice against the baseline in **nine alternating pairs**.
 
-**Release state:** the combined native hosts are deployed: SwarmChat version **48** at source commit `d5fe7493ffab55578005561eb2d91f852b8a609b`, and Atlas ONE version **11** at source commit `5432a9b429c56456081ff76fc1f0b7f654ef9ec5`. Existing audiences and owner access controls are preserved. [Hosted release evidence](benchmarks/native1728/HOSTED_RELEASE.json) records publication and the exact extent of live verification.
+**Original release state:** the combined native hosts were deployed: SwarmChat version **48** at source commit `d5fe7493ffab55578005561eb2d91f852b8a609b`, and Atlas ONE version **11** at source commit `5432a9b429c56456081ff76fc1f0b7f654ef9ec5`. Existing audiences and owner access controls are preserved. [Hosted release evidence](benchmarks/native1728/HOSTED_RELEASE.json) records publication and the exact extent of live verification.
+
+The subsequent [Native1728 Evolution release](README_EVOLUTION1728.md) adds the completed repeated long-horizon experiment and separately measured storage-code improvements. This document and its timing receipts retain the original release's scope.
 
 ## What the evidence establishes
 
@@ -129,7 +131,7 @@ The trace payload's logical digest is:
 03a601aa23bb140e8c199060eb7bc825d937ba17749efdf0a4a7496c2f7f15d9
 ```
 
-The measured receipt retains all nine raw pairs and SHA-256 values for the five implementation files used during that run. Packaging verified those hashes against the current source and compared all candidate rows, META145 selection and measurement fields with the native host's release data. Logical payload/report digests are distinct from hashes of formatted JSON file bytes; the [compression manifest](benchmarks/native1728/COMPRESSED_EVIDENCE_MANIFEST.json) records both where applicable.
+The measured receipt retains all nine raw pairs and SHA-256 values for the five implementation files used during that run. Original-release packaging verified those hashes against source revision `2bea02211f93763bd753434676945c0f5bc7b8a7` and compared all candidate rows, META145 selection and measurement fields with the native host's release data. Logical payload/report digests are distinct from hashes of formatted JSON file bytes; the [compression manifest](benchmarks/native1728/COMPRESSED_EVIDENCE_MANIFEST.json) records both where applicable.
 
 The [federation receipt](benchmarks/native1728/FEDERATION_EXECUTION_RECEIPT.json) records exact package locks for EX1728, GF9 and the unified Python source. It contains coordinate/digest references and bounded results, with no original private source bodies or machine-specific paths. Its nine local calls are not hosted authorization or completion of the 1,728-task engineering program.
 
@@ -244,6 +246,6 @@ The current release work recorded 30 strategy tests in normal and optimized Pyth
 
 ## Release validation
 
-The final local gates passed 584 distinct Python tests, 220 SwarmChat tests and 270 Atlas ONE tests. Three optional fixture checks were skipped across the named gates; repeated normal and optimized Python runs are not counted twice. The exact gates and source-manifest check are recorded in [LOCAL_VERIFICATION.json](benchmarks/native1728/LOCAL_VERIFICATION.json).
+The original release's local gates passed 584 distinct Python tests, 220 SwarmChat tests and 270 Atlas ONE tests. Three optional fixture checks were skipped across the named gates; repeated normal and optimized Python runs are not counted twice. The exact gates and source-manifest check are recorded in [LOCAL_VERIFICATION.json](benchmarks/native1728/LOCAL_VERIFICATION.json).
 
 Atlas ONE also completed its two new read APIs in production: all 1,728 configuration records are represented by the pinned summary and the existing GrokSeek compiler prepared the six-step plan. Queue revision and observed model calls stayed unchanged. See [the live service receipt](benchmarks/native1728/ATLAS_ONE_LIVE_SERVICE_CHECK.json). SwarmChat production advertised all six new native tools through its authenticated status tool; its twelve-step demo and the three-step retrieval-evolution composition were executed through the actual local MCP dispatcher. Direct live invocation of the new SwarmChat tools was not available in this conversation's cached tool catalog, and browser inspection of the owner-only lab stopped at sign-in.

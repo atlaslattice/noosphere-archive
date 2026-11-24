@@ -1,0 +1,16 @@
+{
+  "atlas": {
+    "path": "librarian/hosting/native1728-evolution-evidence.mjs",
+    "sha256": "f7b158d56cbcee9a6d4292fde978d5e18513dcf420894ef2bf18d1042e40d5cf"
+  },
+  "newHostOperations": 2,
+  "publicationPerformedByExporter": false,
+  "reportSchema": "atlas.beast20.long-horizon/v1",
+  "reportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+  "schema": "atlas.native1728.host-export/v1",
+  "status": "VERIFIED_SOURCE_EXPORTS",
+  "swarm": {
+    "path": "lib/native1728-evolution-release.mjs",
+    "sha256": "1dfa06e0aa15a1262f9bc2a73205c6e1a95d66c863c86b590d99b5b462ed2266"
+  }
+}

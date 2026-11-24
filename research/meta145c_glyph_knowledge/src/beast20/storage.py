@@ -13,6 +13,7 @@ from __future__ import annotations
 
 from collections import defaultdict, deque
 from dataclasses import dataclass
+from functools import lru_cache
 import hashlib
 import json
 import math
@@ -66,6 +67,33 @@ def canonical_bytes(value: Any) -> bytes:
     return raw
 
 
+def _scope_values(source_digest, edition, principal, rights_epoch, mode):
+    """Validate current scalar values before any memoized identity lookup."""
+    if type(source_digest) is not str or not _HEX.fullmatch(source_digest):
+        raise ValueError("SOURCE_DIGEST_INVALID")
+    _text(edition, "EDITION")
+    _text(principal, "PRINCIPAL")
+    if not ((type(rights_epoch) is int and rights_epoch >= 0)
+            or (type(rights_epoch) is str and 0 < len(rights_epoch) <= 512)):
+        raise ValueError("RIGHTS_EPOCH_INVALID")
+    if type(mode) is not str or mode != "WORK":
+        raise ValueError("PRIVATE_MODE_DENIED")
+    return source_digest, edition, principal, rights_epoch, mode
+
+
+@lru_cache(maxsize=256, typed=True)
+def _scope_digest(source_digest, edition, principal, rights_epoch, mode):
+    # Only already-validated primitive values enter this bounded cache. Its
+    # key contains every scope field, so mutating even a frozen Scope cannot
+    # reuse an earlier identity. This caches hashing, never authorization or
+    # source/object bytes; payload digests are still checked on every read.
+    return hashlib.sha256(canonical_bytes({
+        "contract": "atlas.beast20.scope/v1", "source_digest": source_digest,
+        "edition": edition, "principal": principal,
+        "rights_epoch": rights_epoch, "mode": mode,
+    })).hexdigest()
+
+
 @dataclass(frozen=True)
 class Scope:
     source_digest: str
@@ -75,30 +103,20 @@ class Scope:
     mode: str = "WORK"
 
     def __post_init__(self) -> None:
-        if type(self.source_digest) is not str or not _HEX.fullmatch(self.source_digest):
-            raise ValueError("SOURCE_DIGEST_INVALID")
-        _text(self.edition, "EDITION")
-        _text(self.principal, "PRINCIPAL")
-        if not ((type(self.rights_epoch) is int and self.rights_epoch >= 0)
-                or (type(self.rights_epoch) is str and 0 < len(self.rights_epoch) <= 512)):
-            raise ValueError("RIGHTS_EPOCH_INVALID")
-        if type(self.mode) is not str or self.mode != "WORK":
-            raise ValueError("PRIVATE_MODE_DENIED")
+        _scope_values(self.source_digest, self.edition, self.principal,
+                      self.rights_epoch, self.mode)
 
     @property
     def key(self) -> str:
-        return hashlib.sha256(canonical_bytes({
-            "contract": "atlas.beast20.scope/v1", "source_digest": self.source_digest,
-            "edition": self.edition, "principal": self.principal,
-            "rights_epoch": self.rights_epoch, "mode": self.mode,
-        })).hexdigest()
+        values = _scope_values(self.source_digest, self.edition, self.principal,
+                               self.rights_epoch, self.mode)
+        return _scope_digest(*values)
 
 
 def _scope_key(scope: Scope) -> str:
     if type(scope) is not Scope:
         raise ValueError("EXACT_SCOPE_REQUIRED")
-    # Frozen is a convenience, not trust; revalidate if object.__setattr__ was used.
-    scope.__post_init__()
+    # key validates the current fields even if object.__setattr__ was used.
     return scope.key
 
 
@@ -240,6 +258,7 @@ class ArtifactStore:
             expires REAL NOT NULL, accessed INTEGER NOT NULL, body BLOB,
             PRIMARY KEY(scope,key));
         CREATE INDEX IF NOT EXISTS beast_memo_lru ON beast_memo(accessed);
+        CREATE INDEX IF NOT EXISTS beast_memo_expiry ON beast_memo(expires);
         CREATE TABLE IF NOT EXISTS beast_dependencies(
             scope TEXT NOT NULL, child TEXT NOT NULL, parent TEXT NOT NULL,
             PRIMARY KEY(scope,child,parent));

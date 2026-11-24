@@ -1,0 +1,22 @@
+{
+  "calibration": {
+    "batch_fixed_ns": 4360,
+    "batch_item_ns": 1886,
+    "memo_lookup_ns": 36896,
+    "memo_store_ns": 35794
+  },
+  "file_sha256": "c20ce58e2ca932108092496d184f91d8f5ab636a0668b1246ce65fbfbfa7ee33",
+  "implementation_manifest": {
+    "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+    "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+    "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+    "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+    "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+  },
+  "path": "benchmarks/native1728_evolution/CURRENT_IMPLEMENTATION_TRACE.json.gz",
+  "schema": "atlas.native1728.calibration-file/v1",
+  "scope": "ACTUAL_LOCAL_HANDLER_AND_SQLITE_CALIBRATION_AFTER_STORAGE_UPGRADE",
+  "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+  "trace_payload_sha256": "fdab20a1cbd44385d09fc1eef16ee3374e73cfa887cb4039660c237f01350688",
+  "uncompressed_sha256": "0e65c5152c4c97f8c42809b4241b49f820f835b1087491d4f5b8daee0cad4a1d"
+}

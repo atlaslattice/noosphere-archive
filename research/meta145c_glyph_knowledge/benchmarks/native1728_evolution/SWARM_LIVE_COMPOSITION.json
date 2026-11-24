@@ -1,0 +1,94 @@
+{
+  "schema": "atlas.native1728.live-composition/v1",
+  "user_date": "2026-11-23",
+  "host": "https://swarmchat-private-broker-20261112.tdavesheldon.chatgpt.site",
+  "observation": "AUTHENTICATED_NATIVE_MCP_TOOL_INVOCATION",
+  "tool": "swarm_native1728_demo",
+  "arguments": {
+    "workers": 4
+  },
+  "status": "COMPLETED",
+  "step_count": 12,
+  "actual_invocations": 12,
+  "deduplicated": 0,
+  "plan_sha256": "2474e2a476955e17d8fa36282ec10fae887e5b9c0a161e7f9243627dd5126a9a",
+  "receipt_sha256": "3860136d6e1390f255301c5ad9048817c5e2b7ea9fb95de17b99b628529be1e7",
+  "steps": [
+    {
+      "id": "ariadne",
+      "tool": "swarm_glyph_hsn_resolve",
+      "status": "SUCCEEDED",
+      "output_sha256": "be2782bde01a5b6226b4e1616b4116b9e7c6276bc5c3cae84b7e24708fd352c0"
+    },
+    {
+      "id": "glyph",
+      "tool": "swarm_meta145_glyph",
+      "status": "SUCCEEDED",
+      "output_sha256": "7134391bb2297f59091f3da31f634b570919165219bea05ba46ee19e5ef8e4e6"
+    },
+    {
+      "id": "cymatic",
+      "tool": "swarm_cymatic_atlas_lookup",
+      "status": "SUCCEEDED",
+      "output_sha256": "cebe0f99a235ed14fcfcc9727d2a5a9379b82a2f684a9f5707b15a65d05dea6e"
+    },
+    {
+      "id": "reefcore",
+      "tool": "swarm_reefcore_descriptor",
+      "status": "SUCCEEDED",
+      "output_sha256": "b28ccdbdcd948766b1c6d2c25634cd4232d4a892981ce10ce6c2dfd688ea8ab2"
+    },
+    {
+      "id": "reservoir",
+      "tool": "swarm_reefcore_reservoir_descriptor",
+      "status": "SUCCEEDED",
+      "output_sha256": "345e05de8aa00af1171d9df401321fec4ab610c649ab1b35b430a8a273ed16ae"
+    },
+    {
+      "id": "glyphforge",
+      "tool": "swarm_glyphforge_descriptor",
+      "status": "SUCCEEDED",
+      "output_sha256": "190362852a83cbb8009ecc6a081475d57d1955f086cf4d73ba6265de5005d2dc"
+    },
+    {
+      "id": "research",
+      "tool": "swarm_resilience_sources",
+      "status": "SUCCEEDED",
+      "output_sha256": "dc2ac8ae32f466f96bf1848a921f55df3042f6b81e2988ad15a6053d5bd56f2f"
+    },
+    {
+      "id": "assembly",
+      "tool": "swarm_factory_blueprint",
+      "status": "SUCCEEDED",
+      "output_sha256": "67b8dfae12420f80c4b809f3ec12fb0699aa2cbecb6a6d6541052db2189b264c"
+    },
+    {
+      "id": "macroturn",
+      "tool": "swarm_confluence_descriptor",
+      "status": "SUCCEEDED",
+      "output_sha256": "c9b812adcd1f13d1b31ff26cd762f32361094c9b745bc35da31acca4be924e3b"
+    },
+    {
+      "id": "program",
+      "tool": "swarm_meta145_excellence_status",
+      "status": "SUCCEEDED",
+      "output_sha256": "80b734676a9e664b239fbc37bdc72389500b8b27aaf8a97afb38b2118f762103"
+    },
+    {
+      "id": "ready",
+      "tool": "swarm_meta145_excellence_ready",
+      "status": "SUCCEEDED",
+      "output_sha256": "432d839d5155d1b4418db6c4cb87eee22c4da93318be27302ab688f7a03ae583"
+    },
+    {
+      "id": "meta145",
+      "tool": "swarm_meta145_correlations",
+      "status": "SUCCEEDED",
+      "output_sha256": "b9f3c98f264d6047f2dcc21ce269147a609e243d85ddd41d5eaf5c115320141f"
+    }
+  ],
+  "model_calls": 0,
+  "room_posts": 0,
+  "background_runs": 0,
+  "limitation": "Functional production check; not a latency benchmark. Source bodies and owner identifiers omitted."
+}

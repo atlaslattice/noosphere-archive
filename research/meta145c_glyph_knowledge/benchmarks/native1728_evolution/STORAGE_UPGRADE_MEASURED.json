@@ -1,0 +1,2792 @@
+{
+  "allOutputsEqual": true,
+  "baseline": {
+    "commit": "2bea02211f93763bd753434676945c0f5bc7b8a7",
+    "gitBlobSha": "0fa4979100d848f31650eaf8f2499190b0e4e03a",
+    "path": "research/meta145c_glyph_knowledge/src/beast20/storage.py",
+    "sha256": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7"
+  },
+  "candidate": {
+    "path": "src/beast20/storage.py",
+    "sha256": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5"
+  },
+  "changes": [
+    "Fresh validated scalar scope values key a bounded 256-entry digest cache.",
+    "An expiry index replaces a full memo scan for TTL cleanup on each put."
+  ],
+  "expiryDiagnostics": {
+    "baseline": [
+      {
+        "capacity": 8,
+        "diagnosticOutsideTimedPairs": true,
+        "expiryQueryPlan": [
+          "SCAN beast_memo"
+        ],
+        "puts": 32,
+        "sqliteVMApproximateSteps": 7300,
+        "sqliteVMProgressInterval": 100
+      },
+      {
+        "capacity": 256,
+        "diagnosticOutsideTimedPairs": true,
+        "expiryQueryPlan": [
+          "SCAN beast_memo"
+        ],
+        "puts": 32,
+        "sqliteVMApproximateSteps": 102200,
+        "sqliteVMProgressInterval": 100
+      },
+      {
+        "capacity": 2048,
+        "diagnosticOutsideTimedPairs": true,
+        "expiryQueryPlan": [
+          "SCAN beast_memo"
+        ],
+        "puts": 32,
+        "sqliteVMApproximateSteps": 790700,
+        "sqliteVMProgressInterval": 100
+      }
+    ],
+    "candidate": [
+      {
+        "capacity": 8,
+        "diagnosticOutsideTimedPairs": true,
+        "expiryQueryPlan": [
+          "SEARCH beast_memo USING INDEX beast_memo_expiry (expires<?)"
+        ],
+        "puts": 32,
+        "sqliteVMApproximateSteps": 6500,
+        "sqliteVMProgressInterval": 100
+      },
+      {
+        "capacity": 256,
+        "diagnosticOutsideTimedPairs": true,
+        "expiryQueryPlan": [
+          "SEARCH beast_memo USING INDEX beast_memo_expiry (expires<?)"
+        ],
+        "puts": 32,
+        "sqliteVMApproximateSteps": 69700,
+        "sqliteVMProgressInterval": 100
+      },
+      {
+        "capacity": 2048,
+        "diagnosticOutsideTimedPairs": true,
+        "expiryQueryPlan": [
+          "SEARCH beast_memo USING INDEX beast_memo_expiry (expires<?)"
+        ],
+        "puts": 32,
+        "sqliteVMApproximateSteps": 528800,
+        "sqliteVMProgressInterval": 100
+      }
+    ]
+  },
+  "historicalEvidenceSha256": {
+    "benchmarks/strategy1728/STRATEGY1728_CANDIDATES.json.gz": "cb5e128cc160d1eeac0879f2cd8709f068b58cdbed7f7c73aa26822a7530ba44",
+    "benchmarks/strategy1728/STRATEGY1728_MEASURED_REPLAY.json": "8af6a571faf15032ad44566ca9ebb2f5fa3dee1bbcd554a99148d2c488a24e14",
+    "benchmarks/strategy1728/STRATEGY1728_SUMMARY.json": "21f8d776c13dc1eb754eb888b874691a70db7ac485af925247662b44c48dc9e9",
+    "benchmarks/strategy1728/STRATEGY1728_TRACE.json.gz": "443fe65d5f07e332d59a5e013b0ab869352b7a37ebd8357596c27196a4dc9d93"
+  },
+  "historicalEvidenceUnchanged": true,
+  "implementationManifest": {
+    "benchmarks/bench_beast20.py": "896a81768cb6c8e905b83febe3476dae6781598b8695591f16f8699b72400c30",
+    "benchmarks/bench_storage_optimization.py": "bc22891a273548b57a47ed6d47a0805b1b135dab4494fce1c6905dbef5066416",
+    "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+    "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+    "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+    "src/core.py": "450c7843ef2b15e087c538292ae353d296f538b028bfbcc6f60799d572f09000"
+  },
+  "implementationManifestUnchanged": true,
+  "integrityChecks": {
+    "baseline": {
+      "detachedMemo": true,
+      "exactTTL": true,
+      "invalidScopeMutation": "PRIVATE_MODE_DENIED",
+      "invalidation": true,
+      "lruAndNegative": true,
+      "memoTamper": "OBJECT_DIGEST_MISMATCH",
+      "objectTamper": "OBJECT_DIGEST_MISMATCH",
+      "validScopeMutation": true
+    },
+    "candidate": {
+      "detachedMemo": true,
+      "exactTTL": true,
+      "invalidScopeMutation": "PRIVATE_MODE_DENIED",
+      "invalidation": true,
+      "lruAndNegative": true,
+      "memoTamper": "OBJECT_DIGEST_MISMATCH",
+      "objectTamper": "OBJECT_DIGEST_MISMATCH",
+      "validScopeMutation": true
+    }
+  },
+  "integrityParity": true,
+  "limitations": [
+    "Local storage-facing benchmark; use the separately paired full-cascade receipt for total runtime latency.",
+    "Default memory SQLite isolates storage CPU work; file mode is an explicit separate option.",
+    "Store/schema/object setup, task construction, output hashing and diagnostics are outside timed pairs.",
+    "Within a phase, verified batch reads, semantic-key construction, memo I/O and actual handler work are timed.",
+    "The clock is fixed during timed scenarios to isolate cache behavior; TTL/invalidation/tamper are separate checks.",
+    "Scope digest reuse never caches authorization or object/memo payload integrity.",
+    "Medians and raw pairs are reported without a confidence-interval or hosted-speedup claim.",
+    "Unfavorable measured cases are retained; no ratios are multiplied with the earlier configuration-selection gain."
+  ],
+  "medianRegressions": [],
+  "modelCalls": 0,
+  "networkRequests": 0,
+  "python": "3.12.14",
+  "receiptSha256": "94f521a0a5c192b99dba8d5ee3886d9289a75cd56f33d8c7470a78faf55dc466",
+  "repeats": 9,
+  "schema": "atlas.beast20.storage-upgrade/v1",
+  "sourceBodiesReturned": false,
+  "sourceDigest": "0feb6b838ed47834ed5d8fc584352185005d344ea3f193067ffb05dc20cfeda2",
+  "sourceFixtureKind": "SYNTHETIC_TOPOLOGY",
+  "sqlite": "3.53.1",
+  "status": "MEASURED_LOCAL_STORAGE_WORKLOAD",
+  "workloads": [
+    {
+      "allOutputsEqual": true,
+      "interpretation": "LOCAL_MEDIAN_RATIO_UNCERTAINTY_NOT_ESTIMATED",
+      "maxMemoEntries": 8,
+      "measurementScope": "ACTUAL_SEQUENTIAL_HANDLER_AND_STORAGE_LOOP_WITHOUT_ASYNC_EXECUTOR",
+      "medianBaselineNs": 516222187,
+      "medianCandidateNs": 453876771,
+      "medianRegression": false,
+      "phaseMedians": {
+        "changed": {
+          "medianBaselineNs": 160887271,
+          "medianCandidateNs": 131515581,
+          "speedupRatio": 1.2233323973986017
+        },
+        "cold": {
+          "medianBaselineNs": 161892670,
+          "medianCandidateNs": 136050818,
+          "speedupRatio": 1.189942643343754
+        },
+        "warm": {
+          "medianBaselineNs": 168766412,
+          "medianCandidateNs": 142298223,
+          "speedupRatio": 1.1860050564370013
+        }
+      },
+      "phases": [
+        "cold",
+        "warm",
+        "changed"
+      ],
+      "rawPairs": [
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 534243038,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 174641766,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 171938868,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 187662404,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 468500341,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 169914970,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 157104794,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 141480577,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 1
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 523639755,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 168950555,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 177291813,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 177397387,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 397752490,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 136050818,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 130186091,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 131515581,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 2
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 516222187,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 175497096,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 160600742,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 180124349,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 379668880,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 128169645,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 125381692,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 126117543,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 3
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 520084619,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 161892670,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 168766412,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 189425537,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 502196119,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 151433651,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 124161498,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 226600970,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 4
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 466585363,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 160638365,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 152730286,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 153216712,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 430110938,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 128837033,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 142298223,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 158975682,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 5
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 473544096,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 154474701,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 158182124,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 160887271,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 476767508,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 137459477,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 214301886,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 125006145,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 6
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 517908775,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 177723099,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 181886886,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 158298790,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 395667154,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 135809749,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 131074104,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 128783301,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 7
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 462938424,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 155790798,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 151773328,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 155374298,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 535854675,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 182239049,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 223399119,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 130216507,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 8
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 493603011,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 157545352,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 177021610,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 159036049,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 453876771,
+            "memoEntries": 8,
+            "outputSha256": "7c991dc9eccc6d20af4c0b3b599873dd9aa77eaaa666ffc7b865ce3592668d33",
+            "phases": [
+              {
+                "elapsedNs": 129498078,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 182364548,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 142014145,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 9
+        }
+      ],
+      "repeats": 9,
+      "speedupRatio": 1.137361988943911,
+      "storageMode": "memory",
+      "taskCount": 1885,
+      "workload": "memo_cascade_capacity_8"
+    },
+    {
+      "allOutputsEqual": true,
+      "interpretation": "LOCAL_MEDIAN_RATIO_UNCERTAINTY_NOT_ESTIMATED",
+      "maxMemoEntries": 256,
+      "measurementScope": "ACTUAL_SEQUENTIAL_HANDLER_AND_STORAGE_LOOP_WITHOUT_ASYNC_EXECUTOR",
+      "medianBaselineNs": 676618426,
+      "medianCandidateNs": 633342184,
+      "medianRegression": false,
+      "phaseMedians": {
+        "changed": {
+          "medianBaselineNs": 230441952,
+          "medianCandidateNs": 183972002,
+          "speedupRatio": 1.2525925113322407
+        },
+        "cold": {
+          "medianBaselineNs": 211196055,
+          "medianCandidateNs": 169895618,
+          "speedupRatio": 1.2430930090262835
+        },
+        "warm": {
+          "medianBaselineNs": 221164407,
+          "medianCandidateNs": 193118157,
+          "speedupRatio": 1.145228446851841
+        }
+      },
+      "phases": [
+        "cold",
+        "warm",
+        "changed"
+      ],
+      "rawPairs": [
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 1005555865,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 389551773,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 250366493,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 365637599,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 720100970,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 233853738,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 237546106,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 248701126,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 1
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 661312076,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 212973247,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 217896877,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 230441952,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 633342184,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 212147996,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 236635365,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 184558823,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 2
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 660248157,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 208279369,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 214161212,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 237807576,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 652290985,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 276638469,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 191680514,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 183972002,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 3
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 690056689,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 220601643,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 242764322,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 226690724,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 533180724,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 168954877,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 189309162,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 174916685,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 4
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 831686457,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 210195500,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 400534058,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 220956899,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 531093880,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 160101056,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 196278718,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 174714106,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 5
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 764730469,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 206296831,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 279610053,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 278823585,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 501886000,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 163680424,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 168391413,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 169814163,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 6
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 643898502,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 207541662,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 214705066,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 221651774,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 529314037,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 172614194,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 177043037,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 179656806,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 7
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 661120664,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 218427141,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 221164407,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 221529116,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 731931170,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 169406501,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 193118157,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 369406512,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 8
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 676618426,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 211196055,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 218320860,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 247101511,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 0,
+              "memoMisses": 5655
+            },
+            "elapsedNs": 658412823,
+            "memoEntries": 256,
+            "outputSha256": "7880e1ab6e2b6ed2290ae38dad5507de458500906ab46ee242fefd80f3ebf5b7",
+            "phases": [
+              {
+                "elapsedNs": 169895618,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 298095910,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 190421295,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 9
+        }
+      ],
+      "repeats": 9,
+      "speedupRatio": 1.0683299535279336,
+      "storageMode": "memory",
+      "taskCount": 1885,
+      "workload": "memo_cascade_capacity_256"
+    },
+    {
+      "allOutputsEqual": true,
+      "interpretation": "LOCAL_MEDIAN_RATIO_UNCERTAINTY_NOT_ESTIMATED",
+      "maxMemoEntries": 2048,
+      "measurementScope": "ACTUAL_SEQUENTIAL_HANDLER_AND_STORAGE_LOOP_WITHOUT_ASYNC_EXECUTOR",
+      "medianBaselineNs": 405137830,
+      "medianCandidateNs": 236558456,
+      "medianRegression": false,
+      "phaseMedians": {
+        "changed": {
+          "medianBaselineNs": 86543953,
+          "medianCandidateNs": 64514027,
+          "speedupRatio": 1.3414749787670206
+        },
+        "cold": {
+          "medianBaselineNs": 214445044,
+          "medianCandidateNs": 103623379,
+          "speedupRatio": 2.069465849014632
+        },
+        "warm": {
+          "medianBaselineNs": 85084418,
+          "medianCandidateNs": 63172199,
+          "speedupRatio": 1.3468649080903452
+        }
+      },
+      "phases": [
+        "cold",
+        "warm",
+        "changed"
+      ],
+      "rawPairs": [
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 392823182,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 208517538,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 80682536,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 103623108,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 222178490,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 102812204,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 60165306,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 59200980,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 1
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 417259505,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 212712436,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 79734694,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 124812375,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 225798338,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 103623379,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 60929601,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 61245358,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 2
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 609620279,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 426300752,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 98958261,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 84361266,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 261037433,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 132313568,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 63789292,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 64934573,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 3
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 376282371,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 214445044,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 79830359,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 82006968,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 236558456,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 110380709,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 61663720,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 64514027,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 4
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 410265790,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 213750656,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 108524274,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 87990860,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 487847675,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 342250947,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 77919492,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 67677236,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 5
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 398232578,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 211999420,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 85084418,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 101148740,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 231002091,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 103434724,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 63808300,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 63759067,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 6
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 405137830,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 232371070,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 86222807,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 86543953,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 241562677,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 118552386,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 61367022,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 61643269,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 7
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 416473074,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 225923213,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 112557428,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 77992433,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 436172733,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 102683399,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 79804961,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 253684373,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 8
+        },
+        {
+          "baseline": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 378377046,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 218864452,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 79911431,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 79601163,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "candidate": {
+            "counts": {
+              "memoHits": 3766,
+              "memoMisses": 1889
+            },
+            "elapsedNs": 231705093,
+            "memoEntries": 1889,
+            "outputSha256": "de1eaa7ee12d3d9c56d19fe2db43caeaa3b3e46780c44b51c081635f49da94bf",
+            "phases": [
+              {
+                "elapsedNs": 102563718,
+                "memoHits": 0,
+                "memoMisses": 1885,
+                "name": "cold",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 63172199,
+                "memoHits": 1885,
+                "memoMisses": 0,
+                "name": "warm",
+                "outputSha256": "da2d5ce8b97f107911fd8ed272220302e4f1538618cca1bad90d1454bae7b483"
+              },
+              {
+                "elapsedNs": 65969176,
+                "memoHits": 1881,
+                "memoMisses": 4,
+                "name": "changed",
+                "outputSha256": "b13fafad4a7822460840dad90d6afd60489e2331a921e49ffbf7a5b0c7bd57bb"
+              }
+            ]
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 9
+        }
+      ],
+      "repeats": 9,
+      "speedupRatio": 1.7126330499891325,
+      "storageMode": "memory",
+      "taskCount": 1885,
+      "workload": "memo_cascade_capacity_2048"
+    },
+    {
+      "allOutputsEqual": true,
+      "chunkSize": 1,
+      "interpretation": "LOCAL_MEDIAN_RATIO_UNCERTAINTY_NOT_ESTIMATED",
+      "measurementScope": "UNCHANGED_BATCH_READ_PATH_CONTROL",
+      "medianBaselineNs": 32488007,
+      "medianCandidateNs": 31540466,
+      "medianRegression": false,
+      "phaseMedians": {},
+      "rawPairs": [
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 33408879,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 33321747,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 1
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 32667098,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 32282838,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 2
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 31948362,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 31560576,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 3
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 32784976,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 32458513,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 4
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 32529240,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 31540466,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 5
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 32488007,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 30810502,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 6
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 32450116,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 31402367,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 7
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 32078589,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 31425412,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 8
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 32085269,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 31472073,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 9
+        }
+      ],
+      "repeats": 9,
+      "speedupRatio": 1.0300420735698705,
+      "storageMode": "memory",
+      "workload": "batch_read_chunk_1"
+    },
+    {
+      "allOutputsEqual": true,
+      "chunkSize": 32,
+      "interpretation": "LOCAL_MEDIAN_RATIO_UNCERTAINTY_NOT_ESTIMATED",
+      "measurementScope": "UNCHANGED_BATCH_READ_PATH_CONTROL",
+      "medianBaselineNs": 20321444,
+      "medianCandidateNs": 19922562,
+      "medianRegression": false,
+      "phaseMedians": {},
+      "rawPairs": [
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 19011776,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 23727791,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 1
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 42478592,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 34510503,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 2
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 25223581,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 19454865,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 3
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 20321444,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 19922562,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 4
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 19568277,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 19605512,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 5
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 19891855,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 19617181,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 6
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 20070605,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 23015194,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 7
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 31710352,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 31949204,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 8
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 21239702,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 18922761,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 9
+        }
+      ],
+      "repeats": 9,
+      "speedupRatio": 1.0200216217171265,
+      "storageMode": "memory",
+      "workload": "batch_read_chunk_32"
+    },
+    {
+      "allOutputsEqual": true,
+      "chunkSize": 400,
+      "interpretation": "LOCAL_MEDIAN_RATIO_UNCERTAINTY_NOT_ESTIMATED",
+      "measurementScope": "UNCHANGED_BATCH_READ_PATH_CONTROL",
+      "medianBaselineNs": 20883854,
+      "medianCandidateNs": 20044516,
+      "medianRegression": false,
+      "phaseMedians": {},
+      "rawPairs": [
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 22081223,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 19783943,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 1
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 20283908,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 20189535,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 2
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 20397950,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 19788079,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 3
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 20940249,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 19807398,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 4
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 20728049,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 21591132,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 5
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 20883854,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 20084476,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 6
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 21098689,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 20044516,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 7
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 21415347,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 19870163,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "outputsEqual": true,
+          "pair": 8
+        },
+        {
+          "baseline": {
+            "calls": 40,
+            "elapsedNs": 20154823,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "candidate": {
+            "calls": 40,
+            "elapsedNs": 20460074,
+            "outputSha256": "7705d30d1e52aac2c650050c8810b73cf0fc80b2a4aff0c15e2a70b54f9279b2",
+            "requestedPerCall": 258
+          },
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "outputsEqual": true,
+          "pair": 9
+        }
+      ],
+      "repeats": 9,
+      "speedupRatio": 1.041873697524051,
+      "storageMode": "memory",
+      "workload": "batch_read_chunk_400"
+    }
+  ]
+}

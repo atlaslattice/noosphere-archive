@@ -1,0 +1,461 @@
+{
+  "baselineSourceCommit": "2bea02211f93763bd753434676945c0f5bc7b8a7",
+  "cascade": {
+    "all_counts_equal": true,
+    "all_outputs_equal": true,
+    "baseline_median_ns": 2105347816,
+    "candidate_median_ns": 1854883412,
+    "configuration_both_lanes": {
+      "chunk_size": 400,
+      "max_memo_entries": 2048,
+      "workers": 1
+    },
+    "implementation_manifest": {
+      "baseline": {
+        "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+        "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+        "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+        "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+        "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+      },
+      "candidate": {
+        "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+        "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+        "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+        "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+        "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+      }
+    },
+    "implementation_manifest_unchanged": true,
+    "limits": [
+      "Same runtime configuration in both source versions; this isolates implementation changes.",
+      "Local source metadata and cold/warm/changed DAG replay; no hosted latency claim.",
+      "Process startup and object population excluded from timing in both lanes.",
+      "A ratio below one is retained as a regression; no multiplication with other benchmarks.",
+      "No training, model API call, room post or resident Macroturn."
+    ],
+    "measured_ratio_baseline_over_candidate": 1.1350297287579603,
+    "median_latency_reduction_percent": 11.896580797555023,
+    "python": "3.12.14",
+    "raw_pairs": [
+      {
+        "baseline": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 2021748175,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "candidate": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1854883412,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "counts_equal": true,
+        "order": [
+          "baseline",
+          "candidate"
+        ],
+        "outputs_equal": true,
+        "pair": 1
+      },
+      {
+        "baseline": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 2120508808,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "candidate": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1834459584,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "counts_equal": true,
+        "order": [
+          "candidate",
+          "baseline"
+        ],
+        "outputs_equal": true,
+        "pair": 2
+      },
+      {
+        "baseline": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 2134312653,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "candidate": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1922437756,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "counts_equal": true,
+        "order": [
+          "baseline",
+          "candidate"
+        ],
+        "outputs_equal": true,
+        "pair": 3
+      },
+      {
+        "baseline": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1963681862,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "candidate": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1591713145,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "counts_equal": true,
+        "order": [
+          "candidate",
+          "baseline"
+        ],
+        "outputs_equal": true,
+        "pair": 4
+      },
+      {
+        "baseline": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1934579597,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "candidate": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1787405740,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "counts_equal": true,
+        "order": [
+          "baseline",
+          "candidate"
+        ],
+        "outputs_equal": true,
+        "pair": 5
+      },
+      {
+        "baseline": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 2228068578,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "candidate": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1971570369,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "counts_equal": true,
+        "order": [
+          "candidate",
+          "baseline"
+        ],
+        "outputs_equal": true,
+        "pair": 6
+      },
+      {
+        "baseline": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 2105347816,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "candidate": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1789284180,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "counts_equal": true,
+        "order": [
+          "baseline",
+          "candidate"
+        ],
+        "outputs_equal": true,
+        "pair": 7
+      },
+      {
+        "baseline": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1950736673,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "candidate": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 1961866574,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "counts_equal": true,
+        "order": [
+          "candidate",
+          "baseline"
+        ],
+        "outputs_equal": true,
+        "pair": 8
+      },
+      {
+        "baseline": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 2436882024,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "candidate": {
+          "counts": {
+            "memo_hits": 3766,
+            "memo_misses": 1889
+          },
+          "elapsed_ns": 2311761002,
+          "implementation_manifest": {
+            "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+            "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+            "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+            "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+            "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+          },
+          "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c",
+          "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6"
+        },
+        "counts_equal": true,
+        "order": [
+          "baseline",
+          "candidate"
+        ],
+        "outputs_equal": true,
+        "pair": 9
+      }
+    ],
+    "repeats": 9,
+    "schema": "atlas.native1728.cascade-upgrade-measurement/v1",
+    "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+    "status": "MEASURED_LOCAL_COMPOSITE_REPLAY"
+  },
+  "changes": [
+    {
+      "id": "validated-scope-digest-cache",
+      "preserved": "Fresh scalar validation, source/edition/principal/rights/mode identity, authorization and per-read body integrity",
+      "sourcePath": "src/beast20/storage.py",
+      "sourceSha256": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+      "title": "Reuse validated scope digests in a bounded 256-entry cache"
+    },
+    {
+      "id": "memo-expiry-index",
+      "preserved": "Exact row counts, LRU counter/order, TTL boundary, transaction and migration behavior",
+      "sourcePath": "src/beast20/storage.py",
+      "sourceSha256": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5",
+      "title": "Use an index for memo-expiry cleanup"
+    }
+  ],
+  "evidenceFiles": {
+    "cascade": {
+      "path": "benchmarks/native1728_evolution/CASCADE_UPGRADE_MEASURED.json",
+      "sha256": "18c9c8a71bb0a488ec3a7cc160c16eecd16fe46049ca9de4f7463fbd44204286"
+    },
+    "storage": {
+      "path": "benchmarks/native1728_evolution/STORAGE_UPGRADE_MEASURED.json",
+      "sha256": "a923e6fd1f42a135c30f435503e413b33e6dd8ced810b62285898997780ff6ca"
+    }
+  },
+  "hypothesisDisposition": {
+    "admission": "SYNTHETIC_TOKEN_POLICY_ONLY_NOT_PROMOTED_TO_RUNTIME",
+    "batch-width": "EXISTING_VERIFIED_BATCH_CONTROL_RETAINED",
+    "memo-capacity": "CURRENT_CONTROL_RETAINED_AND_REPLAYED",
+    "revision-invalidation": "EXISTING_IMPLEMENTATION_AND_REGRESSIONS_RETAINED",
+    "scope-validation": "IMPLEMENTED_AND_MEASURED_WITH_INTEGRITY_REGRESSIONS",
+    "source-gate": "EXISTING_HOST_FAILURE_PROPAGATION_RETAINED",
+    "workers": "CURRENT_SERIAL_WORKER_CHOICE_RETAINED",
+    "workload-partition": "SEPARATE_REPRODUCIBLE_WORKLOAD_MEASUREMENTS_IMPLEMENTED"
+  },
+  "limits": [
+    "The long-horizon experiment retains the prior configuration; it establishes no additional configuration speedup.",
+    "The simulation generated no source patches or automatic promotions; storage changes were separately implemented and measured.",
+    "Nine full-cascade pairs include one slower candidate pair; all raw results remain available.",
+    "Small batch-control timing differences are not treated as general performance gains."
+  ],
+  "schema": "atlas.native1728.implementation-upgrade/v1",
+  "scope": "Python source implementation; measured local replay. Native hosts expose this evidence, not a hosted Python latency claim.",
+  "status": "IMPLEMENTED_AND_MEASURED_LOCALLY"
+}

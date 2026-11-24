@@ -34,6 +34,11 @@ def main():
     feed.add_argument("--query")
     strategy = sub.add_parser("strategy-summary", help="Verify and inspect a completed 1,728-strategy report")
     strategy.add_argument("--report", type=Path, required=True)
+    evolution = sub.add_parser("evolution-summary", help="Verify and inspect a completed source-bound long-horizon report")
+    evolution.add_argument("--report", type=Path, required=True)
+    evolution_bundle = sub.add_parser("evolution-bundle", help="Verify and export a completed long-horizon report for a native host")
+    evolution_bundle.add_argument("--report", type=Path, required=True)
+    evolution_bundle.add_argument("--output", type=Path, required=True)
     federation = sub.add_parser("federation", help="Delegate to explicitly configured source-pinned Atlas packages")
     federation.add_argument("--config", type=Path, required=True)
     federation.add_argument("--component", choices=("excellence", "gf9", "unified"))
@@ -73,6 +78,16 @@ def main():
     elif args.operation == "strategy-summary":
         from .strategy_lab import compact_summary
         result = compact_summary(json.loads(args.report.read_text(encoding="utf-8")))
+    elif args.operation in {"evolution-summary", "evolution-bundle"}:
+        from .long_horizon import report_summary, export_bundle
+        report = json.loads(args.report.read_text(encoding="utf-8"))
+        if args.operation == "evolution-summary":
+            result = report_summary(report)
+        else:
+            bundle = export_bundle(report)
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(json.dumps(bundle, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
+            result = {"status": "VERIFIED_BUNDLE_EXPORTED", "reportSha256": bundle["reportSha256"]}
     elif args.operation == "federation":
         from .federation import PinnedFederation
         config = json.loads(args.config.read_text(encoding="utf-8"))
