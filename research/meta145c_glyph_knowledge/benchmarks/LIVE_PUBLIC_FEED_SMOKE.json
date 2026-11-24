@@ -1,0 +1,47 @@
+{
+  "schema": "atlas.beast20.live-public-feed-smoke/v1",
+  "source_url": "https://github.com/python/cpython/releases.atom",
+  "requests_bounded_to": 2,
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "runs": [
+    {
+      "status": "UPDATED",
+      "generation": 1,
+      "body_sha256": "fa97bcf5b1a6b872764564527422affbeb89ac032a29124143cd0e63936a9746",
+      "new_revisions": 10,
+      "changed_heads": 10,
+      "duplicates": 0,
+      "network_request": true,
+      "source_url": "https://github.com/python/cpython/releases.atom",
+      "authority": "SOURCE_CONTENT_UNREVIEWED",
+      "canon_effect": "NONE",
+      "item_count": 10,
+      "elapsed_ms": 5303.426
+    },
+    {
+      "status": "NOT_MODIFIED",
+      "generation": 2,
+      "body_sha256": "fa97bcf5b1a6b872764564527422affbeb89ac032a29124143cd0e63936a9746",
+      "new_revisions": 0,
+      "changed_heads": 0,
+      "duplicates": 0,
+      "network_request": true,
+      "source_url": "https://github.com/python/cpython/releases.atom",
+      "authority": "SOURCE_CONTENT_UNREVIEWED",
+      "canon_effect": "NONE",
+      "item_count": 0,
+      "elapsed_ms": 3458.91
+    }
+  ],
+  "stats": {
+    "requests": 2,
+    "parsed": 1,
+    "not_modified": 1,
+    "body_unchanged": 0,
+    "new_revisions": 10,
+    "duplicates": 0
+  },
+  "hosted_authorization_proven": false,
+  "raw_source_text_published": false
+}

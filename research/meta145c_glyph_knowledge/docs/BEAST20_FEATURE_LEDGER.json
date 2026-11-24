@@ -1,0 +1,751 @@
+{
+  "schema": "atlas.beast20.feature-ledger/v1",
+  "title": "BEAST20 integrated feature ledger",
+  "status": "LOCAL_TESTED",
+  "feature_count": 20,
+  "hosted_deployment": false,
+  "automatic_background_scheduler_installed": false,
+  "standalone_autonomous_residents_created": false,
+  "model_weight_updates": false,
+  "canon_changes_by_this_package": false,
+  "source_history_preserved": true,
+  "third_party_implementation_code_copied": false,
+  "implementation_dependencies": [
+    "Python standard library",
+    "SQLite bundled with Python runtime"
+  ],
+  "provenance_document": "docs/BEAST20_OPEN_SOURCE_PROVENANCE.md",
+  "source_pins": {
+    "starting_main_commit": "288b713290438853f50dd1e085432be3b06c0d0d",
+    "inherited_pr38_commit": "fba6086b434bd7a20e4ba59fceff8858db3040e5",
+    "inherited_pr41_commit": "6ea414d8d353f614a39f61a50b0787a61eb65227",
+    "ariadne_original_v07_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+    "historical_openalex_crosswalk_sha256": "a306c7306a79754b033e9f8c41c0de5ff5176b4544a6a80b5c740e2f8d2cc903"
+  },
+  "evidence": {
+    "local_verification": "benchmarks/LOCAL_VERIFICATION.json",
+    "final_source_benchmark": "benchmarks/BEAST20_REAL_SOURCE_RESULTS.json",
+    "retained_initial_source_benchmark": "benchmarks/BEAST20_REAL_SOURCE_RESULTS_INITIAL.json",
+    "bounded_public_feed_observation": "benchmarks/LIVE_PUBLIC_FEED_SMOKE.json",
+    "timing_and_test_counts": "Read the exact accompanying evidence files; not duplicated in this ledger.",
+    "known_tradeoffs": [
+      "The batched topic-view wrapper retains the R10 checkpoint check and additionally verifies before returning; its stronger local contract can cost more than optimized R10 on the measured workload.",
+      "Initial persistent search selected the wrong SQLite grouping index and was slower than the pretokenized scan. The corrected exact-term covering-index query and bounded result join are measured separately; initial unfavorable evidence remains retained.",
+      "Component speedup ratios are never multiplied.",
+      "Local current-rights callbacks are host integration seams, not demonstrated hosted identity or authorization."
+    ]
+  },
+  "features": [
+    {
+      "id": "E01",
+      "name": "Exact-byte content-addressed store",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Store original source bytes by SHA-256 inside an explicit scope and verify every returned body.",
+      "symbols": [
+        "src/beast20/storage.py::ArtifactStore.put_object",
+        "src/beast20/storage.py::ArtifactStore.get_object",
+        "src/beast20/storage.py::ArtifactStore._verify"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_content_address_preserves_exact_bytes"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_corruption_rejected_for_direct_batch_and_duplicate_write"
+        }
+      ],
+      "cooperates_with": [
+        "E02",
+        "E04",
+        "E06",
+        "E14"
+      ],
+      "limits": "Digest equality does not authenticate a principal, grant rights or independently establish source truth."
+    },
+    {
+      "id": "E02",
+      "name": "Source, edition, principal, epoch and version keys",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Bind reusable computation identity to the exact source, source edition, principal, rights epoch, algorithm version, configuration and inputs.",
+      "symbols": [
+        "src/beast20/storage.py::Scope",
+        "src/beast20/storage.py::semantic_key",
+        "src/beast20/execution.py::AsyncExecutor._key"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_scope_source_edition_principal_and_epoch_are_independent"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_semantic_key_covers_all_parameters_and_is_order_stable"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_scope_version_input_and_parent_digest_invalidate"
+        }
+      ],
+      "cooperates_with": [
+        "E03",
+        "E07",
+        "E10",
+        "E18",
+        "E19"
+      ],
+      "limits": "The scope is isolation metadata supplied by trusted application code, not an authorization attestation."
+    },
+    {
+      "id": "E03",
+      "name": "Bounded TTL/LRU and explicit negative memo",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Expire and evict derived memo entries; distinguish cached null, cached negative and cache miss; return independently decoded JSON values.",
+      "symbols": [
+        "src/beast20/storage.py::ArtifactStore.memo_put",
+        "src/beast20/storage.py::ArtifactStore.memo_get",
+        "src/beast20/storage.py::CacheLookup",
+        "src/beast20/storage.py::NEGATIVE"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_ttl_has_exact_expiry_boundary"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_lru_eviction_and_negative_entries_count_toward_capacity"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_memo_churn_does_not_accumulate_derived_blobs_or_delete_raw_source"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_memo_returns_copies_and_distinguishes_null_negative_and_miss"
+        }
+      ],
+      "cooperates_with": [
+        "E02",
+        "E05",
+        "E18"
+      ],
+      "limits": "Entry-bounded with an 8 MiB per-entry ceiling. Raw source history is retained separately; SQLite can keep reusable free pages."
+    },
+    {
+      "id": "E04",
+      "name": "Verified batched object retrieval",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Retrieve exact objects through bounded SQL chunks while preserving input order, duplicate requests and missing values.",
+      "symbols": [
+        "src/beast20/storage.py::ArtifactStore.batch_get"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_batch_order_duplicates_missing_and_empty"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_batch_over_sqlite_variable_limit_and_chunk_bounds"
+        }
+      ],
+      "cooperates_with": [
+        "E01",
+        "E06",
+        "E20"
+      ],
+      "limits": "Insertion/setup is a separate cost; each returned object still incurs SHA-256 verification."
+    },
+    {
+      "id": "E05",
+      "name": "Reverse dependency and transitive invalidation",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Track scope-local derivation dependencies and invalidate roots plus descendants while retaining immutable source bytes.",
+      "symbols": [
+        "src/beast20/storage.py::ArtifactStore.set_dependencies",
+        "src/beast20/storage.py::ArtifactStore.invalidate",
+        "src/beast20/runtime.py::AtlasBeastRuntime.refresh_public_feed"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_transitive_invalidation_diamond_cycle_and_scope"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_dependency_replacement_removes_old_reverse_edge"
+        },
+        {
+          "file": "tests_beast20/test_feed_delivery.py",
+          "case": "test_invalidation_failure_is_finished_when_upsert_is_already_committed"
+        }
+      ],
+      "cooperates_with": [
+        "E02",
+        "E03",
+        "E06",
+        "E14",
+        "E16"
+      ],
+      "limits": "Computational dependency edges do not imply evidentiary agreement, semantic equivalence or CANON acceptance."
+    },
+    {
+      "id": "E06",
+      "name": "Incremental Unicode/CJK index and rank fusion",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Update changed document postings, skip identical tokenization, match short CJK queries and offer deterministic RRF that preserves opposite evidence polarities.",
+      "symbols": [
+        "src/beast20/storage.py::search_terms",
+        "src/beast20/storage.py::ArtifactStore.upsert_document",
+        "src/beast20/storage.py::ArtifactStore.search",
+        "src/beast20/storage.py::rrf"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_one_and_two_character_mandarin_queries"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_incremental_search_matches_independent_linear_token_overlap"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_identical_document_skips_tokenization_but_metadata_or_text_change_reindexes"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_rrf_deduplicates_per_lane_and_preserves_dissent"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_search_batches_hydration_in_one_query_without_skipping_integrity"
+        }
+      ],
+      "cooperates_with": [
+        "E01",
+        "E05",
+        "E14",
+        "E16",
+        "E20"
+      ],
+      "limits": "Lexical retrieval and ranking, not translation or semantic proof. RRF is an explicit API; search does not silently fuse unrelated rankings."
+    },
+    {
+      "id": "E07",
+      "name": "Singleflight duplicate-work sharing",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Coalesce concurrent equivalent jobs in one executor while protecting other waiters when one caller cancels.",
+      "symbols": [
+        "src/beast20/execution.py::AsyncExecutor._singleflight"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_duplicate_inflight_jobs_share_work"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_cancelled_follower_does_not_cancel_shared_job"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_cancelled_last_waiter_cleans_checkpoint_and_resumes"
+        }
+      ],
+      "cooperates_with": [
+        "E02",
+        "E08",
+        "E09",
+        "E10"
+      ],
+      "limits": "In-process duplicate sharing is distinct from cross-instance lease deferral; neither creates authenticated residents."
+    },
+    {
+      "id": "E08",
+      "name": "Dependency-aware asynchronous DAG execution",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Validate dependencies, cycles and handlers before executing; run ready branches and block descendants of unsuccessful prerequisites.",
+      "symbols": [
+        "src/beast20/execution.py::TaskSpec",
+        "src/beast20/execution.py::AsyncExecutor._validate",
+        "src/beast20/execution.py::AsyncExecutor.run_graph",
+        "src/beast20/execution.py::GraphResult"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_dag_dependencies_and_cache"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_cycles_unknown_dependencies_and_unknown_handlers_run_nothing"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_dead_letter_is_durable_and_descendant_blocked"
+        }
+      ],
+      "cooperates_with": [
+        "E07",
+        "E09",
+        "E10",
+        "E11",
+        "E19"
+      ],
+      "limits": "Only explicitly registered application callables run. Async overlap does not add CPU multicore execution for synchronous handlers."
+    },
+    {
+      "id": "E09",
+      "name": "Fair bounded House admission",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Rotate ready Houses and share bounded worker capacity across concurrent graphs; reject excess task or graph admission.",
+      "symbols": [
+        "src/beast20/execution.py::AsyncExecutor.__init__",
+        "src/beast20/execution.py::AsyncExecutor.run_graph",
+        "src/beast20/execution.py::AsyncExecutor._execute"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_fair_house_rotation"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_parallel_async_jobs_bounded"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_concurrent_graphs_share_global_capacity_and_flights"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_graph_backpressure_recovers_after_completion"
+        }
+      ],
+      "cooperates_with": [
+        "E07",
+        "E08",
+        "E11",
+        "E12",
+        "E19"
+      ],
+      "limits": "House scheduling is local task fairness, not an assertion of expert competence or independent House agents."
+    },
+    {
+      "id": "E10",
+      "name": "Durable task checkpoints and resume",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Persist completed JSON outputs, hashes, attempts and ownership leases; reuse exact completed work across executor reconstruction.",
+      "symbols": [
+        "src/beast20/execution.py::AsyncExecutor._claim",
+        "src/beast20/execution.py::AsyncExecutor._save",
+        "src/beast20/execution.py::AsyncExecutor._execute"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_restart_suppresses_completed_jobs"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_other_executor_live_lease_defers"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_expired_crash_lease_replays_without_false_failure"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_expired_owner_cannot_overwrite_new_owner_checkpoint"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_cache_corruption_is_not_returned"
+        }
+      ],
+      "cooperates_with": [
+        "E02",
+        "E07",
+        "E08",
+        "E11",
+        "E19"
+      ],
+      "limits": "Local checkpoint hashes do not independently authenticate a hostile or rolled-back database. External side-effecting handlers need their own idempotency contract."
+    },
+    {
+      "id": "E11",
+      "name": "Bounded retries and durable dead letters",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Apply task attempt budgets and capped backoff, retain observed failures during interruption, and record terminal failure without running blocked descendants.",
+      "symbols": [
+        "src/beast20/execution.py::AsyncExecutor._execute",
+        "src/beast20/execution.py::TaskSpec.max_attempts"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_failure_retries_then_succeeds_with_bounded_backoff"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_dead_letter_is_durable_and_descendant_blocked"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_crash_during_backoff_preserves_observed_failure_budget"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_cancel_during_backoff_preserves_failure_budget"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_timeout_becomes_dead_letter"
+        }
+      ],
+      "cooperates_with": [
+        "E08",
+        "E09",
+        "E10",
+        "E12"
+      ],
+      "limits": "Async timeouts require cooperative execution; a blocking synchronous handler can block the event loop."
+    },
+    {
+      "id": "E12",
+      "name": "Provider circuit breakers with half-open recovery",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Track provider failures separately, defer calls while a breaker is open, and permit one half-open recovery probe.",
+      "symbols": [
+        "src/beast20/execution.py::AsyncExecutor._allow",
+        "src/beast20/execution.py::AsyncExecutor._provider_result",
+        "src/beast20/execution.py::_Breaker"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_circuit_half_open_recovery"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_circuit_provider_isolation"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_half_open_allows_only_one_probe"
+        }
+      ],
+      "cooperates_with": [
+        "E09",
+        "E10",
+        "E11"
+      ],
+      "limits": "The breaker protects registered task providers; it neither installs provider credentials nor authorizes paid calls."
+    },
+    {
+      "id": "E13",
+      "name": "Conditional HTTP and supported cache policy",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Use ETag/Last-Modified, body digests and supported freshness directives to avoid redundant fetches or parsing; respect no-store responses.",
+      "symbols": [
+        "src/beast20/feeds.py::PublicHTTPTransport",
+        "src/beast20/feeds.py::FeedPoller.poll"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_feeds.py",
+          "case": "test_conditional_304_skips_parse"
+        },
+        {
+          "file": "tests_beast20/test_feeds.py",
+          "case": "test_same_bytes_skip_parser_without_validator"
+        },
+        {
+          "file": "tests_beast20/test_independent_review.py",
+          "case": "test_fresh_max_age_avoids_network_until_expiry"
+        },
+        {
+          "file": "tests_beast20/test_independent_review.py",
+          "case": "test_no_store_response_does_not_persist_content_or_source_checkpoint"
+        }
+      ],
+      "cooperates_with": [
+        "E14",
+        "E15",
+        "E16"
+      ],
+      "limits": "Bounded selected-host feed refresh, not a complete general-purpose RFC 9111 cache or an installed background scheduler."
+    },
+    {
+      "id": "E14",
+      "name": "Revision deduplication and visible reverts",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Preserve source item revisions, deduplicate equivalent logical items, and emit head changes even when the new head is an already archived revision.",
+      "symbols": [
+        "src/beast20/feeds.py::canonical_url",
+        "src/beast20/feeds.py::parse_feed",
+        "src/beast20/feeds.py::FeedPoller.poll",
+        "src/beast20/feeds.py::FeedPoller.revisions"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_feeds.py",
+          "case": "test_restart_revision_history_and_changed_title"
+        },
+        {
+          "file": "tests_beast20/test_feeds.py",
+          "case": "test_equivalent_json_dedupes_logical_item"
+        },
+        {
+          "file": "tests_beast20/test_independent_review.py",
+          "case": "test_reverting_to_archived_revision_emits_current_head_change"
+        },
+        {
+          "file": "tests_beast20/test_independent_review.py",
+          "case": "test_html_change_is_not_hidden_by_unchanged_text_alternative"
+        },
+        {
+          "file": "tests_beast20/test_independent_review.py",
+          "case": "test_archival_read_rejects_payload_that_disagrees_with_revision_digest"
+        }
+      ],
+      "cooperates_with": [
+        "E01",
+        "E05",
+        "E06",
+        "E13",
+        "E16"
+      ],
+      "limits": "Original HTML is inert source data; feed claims remain unreviewed. Canonical URL handling is conservative, not a universal identity oracle."
+    },
+    {
+      "id": "E15",
+      "name": "Transactional shared per-origin budgets",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Reserve request tokens in an immediate SQLite transaction and retain provider Retry-After deadlines across poller instances.",
+      "symbols": [
+        "src/beast20/feeds.py::FeedPoller._budget",
+        "src/beast20/feeds.py::FeedPoller._retry_after",
+        "src/beast20/feeds.py::FeedPoller.poll"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_feeds.py",
+          "case": "test_rate_limit_no_transport"
+        },
+        {
+          "file": "tests_beast20/test_feeds.py",
+          "case": "test_retry_after_persists_provider_backoff"
+        },
+        {
+          "file": "tests_beast20/test_independent_review.py",
+          "case": "test_long_retry_after_is_not_shortened_into_an_early_provider_request"
+        },
+        {
+          "file": "tests_beast20/test_independent_review.py",
+          "case": "test_concurrent_instances_share_one_origin_budget"
+        }
+      ],
+      "cooperates_with": [
+        "E13",
+        "E16"
+      ],
+      "limits": "Budgets coordinate instances sharing the same database, not all deployments or external providers globally."
+    },
+    {
+      "id": "E16",
+      "name": "Atomic feed checkpoints and durable pending/ack delivery",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Commit revisions, heads and delivery events with the source checkpoint; replay ordered pending changes until each destination acknowledges a completed delivery.",
+      "symbols": [
+        "src/beast20/feeds.py::FeedPoller.poll",
+        "src/beast20/feeds.py::FeedPoller.pending",
+        "src/beast20/feeds.py::FeedPoller.ack",
+        "src/beast20/runtime.py::AtlasBeastRuntime.refresh_public_feed"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_feeds.py",
+          "case": "test_bad_parse_does_not_advance_checkpoint"
+        },
+        {
+          "file": "tests_beast20/test_feeds.py",
+          "case": "test_stale_concurrent_fetch_cannot_overwrite_newer_checkpoint"
+        },
+        {
+          "file": "tests_beast20/test_feed_delivery.py",
+          "case": "test_upsert_failure_replays_after_not_modified_response"
+        },
+        {
+          "file": "tests_beast20/test_feed_delivery.py",
+          "case": "test_reopened_source_and_destination_resume_same_consumer"
+        },
+        {
+          "file": "tests_beast20/test_feed_delivery.py",
+          "case": "test_new_destination_replays_history_despite_old_consumer_ack_and_304"
+        },
+        {
+          "file": "tests_beast20/test_feed_delivery.py",
+          "case": "test_bounded_delivery_ack_order_and_independent_consumer_cursors"
+        }
+      ],
+      "cooperates_with": [
+        "E01",
+        "E05",
+        "E06",
+        "E13",
+        "E14",
+        "E15"
+      ],
+      "limits": "The source transaction and destination index are separate stores. Replay and idempotent writes bridge that boundary; no distributed atomic transaction is claimed."
+    },
+    {
+      "id": "E17",
+      "name": "R10 verified memory and batched topic views",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Call checkpoint-bound R10 retrieval, batch the existing topic projection and recheck the expected checkpoint before returning topic results.",
+      "symbols": [
+        "src/memory.py::LocalMemory.verified_triage_batch",
+        "src/beast20/runtime.py::AtlasBeastRuntime.verified_memory",
+        "src/beast20/runtime.py::AtlasBeastRuntime.topic_views"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_runtime.py",
+          "case": "test_topic_batch_exact_legacy_parity_valid_fixture"
+        },
+        {
+          "file": "tests_beast20/test_runtime.py",
+          "case": "test_old_checkpoint_and_truncated_history_rejected"
+        },
+        {
+          "file": "tests_beast20/test_runtime.py",
+          "case": "test_tampered_memory_cannot_affect_projection"
+        },
+        {
+          "file": "tests_beast20/test_runtime.py",
+          "case": "test_return_denial_and_during_projection_memory_update"
+        }
+      ],
+      "cooperates_with": [
+        "E02",
+        "E18",
+        "E20"
+      ],
+      "limits": "Caller-supplied checkpoint must be independently trusted. Additional return verification has real cost; the retained benchmark includes its regression relative to optimized R10."
+    },
+    {
+      "id": "E18",
+      "name": "GF8 physical reuse with trusted process digests",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Share identical physical computations across coordinate-specific contexts; require exact physical/configuration/code identity and an independently retained in-process result digest.",
+      "symbols": [
+        "src/beast20/runtime.py::AtlasBeastRuntime.reasoning_context",
+        "src/reasoning_filter.py::prepare_reasoning_context",
+        "src/reasoning_filter.py::safe_explanation"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_runtime_independent.py",
+          "case": "test_cold_and_reused_contexts_exactly_match_original_filter"
+        },
+        {
+          "file": "tests_beast20/test_runtime_independent.py",
+          "case": "test_validly_hashed_authority_forgery_in_known_cache_is_rejected"
+        },
+        {
+          "file": "tests_beast20/test_runtime_independent.py",
+          "case": "test_validly_hashed_numerical_forgery_in_known_cache_is_rejected"
+        },
+        {
+          "file": "tests_beast20/test_runtime_independent.py",
+          "case": "test_new_runtime_recomputes_instead_of_trusting_self_hashed_persistent_cache"
+        },
+        {
+          "file": "tests_beast20/test_runtime_independent.py",
+          "case": "test_warm_physics_cache_does_not_bypass_memory_tamper_detection"
+        },
+        {
+          "file": "tests_beast20/test_runtime_independent.py",
+          "case": "test_revocation_at_return_blocks_even_a_warm_cache_hit"
+        }
+      ],
+      "cooperates_with": [
+        "E02",
+        "E03",
+        "E17",
+        "E20"
+      ],
+      "limits": "Analytic CPU model, not physical cymatic acceleration. A new runtime recomputes before trusting persistent cache state; model weights remain unchanged."
+    },
+    {
+      "id": "E19",
+      "name": "Complete incremental 1728-to-144-to-12-to-META145 cascade",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Compile source node computations and hierarchical reductions into one dependency graph; reuse unchanged results and recompute only affected supplemental-input descendants.",
+      "symbols": [
+        "src/beast20/runtime.py::CascadeCompiler",
+        "src/beast20/runtime.py::CascadeCompiler.tasks",
+        "src/beast20/runtime.py::CascadeCompiler.handlers",
+        "src/beast20/runtime.py::AtlasBeastRuntime.run_cascade"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_runtime.py",
+          "case": "test_full_topology_warm_and_four_affected_jobs"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_scope_version_input_and_parent_digest_invalidate"
+        },
+        {
+          "file": "tests_beast20/test_execution.py",
+          "case": "test_restart_suppresses_completed_jobs"
+        }
+      ],
+      "cooperates_with": [
+        "E02",
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "E20"
+      ],
+      "limits": "The 1,885 jobs are lexical/digest computations, not expert judgments, model turns, authenticated deities or a rewrite of the original ontology."
+    },
+    {
+      "id": "E20",
+      "name": "Bounded traces and paired regression evidence",
+      "status": "IMPLEMENTED_LOCAL_TESTED",
+      "behavior": "Record fixed-label stage spans and counters; compare real local workloads with alternating paired order, digest parity, raw timings and preserved negative evidence.",
+      "symbols": [
+        "src/beast20/runtime.py::TraceBook",
+        "benchmarks/bench_beast20.py::paired",
+        "benchmarks/bench_beast20.py::paired_async",
+        "benchmarks/bench_beast20.py::storage_benchmarks",
+        "benchmarks/bench_beast20.py::cascade_benchmarks"
+      ],
+      "tests": [
+        {
+          "file": "tests_beast20/test_runtime.py",
+          "case": "test_trace_bounded_no_source_content"
+        },
+        {
+          "file": "tests_beast20/test_storage.py",
+          "case": "test_search_batches_hydration_in_one_query_without_skipping_integrity"
+        }
+      ],
+      "cooperates_with": [
+        "E04",
+        "E06",
+        "E17",
+        "E18",
+        "E19"
+      ],
+      "limits": "Local workload evidence only; ratios are not multiplied and cannot establish hosted latency, model intelligence or universal superiority."
+    }
+  ]
+}
