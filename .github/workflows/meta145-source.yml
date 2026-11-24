@@ -1,0 +1,27 @@
+name: Atlas META145 public synthetic source checks
+on:
+  pull_request:
+    paths:
+      - 'tools/meta145/**'
+      - '.github/workflows/meta145-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-contract:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile pure source
+        run: python -m compileall -q tools/meta145/src
+      - name: Offline tests with synthetic source only
+        run: python -m unittest discover -s tools/meta145/tests -p 'test*.py' -v
+      - name: Repeat under optimizations
+        run: python -O -m unittest discover -s tools/meta145/tests -p 'test*.py' -v

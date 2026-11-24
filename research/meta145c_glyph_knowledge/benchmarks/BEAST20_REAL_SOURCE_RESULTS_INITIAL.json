@@ -1,0 +1,1085 @@
+{
+  "schema": "atlas.beast20.benchmark/v1",
+  "created_utc": "2026-11-24T02:47:52.691769+00:00",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "sqlite": "3.53.1",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "clock": "perf_counter_ns"
+  },
+  "dataset": {
+    "kind": "EXACT_PINNED_ARIADNE_V07",
+    "registry_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+    "topics_sha256": "a306c7306a79754b033e9f8c41c0de5ff5176b4544a6a80b5c740e2f8d2cc903"
+  },
+  "method": {
+    "paired_order": "alternating baseline-first/candidate-first",
+    "p95": "nearest rank; small paired sample, descriptive only",
+    "ratios": "median baseline divided by median candidate; never multiplied",
+    "warmups": "one untimed paired parity pass except graph scenarios",
+    "setup": "described separately per workload; no artificial sleeps"
+  },
+  "comparisons": [
+    {
+      "name": "legacy_topic_loop_vs_r10_verified_batch",
+      "workload": {
+        "coordinates": 1728,
+        "synthetic_review_events": 144,
+        "topic_count": 4516,
+        "candidate_edges": 22580,
+        "topic_input": "PINNED_HISTORICAL_OPENALEX_CANDIDATES"
+      },
+      "repeats": 5,
+      "baseline": {
+        "median_ms": 5942.312689,
+        "p95_ms": 6672.871875,
+        "minimum_ms": 5760.088259,
+        "maximum_ms": 6672.871875
+      },
+      "candidate": {
+        "median_ms": 83.221779,
+        "p95_ms": 92.378952,
+        "minimum_ms": 68.132228,
+        "maximum_ms": 92.378952
+      },
+      "median_ratio_baseline_over_candidate": 71.40333648719526,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 5760.088259,
+          "candidate_ms": 92.378952,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 83.221779,
+          "baseline_ms": 5889.282452,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 6013.597331,
+          "candidate_ms": 89.451859,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 74.166136,
+          "baseline_ms": 6672.871875,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 5942.312689,
+          "candidate_ms": 68.132228,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        }
+      ],
+      "limitations": [
+        "Legacy repeated scans do not verify the memory checkpoint.",
+        "R10 verifies once and retains existing per-coordinate topic queries.",
+        "Synthetic reviews affect ordering only; topic candidates remain unreviewed."
+      ],
+      "untimed_observed_sql_counts": {
+        "legacy": {
+          "knowledge:SELECT": 1728,
+          "memory:SELECT": 22580
+        },
+        "r10": {
+          "knowledge:SELECT": 1728,
+          "memory:SELECT": 1
+        },
+        "beast20": {
+          "knowledge:SELECT": 5,
+          "memory:SELECT": 2
+        }
+      }
+    },
+    {
+      "name": "r10_verified_memory_vs_beast20_batched_topic_views",
+      "workload": {
+        "coordinates": 1728,
+        "synthetic_review_events": 144,
+        "topic_count": 4516,
+        "candidate_edges": 22580,
+        "topic_input": "PINNED_HISTORICAL_OPENALEX_CANDIDATES"
+      },
+      "repeats": 5,
+      "baseline": {
+        "median_ms": 75.806528,
+        "p95_ms": 100.79565,
+        "minimum_ms": 72.181398,
+        "maximum_ms": 100.79565
+      },
+      "candidate": {
+        "median_ms": 95.725287,
+        "p95_ms": 102.96913,
+        "minimum_ms": 84.34633,
+        "maximum_ms": 102.96913
+      },
+      "median_ratio_baseline_over_candidate": 0.7919174794430233,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 72.181398,
+          "candidate_ms": 84.34633,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 95.725287,
+          "baseline_ms": 75.564223,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 75.806528,
+          "candidate_ms": 89.750802,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 102.96913,
+          "baseline_ms": 87.919738,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 100.79565,
+          "candidate_ms": 102.46576,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        }
+      ],
+      "limitations": [
+        "Baseline is the current optimized R10 verified memory API, not the older raw scans.",
+        "BEAST20 additionally verifies at return and uses bounded topic SQL batches.",
+        "Authorization callbacks are local test callbacks, not live host authentication."
+      ],
+      "untimed_observed_sql_counts": {
+        "legacy": {
+          "knowledge:SELECT": 1728,
+          "memory:SELECT": 22580
+        },
+        "r10": {
+          "knowledge:SELECT": 1728,
+          "memory:SELECT": 1
+        },
+        "beast20": {
+          "knowledge:SELECT": 5,
+          "memory:SELECT": 2
+        }
+      }
+    },
+    {
+      "name": "gf8_uncached_vs_cold_batch_physics_reuse",
+      "workload": {
+        "contexts": 24,
+        "distinct_plates": 1,
+        "distinct_drives": 1,
+        "grid": 17,
+        "max_mode": 4,
+        "drive_hz": 55.0,
+        "source": "REAL_GF8_ANALYTIC_COMPUTATIONS_WITH_AUTHORED_REQUESTS"
+      },
+      "repeats": 5,
+      "baseline": {
+        "median_ms": 13.210755,
+        "p95_ms": 14.631094,
+        "minimum_ms": 12.893157,
+        "maximum_ms": 14.631094
+      },
+      "candidate": {
+        "median_ms": 4.973069,
+        "p95_ms": 7.978435,
+        "minimum_ms": 4.869071,
+        "maximum_ms": 7.978435
+      },
+      "median_ratio_baseline_over_candidate": 2.6564592206542885,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 13.210755,
+          "candidate_ms": 4.973069,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.940079,
+          "baseline_ms": 13.251818,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 13.138597,
+          "candidate_ms": 5.096165,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.869071,
+          "baseline_ms": 14.631094,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 12.893157,
+          "candidate_ms": 7.978435,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        }
+      ],
+      "limitations": [
+        "Exact reasoning-packet parity includes per-coordinate receipts.",
+        "Reuse is valid only for identical physics inputs; changing a material/drive changes the key.",
+        "Local analytic CPU model; no physical acoustic processor, GPT inference or hosted latency.",
+        "Candidate timing includes a fresh in-memory store and runtime per batch."
+      ],
+      "observed_candidate_counters_per_call_including_warmup": [
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        }
+      ]
+    },
+    {
+      "name": "gf8_uncached_vs_prepopulated_physics_reuse",
+      "workload": {
+        "contexts": 24,
+        "distinct_plates": 1,
+        "distinct_drives": 1,
+        "grid": 17,
+        "max_mode": 4,
+        "drive_hz": 55.0,
+        "source": "REAL_GF8_ANALYTIC_COMPUTATIONS_WITH_AUTHORED_REQUESTS"
+      },
+      "repeats": 5,
+      "baseline": {
+        "median_ms": 13.188263,
+        "p95_ms": 15.400792,
+        "minimum_ms": 12.890223,
+        "maximum_ms": 15.400792
+      },
+      "candidate": {
+        "median_ms": 4.334544,
+        "p95_ms": 5.756431,
+        "minimum_ms": 3.784043,
+        "maximum_ms": 5.756431
+      },
+      "median_ratio_baseline_over_candidate": 3.0425952533876686,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 15.400792,
+          "candidate_ms": 4.334544,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 5.756431,
+          "baseline_ms": 13.03509,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 13.592352,
+          "candidate_ms": 3.925998,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 3.784043,
+          "baseline_ms": 13.188263,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 12.890223,
+          "candidate_ms": 4.588217,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        }
+      ],
+      "limitations": [
+        "Exact reasoning-packet parity includes per-coordinate receipts.",
+        "Reuse is valid only for identical physics inputs; changing a material/drive changes the key.",
+        "Local analytic CPU model; no physical acoustic processor, GPT inference or hosted latency.",
+        "Candidate cache is prepopulated before timing."
+      ],
+      "observed_candidate_counters_before": {
+        "physics_computations": 1,
+        "physics_hits": 23
+      },
+      "observed_candidate_counters_after": {
+        "physics_computations": 1,
+        "physics_hits": 167
+      }
+    },
+    {
+      "name": "source_objects_individual_vs_bounded_batch_get",
+      "workload": {
+        "objects": 1728,
+        "unique_digests": 1728,
+        "source_bytes": 1830143
+      },
+      "repeats": 5,
+      "baseline": {
+        "median_ms": 18.780226,
+        "p95_ms": 19.333851,
+        "minimum_ms": 18.4917,
+        "maximum_ms": 19.333851
+      },
+      "candidate": {
+        "median_ms": 5.911946,
+        "p95_ms": 6.116906,
+        "minimum_ms": 5.687297,
+        "maximum_ms": 6.116906
+      },
+      "median_ratio_baseline_over_candidate": 3.1766572292778044,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 18.501996,
+          "candidate_ms": 5.952277,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 5.687297,
+          "baseline_ms": 18.780226,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 19.333851,
+          "candidate_ms": 6.116906,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 5.744082,
+          "baseline_ms": 18.4917,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 19.006907,
+          "candidate_ms": 5.911946,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        }
+      ],
+      "limitations": [
+        "Both paths verify exact bytes against SHA-256.",
+        "Source insertion/setup is excluded from retrieval timing."
+      ]
+    },
+    {
+      "name": "source_names_preparsed_linear_vs_persistent_inverted_index",
+      "workload": {
+        "documents": 1728,
+        "queries": 24,
+        "query_texts_sha256": "26a692649e2f0ac93ddf12e2514c1cd3790560454867d45b9e834b4d5ded522f",
+        "limit": 20
+      },
+      "repeats": 5,
+      "baseline": {
+        "median_ms": 7.160921,
+        "p95_ms": 10.410097,
+        "minimum_ms": 6.14726,
+        "maximum_ms": 10.410097
+      },
+      "candidate": {
+        "median_ms": 28.048088,
+        "p95_ms": 41.624401,
+        "minimum_ms": 25.117724,
+        "maximum_ms": 41.624401
+      },
+      "median_ratio_baseline_over_candidate": 0.2553087041084583,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 7.331479,
+          "candidate_ms": 41.624401,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 29.882913,
+          "baseline_ms": 7.160921,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 6.14726,
+          "candidate_ms": 25.117724,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 28.048088,
+          "baseline_ms": 10.410097,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 6.177257,
+          "candidate_ms": 27.606461,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        }
+      ],
+      "limitations": [
+        "Baseline tokens are already parsed; this is a competitive in-memory linear baseline.",
+        "Persistent index additionally retrieves and verifies source bytes/metadata.",
+        "Output comparison uses exact ordered IDs/scores; no semantic-relevance improvement is inferred.",
+        "SQLite overhead can make the indexed route slower for a small or broad-query corpus."
+      ]
+    },
+    {
+      "name": "full_cascade_rebuild_vs_verified_job_reuse",
+      "workload": {
+        "nodes": 1728,
+        "spheres": 144,
+        "houses": 12,
+        "meta": 1,
+        "total_jobs": 1885,
+        "workers": 12,
+        "handler_type": "LOCAL_SYNCHRONOUS_LEXICAL_AND_DIGEST"
+      },
+      "repeats": 5,
+      "baseline": {
+        "median_ms": 298.366273,
+        "p95_ms": 393.423535,
+        "minimum_ms": 244.389738,
+        "maximum_ms": 393.423535
+      },
+      "candidate": {
+        "median_ms": 162.04393,
+        "p95_ms": 202.347101,
+        "minimum_ms": 153.063591,
+        "maximum_ms": 202.347101
+      },
+      "median_ratio_baseline_over_candidate": 1.8412678154621405,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 260.521915,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 156.404645,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "f60ed0fe21f932b6e4fcba813457eb3b4e92beebd4c30bfa2f70ac8c428e7bd9"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 162.04393,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "baseline_ms": 244.389738,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "f60ed0fe21f932b6e4fcba813457eb3b4e92beebd4c30bfa2f70ac8c428e7bd9"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 393.423535,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 175.194751,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "f60ed0fe21f932b6e4fcba813457eb3b4e92beebd4c30bfa2f70ac8c428e7bd9"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 202.347101,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "baseline_ms": 329.022891,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "f60ed0fe21f932b6e4fcba813457eb3b4e92beebd4c30bfa2f70ac8c428e7bd9"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 298.366273,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 153.063591,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "f60ed0fe21f932b6e4fcba813457eb3b4e92beebd4c30bfa2f70ac8c428e7bd9"
+        }
+      ],
+      "limitations": [
+        "Jobs are actual source-text/digest reductions, not model calls or resident turns.",
+        "Synchronous CPU handlers do not gain multicore parallelism from asyncio.",
+        "Timings include task construction, integrity checks, scheduling and checkpoint operations.",
+        "Each baseline uses a fresh in-memory checkpoint DB."
+      ]
+    },
+    {
+      "name": "full_rebuild_vs_one_node_supplement_change",
+      "workload": {
+        "nodes": 1728,
+        "spheres": 144,
+        "houses": 12,
+        "meta": 1,
+        "total_jobs": 1885,
+        "workers": 12,
+        "handler_type": "LOCAL_SYNCHRONOUS_LEXICAL_AND_DIGEST",
+        "changed_inputs": 1
+      },
+      "repeats": 5,
+      "baseline": {
+        "median_ms": 291.014755,
+        "p95_ms": 403.147727,
+        "minimum_ms": 265.24142,
+        "maximum_ms": 403.147727
+      },
+      "candidate": {
+        "median_ms": 176.340721,
+        "p95_ms": 246.991136,
+        "minimum_ms": 163.422271,
+        "maximum_ms": 246.991136
+      },
+      "median_ratio_baseline_over_candidate": 1.6502980896851385,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 265.24142,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 163.422271,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a867aa5271757d71083e14811194017ba1a4c978af7b108540b86dbced2e1832"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 171.282599,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "baseline_ms": 403.147727,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "13948dacc09cc054bd3f6b44bff4cf39f672789c75ce0e8634990b3634dd31ad"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 284.724556,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 246.991136,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "34e86a8e452d7742b15b947583f326c0e398da6b4c6e41b3d62a3affb8df2848"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 176.340721,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "baseline_ms": 293.328108,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "8478003e227a1e213a68eefe6067ba812517a01152eaca54201e1c90d104e869"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 291.014755,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 238.056172,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "064e27ca86e64cb439b46b94f0b11f3566567c66041c8612f8d7973f2480ad39"
+        }
+      ],
+      "limitations": [
+        "Jobs are actual source-text/digest reductions, not model calls or resident turns.",
+        "Synchronous CPU handlers do not gain multicore parallelism from asyncio.",
+        "Timings include task construction, integrity checks, scheduling and checkpoint operations.",
+        "Supplemental computation input changes; original source bytes and CANON stay fixed.",
+        "Each pair uses a never-before-seen supplement revision; cache reuse cannot hide updates."
+      ]
+    }
+  ],
+  "functional_observations": [
+    {
+      "name": "persistent_cascade_restart",
+      "workload": {
+        "nodes": 1728,
+        "spheres": 144,
+        "houses": 12,
+        "meta": 1,
+        "total_jobs": 1885,
+        "workers": 12,
+        "handler_type": "LOCAL_SYNCHRONOUS_LEXICAL_AND_DIGEST"
+      },
+      "elapsed_ms": 214.067842,
+      "initial_counters": {
+        "submitted": 1885,
+        "executed": 1885,
+        "cache_hits": 0,
+        "coalesced": 0,
+        "retries": 0,
+        "dead_letters": 0,
+        "circuit_deferrals": 0,
+        "blocked": 0,
+        "max_active": 1,
+        "max_admitted": 12
+      },
+      "restart_counters": {
+        "submitted": 1885,
+        "executed": 0,
+        "cache_hits": 1885,
+        "coalesced": 0,
+        "retries": 0,
+        "dead_letters": 0,
+        "circuit_deferrals": 0,
+        "blocked": 0,
+        "max_active": 0,
+        "max_admitted": 12
+      },
+      "outputs_equal": true,
+      "output_sha256": "f60ed0fe21f932b6e4fcba813457eb3b4e92beebd4c30bfa2f70ac8c428e7bd9",
+      "limitation": "One functional restart observation, not a paired latency speedup claim."
+    }
+  ],
+  "claim_limits": [
+    "Local Python/SQLite performance only.",
+    "No hosted authorization, model-quality, physical cymatics or universal superiority measurement.",
+    "Cold setup and full-source invalidation remain real costs.",
+    "Negative results are retained; source text is not included in this report."
+  ],
+  "observed_runtime_stats": {
+    "memory_snapshots_verified": 7
+  },
+  "all_output_comparisons_equal": true
+}
