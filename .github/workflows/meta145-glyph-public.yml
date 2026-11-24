@@ -1,0 +1,27 @@
+name: META145 Glyph Memory source-free conformance
+on:
+  pull_request:
+    paths:
+      - 'tools/meta145/src/meta145_glyph_memory.py'
+      - 'tools/meta145/tests/test_meta145_glyph_public.py'
+      - '.github/workflows/meta145-glyph-public.yml'
+  push:
+    branches:
+      - 'feature/meta145-glyph-memory-20261123'
+permissions:
+  contents: read
+jobs:
+  portable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Public synthetic source/namespace/feedback tests
+        run: python3 -m unittest discover -s tools/meta145/tests -p 'test_meta145_glyph_public.py' -v
+      - name: Optimized mode cannot bypass validation
+        run: python3 -O -m unittest discover -s tools/meta145/tests -p 'test_meta145_glyph_public.py' -q
+      - name: Ensure no test generated private corpus data in tracked tree
+        run: git diff --exit-code
