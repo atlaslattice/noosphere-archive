@@ -1,0 +1,50 @@
+{
+  "counts": {
+    "acceptedCandidateChanges": 4,
+    "epochs": 1729,
+    "evaluatedTimelineYearUpdates": 5162766336,
+    "holdoutEpochs": 432,
+    "houses": 12,
+    "nodes": 1728,
+    "representedTimelineYears": 5162766336,
+    "spheres": 144,
+    "timelines": 1728,
+    "trainEpochs": 1297,
+    "yearsPerTimeline": 1728
+  },
+  "evidenceKind": "SYNTHETIC_EVOLUTION_EXPERIMENT",
+  "files": {
+    "LONG_HORIZON_BUNDLE.json.gz": {
+      "bytes": 272078,
+      "sha256": "fdf8061bd820d87a415b953e7063ffcfdea98d25c75307f03b9d00653d0ad356"
+    },
+    "LONG_HORIZON_ENGINE_RAW.json.gz": {
+      "bytes": 145719,
+      "sha256": "ec5f6695f300e34ec03067dc5dddfce6a5b794e69f530992ec5f782c1b973b63"
+    },
+    "LONG_HORIZON_REPORT.json": {
+      "bytes": 3193977,
+      "sha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de"
+    },
+    "LONG_HORIZON_REPORT.json.gz": {
+      "bytes": 269444,
+      "sha256": "3b835833ccedd9bcfe0ca5a6036aecd62d5737950ad42ce1bb543be4cae03ff1"
+    },
+    "LONG_HORIZON_SUMMARY.json": {
+      "bytes": 10795,
+      "sha256": "ae18391cecd76e5d1bc40d6af29c1106687e7b0d5858534ef2178676efa226b0"
+    }
+  },
+  "implementation": {
+    "engine": "437eedd5b99b8cdd9af650e63e0083d7da6a5b42872e5c70ddfb3cf4751cc2eb",
+    "module": "c65537e659c773446f2844d9d6a505f723817e4a5456f86f51577b11fc8e9e5f",
+    "runner": "e7a6491a7f7c0a20f40c03917e1ecc29d9ea33a2457956981222fc8b7b286a60"
+  },
+  "implementationUnchangedDuringRun": true,
+  "reportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+  "runnerElapsedNs": 27322466827,
+  "schema": "atlas.beast20.long-horizon-artifacts/v1",
+  "sourceRegistrySha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+  "status": "COMPLETED",
+  "traceFileSha256": "c20ce58e2ca932108092496d184f91d8f5ab636a0668b1246ce65fbfbfa7ee33"
+}

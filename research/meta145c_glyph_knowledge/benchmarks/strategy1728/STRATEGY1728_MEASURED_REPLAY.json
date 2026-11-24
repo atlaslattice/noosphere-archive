@@ -1,0 +1,256 @@
+{
+  "all_outputs_equal": true,
+  "baseline_config": {
+    "chunk_size": 400,
+    "max_memo_entries": 256,
+    "workers": 4
+  },
+  "baseline_median_ns": 2862845150,
+  "candidate_config": {
+    "chunk_size": 400,
+    "max_memo_entries": 2048,
+    "workers": 1
+  },
+  "candidate_median_ns": 2547397773,
+  "implementation_manifest": {
+    "benchmarks/bench_strategy1728.py": "d8bf880ed8f1bd9417357c438955b0857aa14ecaeccbe64bc368787a128e8898",
+    "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+    "src/beast20/runtime.py": "7145eef6c7261a42eb53f05d3f5b5553d21c50b9611871bcef9fe20e9f98b834",
+    "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+    "src/beast20/strategy_lab.py": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd"
+  },
+  "implementation_manifest_unchanged": true,
+  "limitations": [
+    "Composite local workload, not hosted or total-Atlas performance.",
+    "Executor receipt versions change per scenario to expose bounded memo behavior.",
+    "Source metadata batches contain coordinates and record digests; full source text is excluded.",
+    "Task handlers are synchronous; extra async workers do not imply CPU multicore speedup.",
+    "Measured replay is independent of simulated forecasts; unfavorable results are retained."
+  ],
+  "measured_ratio_baseline_over_candidate": 1.123831221155739,
+  "python": "3.12.14",
+  "raw_pairs": [
+    {
+      "baseline": {
+        "counts": {
+          "memo_hits": 0,
+          "memo_misses": 5655
+        },
+        "elapsed_ns": 2952927697,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "candidate": {
+        "counts": {
+          "memo_hits": 3766,
+          "memo_misses": 1889
+        },
+        "elapsed_ns": 2368978794,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "outputs_equal": true,
+      "pair": 1
+    },
+    {
+      "baseline": {
+        "counts": {
+          "memo_hits": 0,
+          "memo_misses": 5655
+        },
+        "elapsed_ns": 2862845150,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "candidate": {
+        "counts": {
+          "memo_hits": 3766,
+          "memo_misses": 1889
+        },
+        "elapsed_ns": 2559112948,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "outputs_equal": true,
+      "pair": 2
+    },
+    {
+      "baseline": {
+        "counts": {
+          "memo_hits": 0,
+          "memo_misses": 5655
+        },
+        "elapsed_ns": 3276590129,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "candidate": {
+        "counts": {
+          "memo_hits": 3766,
+          "memo_misses": 1889
+        },
+        "elapsed_ns": 3004223138,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "outputs_equal": true,
+      "pair": 3
+    },
+    {
+      "baseline": {
+        "counts": {
+          "memo_hits": 0,
+          "memo_misses": 5655
+        },
+        "elapsed_ns": 2794729534,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "candidate": {
+        "counts": {
+          "memo_hits": 3766,
+          "memo_misses": 1889
+        },
+        "elapsed_ns": 2623898979,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "outputs_equal": true,
+      "pair": 4
+    },
+    {
+      "baseline": {
+        "counts": {
+          "memo_hits": 0,
+          "memo_misses": 5655
+        },
+        "elapsed_ns": 2980126676,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "candidate": {
+        "counts": {
+          "memo_hits": 3766,
+          "memo_misses": 1889
+        },
+        "elapsed_ns": 2547397773,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "outputs_equal": true,
+      "pair": 5
+    },
+    {
+      "baseline": {
+        "counts": {
+          "memo_hits": 0,
+          "memo_misses": 5655
+        },
+        "elapsed_ns": 2673506740,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "candidate": {
+        "counts": {
+          "memo_hits": 3766,
+          "memo_misses": 1889
+        },
+        "elapsed_ns": 2338780742,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "outputs_equal": true,
+      "pair": 6
+    },
+    {
+      "baseline": {
+        "counts": {
+          "memo_hits": 0,
+          "memo_misses": 5655
+        },
+        "elapsed_ns": 3263429896,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "candidate": {
+        "counts": {
+          "memo_hits": 3766,
+          "memo_misses": 1889
+        },
+        "elapsed_ns": 2573443427,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "outputs_equal": true,
+      "pair": 7
+    },
+    {
+      "baseline": {
+        "counts": {
+          "memo_hits": 0,
+          "memo_misses": 5655
+        },
+        "elapsed_ns": 2743137720,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "candidate": {
+        "counts": {
+          "memo_hits": 3766,
+          "memo_misses": 1889
+        },
+        "elapsed_ns": 2437974408,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "outputs_equal": true,
+      "pair": 8
+    },
+    {
+      "baseline": {
+        "counts": {
+          "memo_hits": 0,
+          "memo_misses": 5655
+        },
+        "elapsed_ns": 2798141887,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "candidate": {
+        "counts": {
+          "memo_hits": 3766,
+          "memo_misses": 1889
+        },
+        "elapsed_ns": 2207654789,
+        "output_sha256": "a69c4f39c1d7f7205d3e4acd6a4bd2e5dc1c2c0a3f1849fa0ac826dc0120127c"
+      },
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "outputs_equal": true,
+      "pair": 9
+    }
+  ],
+  "repeats": 9,
+  "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+  "sqlite": "3.53.1",
+  "status": "MEASURED_LOCAL_COMPOSITE_REPLAY",
+  "strategy_report_sha256": "f64c435222f71721dbc7b4b18229ef22a65367d0d1c8e5c0ffb92a1bd6b25b13",
+  "trace_sha256": "03a601aa23bb140e8c199060eb7bc825d937ba17749efdf0a4a7496c2f7f15d9"
+}

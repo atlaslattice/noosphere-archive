@@ -1,0 +1,58 @@
+{
+  "auditCorrection": {
+    "issue": "The original gate used Python3.12.14; a copied matrix annotation and one Work summary incorrectly labeled it3.13.",
+    "newDistinctTestCredit": 0,
+    "originalReceiptSha256": "c329061af80efbf3798d17934684720db605015d808afdffbf90e0e0201d05c0",
+    "resolution": "Preserved the original receipt, corrected metadata, reran all18 commands explicitly with verified Python3.13.5, and appended a Work correction outside the20 numbered rounds."
+  },
+  "counts": {
+    "beast20Distinct": 333,
+    "beast20DistinctPassed": 333,
+    "commandsFailed": 0,
+    "commandsPassed": 18,
+    "distinctTestsPassed": 720,
+    "distinctTestsRun": 722,
+    "distinctTestsSkipped": 2,
+    "otherDistinct": 389,
+    "otherDistinctPassed": 387,
+    "repeatExecutionsExcludedFromDistinct": 578
+  },
+  "explicit313ReceiptSha256": "ff62820f73d4572ba149d5517e9c924cc7b40d58626aca341462d04b0c888d8a",
+  "frozenArtifactsUnchanged": true,
+  "fullReceiptSha256": "e8ba4f925f9a10b3188f5bc00726aa3c74879c55408a69c2bd9db41743e3edbd",
+  "originalSourcesUnchanged": true,
+  "remainingSkips": [
+    {
+      "case": "test_evolution.TestEvolution.test_15000_receipt_present_when_available",
+      "reason": "phase dataset omitted",
+      "suite": "gf9"
+    },
+    {
+      "case": "test_protocol.TestProtocol.test_original_registry_sha_only_private",
+      "reason": "exact private source absent",
+      "suite": "gf9"
+    }
+  ],
+  "repeatCounting": "One identity per distinct test across optimized/interpreter reruns.",
+  "runtimeVersionsVerified": [
+    "3.12.14",
+    "3.13.5"
+  ],
+  "schema": "atlas.native1728.synthesis-python-verification/v1",
+  "sourceHashes": {
+    "benchmarks/bench_synthesis20_falsifiers.py": "ce0d03c5b96e17b899949e86458eceda30b53454a940575959d23c8328e36ca4",
+    "benchmarks/export_synthesis20_hosts.py": "30b3f1b26cc41506c371d7b74d73dd5ccf43b250e12dc76a8a82b97707244565",
+    "benchmarks/run_synthesis20_campaign.py": "f5f9e84a0f25a01eaa49f864a2b08f1a073dc3ddbfbfd3be43391fafdcd8184f",
+    "benchmarks/synthesis20/PROVENANCE_FALSIFIER_RESULTS.json": "fb1c67732cb6e117a359a787c5a31b2c267568e055b950c7a271b0ef79f0c14d",
+    "src/beast20/synthesis.py": "23a77e5398bd0004391eab556b6d47f3fb9fe1a2326597cd9ac5f2dcd70c8094",
+    "src/beast20/synthesis_provenance.py": "2c950acdc7e5dfae64f7cb6a999c3c700e0558d6ae8b98dc53802ede19ad28a8",
+    "tests_beast20/test_synthesis.py": "3b83d8e898dd04ecf8ab8b066174430524a9874379aaea294aaa0599db8b2260",
+    "tests_beast20/test_synthesis_campaign.py": "3d73c716f08dbe04071f61c0ebc80c30359e37d1436dff5e1519d1d42f9d87ed",
+    "tests_beast20/test_synthesis_export_boundaries.py": "5dd07dbf7fa74a097a0cad62f3173a8c89039bfbc00be7fdc72f3124f08eb183",
+    "tests_beast20/test_synthesis_export_falsifier.py": "5746f8e9f5b7fc9270f0f4458bdf9e404158bb0b9c3edb6d4a53119b05ca676b",
+    "tests_beast20/test_synthesis_provenance.py": "8db564325805b42dc0bc163ad23d100a9e6749cad946a7df47dbd7e3e892541b"
+  },
+  "sourceHistoryUnchangedDuringGate": true,
+  "status": "PASS",
+  "unavailableWorkflowVersion": "3.11"
+}

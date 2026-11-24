@@ -1,0 +1,49 @@
+{
+  "attackResults": {
+    "baselineLossErasure": {
+      "accepted": false
+    },
+    "causeRemoval": {
+      "accepted": false
+    },
+    "forgedParent": {
+      "accepted": false
+    },
+    "inflatedCount": {
+      "accepted": false
+    },
+    "sourceForgery": {
+      "accepted": false
+    },
+    "unknownField": {
+      "accepted": false
+    }
+  },
+  "genuineAccepted": true,
+  "noFrozenRuntimeOrPriorReportEdits": true,
+  "priorFailureReceiptSha256": "5aaad051742d369d29df0eae1c90abe00fbe1865d8c15a1b2a5733e12a326b36",
+  "schema": "atlas.local.synthesis-r13-verification/v1",
+  "scope": "Local actual-module regression evidence; campaign fixtures are synthetic test messages, not live round completion.",
+  "sourceSha256": {
+    "benchmarks/run_synthesis20_campaign.py": "f5f9e84a0f25a01eaa49f864a2b08f1a073dc3ddbfbfd3be43391fafdcd8184f",
+    "src/beast20/synthesis.py": "23a77e5398bd0004391eab556b6d47f3fb9fe1a2326597cd9ac5f2dcd70c8094",
+    "src/beast20/synthesis_provenance.py": "2c950acdc7e5dfae64f7cb6a999c3c700e0558d6ae8b98dc53802ede19ad28a8",
+    "tests_beast20/test_synthesis.py": "3b83d8e898dd04ecf8ab8b066174430524a9874379aaea294aaa0599db8b2260",
+    "tests_beast20/test_synthesis_campaign.py": "3d73c716f08dbe04071f61c0ebc80c30359e37d1436dff5e1519d1d42f9d87ed"
+  },
+  "tests": {
+    "commands": [
+      "python -m unittest tests_beast20.test_synthesis tests_beast20.test_synthesis_campaign -q",
+      "python -O -m unittest tests_beast20.test_synthesis tests_beast20.test_synthesis_campaign -q"
+    ],
+    "core": 38,
+    "distinct": 51,
+    "genuineAcceptanceMountConfigured": true,
+    "harness": 13,
+    "normal": "PASS",
+    "normalElapsedSeconds": 4.274,
+    "optimized": "PASS",
+    "optimizedElapsedSeconds": 4.471,
+    "skipped": 0
+  }
+}

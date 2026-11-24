@@ -1,0 +1,144 @@
+{
+  "schema": "atlas.beast20.verification/v1",
+  "all_passed": true,
+  "source_sha256": {
+    "research/meta145c_glyph_knowledge/src/beast20/__init__.py": "dda937d97c5a4e39e56c8d210a90ca88360ea173263369a6ed1031dde108bda2",
+    "research/meta145c_glyph_knowledge/src/beast20/__main__.py": "c91e6b5b812f03fab2f52c1eb560e84d240b50a0c0e2810325910917a96ffdd1",
+    "research/meta145c_glyph_knowledge/src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+    "research/meta145c_glyph_knowledge/src/beast20/feeds.py": "eebebcbdc0e002e1bb9dba4b90b3767c7c60e4a3424e38f19cc58788102efd6b",
+    "research/meta145c_glyph_knowledge/src/beast20/runtime.py": "b76185943fb5f1e681a8ac67415a5ea0d0fa59d3e4d3ea8d54873c63d4f005f8",
+    "research/meta145c_glyph_knowledge/src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7"
+  },
+  "results": [
+    {
+      "suite": "existing_repository",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test*.py"
+      ],
+      "exit_code": 0,
+      "tests": 166,
+      "elapsed_seconds": 0.443,
+      "output": "......................................................................................................................................................................\n----------------------------------------------------------------------\nRan 166 tests in 0.315s\n\nOK\n"
+    },
+    {
+      "suite": "inherited_meta145",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/meta145/tests",
+        "-p",
+        "test*.py"
+      ],
+      "exit_code": 0,
+      "tests": 10,
+      "elapsed_seconds": 0.093,
+      "output": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "suite": "inherited_memory_glyph",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests_public",
+        "-p",
+        "test*.py"
+      ],
+      "exit_code": 0,
+      "tests": 48,
+      "elapsed_seconds": 3.333,
+      "output": "................................................\n----------------------------------------------------------------------\nRan 48 tests in 3.238s\n\nOK\n"
+    },
+    {
+      "suite": "inherited_gf8",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test*.py"
+      ],
+      "exit_code": 0,
+      "tests": 53,
+      "elapsed_seconds": 0.224,
+      "output": ".....................................................\n----------------------------------------------------------------------\nRan 53 tests in 0.129s\n\nOK\n"
+    },
+    {
+      "suite": "beast20_normal",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests_beast20",
+        "-p",
+        "test*.py"
+      ],
+      "exit_code": 0,
+      "tests": 118,
+      "elapsed_seconds": 3.51,
+      "output": "......................................................................................................................\n----------------------------------------------------------------------\nRan 118 tests in 3.319s\n\nOK\n"
+    },
+    {
+      "suite": "beast20_optimized",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests_beast20",
+        "-p",
+        "test*.py"
+      ],
+      "exit_code": 0,
+      "tests": 118,
+      "elapsed_seconds": 3.851,
+      "output": "......................................................................................................................\n----------------------------------------------------------------------\nRan 118 tests in 3.280s\n\nOK\n"
+    },
+    {
+      "suite": "inherited_node_handoff",
+      "command": [
+        "node",
+        "--test",
+        "tests/atlas_turbo12_work_handoff.test.mjs"
+      ],
+      "exit_code": 0,
+      "tests": null,
+      "elapsed_seconds": 0.204,
+      "output": "\u2714 12 distinct cumulative guard categories (1.328588ms)\n\u2714 four project lanes (0.194544ms)\n\u2714 positive only prepares, never posts (1.244641ms)\n\u2714 same Work envelope dedupes deterministically (0.320194ms)\n\u2714 different account cannot reuse duplicate key (0.328897ms)\n\u2714 different rights epoch is not old grant (0.235275ms)\n\u2714 all leisure/private modes reject Work preparation (0.305251ms)\n\u2714 caller-supplied host flags cannot smuggle authority (0.215786ms)\n\u2714 unsupported source reference denies (0.219462ms)\n\u2714 tokenized URL denied (0.259111ms)\n\u2714 wrong source bytes denied (0.299793ms)\n\u2714 wrong node digest denied (0.150257ms)\n\u2714 cross-edition coordinate rejected (0.127994ms)\n\u2714 out of range edition rejected (0.240042ms)\n\u2714 non-Work origin rejected (1.038158ms)\n\u2714 no user-supplied true host attestation (0.176226ms)\n\u2714 wrong principal scope rejected (0.104378ms)\n\u2714 recheck remains local candidate (0.269066ms)\n\u2714 rights revoked on RETURN must hold (0.174023ms)\n\u2714 epoch changes on RETURN must hold (0.229076ms)\n\u2714 digest changes on RETURN must hold (0.125349ms)\n\u2714 denials do not echo source data (0.083546ms)\n\u2139 tests 22\n\u2139 suites 0\n\u2139 pass 22\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 119.766331\n"
+    },
+    {
+      "suite": "runnable_cli_demo",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "src.beast20",
+        "demo"
+      ],
+      "exit_code": 0,
+      "tests": null,
+      "elapsed_seconds": 0.089,
+      "output": "{\n  \"status\": \"LOCAL_DEMO_COMPLETED\",\n  \"contexts\": 12,\n  \"stats\": {\n    \"memory_snapshots_verified\": 1,\n    \"physics_computations\": 1,\n    \"physics_hits\": 11\n  },\n  \"network_requests\": 0,\n  \"model_calls\": 0,\n  \"hosted_authorization_proven\": false\n}\n"
+    }
+  ],
+  "distinct_python_cases": 395,
+  "repeat_under_optimization_cases": 118
+}

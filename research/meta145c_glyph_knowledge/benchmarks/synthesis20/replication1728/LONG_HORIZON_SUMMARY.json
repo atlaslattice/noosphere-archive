@@ -1,0 +1,289 @@
+{
+  "candidates": [
+    {
+      "controls": {
+        "chunkSize": 400,
+        "maxMemoEntries": 2048,
+        "workers": 1
+      },
+      "coverage": {
+        "holdoutDistinctSourceNodes": 1728,
+        "trainDistinctSourceNodes": 1728
+      },
+      "holdout": {
+        "cacheHits": 427947,
+        "cacheMisses": 308390,
+        "freshCompletions": 736337,
+        "freshnessViolations": 0,
+        "globalInvalidations": 5220,
+        "heldRequests": 10159,
+        "metadataObjectsRead": 9328550,
+        "predictedHeldServiceNs": 851805174,
+        "predictedRequiredNs": 62364486712,
+        "predictedServiceNs": 61512681538,
+        "requests": 746496,
+        "sourceChanges": 12996
+      },
+      "id": "CFG.W01.M12.B12",
+      "train": {
+        "cacheHits": 1285762,
+        "cacheMisses": 924986,
+        "freshCompletions": 2210748,
+        "freshnessViolations": 0,
+        "globalInvalidations": 15661,
+        "heldRequests": 30468,
+        "metadataObjectsRead": 27987194,
+        "predictedHeldServiceNs": 2556646144,
+        "predictedRequiredNs": 187130365176,
+        "predictedServiceNs": 184573719032,
+        "requests": 2241216,
+        "sourceChanges": 38989
+      },
+      "transitionChecksum": "e32d224347bb8310"
+    }
+  ],
+  "counts": {
+    "acceptedCandidateChanges": 3,
+    "epochs": 1729,
+    "evaluatedTimelineYearUpdates": 5162766336,
+    "holdoutEpochs": 432,
+    "houses": 12,
+    "nodes": 1728,
+    "representedTimelineYears": 5162766336,
+    "spheres": 144,
+    "timelines": 1728,
+    "trainEpochs": 1297,
+    "yearsPerTimeline": 1728
+  },
+  "engineVersion": 1,
+  "evidenceKind": "SYNTHETIC_EVOLUTION_EXPERIMENT",
+  "execution": {
+    "auditReplayUpdates": 5975424,
+    "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+    "compilerFlags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-fopenmp"
+    ],
+    "coreElapsedNs": 19760858949,
+    "elapsedNs": 19858247190,
+    "engineBinarySha256": "71320001bbfc546c8269a131030c92fc5888cea79dce148b61aa996f4e6d0a84",
+    "engineSourceSha256": "437eedd5b99b8cdd9af650e63e0083d7da6a5b42872e5c70ddfb3cf4751cc2eb",
+    "method": "DIRECT_STATE_TRANSITIONS",
+    "pythonSourceSha256": "c65537e659c773446f2844d9d6a505f723817e4a5456f86f51577b11fc8e9e5f",
+    "seed": 1451748,
+    "stateReset": "EACH_EPOCH",
+    "threads": 4,
+    "transitionChecksumAlgorithm": "Per-epoch FNV-style 64-bit transition checksum and SplitMix64 fold; not a cryptographic proof."
+  },
+  "fullReportSha256": "6220636ee6ffdf1b33d589e7fca52e2c4e04745f12d43d27fb35cd4326291e30",
+  "limitations": [
+    "Synthetic workload outcomes are not measured runtime speedups or forecasts of civilizations, research quality, or future calendar years.",
+    "Freshness proves the declared revision/invalidation model, not semantic correctness of generated answers. No model outputs are produced.",
+    "The finite-set selection is conditional on declared workloads, training objective and calibration; no global optimality is claimed.",
+    "Source membership grounds workload attribution and aggregation only. Source disciplines, gods, elements and original canonical roles are not reassigned to configurations.",
+    "Holdout varies deterministic workload seeds/regimes, not independent real-world data. Performance changes require separate actual paired measurements.",
+    "Audit replay evaluates two extra timelines per epoch to attribute metrics to source nodes; these extra updates are separately counted."
+  ],
+  "meta145": {
+    "baselineCandidateId": "CFG.W01.M12.B12",
+    "holdout": {
+      "baseline": {
+        "cacheHits": 427947,
+        "cacheMisses": 308390,
+        "freshCompletions": 736337,
+        "freshnessViolations": 0,
+        "globalInvalidations": 5220,
+        "heldRequests": 10159,
+        "metadataObjectsRead": 9328550,
+        "predictedHeldServiceNs": 851805174,
+        "predictedRequiredNs": 62364486712,
+        "predictedServiceNs": 61512681538,
+        "requests": 746496,
+        "sourceChanges": 12996
+      },
+      "selected": {
+        "cacheHits": 427947,
+        "cacheMisses": 308390,
+        "freshCompletions": 736337,
+        "freshnessViolations": 0,
+        "globalInvalidations": 5220,
+        "heldRequests": 10159,
+        "metadataObjectsRead": 9328550,
+        "predictedHeldServiceNs": 851805174,
+        "predictedRequiredNs": 62364486712,
+        "predictedServiceNs": 61512681538,
+        "requests": 746496,
+        "sourceChanges": 12996
+      },
+      "usedForSelection": false
+    },
+    "selectedCandidateId": "CFG.W01.M12.B12",
+    "selectionStatus": "SELECTED",
+    "trainingObjective": {
+      "qualityOrder": [
+        "minimize freshnessViolations",
+        "maximize trainDistinctSourceNodes",
+        "maximize freshCompletions",
+        "minimize heldRequests",
+        "minimize predictedServiceNs"
+      ],
+      "tieBreak": [
+        "fewer workers",
+        "smaller memo capacity",
+        "smaller chunk width",
+        "stable candidate id"
+      ]
+    },
+    "upgradeHypotheses": [
+      {
+        "evidence": {
+          "baselineFreshCompletions": 2210748,
+          "baselinePredictedServiceNs": 184573719032,
+          "selectedFreshCompletions": 2210748,
+          "selectedPredictedServiceNs": 184573719032
+        },
+        "id": "memo-capacity",
+        "recommendedAction": "Replay max_memo_entries=2048 against the baseline with identical outputs.",
+        "status": "PROPOSED_FROM_SYNTHETIC_EVIDENCE",
+        "title": "Measure the selected bounded memo capacity",
+        "validationRequired": [
+          "Alternating paired real-runtime runs",
+          "Exact output and scope/TTL/LRU parity"
+        ]
+      },
+      {
+        "evidence": {
+          "baselineChunkSize": 400,
+          "selectedChunkSize": 400
+        },
+        "id": "batch-width",
+        "recommendedAction": "Apply the existing batch_get chunk_size control to source-metadata reads.",
+        "status": "PROPOSED_FROM_SYNTHETIC_EVIDENCE",
+        "title": "Retain verified metadata batching",
+        "validationRequired": [
+          "Digest verification on every returned body",
+          "Duplicate/missing object ordering and tamper tests"
+        ]
+      },
+      {
+        "evidence": {
+          "equivalentWorkerVariants": 12,
+          "selectedWorkers": 1
+        },
+        "id": "workers",
+        "recommendedAction": "Use fewer workers for this synchronous service trace; measure genuinely asynchronous work separately.",
+        "status": "PROPOSED_FROM_SYNTHETIC_EVIDENCE",
+        "title": "Avoid assuming concurrency accelerates synchronous work",
+        "validationRequired": [
+          "Real executor replay",
+          "Async and CPU-bound workloads evaluated independently"
+        ]
+      },
+      {
+        "evidence": {
+          "localChurnFreshnessViolations": 0
+        },
+        "id": "revision-invalidation",
+        "recommendedAction": "Preserve source and supplemental revision checks before any memo reuse.",
+        "status": "PROPOSED_FROM_SYNTHETIC_EVIDENCE",
+        "title": "Retain dependency invalidation on supplemental changes",
+        "validationRequired": [
+          "Changed-source invalidation tests",
+          "Measure invalidation traversal costs excluded by this model"
+        ]
+      },
+      {
+        "evidence": {
+          "heldRequests": 5782
+        },
+        "id": "source-gate",
+        "recommendedAction": "Expose held source checks separately from completed work and block dependent execution.",
+        "status": "PROPOSED_FROM_SYNTHETIC_EVIDENCE",
+        "title": "Keep unavailable-source work visibly held",
+        "validationRequired": [
+          "Actual host source-gate failure and dependent-blocking tests"
+        ]
+      },
+      {
+        "evidence": {
+          "stressFreshCompletions": 161938,
+          "stressHeldRequests": 24686
+        },
+        "id": "admission",
+        "recommendedAction": "Prototype bounded admission that never serves stale output to satisfy a latency objective.",
+        "status": "PROPOSED_FROM_SYNTHETIC_EVIDENCE",
+        "title": "Test quality-first resource admission",
+        "validationRequired": [
+          "Simulation-only token policy requires a separate implementation",
+          "Queue fairness and bounded waiting tests"
+        ]
+      },
+      {
+        "evidence": {
+          "revisionHits": 11034,
+          "stableHits": 187044
+        },
+        "id": "workload-partition",
+        "recommendedAction": "Keep cold, hotset, scan, churn and source-recheck benchmarks as separate evidence lanes.",
+        "status": "PROPOSED_FROM_SYNTHETIC_EVIDENCE",
+        "title": "Benchmark cache-heavy and revision-heavy paths separately",
+        "validationRequired": [
+          "Report all workloads including regressions",
+          "No post-hoc holdout tuning"
+        ]
+      },
+      {
+        "evidence": {
+          "verifiedSourceNodes": 1728
+        },
+        "id": "scope-validation",
+        "recommendedAction": "Measure repeated validated scope-key work while retaining validation and content digests on every access.",
+        "status": "PROPOSED_FROM_SYNTHETIC_EVIDENCE",
+        "title": "Optimize validation overhead without weakening integrity",
+        "validationRequired": [
+          "Independent old/new measurements",
+          "Mutable scope, expired memo and corrupt body regression cases"
+        ]
+      }
+    ]
+  },
+  "nonClaims": [
+    "No resident or model turns",
+    "No model calls",
+    "No network requests",
+    "No background agents",
+    "No source/canon changes",
+    "No private node bodies published",
+    "No global optimum proven",
+    "No measured speedup inferred from synthetic service costs",
+    "No civilization forecasting"
+  ],
+  "projection": "SUMMARY_NOT_COMPLETE_REPORT",
+  "qualityChecks": {
+    "allSourceNodesCovered": true,
+    "allWorkerVariantsEquivalent": true,
+    "baselineAuditMatches": true,
+    "freshnessViolations": 0,
+    "holdoutExcludedFromSelection": true,
+    "representedEqualsEvaluated": true,
+    "selectedAuditMatches": true,
+    "sourceReferencesComplete": true
+  },
+  "schema": "atlas.beast20.long-horizon/v1",
+  "source": {
+    "edition": "ariadne-v0.7",
+    "nodeReferencesSha256": "caf2585985c6796fbb6526cc67c3126baff21dd2ab3fda29fa49e99fae5577c2",
+    "registrySha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+    "sourceFixtureKind": "PINNED_ORIGINAL_ARIADNE",
+    "traceFileSha256": "c20ce58e2ca932108092496d184f91d8f5ab636a0668b1246ce65fbfbfa7ee33",
+    "tracePayloadSha256": "fdab20a1cbd44385d09fc1eef16ee3374e73cfa887cb4039660c237f01350688"
+  },
+  "status": "COMPLETED",
+  "units": {
+    "cost": "predicted calibrated service, not measured latency",
+    "time": "nanoseconds",
+    "year": "synthetic workload step"
+  }
+}

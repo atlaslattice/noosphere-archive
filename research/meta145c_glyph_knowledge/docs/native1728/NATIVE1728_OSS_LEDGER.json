@@ -1,0 +1,386 @@
+{
+  "schema": "atlas.native1728.oss-provenance/v1",
+  "research_date": "2026-11-23",
+  "timezone": "Pacific/Honolulu",
+  "scope": "Ten selected public upstream projects; not an exhaustive survey of all open-source platforms. GitHub main/default branch refs were resolved to immutable commits before source/license reads.",
+  "source_pin_method": "Authenticated GitHub repository, branch-ref and pinned file reads; documentation verified through primary sources.",
+  "direct_adaptation": {
+    "project": "eigent",
+    "upstream_commit": "9840d8aeb304b4af62838331a35c818f128a7be9",
+    "source_file": "backend/app/run_policy.py",
+    "upstream_symbols": [
+      "ToolSafetyClass",
+      "automatic_tool_replay_allowed"
+    ],
+    "local_files": [
+      "src/beast20/tool_policy.py",
+      "tests_beast20/test_tool_policy.py"
+    ],
+    "javascript_candidate": "oss_research_1728/tool-policy.mjs",
+    "third_party_notice": "docs/native1728/THIRD_PARTY_NOTICES.md"
+  },
+  "projects": [
+    {
+      "id": "mcp-typescript",
+      "repository": "modelcontextprotocol/typescript-sdk",
+      "commit_sha": "5ee54ee30ddc00a914a3d981880f87fdce0e6246",
+      "branch_observed": "main",
+      "archived_observed": false,
+      "source_url": "https://github.com/modelcontextprotocol/typescript-sdk/tree/5ee54ee30ddc00a914a3d981880f87fdce0e6246",
+      "license": {
+        "classification": "Apache-2.0 / prior MIT contributions; non-specification docs CC-BY-4.0 (transition; inspect applicable file/history)",
+        "path": "LICENSE",
+        "git_blob_sha": "4a93985763241755401a10678395303de4e720ba",
+        "url": "https://github.com/modelcontextprotocol/typescript-sdk/blob/5ee54ee30ddc00a914a3d981880f87fdce0e6246/LICENSE"
+      },
+      "inspected_files": [],
+      "adoption": "Retain the existing host-pinned SDK and transport; do not upgrade to main merely to add tools.",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "mcp-python",
+      "repository": "modelcontextprotocol/python-sdk",
+      "commit_sha": "77001c96f9507be0f4d009b83210a384a5e08bda",
+      "branch_observed": "main",
+      "archived_observed": false,
+      "source_url": "https://github.com/modelcontextprotocol/python-sdk/tree/77001c96f9507be0f4d009b83210a384a5e08bda",
+      "license": {
+        "classification": "MIT",
+        "path": "LICENSE",
+        "git_blob_sha": "3d48435454b105021b4f777c11b6b07d8d2ffea3",
+        "url": "https://github.com/modelcontextprotocol/python-sdk/blob/77001c96f9507be0f4d009b83210a384a5e08bda/LICENSE"
+      },
+      "inspected_files": [
+        {
+          "path": "src/mcp/server/validation.py",
+          "git_blob_sha": "a281f4d08f22635ec8abfd956b334583d12f6363",
+          "url": "https://github.com/modelcontextprotocol/python-sdk/blob/77001c96f9507be0f4d009b83210a384a5e08bda/src/mcp/server/validation.py"
+        }
+      ],
+      "adoption": "Optional Python MCP server dependency only if deployment actually runs Python; not required by existing TypeScript SwarmChat host.",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "langgraph",
+      "repository": "langchain-ai/langgraph",
+      "commit_sha": "c6335a4255dc1d8abc25a7677f9c072c7ab27b9c",
+      "branch_observed": "main",
+      "archived_observed": false,
+      "source_url": "https://github.com/langchain-ai/langgraph/tree/c6335a4255dc1d8abc25a7677f9c072c7ab27b9c",
+      "license": {
+        "classification": "MIT",
+        "path": "LICENSE",
+        "git_blob_sha": "fc0602feecdd6748623c852ab534e1ca612673c7",
+        "url": "https://github.com/langchain-ai/langgraph/blob/c6335a4255dc1d8abc25a7677f9c072c7ab27b9c/LICENSE"
+      },
+      "inspected_files": [
+        {
+          "path": "libs/checkpoint/langgraph/checkpoint/base/__init__.py",
+          "git_blob_sha": "c7cacc7bfd703f298427e870bd6d07b4aa395812",
+          "url": "https://github.com/langchain-ai/langgraph/blob/c6335a4255dc1d8abc25a7677f9c072c7ab27b9c/libs/checkpoint/langgraph/checkpoint/base/__init__.py"
+        }
+      ],
+      "adoption": "Use checkpoint/store separation and per-effect replay boundaries as references; keep BEAST20 runtime without a redundant graph dependency.",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "autogen",
+      "repository": "microsoft/autogen",
+      "commit_sha": "8390985108cb1e3881f5f7297765758d8ad2540c",
+      "branch_observed": "main",
+      "archived_observed": true,
+      "source_url": "https://github.com/microsoft/autogen/tree/8390985108cb1e3881f5f7297765758d8ad2540c",
+      "license": {
+        "classification": "Code MIT (LICENSE-CODE); documentation/root LICENSE CC-BY-4.0",
+        "path": "LICENSE",
+        "git_blob_sha": "2f244ac814036ecd9ba9f69782e89ce6b1dca9eb",
+        "url": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/LICENSE"
+      },
+      "inspected_files": [
+        {
+          "path": "LICENSE-CODE",
+          "git_blob_sha": "9e841e7a26e4eb057b24511e7b92d42b257a80e5",
+          "url": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/LICENSE-CODE"
+        },
+        {
+          "path": "python/packages/autogen-core/src/autogen_core/_cancellation_token.py",
+          "git_blob_sha": "06e037e53a38d0e2b6ba14e89559632754d969b6",
+          "url": "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-core/src/autogen_core/_cancellation_token.py"
+        }
+      ],
+      "adoption": "Archived repository. Use bounded cancellation/message-contract references; do not adopt as a new runtime foundation.",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "openmanus",
+      "repository": "FoundationAgents/OpenManus",
+      "commit_sha": "3309bf4e416fb1c74b008f3e86494439a31bad53",
+      "branch_observed": "main",
+      "archived_observed": false,
+      "source_url": "https://github.com/FoundationAgents/OpenManus/tree/3309bf4e416fb1c74b008f3e86494439a31bad53",
+      "license": {
+        "classification": "MIT",
+        "path": "LICENSE",
+        "git_blob_sha": "db2216e1a5bfd392213f57a257930e9b2dcca684",
+        "url": "https://github.com/FoundationAgents/OpenManus/blob/3309bf4e416fb1c74b008f3e86494439a31bad53/LICENSE"
+      },
+      "inspected_files": [
+        {
+          "path": "app/flow/planning.py",
+          "git_blob_sha": "b60596a889c55a8e12c082403222806843b2b1ef",
+          "url": "https://github.com/FoundationAgents/OpenManus/blob/3309bf4e416fb1c74b008f3e86494439a31bad53/app/flow/planning.py"
+        },
+        {
+          "path": "app/tool/planning.py",
+          "git_blob_sha": "47e334d6632cd18373a48fced78bb21662952217",
+          "url": "https://github.com/FoundationAgents/OpenManus/blob/3309bf4e416fb1c74b008f3e86494439a31bad53/app/tool/planning.py"
+        }
+      ],
+      "adoption": "Reference explicit plan/step progress and executor selection; do not import an LLM loop or infer remote agent access.",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "eigent",
+      "repository": "eigent-ai/eigent",
+      "commit_sha": "9840d8aeb304b4af62838331a35c818f128a7be9",
+      "branch_observed": "main",
+      "archived_observed": false,
+      "source_url": "https://github.com/eigent-ai/eigent/tree/9840d8aeb304b4af62838331a35c818f128a7be9",
+      "license": {
+        "classification": "Apache-2.0",
+        "path": "LICENSE",
+        "git_blob_sha": "7a9e1a9aeaed631cb451438d525c4fee0712362d",
+        "url": "https://github.com/eigent-ai/eigent/blob/9840d8aeb304b4af62838331a35c818f128a7be9/LICENSE"
+      },
+      "inspected_files": [
+        {
+          "path": "backend/app/run_policy.py",
+          "git_blob_sha": "96186890d6f02cb022d84c7f22b454d0b9a84605",
+          "url": "https://github.com/eigent-ai/eigent/blob/9840d8aeb304b4af62838331a35c818f128a7be9/backend/app/run_policy.py"
+        },
+        {
+          "path": "backend/app/run_journal/transitions.py",
+          "git_blob_sha": "4a188c3ff6808ad0773601d5dd063731e7c47876",
+          "url": "https://github.com/eigent-ai/eigent/blob/9840d8aeb304b4af62838331a35c818f128a7be9/backend/app/run_journal/transitions.py"
+        },
+        {
+          "path": "backend/app/run_journal/semantic_events.py",
+          "git_blob_sha": "12539c65cb07d2941aa5df2f770f5aecb147bc45",
+          "url": "https://github.com/eigent-ai/eigent/blob/9840d8aeb304b4af62838331a35c818f128a7be9/backend/app/run_journal/semantic_events.py"
+        },
+        {
+          "path": "backend/app/remote_sub_agent/provider_registry.py",
+          "git_blob_sha": "9a58efa803f84c5a7ca25302220d2c0aba70201b",
+          "url": "https://github.com/eigent-ai/eigent/blob/9840d8aeb304b4af62838331a35c818f128a7be9/backend/app/remote_sub_agent/provider_registry.py"
+        }
+      ],
+      "adoption": "Actual source adaptation of automatic_tool_replay_allowed classification into tool_policy.py and tool-policy.mjs; preserve attribution and Apache license.",
+      "copied_or_adapted_in_this_work": true
+    },
+    {
+      "id": "agents-sdk",
+      "repository": "openai/openai-agents-python",
+      "commit_sha": "0ad2d63a9371a23333a95ea6878141a826c9cdda",
+      "branch_observed": "main",
+      "archived_observed": false,
+      "source_url": "https://github.com/openai/openai-agents-python/tree/0ad2d63a9371a23333a95ea6878141a826c9cdda",
+      "license": {
+        "classification": "MIT",
+        "path": "LICENSE",
+        "git_blob_sha": "e5ad2c5aa30343f143a5c418004ca1a8d2cfaff4",
+        "url": "https://github.com/openai/openai-agents-python/blob/0ad2d63a9371a23333a95ea6878141a826c9cdda/LICENSE"
+      },
+      "inspected_files": [
+        {
+          "path": "src/agents/mcp/server.py",
+          "git_blob_sha": "57fa9e1d65c7db0d01e0c9312e00f400056bff65",
+          "url": "https://github.com/openai/openai-agents-python/blob/0ad2d63a9371a23333a95ea6878141a826c9cdda/src/agents/mcp/server.py"
+        }
+      ],
+      "adoption": "Reference only for MCP client/tool snapshot behavior; direct OpenAI API workers require separate authorized credential/access setup.",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "duckdb",
+      "repository": "duckdb/duckdb",
+      "commit_sha": "94a1663a4d3f31fd04b05a7d5641581edc84ef88",
+      "branch_observed": "main",
+      "archived_observed": false,
+      "source_url": "https://github.com/duckdb/duckdb/tree/94a1663a4d3f31fd04b05a7d5641581edc84ef88",
+      "license": {
+        "classification": "MIT",
+        "path": "LICENSE",
+        "git_blob_sha": "2719c9a23d2a37c1dfb7402e79f03bd615701e53",
+        "url": "https://github.com/duckdb/duckdb/blob/94a1663a4d3f31fd04b05a7d5641581edc84ef88/LICENSE"
+      },
+      "inspected_files": [],
+      "adoption": "Optional later bulk report analytics; existing high-frequency task receipts stay SQLite. No claim of installation.",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "sqlite",
+      "repository": "sqlite/sqlite",
+      "commit_sha": "2c5431219ae622421c97d5ef5ae1b80658899395",
+      "branch_observed": "master",
+      "archived_observed": false,
+      "source_url": "https://github.com/sqlite/sqlite/tree/2c5431219ae622421c97d5ef5ae1b80658899395",
+      "license": {
+        "classification": "Public domain for listed source directories; bundled/build files require individual review",
+        "path": "LICENSE.md",
+        "git_blob_sha": "aa439fce58d0cfc4d21f0bdfbb48e09d3eda3a67",
+        "url": "https://github.com/sqlite/sqlite/blob/2c5431219ae622421c97d5ef5ae1b80658899395/LICENSE.md"
+      },
+      "inspected_files": [],
+      "adoption": "Existing actual storage runtime via Python sqlite3; preserve verified queries, transactions and source identity.",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "cachetools",
+      "repository": "tkem/cachetools",
+      "commit_sha": "c5de5137153b301933922e47bc70b598970e0627",
+      "branch_observed": "master",
+      "archived_observed": false,
+      "source_url": "https://github.com/tkem/cachetools/tree/c5de5137153b301933922e47bc70b598970e0627",
+      "license": {
+        "classification": "MIT",
+        "path": "LICENSE",
+        "git_blob_sha": "f980a19c78c25959f922b8cc93854d91a89e686f",
+        "url": "https://github.com/tkem/cachetools/blob/c5de5137153b301933922e47bc70b598970e0627/LICENSE"
+      },
+      "inspected_files": [
+        {
+          "path": "src/cachetools/_cached.py",
+          "git_blob_sha": "196165a443a35ce9644050b4c3bea814cbd92ab4",
+          "url": "https://github.com/tkem/cachetools/blob/c5de5137153b301933922e47bc70b598970e0627/src/cachetools/_cached.py"
+        }
+      ],
+      "adoption": "Reference for bounded per-key coordination; existing BEAST20 implementation remains independently written.",
+      "copied_or_adapted_in_this_work": false
+    }
+  ],
+  "recommended_improvements": [
+    {
+      "id": "N01",
+      "name": "Focused native MCP operations",
+      "action": "Expose separate component lookup, simulation run, run status and META145 result tools with stable identifiers.",
+      "source_urls": [
+        "https://developers.openai.com/plugins/build/mcp-server"
+      ],
+      "validation": "Initialize, tools/list, valid tools/call and unknown-name call through the actual host transport."
+    },
+    {
+      "id": "N02",
+      "name": "Exact structured contracts",
+      "action": "Declare explicit inputSchema and outputSchema; validate model-visible structuredContent and bound summaries/pages.",
+      "source_urls": [
+        "https://developers.openai.com/plugins/reference",
+        "https://modelcontextprotocol.io/specification/2025-11-25/server/tools"
+      ],
+      "validation": "Reject invalid arguments; ensure schema-conformant success; return actionable isError tool failures without private data."
+    },
+    {
+      "id": "N03",
+      "name": "Authority from the host",
+      "action": "Select tools/effect classes from immutable server registrations and authorize actual current context at dispatch and return.",
+      "source_urls": [
+        "https://developers.openai.com/plugins/build/mcp-server",
+        "https://developers.openai.com/plugins/reference"
+      ],
+      "validation": "Unknown names, forged effect parameters, truthy nonboolean permissions and revoked returns must fail."
+    },
+    {
+      "id": "N04",
+      "name": "Effect-aware bounded retries",
+      "action": "Use adapted Eigent read/keyed-write/reconciliation distinction with finite attempts and explicit timeout/unknown outcomes.",
+      "source_urls": [
+        "https://github.com/eigent-ai/eigent/blob/9840d8aeb304b4af62838331a35c818f128a7be9/backend/app/run_policy.py"
+      ],
+      "validation": "Read retries and keyed idempotent writes eligible; ambiguous writes and child launches never auto-replay; one-attempt dispatcher does not self-retry.",
+      "implementation": "src/beast20/tool_policy.py; scratch tool-policy.mjs"
+    },
+    {
+      "id": "N05",
+      "name": "Pin capability snapshots",
+      "action": "Catalog each component by exact source/contract revision and readiness; record unavailable mounts instead of assuming package presence grants execution.",
+      "source_urls": [
+        "https://github.com/openai/openai-agents-python/blob/0ad2d63a9371a23333a95ea6878141a826c9cdda/src/agents/mcp/server.py"
+      ],
+      "validation": "Source digest/version changes invalidate references; unavailable adapters return a concrete status."
+    },
+    {
+      "id": "N06",
+      "name": "Separate execution checkpoint from knowledge memory",
+      "action": "Keep run progress, successful task outputs and cross-run source evidence in their existing distinct scopes.",
+      "source_urls": [
+        "https://docs.langchain.com/oss/python/langgraph/persistence"
+      ],
+      "validation": "Restart reuses committed tasks while source/principal/rights-epoch changes prevent cross-scope reuse."
+    },
+    {
+      "id": "N07",
+      "name": "Monotonic run-state receipts",
+      "action": "Record blocked, failed, interrupted and completed states explicitly with immutable attempt IDs and a distinct result reference.",
+      "source_urls": [
+        "https://github.com/eigent-ai/eigent/blob/9840d8aeb304b4af62838331a35c818f128a7be9/backend/app/run_journal/transitions.py",
+        "https://github.com/FoundationAgents/OpenManus/blob/3309bf4e416fb1c74b008f3e86494439a31bad53/app/flow/planning.py"
+      ],
+      "validation": "A blocked module cannot become success solely because a summary says completed; transitions require matching task evidence."
+    },
+    {
+      "id": "N08",
+      "name": "Capability-limited discovery",
+      "action": "Use focused list/search/get tools and bounded pages; preserve returned stable IDs rather than injecting every component into every model call.",
+      "source_urls": [
+        "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+        "https://developers.openai.com/plugins/build/mcp-server"
+      ],
+      "validation": "Pagination has no skipped/duplicate IDs; retrieval returns the requested pinned component only."
+    },
+    {
+      "id": "N09",
+      "name": "Cancellation with ambiguous-effect accounting",
+      "action": "Bound active calls and keep unresolved timed-out calls counted until settlement; reconcile side effects before redispatch.",
+      "source_urls": [
+        "https://github.com/microsoft/autogen/blob/8390985108cb1e3881f5f7297765758d8ad2540c/python/packages/autogen-core/src/autogen_core/_cancellation_token.py",
+        "https://github.com/eigent-ai/eigent/blob/9840d8aeb304b4af62838331a35c818f128a7be9/backend/app/run_policy.py"
+      ],
+      "validation": "Caller cancellation propagates; timed-out calls cannot create unbounded replacement work."
+    },
+    {
+      "id": "N10",
+      "name": "Protocol-correct errors and transport",
+      "action": "Keep existing authenticated Streamable HTTP transport; distinguish malformed JSON-RPC from executed tool failures and check origin/auth server-side.",
+      "source_urls": [
+        "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports",
+        "https://modelcontextprotocol.io/specification/2025-11-25/server/tools"
+      ],
+      "validation": "Client accepts JSON and SSE as declared; malformed method/request yields protocol error; business/tool failure yields isError result."
+    },
+    {
+      "id": "N11",
+      "name": "Native component views with concise model data",
+      "action": "Return summaries and stable evidence IDs in structuredContent; use optional MCP Apps UI resource links for larger interactive views.",
+      "source_urls": [
+        "https://developers.openai.com/plugins/reference"
+      ],
+      "validation": "Model-visible results remain sufficient without UI; hidden _meta is not treated as a secure secret store or authority."
+    },
+    {
+      "id": "N12",
+      "name": "Workload-specific analytics selection",
+      "action": "Retain SQLite for frequent transactional receipts; evaluate DuckDB only for larger scan/join/report workloads with measured before/after parity.",
+      "source_urls": [
+        "https://duckdb.org/docs/guides/performance/how-to-tune-workloads"
+      ],
+      "validation": "Do not generalize bulk analytical performance to many small concurrent operations; retain unfavorable benchmark results."
+    }
+  ],
+  "limits": [
+    "No upstream model API was called; no credential inspected or created.",
+    "Reviewing a source does not mean it is installed, mounted, licensed uniformly across all files, or performance-validated here.",
+    "The adapted replay policy does not implement remote idempotency; registered providers must enforce their promised semantics.",
+    "Python dispatch requires cooperative async handlers; JavaScript cannot preempt synchronous event-loop blocking code.",
+    "The Python registry queues admission within a deadline; the JavaScript mirror rejects full admission as NOT_EXECUTED.",
+    "Python receipts include implementation-local argument/result digests; JS mirror leaves cross-runtime digest production to the host."
+  ]
+}

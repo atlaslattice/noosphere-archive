@@ -1,0 +1,113 @@
+{
+  "build": {
+    "command": [
+      "Sites build-site helper"
+    ],
+    "elapsedSeconds": 0.4625655630006804,
+    "exitCode": 0,
+    "finishedAt": "2026-11-24T06:40:02.051729+00:00",
+    "logSha256": "2480a296396157706c5c2496bdf306def20f4efc9048971381d58722a492395a",
+    "manifestSha256": "27bd204f4c8301d5db6ccded46e9669ff322d44de6019710a3882f5872688ab8",
+    "outputBytes": 24743133,
+    "outputFiles": 258,
+    "schema": "atlas.startup-production-build/v1",
+    "serviceBuiltSha256": "846497a27e9f7a72e0bfa2a7e4de234ed4943a1f61b0864cb743366beb9aff6f",
+    "serviceSourceSha256": "846497a27e9f7a72e0bfa2a7e4de234ed4943a1f61b0864cb743366beb9aff6f",
+    "startedAt": "2026-11-24T06:40:01.589197+00:00",
+    "status": "PASS"
+  },
+  "builtWorkerSmoke": {
+    "coldImport": {
+      "systemMs": 39.594,
+      "userMs": 54.128,
+      "wallMs": 83.89635200000001
+    },
+    "databaseCalls": 0,
+    "exactBeforeAfterApiParity": true,
+    "healthStatus": 200,
+    "interopStatusHttp": 200,
+    "interopStatusSha256": "0404617815151cc5f40cdb62a9df75f92fdb5d88f616af14ae4a8d18abdfc2b0",
+    "measurement": "LOCAL_NODE_NOT_CLOUDFLARE",
+    "networkCalls": 0,
+    "schema": "atlas.startup-built-worker-smoke/v1",
+    "status": "PASS",
+    "toolCount": 34,
+    "toolDefinitionsSha256": "609d76a531d1a62d161b7a90935b6d8b07fe20483b5204db69164b6ec3639ac5"
+  },
+  "change": {
+    "authorityChecksUnchanged": true,
+    "failedInitializationNotCached": true,
+    "paths": [
+      "librarian/hosting/service.mjs",
+      "librarian/hosting/tests/startup_lazy.test.mjs"
+    ],
+    "providersOrAccessChanged": false,
+    "readHost": "Lazy singleton using the existing validated immutable host result",
+    "requestSpecificCommandHostUnchanged": true,
+    "sourceChecksRetainedBeforeUse": true,
+    "toolCatalog": "Lazy detached deeply frozen descriptor cache"
+  },
+  "committedByThisAgent": false,
+  "deployedByThisAgent": false,
+  "diagnosis": {
+    "eagerRoleSnapshotPasses": 3,
+    "eagerRoleSnapshots": 5652,
+    "hotspot": "Unconditional createInteropHost(registry) and interopToolDefinitions(registry) during service module evaluation",
+    "originalProfileCreateInteropHostMs": 189.27,
+    "originalProfileInteropToolDefinitionsMs": 55.15,
+    "originalProfileServiceEvaluationMs": 244.42,
+    "roles": 1884
+  },
+  "failedSourceCommit": "db9dbe7151aaf4471d5b628b275565293140cf13",
+  "fullVerification": {
+    "failed": 0,
+    "newStartupTestsIncluded": 3,
+    "nodePassed": 386,
+    "registryPassed": 17,
+    "skipped": 0,
+    "status": "PASS",
+    "tests": 403,
+    "unchangedPreviousAssets": 170,
+    "unexpectedPreviousAssetChanges": []
+  },
+  "generatedVerificationUpdates": [
+    "librarian/verification/node.log",
+    "librarian/verification/registry.log",
+    "librarian/verification/results.json"
+  ],
+  "gitStatus": [
+    " M dist/server/librarian/hosting/service.mjs",
+    " M librarian/hosting/service.mjs",
+    " M librarian/verification/node.log",
+    " M librarian/verification/registry.log",
+    " M librarian/verification/results.json",
+    "?? librarian/hosting/tests/startup_lazy.test.mjs"
+  ],
+  "implementationFiles": [
+    {
+      "path": "librarian/hosting/service.mjs",
+      "sha256": "846497a27e9f7a72e0bfa2a7e4de234ed4943a1f61b0864cb743366beb9aff6f"
+    },
+    {
+      "path": "librarian/hosting/tests/startup_lazy.test.mjs",
+      "sha256": "6352e6a1739211b64b621e5995aab72a9ebd00691f312d70a2c51dadfb19d39c"
+    }
+  ],
+  "localNodeProfile": {
+    "afterMedianUserMs": 51.474,
+    "afterMedianWallMs": 51.17408100000001,
+    "beforeMedianUserMs": 241.464,
+    "beforeMedianWallMs": 279.763887,
+    "runtime": "v24.22.3",
+    "samplesPerLane": 5,
+    "scope": "Cold Node imports; not a hosted CPU or latency measurement",
+    "userCpuReductionPercent": 78.68253652718418,
+    "workerdAvailable": false
+  },
+  "privateFullReceiptSha256": "b23a03de44f7ff108d57a8edddbc572bc26fd7f710781cd38f3b99a23687af3a",
+  "protectedSourcePayloadChanges": [],
+  "recordedAt": "2026-11-24T06:40:52.104986+00:00",
+  "remainingCheck": "See HOSTED_SYNTHESIS_RELEASE.json for the separately observed deployment and live reads.",
+  "schema": "atlas.worker-startup-fix/v1",
+  "status": "VERIFIED_LOCAL_BUILD_READY_FOR_PARENT_DEPLOYMENT_RETRY"
+}

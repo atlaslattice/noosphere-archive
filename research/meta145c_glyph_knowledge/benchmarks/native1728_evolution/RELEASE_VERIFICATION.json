@@ -1,0 +1,736 @@
+{
+  "atlasOne": {
+    "build": {
+      "exitCode": 0,
+      "logSha256": "2480a296396157706c5c2496bdf306def20f4efc9048971381d58722a492395a",
+      "status": "PASS"
+    },
+    "modelCalls": 0,
+    "originalAssetsPreserved": 170,
+    "sourceGitCommit": "9a7bd89ca42ae5151c1fa04f5933adbedb866306",
+    "status": "PASS",
+    "suites": [
+      {
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "<ATLAS_SITE>/tests/evolution-ui.test.mjs",
+          "<ATLAS_SITE>/librarian/runtime/tests/lane_engine.test.mjs",
+          "<ATLAS_SITE>/librarian/providers/providers.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/catalog_memory.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/civilization-kernels.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/evolution.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/excellence.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/interop_host.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/native1728_integration.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/program_service.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/research.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/routes.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/service.test.mjs",
+          "<ATLAS_SITE>/librarian/hosting/tests/store.test.mjs",
+          "<ATLAS_SITE>/librarian/lineage/openai_tools.test.mjs",
+          "<ATLAS_SITE>/librarian/lineage/plan_bridge.test.mjs",
+          "<ATLAS_SITE>/librarian/evolution/component_contracts.test.mjs",
+          "<ATLAS_SITE>/librarian/evolution/native_tools.test.mjs",
+          "<ATLAS_SITE>/librarian/evolution/retrieval_engine.test.mjs",
+          "<ATLAS_SITE>/librarian/evolution/strategy_circuit.test.mjs",
+          "<ATLAS_SITE>/librarian/interop/callable_tools.test.mjs",
+          "<ATLAS_SITE>/librarian/interop/cohort.test.mjs",
+          "<ATLAS_SITE>/librarian/interop/kernel.test.mjs",
+          "<ATLAS_SITE>/librarian/interop/protocols.test.mjs"
+        ],
+        "exitCode": 0,
+        "logSha256": "718586a798401a69ee7bd6e6fbd9dc23f0ccf09437f50f393ac3dc2864de5457",
+        "status": "PASS",
+        "suite": "node",
+        "tests": 376
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-m",
+          "unittest",
+          "registry.test_registry",
+          "-v"
+        ],
+        "exitCode": 0,
+        "logSha256": "69daee4573c5317e84ead45bacdbb6bf035b88dbd487239e81b8d243ca29f30d",
+        "status": "PASS",
+        "suite": "registry",
+        "tests": 17
+      }
+    ],
+    "testCount": 393,
+    "unexpectedPreviousAssetChanges": []
+  },
+  "countingRule": "Count distinct test identities within each project once. Normal/optimized runs, focused reruns and source-bound reruns do not add identities. The final Swarm gate includes concurrent Civilization and interop releases.",
+  "limits": [
+    "Local tests and builds are separate from production invocation and remote CI evidence.",
+    "Python 3.11 was not installed locally; the declared Python 3.13 workflow entry was exercised."
+  ],
+  "python": {
+    "artifactPins": {
+      "benchmarks/bench_long_horizon.py": "e7a6491a7f7c0a20f40c03917e1ecc29d9ea33a2457956981222fc8b7b286a60",
+      "benchmarks/native1728_evolution/CASCADE_UPGRADE_MEASURED.json": "18c9c8a71bb0a488ec3a7cc160c16eecd16fe46049ca9de4f7463fbd44204286",
+      "benchmarks/native1728_evolution/CURRENT_IMPLEMENTATION_TRACE.json.gz": "c20ce58e2ca932108092496d184f91d8f5ab636a0668b1246ce65fbfbfa7ee33",
+      "benchmarks/native1728_evolution/LONG_HORIZON_BUNDLE.json.gz": "fdf8061bd820d87a415b953e7063ffcfdea98d25c75307f03b9d00653d0ad356",
+      "benchmarks/native1728_evolution/LONG_HORIZON_MANIFEST.json": "c5bf0d84894d10d957e2c0a36e02c49f52696c1dea68a4089699734eb6d45e86",
+      "benchmarks/native1728_evolution/LONG_HORIZON_REPORT.json": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+      "benchmarks/native1728_evolution/LONG_HORIZON_REPORT.json.gz": "3b835833ccedd9bcfe0ca5a6036aecd62d5737950ad42ce1bb543be4cae03ff1",
+      "benchmarks/native1728_evolution/STORAGE_UPGRADE_MEASURED.json": "a923e6fd1f42a135c30f435503e413b33e6dd8ced810b62285898997780ff6ca",
+      "benchmarks/native1728_evolution/engine.cpp": "437eedd5b99b8cdd9af650e63e0083d7da6a5b42872e5c70ddfb3cf4751cc2eb",
+      "src/beast20/long_horizon.py": "c65537e659c773446f2844d9d6a505f723817e4a5456f86f51577b11fc8e9e5f",
+      "src/beast20/storage.py": "b9569ffbd42da817efff9783f5a14dced3a066f85f8a98e64b576919c1e67ce5"
+    },
+    "commands": [
+      {
+        "argv": [
+          "g++",
+          "--version"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "native_toolchain",
+        "outcome": "PASS",
+        "outputSha256": "5f6798e87440f1e8b88bf6822c33bebe434f83374640a7f8ba967902ee1ea098",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 0
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "compileall",
+          "-q",
+          "tools/meta145/src"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "meta_compile",
+        "outcome": "PASS",
+        "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 0
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "py_compile",
+          "core/__init__.py",
+          "core/swarmhub_contracts.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "swarmhub_compile",
+        "outcome": "PASS",
+        "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 0
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": true,
+        "exitCode": 0,
+        "id": "repository",
+        "outcome": "PASS",
+        "outputSha256": "79d996bbcc39092510fe35e3fde39d8caf0216b8b2e13a03af28f8cb1087327b",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 176
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tools/meta145/tests",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": true,
+        "exitCode": 0,
+        "id": "meta145",
+        "outcome": "PASS",
+        "outputSha256": "cf8d3a2572a7898fcf32a4c2dd1445509b3d59e66061853243c4627f80695068",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 10
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tools/meta145/tests",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "meta145_optimized",
+        "outcome": "PASS",
+        "outputSha256": "cf8d3a2572a7898fcf32a4c2dd1445509b3d59e66061853243c4627f80695068",
+        "repeatOf": "meta145",
+        "skipped": 0,
+        "testsRun": 10
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests_public",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": true,
+        "exitCode": 0,
+        "id": "public_memory_glyph",
+        "outcome": "PASS",
+        "outputSha256": "ea37ec28be02e8cb2ab09d75027d40eea63b0f372fe987a14d2c5082a89ebc72",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 70
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests_public",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "public_memory_glyph_optimized",
+        "outcome": "PASS",
+        "outputSha256": "1999bfd033868d08df777193d126e2a053fc69e1c3e8cec62b851eb58f860ac9",
+        "repeatOf": "public_memory_glyph",
+        "skipped": 0,
+        "testsRun": 70
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": true,
+        "exitCode": 0,
+        "id": "gf8",
+        "outcome": "PASS",
+        "outputSha256": "bb9a15ad274a1e2125d05bb6ee1979774976a95e011b6c090562e0e31777bb47",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 69
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "gf8_optimized",
+        "outcome": "PASS",
+        "outputSha256": "48903c6f05c1880f31db55e6475b4f6a51559ab4d4273816fa9d246440d51e9b",
+        "repeatOf": "gf8",
+        "skipped": 0,
+        "testsRun": 69
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "tests/replay_pr41_regression.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "gf8_focused_replay",
+        "outcome": "PASS",
+        "outputSha256": "0b124ecfd6e0c368b87521fcfe088d0c09ad83ad786a28cdb2a1adfd625ca5cd",
+        "repeatOf": "gf8",
+        "skipped": 0,
+        "testsRun": 16
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-O",
+          "tests/replay_pr41_regression.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "gf8_focused_replay_optimized",
+        "outcome": "PASS",
+        "outputSha256": "6dcc74d82615f4d2a4d011bdd5315c212bb4f644c77d24c49e01e420e01aeae7",
+        "repeatOf": "gf8",
+        "skipped": 0,
+        "testsRun": 16
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests_beast20",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": true,
+        "exitCode": 0,
+        "id": "beast20",
+        "outcome": "PASS",
+        "outputSha256": "a967fe40c17a6740d62db4f4c2243a6212079c6d6e88f3f6c0fdb2ed9c021ed0",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 240
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-O",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests_beast20",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "beast20_optimized",
+        "outcome": "PASS",
+        "outputSha256": "cce1c57b53b4750a26df4085d19fa04bd6e4522f27da34825ffe94a189939b37",
+        "repeatOf": "beast20",
+        "skipped": 0,
+        "testsRun": 240
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": true,
+        "exitCode": 0,
+        "id": "gf9",
+        "outcome": "PASS",
+        "outputSha256": "d5eb61dc358b62b093147ff83fc97d48569083f57d0df76b7dc55fff925ec220",
+        "repeatOf": null,
+        "skipped": 2,
+        "testsRun": 28
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": true,
+        "exitCode": 0,
+        "id": "unified1728",
+        "outcome": "PASS",
+        "outputSha256": "38c4e6fb33b6d4f46ea18a7019b25cf08929e6bc9d245ea32e8bd2c736e419c4",
+        "repeatOf": null,
+        "skipped": 6,
+        "testsRun": 36
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "src.beast20",
+          "demo"
+        ],
+        "cliEvidence": {
+          "contexts": 12,
+          "hosted_authorization_proven": false,
+          "model_calls": 0,
+          "network_requests": 0,
+          "stats": {
+            "memory_snapshots_verified": 1,
+            "physics_computations": 1,
+            "physics_hits": 11
+          },
+          "status": "LOCAL_DEMO_COMPLETED"
+        },
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "beast20_demo",
+        "outcome": "PASS",
+        "outputSha256": "8628d2cbf01d7cb32c45d752d4162bb8365afededcd6482a1e2030285da49dab",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 0
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "registry.public_registry"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "public_registry_cli",
+        "outcome": "PASS",
+        "outputSha256": "e8227d5128a17aa3d7603e6a3791a32c475d8c08f906585d6418e8f7eb15ec32",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 0
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_public_registry.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "public_registry_focused",
+        "outcome": "PASS",
+        "outputSha256": "1d97450fce4357852ab5680f6168aee028219548faf35beb746c1fb47190520f",
+        "repeatOf": "repository",
+        "skipped": 0,
+        "testsRun": 46
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "core.digital_continuity"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "digital_continuity_cli",
+        "outcome": "PASS",
+        "outputSha256": "a8f8a9e51f5caf65c464b35ca33c91c55bb7a2b8a441eeffb6bba2455389c381",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 0
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_digital_continuity.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "digital_continuity_focused",
+        "outcome": "PASS",
+        "outputSha256": "cdb8b62fe7389b8f7fd73d24c88a071da46b862bcd41260d74a4f4d6e100e53f",
+        "repeatOf": "repository",
+        "skipped": 0,
+        "testsRun": 37
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "src.beast20",
+          "evolution-summary",
+          "--report",
+          "benchmarks/native1728_evolution/LONG_HORIZON_REPORT.json"
+        ],
+        "cliEvidence": {
+          "counts": {
+            "acceptedCandidateChanges": 4,
+            "epochs": 1729,
+            "evaluatedTimelineYearUpdates": 5162766336,
+            "holdoutEpochs": 432,
+            "houses": 12,
+            "nodes": 1728,
+            "representedTimelineYears": 5162766336,
+            "spheres": 144,
+            "timelines": 1728,
+            "trainEpochs": 1297,
+            "yearsPerTimeline": 1728
+          },
+          "evidenceKind": "SYNTHETIC_EVOLUTION_EXPERIMENT",
+          "expectedShaMatches": true,
+          "fullReportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+          "projection": "SUMMARY_NOT_COMPLETE_REPORT"
+        },
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "evolution_summary",
+        "outcome": "PASS",
+        "outputSha256": "2a7b43dc612dca85fcc4bff98f0f02720e6bd2ee289edecd168b8adce0ab1fe5",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 0
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "src.beast20",
+          "evolution-bundle",
+          "--report",
+          "benchmarks/native1728_evolution/LONG_HORIZON_REPORT.json",
+          "--output",
+          "<TEMP_BUNDLE>"
+        ],
+        "cliEvidence": {
+          "bundleSchema": "atlas.beast20.long-horizon-bundle/v1",
+          "equalsPublishedBundle": true,
+          "expectedShaMatches": true,
+          "outputFileSha256": "99ea6e63d1d45f6529a4acc65a5e7b827a90019a943e7db05b1deccf053e4489",
+          "reportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+          "status": "VERIFIED_BUNDLE_EXPORTED",
+          "verifiedUtf8ReportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de"
+        },
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "evolution_bundle",
+        "outcome": "PASS",
+        "outputSha256": "ee0e5b7ab0064661b201ae069fa26c21caca1388108e324fe6c6974d37273fc8",
+        "repeatOf": null,
+        "skipped": 0,
+        "testsRun": 0
+      },
+      {
+        "argv": [
+          "/usr/bin/python3.13",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test*.py"
+        ],
+        "countsTowardDistinct": false,
+        "exitCode": 0,
+        "id": "unified1728_original_inputs",
+        "outcome": "PASS",
+        "outputSha256": "0322bb3ed8effd2296a7dad6109a1cb15b752fa0c578e67da655f324c027c89c",
+        "repeatOf": "unified1728",
+        "skipped": 0,
+        "testsRun": 36
+      }
+    ],
+    "exercisedWorkflowMatrix": [
+      "3.13"
+    ],
+    "frozenArtifactsUnchanged": true,
+    "notLocallyExercised": [
+      "3.11"
+    ],
+    "remainingSkips": [
+      {
+        "case": "test_evolution.TestEvolution.test_15000_receipt_present_when_available",
+        "reason": "phase dataset omitted; outputs/CHECKPOINT_15000.json is not present in the source-only package",
+        "suite": "gf9"
+      },
+      {
+        "case": "test_protocol.TestProtocol.test_original_registry_sha_only_private",
+        "reason": "exact private source absent at the legacy hardcoded package path; no original private source was copied into the public repository",
+        "suite": "gf9"
+      }
+    ],
+    "sourcePins": {
+      "ATLAS_ORIGINAL_ARIADNE_PATH": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+      "ATLAS_ORIGINAL_OPENALEX_PATH": "a306c7306a79754b033e9f8c41c0de5ff5176b4544a6a80b5c740e2f8d2cc903"
+    },
+    "totals": {
+      "beast20Distinct": 240,
+      "beast20DistinctPassed": 240,
+      "commandsFailed": 0,
+      "commandsPassed": 24,
+      "distinctTestsPassed": 627,
+      "distinctTestsRun": 629,
+      "distinctTestsSkipped": 2,
+      "optimizedRepeatExecutions": 405,
+      "otherDistinct": 389,
+      "otherDistinctPassed": 387
+    },
+    "version": "Python 3.13.5"
+  },
+  "reportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+  "schema": "atlas.native1728.evolution-verification/v1",
+  "sourceDateHonolulu": "2026-11-23",
+  "status": "PASS_LOCAL_CHECKS_AND_BUILDS",
+  "swarmchat": {
+    "build": {
+      "exitCode": 0,
+      "logSha256": "642536afe2642c5b79e61a505df81c6ab8163dd6bd8653c64f9382998a90698e",
+      "outputBytes": 49591978,
+      "outputFiles": 197,
+      "outputManifestSha256": "5180da99ac59563c0212333458543b984e72d16e5fc9d20ce5678041ad0f597b",
+      "selectedInputChangesAfterBuild": [],
+      "sourceGitCommit": "59d70591e360a8923ed413f8d0744f1a78663f3d",
+      "sourceGitCommitAfterBuild": "59d70591e360a8923ed413f8d0744f1a78663f3d",
+      "status": "PASS",
+      "worker": {
+        "bytes": 241020,
+        "path": "dist/server/index.js",
+        "sha256": "b25d1f58d16c98bc379b2c41713970e7fdfe014fc17f84284376c8f5b35e9cb4"
+      }
+    },
+    "command": [
+      "node",
+      "--test",
+      "--test-concurrency=2",
+      "--test-reporter=tap",
+      "tests/ariadne-owner-proof.test.mjs",
+      "tests/artifact-observation.test.mjs",
+      "tests/atlas-context-host.test.mjs",
+      "tests/atlas-evolution-bridge.test.mjs",
+      "tests/atlas-graph-search-excerpts.test.mjs",
+      "tests/atlas-interop-host.test.mjs",
+      "tests/atlas-one-v2-glyph-review.test.mjs",
+      "tests/board-export.test.mjs",
+      "tests/civilization-host.test.mjs",
+      "tests/civilization-kernels.test.mjs",
+      "tests/commons-program.test.mjs",
+      "tests/connection-recovery.test.mjs",
+      "tests/constellation-view.test.mjs",
+      "tests/continuity-restore.test.mjs",
+      "tests/cutoff.test.mjs",
+      "tests/delivery-summary.test.mjs",
+      "tests/draft-recovery.test.mjs",
+      "tests/evidence-audit.test.mjs",
+      "tests/evolution-policy.test.mjs",
+      "tests/excellence-host.test.mjs",
+      "tests/foundry.test.mjs",
+      "tests/geometree-mount.test.mjs",
+      "tests/glyph-hsn-graph-handoff.test.mjs",
+      "tests/hypermatrix-canon.test.mjs",
+      "tests/hyperspace-research.test.mjs",
+      "tests/identity-diagnostic.test.mjs",
+      "tests/macroturn-default.test.mjs",
+      "tests/macroturn-local.test.mjs",
+      "tests/message-evidence-access.test.mjs",
+      "tests/meta145-axg1.test.mjs",
+      "tests/meta145-e145.test.mjs",
+      "tests/meta145-engine.test.mjs",
+      "tests/meta145-evidence-pages.test.mjs",
+      "tests/meta145-glyphs.test.mjs",
+      "tests/meta145-host.test.mjs",
+      "tests/meta145-memory.test.mjs",
+      "tests/meta145-synthesis.test.mjs",
+      "tests/metacollab-public-review.test.mjs",
+      "tests/metaphor-elevator.test.mjs",
+      "tests/native-return-host.test.mjs",
+      "tests/native-room-host.test.mjs",
+      "tests/native1728-api.test.mjs",
+      "tests/native1728-evolution-host.test.mjs",
+      "tests/native1728-evolution.test.mjs",
+      "tests/native1728-tool-policy.test.mjs",
+      "tests/native1728.test.mjs",
+      "tests/noosphere.test.mjs",
+      "tests/patch-inspector.test.mjs",
+      "tests/playground.test.mjs",
+      "tests/public-access.test.mjs",
+      "tests/r07-review-client-recovery.test.mjs",
+      "tests/r07-review.test.mjs",
+      "tests/release-gate.test.mjs",
+      "tests/return-target-independent.test.mjs",
+      "tests/room-creation.test.mjs",
+      "tests/room-reader.test.mjs",
+      "tests/room-source.test.mjs",
+      "tests/rooms-events.test.mjs",
+      "tests/seat-address.test.mjs",
+      "tests/seat-lifecycle.test.mjs",
+      "tests/seat-restart.test.mjs",
+      "tests/seat-revocation-client.test.mjs",
+      "tests/seat-revocation.test.mjs",
+      "tests/spatial-whiteboard.test.mjs",
+      "tests/v26-native-launcher.test.mjs",
+      "tests/v26-native-mcp-mount.test.mjs",
+      "tests/v26-whiteboard-join.test.mjs",
+      "tests/v32-room-policy.test.mjs",
+      "tests/v32-workboard-host-gate.test.mjs",
+      "tests/warp-observatory.test.mjs",
+      "tests/work-catalogue-record.test.mjs",
+      "tests/work-planner-render.test.mjs",
+      "tests/work-planner-review.test.mjs",
+      "tests/work-planner.test.mjs",
+      "tests/work-references.test.mjs",
+      "tests/work-review-cursor.test.mjs",
+      "tests/work-room-links-view.test.mjs",
+      "tests/workspace.test.mjs"
+    ],
+    "counts": {
+      "cancelled": 0,
+      "fail": 0,
+      "pass": 691,
+      "skipped": 2,
+      "suites": 0,
+      "tests": 693,
+      "todo": 0
+    },
+    "displayCommand": "node --test --test-concurrency=2 --test-reporter=tap tests/*.test.mjs",
+    "exitCode": 0,
+    "logSha256": "6d1b86b63c51b55c812176ab763a9b306e6ad3d98898e4443cfd08a683fb5e81",
+    "skips": [
+      "ok 278 - optional exact original verifies every1728 source record, ancestors and unchanged raw byte pin # SKIP",
+      "ok 509 - owner-private plan replay checks actual current source and never imports protected modes # SKIP"
+    ],
+    "sourceGitCommit": "59d70591e360a8923ed413f8d0744f1a78663f3d",
+    "testFiles": 78
+  },
+  "totalDistinctPassed": 1711,
+  "totalOptionalSkips": 4
+}

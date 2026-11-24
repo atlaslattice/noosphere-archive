@@ -1,0 +1,1660 @@
+{
+  "schema": "atlas.beast20.benchmark/v2",
+  "created_utc": "2026-11-24T02:58:10.219602+00:00",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "sqlite": "3.53.1",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "clock": "perf_counter_ns"
+  },
+  "dataset": {
+    "kind": "EXACT_PINNED_ARIADNE_V07",
+    "registry_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+    "topics_sha256": "a306c7306a79754b033e9f8c41c0de5ff5176b4544a6a80b5c740e2f8d2cc903"
+  },
+  "method": {
+    "paired_order": "alternating baseline-first/candidate-first",
+    "p95": "nearest rank; small paired sample, descriptive only",
+    "ratios": "median baseline divided by median candidate; never multiplied",
+    "warmups": "one untimed paired parity pass except graph scenarios",
+    "setup": "described separately per workload; no artificial sleeps"
+  },
+  "comparisons": [
+    {
+      "name": "legacy_topic_loop_vs_r10_verified_batch",
+      "workload": {
+        "coordinates": 1728,
+        "synthetic_review_events": 144,
+        "topic_count": 4516,
+        "candidate_edges": 22580,
+        "topic_input": "PINNED_HISTORICAL_OPENALEX_CANDIDATES"
+      },
+      "repeats": 5,
+      "baseline": {
+        "median_ms": 5942.312689,
+        "p95_ms": 6672.871875,
+        "minimum_ms": 5760.088259,
+        "maximum_ms": 6672.871875
+      },
+      "candidate": {
+        "median_ms": 83.221779,
+        "p95_ms": 92.378952,
+        "minimum_ms": 68.132228,
+        "maximum_ms": 92.378952
+      },
+      "median_ratio_baseline_over_candidate": 71.40333648719526,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 5760.088259,
+          "candidate_ms": 92.378952,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 83.221779,
+          "baseline_ms": 5889.282452,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 6013.597331,
+          "candidate_ms": 89.451859,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 74.166136,
+          "baseline_ms": 6672.871875,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 5942.312689,
+          "candidate_ms": 68.132228,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        }
+      ],
+      "limitations": [
+        "Legacy repeated scans do not verify the memory checkpoint.",
+        "R10 verifies once and retains existing per-coordinate topic queries.",
+        "Synthetic reviews affect ordering only; topic candidates remain unreviewed."
+      ],
+      "untimed_observed_sql_counts": {
+        "legacy": {
+          "knowledge:SELECT": 1728,
+          "memory:SELECT": 22580
+        },
+        "r10": {
+          "knowledge:SELECT": 1728,
+          "memory:SELECT": 1
+        },
+        "beast20": {
+          "knowledge:SELECT": 5,
+          "memory:SELECT": 2
+        }
+      },
+      "measurement_pass": "initial-before-source-manifests"
+    },
+    {
+      "name": "r10_verified_memory_vs_beast20_batched_topic_views",
+      "workload": {
+        "coordinates": 1728,
+        "synthetic_review_events": 144,
+        "topic_count": 4516,
+        "candidate_edges": 22580,
+        "topic_input": "PINNED_HISTORICAL_OPENALEX_CANDIDATES"
+      },
+      "repeats": 9,
+      "baseline": {
+        "median_ms": 84.055397,
+        "p95_ms": 154.196149,
+        "minimum_ms": 65.802593,
+        "maximum_ms": 154.196149
+      },
+      "candidate": {
+        "median_ms": 94.512524,
+        "p95_ms": 116.808514,
+        "minimum_ms": 76.171232,
+        "maximum_ms": 116.808514
+      },
+      "median_ratio_baseline_over_candidate": 0.8893572348147215,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 65.802593,
+          "candidate_ms": 76.171232,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 95.761898,
+          "baseline_ms": 71.858554,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 84.062607,
+          "candidate_ms": 116.808514,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 99.17126,
+          "baseline_ms": 154.196149,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 75.599608,
+          "candidate_ms": 103.984958,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 6,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 90.57908,
+          "baseline_ms": 84.055397,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 7,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 84.157287,
+          "candidate_ms": 94.512524,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 8,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 90.139186,
+          "baseline_ms": 88.81873,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        },
+        {
+          "pair": 9,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 81.322398,
+          "candidate_ms": 91.782308,
+          "outputs_equal": true,
+          "output_sha256": "c464f2677ddef983e91078eb918a331ac7602a22b5d693ef7368dc7893cc8d5e"
+        }
+      ],
+      "limitations": [
+        "Baseline is the current optimized R10 verified memory API, not the older raw scans.",
+        "BEAST20 additionally verifies at return and uses bounded topic SQL batches.",
+        "Authorization callbacks are local test callbacks, not live host authentication."
+      ],
+      "untimed_observed_sql_counts": {
+        "r10": {
+          "knowledge:SELECT": 1728,
+          "memory:SELECT": 1
+        },
+        "beast20": {
+          "knowledge:SELECT": 5,
+          "memory:SELECT": 2
+        }
+      },
+      "measurement_pass": "source-463d7346c0b656c0"
+    },
+    {
+      "name": "gf8_uncached_vs_cold_batch_physics_reuse",
+      "workload": {
+        "contexts": 24,
+        "distinct_plates": 1,
+        "distinct_drives": 1,
+        "grid": 17,
+        "max_mode": 4,
+        "drive_hz": 55.0,
+        "source": "REAL_GF8_ANALYTIC_COMPUTATIONS_WITH_AUTHORED_REQUESTS"
+      },
+      "repeats": 9,
+      "baseline": {
+        "median_ms": 13.138483,
+        "p95_ms": 34.024273,
+        "minimum_ms": 12.787292,
+        "maximum_ms": 34.024273
+      },
+      "candidate": {
+        "median_ms": 4.964252,
+        "p95_ms": 10.186842,
+        "minimum_ms": 4.786953,
+        "maximum_ms": 10.186842
+      },
+      "median_ratio_baseline_over_candidate": 2.646618866246113,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 13.267709,
+          "candidate_ms": 5.03636,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 5.323375,
+          "baseline_ms": 13.138483,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 12.882407,
+          "candidate_ms": 4.909139,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.786953,
+          "baseline_ms": 13.191833,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 12.962517,
+          "candidate_ms": 4.888547,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 6,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.810299,
+          "baseline_ms": 34.024273,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 7,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 13.230392,
+          "candidate_ms": 10.186842,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 8,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.964252,
+          "baseline_ms": 13.123,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 9,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 12.787292,
+          "candidate_ms": 5.375433,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        }
+      ],
+      "limitations": [
+        "Exact reasoning-packet parity includes per-coordinate receipts.",
+        "Reuse is valid only for identical physics inputs; changing a material/drive changes the key.",
+        "Local analytic CPU model; no physical acoustic processor, GPT inference or hosted latency.",
+        "Candidate timing includes a fresh in-memory store and runtime per batch."
+      ],
+      "observed_candidate_counters_per_call_including_warmup": [
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        },
+        {
+          "physics_computations": 1,
+          "physics_hits": 23
+        }
+      ],
+      "measurement_pass": "source-463d7346c0b656c0"
+    },
+    {
+      "name": "gf8_uncached_vs_prepopulated_physics_reuse",
+      "workload": {
+        "contexts": 24,
+        "distinct_plates": 1,
+        "distinct_drives": 1,
+        "grid": 17,
+        "max_mode": 4,
+        "drive_hz": 55.0,
+        "source": "REAL_GF8_ANALYTIC_COMPUTATIONS_WITH_AUTHORED_REQUESTS"
+      },
+      "repeats": 9,
+      "baseline": {
+        "median_ms": 13.296832,
+        "p95_ms": 14.475063,
+        "minimum_ms": 12.666179,
+        "maximum_ms": 14.475063
+      },
+      "candidate": {
+        "median_ms": 3.859402,
+        "p95_ms": 4.485668,
+        "minimum_ms": 3.518677,
+        "maximum_ms": 4.485668
+      },
+      "median_ratio_baseline_over_candidate": 3.4453088846406774,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 13.148188,
+          "candidate_ms": 3.995197,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.485668,
+          "baseline_ms": 13.211804,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 12.950619,
+          "candidate_ms": 3.741414,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 3.518677,
+          "baseline_ms": 13.296832,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 13.684728,
+          "candidate_ms": 4.077551,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 6,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 3.620081,
+          "baseline_ms": 14.475063,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 7,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 13.517716,
+          "candidate_ms": 3.7651,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 8,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 3.958251,
+          "baseline_ms": 13.327169,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        },
+        {
+          "pair": 9,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 12.666179,
+          "candidate_ms": 3.859402,
+          "outputs_equal": true,
+          "output_sha256": "e67eedacaa18beac0615f750059a88245cfc6451e35bd7cfaf93bc3309f1b6d6"
+        }
+      ],
+      "limitations": [
+        "Exact reasoning-packet parity includes per-coordinate receipts.",
+        "Reuse is valid only for identical physics inputs; changing a material/drive changes the key.",
+        "Local analytic CPU model; no physical acoustic processor, GPT inference or hosted latency.",
+        "Candidate cache is prepopulated before timing."
+      ],
+      "observed_candidate_counters_before": {
+        "physics_computations": 1,
+        "physics_hits": 23
+      },
+      "observed_candidate_counters_after": {
+        "physics_computations": 1,
+        "physics_hits": 263
+      },
+      "measurement_pass": "source-463d7346c0b656c0"
+    },
+    {
+      "name": "source_objects_individual_vs_bounded_batch_get",
+      "workload": {
+        "objects": 1728,
+        "unique_digests": 1728,
+        "source_bytes": 1830143
+      },
+      "repeats": 9,
+      "baseline": {
+        "median_ms": 19.163528,
+        "p95_ms": 20.879851,
+        "minimum_ms": 18.284098,
+        "maximum_ms": 20.879851
+      },
+      "candidate": {
+        "median_ms": 5.970783,
+        "p95_ms": 6.355293,
+        "minimum_ms": 5.692622,
+        "maximum_ms": 6.355293
+      },
+      "median_ratio_baseline_over_candidate": 3.2095502382183376,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 18.284098,
+          "candidate_ms": 6.01546,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 5.945384,
+          "baseline_ms": 19.028974,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 20.879851,
+          "candidate_ms": 6.355293,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 5.970783,
+          "baseline_ms": 18.632204,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 19.106191,
+          "candidate_ms": 6.069311,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 6,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 5.939945,
+          "baseline_ms": 20.49501,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 7,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 19.315798,
+          "candidate_ms": 6.035209,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 8,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 5.692622,
+          "baseline_ms": 19.163528,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        },
+        {
+          "pair": 9,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 19.74053,
+          "candidate_ms": 5.882869,
+          "outputs_equal": true,
+          "output_sha256": "2356da83867cd47da08afdc06626c04927aca5837452f71918e6e79bc47caf7f"
+        }
+      ],
+      "limitations": [
+        "Both paths verify exact bytes against SHA-256.",
+        "Source insertion/setup is excluded from retrieval timing."
+      ],
+      "measurement_pass": "source-463d7346c0b656c0"
+    },
+    {
+      "name": "source_names_preparsed_linear_vs_persistent_inverted_index",
+      "workload": {
+        "documents": 1728,
+        "queries": 24,
+        "query_texts_sha256": "26a692649e2f0ac93ddf12e2514c1cd3790560454867d45b9e834b4d5ded522f",
+        "limit": 20
+      },
+      "repeats": 9,
+      "baseline": {
+        "median_ms": 5.622445,
+        "p95_ms": 6.109602,
+        "minimum_ms": 5.371667,
+        "maximum_ms": 6.109602
+      },
+      "candidate": {
+        "median_ms": 4.585479,
+        "p95_ms": 5.076761,
+        "minimum_ms": 4.352436,
+        "maximum_ms": 5.076761
+      },
+      "median_ratio_baseline_over_candidate": 1.2261412602696466,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 5.622445,
+          "candidate_ms": 4.516736,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.585479,
+          "baseline_ms": 5.753484,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 5.504808,
+          "candidate_ms": 4.512298,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.929849,
+          "baseline_ms": 5.711189,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 5.475995,
+          "candidate_ms": 5.076761,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 6,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.36741,
+          "baseline_ms": 6.109602,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 7,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 5.852894,
+          "candidate_ms": 4.922598,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 8,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 4.352436,
+          "baseline_ms": 5.47275,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        },
+        {
+          "pair": 9,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 5.371667,
+          "candidate_ms": 5.074678,
+          "outputs_equal": true,
+          "output_sha256": "c70f0d653d9c26589695d95b149c7395bf43fd67c75c077eabe3f8770ab5d5d7"
+        }
+      ],
+      "limitations": [
+        "Baseline tokens are already parsed; this is a competitive in-memory linear baseline.",
+        "Persistent index additionally retrieves and verifies source bytes/metadata.",
+        "Output comparison uses exact ordered IDs/scores; no semantic-relevance improvement is inferred.",
+        "SQLite overhead can make the indexed route slower for a small or broad-query corpus."
+      ],
+      "measurement_pass": "source-463d7346c0b656c0"
+    },
+    {
+      "name": "full_cascade_rebuild_vs_verified_job_reuse",
+      "workload": {
+        "nodes": 1728,
+        "spheres": 144,
+        "houses": 12,
+        "meta": 1,
+        "total_jobs": 1885,
+        "workers": 12,
+        "handler_type": "LOCAL_SYNCHRONOUS_LEXICAL_AND_DIGEST"
+      },
+      "repeats": 9,
+      "baseline": {
+        "median_ms": 316.976813,
+        "p95_ms": 355.71585,
+        "minimum_ms": 253.507156,
+        "maximum_ms": 355.71585
+      },
+      "candidate": {
+        "median_ms": 178.815582,
+        "p95_ms": 211.86371,
+        "minimum_ms": 153.034325,
+        "maximum_ms": 211.86371
+      },
+      "median_ratio_baseline_over_candidate": 1.7726464855842372,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 253.507156,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 178.815582,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 153.034325,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "baseline_ms": 269.569196,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 355.71585,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 189.25126,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 172.982718,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "baseline_ms": 322.119234,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 316.976813,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 211.86371,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839"
+        },
+        {
+          "pair": 6,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 201.685805,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "baseline_ms": 302.05848,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839"
+        },
+        {
+          "pair": 7,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 292.268191,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 178.701009,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839"
+        },
+        {
+          "pair": 8,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 164.835006,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "baseline_ms": 319.119461,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839"
+        },
+        {
+          "pair": 9,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 331.009822,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 193.482885,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 0,
+            "cache_hits": 1885,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 0,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839"
+        }
+      ],
+      "limitations": [
+        "Jobs are actual source-text/digest reductions, not model calls or resident turns.",
+        "Synchronous CPU handlers do not gain multicore parallelism from asyncio.",
+        "Timings include task construction, integrity checks, scheduling and checkpoint operations.",
+        "Each baseline uses a fresh in-memory checkpoint DB."
+      ],
+      "measurement_pass": "source-463d7346c0b656c0"
+    },
+    {
+      "name": "full_rebuild_vs_one_node_supplement_change",
+      "workload": {
+        "nodes": 1728,
+        "spheres": 144,
+        "houses": 12,
+        "meta": 1,
+        "total_jobs": 1885,
+        "workers": 12,
+        "handler_type": "LOCAL_SYNCHRONOUS_LEXICAL_AND_DIGEST",
+        "changed_inputs": 1
+      },
+      "repeats": 9,
+      "baseline": {
+        "median_ms": 298.690306,
+        "p95_ms": 352.513611,
+        "minimum_ms": 268.652381,
+        "maximum_ms": 352.513611
+      },
+      "candidate": {
+        "median_ms": 185.496573,
+        "p95_ms": 207.794005,
+        "minimum_ms": 153.42585,
+        "maximum_ms": 207.794005
+      },
+      "median_ratio_baseline_over_candidate": 1.6102200766803385,
+      "all_outputs_equal": true,
+      "raw_pairs": [
+        {
+          "pair": 1,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 322.106679,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 190.4314,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "85c6becebb48a0e353c279604c1cccc5137c729554bc978d8fb1e763ba6b76ac"
+        },
+        {
+          "pair": 2,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 170.585446,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "baseline_ms": 298.690306,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "a1f29031e57f650155e53f8eb88e2ab17bf4183f441fd5c31a352d51c2e0d088"
+        },
+        {
+          "pair": 3,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 352.513611,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 196.684067,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "c76cc76c1b8208ebed54727f46fd311824e6f46851b1c853698e81f329ed885f"
+        },
+        {
+          "pair": 4,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 175.154295,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "baseline_ms": 331.124645,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "ce47630d962f9b1c9b8a6c7b6e344609cb1bd0c1f85dee1992aba3b84b312ab2"
+        },
+        {
+          "pair": 5,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 271.302896,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 207.794005,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "0455c808f051b7afbb85eff90deda6b8f0535692ccbad3f7d0925984d0c9a3ef"
+        },
+        {
+          "pair": 6,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 185.084796,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "baseline_ms": 272.952765,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "6be1bce386237bbf475a5217c76da7c6839de63397f75e3aaf535fe14886ef76"
+        },
+        {
+          "pair": 7,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 268.652381,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 185.496573,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "c236fd517fc75f5ca4c6aa309489e85001621b62df5a724336d2571bfb5074ae"
+        },
+        {
+          "pair": 8,
+          "order": [
+            "candidate",
+            "baseline"
+          ],
+          "candidate_ms": 204.406806,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "baseline_ms": 302.314867,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "e295372e0129dde10b88d088e66f5a689d55eb0f2826161509a22d8f6e82eb9a"
+        },
+        {
+          "pair": 9,
+          "order": [
+            "baseline",
+            "candidate"
+          ],
+          "baseline_ms": 286.568514,
+          "baseline_counters": {
+            "submitted": 1885,
+            "executed": 1885,
+            "cache_hits": 0,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "candidate_ms": 153.42585,
+          "candidate_counters": {
+            "submitted": 1885,
+            "executed": 4,
+            "cache_hits": 1881,
+            "coalesced": 0,
+            "retries": 0,
+            "dead_letters": 0,
+            "circuit_deferrals": 0,
+            "blocked": 0,
+            "max_active": 1,
+            "max_admitted": 12
+          },
+          "outputs_equal": true,
+          "output_sha256": "8b61f07e0f32a4deba25b767fe2210ebeda30e449cb7573a3cc0d3ac8aa210b8"
+        }
+      ],
+      "limitations": [
+        "Jobs are actual source-text/digest reductions, not model calls or resident turns.",
+        "Synchronous CPU handlers do not gain multicore parallelism from asyncio.",
+        "Timings include task construction, integrity checks, scheduling and checkpoint operations.",
+        "Supplemental computation input changes; original source bytes and CANON stay fixed.",
+        "Each pair uses a never-before-seen supplement revision; cache reuse cannot hide updates."
+      ],
+      "measurement_pass": "source-463d7346c0b656c0"
+    }
+  ],
+  "functional_observations": [
+    {
+      "name": "persistent_cascade_restart",
+      "workload": {
+        "nodes": 1728,
+        "spheres": 144,
+        "houses": 12,
+        "meta": 1,
+        "total_jobs": 1885,
+        "workers": 12,
+        "handler_type": "LOCAL_SYNCHRONOUS_LEXICAL_AND_DIGEST"
+      },
+      "elapsed_ms": 185.972447,
+      "initial_counters": {
+        "submitted": 1885,
+        "executed": 1885,
+        "cache_hits": 0,
+        "coalesced": 0,
+        "retries": 0,
+        "dead_letters": 0,
+        "circuit_deferrals": 0,
+        "blocked": 0,
+        "max_active": 1,
+        "max_admitted": 12
+      },
+      "restart_counters": {
+        "submitted": 1885,
+        "executed": 0,
+        "cache_hits": 1885,
+        "coalesced": 0,
+        "retries": 0,
+        "dead_letters": 0,
+        "circuit_deferrals": 0,
+        "blocked": 0,
+        "max_active": 0,
+        "max_admitted": 12
+      },
+      "outputs_equal": true,
+      "output_sha256": "a9ae423420d2a95a29a47f048a8e1b3a425d18176046b5040c582a5b9e5cb839",
+      "limitation": "One functional restart observation, not a paired latency speedup claim.",
+      "measurement_pass": "source-463d7346c0b656c0"
+    }
+  ],
+  "claim_limits": [
+    "Local Python/SQLite performance only.",
+    "No hosted authorization, model-quality, physical cymatics or universal superiority measurement.",
+    "Cold setup and full-source invalidation remain real costs.",
+    "Negative results are retained; source text is not included in this report."
+  ],
+  "observed_runtime_stats": {
+    "memory_snapshots_verified": 11
+  },
+  "measurement_passes": [
+    {
+      "id": "initial-before-source-manifests",
+      "created_utc": "2026-11-24T02:47:52.691769+00:00",
+      "source_manifests_equal": null,
+      "note": "Initial measurement; source-file manifests were not captured during that pass."
+    },
+    {
+      "id": "source-463d7346c0b656c0",
+      "sections": [
+        "memory-current",
+        "physics",
+        "storage",
+        "cascade"
+      ],
+      "created_utc": "2026-11-24T02:58:10.219602+00:00",
+      "source_manifest_before": {
+        "src/__init__.py": "8999782e13eb53635be5c2eca3b7f2aefe3f26c2bda318b6b5494a42320c6bc5",
+        "src/core.py": "450c7843ef2b15e087c538292ae353d296f538b028bfbcc6f60799d572f09000",
+        "src/glyph.py": "64220f8bb3d595a642f8be5f729c5ab0f97a91100848cffd2d1a5eae6ca5e8bb",
+        "src/gf8.py": "e2a2d2f10c6406e990469f39433ee11f5a7bd91568e9fb6a3ce182e1e76c1a17",
+        "src/reasoning_filter.py": "c5ed108621c3f0b0c074ea826cfaf0e99985b6f9a49b4180461388fe0e46d0dc",
+        "src/memory.py": "20d2a435f74f3af42b734fe27d22b8e19030982cd25158e269f8068ad96dd155",
+        "src/knowledge.py": "0917d3e366fa4e8665ea020829754f551c83e398f87745001598af420d4da76a",
+        "src/beast20/__init__.py": "dda937d97c5a4e39e56c8d210a90ca88360ea173263369a6ed1031dde108bda2",
+        "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+        "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+        "src/beast20/runtime.py": "b76185943fb5f1e681a8ac67415a5ea0d0fa59d3e4d3ea8d54873c63d4f005f8",
+        "src/beast20/feeds.py": "eebebcbdc0e002e1bb9dba4b90b3767c7c60e4a3424e38f19cc58788102efd6b",
+        "benchmarks/bench_beast20.py": "47022039762d97975a208a0070322ba522671c51077a0464e6e9f7dff5ddc8c0"
+      },
+      "source_manifest_after": {
+        "src/__init__.py": "8999782e13eb53635be5c2eca3b7f2aefe3f26c2bda318b6b5494a42320c6bc5",
+        "src/core.py": "450c7843ef2b15e087c538292ae353d296f538b028bfbcc6f60799d572f09000",
+        "src/glyph.py": "64220f8bb3d595a642f8be5f729c5ab0f97a91100848cffd2d1a5eae6ca5e8bb",
+        "src/gf8.py": "e2a2d2f10c6406e990469f39433ee11f5a7bd91568e9fb6a3ce182e1e76c1a17",
+        "src/reasoning_filter.py": "c5ed108621c3f0b0c074ea826cfaf0e99985b6f9a49b4180461388fe0e46d0dc",
+        "src/memory.py": "20d2a435f74f3af42b734fe27d22b8e19030982cd25158e269f8068ad96dd155",
+        "src/knowledge.py": "0917d3e366fa4e8665ea020829754f551c83e398f87745001598af420d4da76a",
+        "src/beast20/__init__.py": "dda937d97c5a4e39e56c8d210a90ca88360ea173263369a6ed1031dde108bda2",
+        "src/beast20/storage.py": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+        "src/beast20/execution.py": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+        "src/beast20/runtime.py": "b76185943fb5f1e681a8ac67415a5ea0d0fa59d3e4d3ea8d54873c63d4f005f8",
+        "src/beast20/feeds.py": "eebebcbdc0e002e1bb9dba4b90b3767c7c60e4a3424e38f19cc58788102efd6b",
+        "benchmarks/bench_beast20.py": "47022039762d97975a208a0070322ba522671c51077a0464e6e9f7dff5ddc8c0"
+      },
+      "source_manifests_equal": true
+    }
+  ],
+  "preserved_prior_report": {
+    "filename": "BEAST20_REAL_SOURCE_RESULTS_INITIAL.json",
+    "sha256": "73ec4ecfea0f842ecc2c936825e3b873853334973e32ab30e8f6027748a46fcc",
+    "meaning": "Prior raw measurements remain intact in this separate artifact."
+  },
+  "all_output_comparisons_equal": true
+}

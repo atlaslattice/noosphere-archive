@@ -1,0 +1,162 @@
+{
+  "schema": "atlas.beast20.synthesis20-oss-provenance/v1",
+  "research_date": "2026-11-24",
+  "scope": "One small attributed category adaptation and three design references. No upstream workflow framework is installed.",
+  "implementation_status": "IMPLEMENTED_AND_TESTED_LOCALLY_IN_ISOLATION",
+  "direct_adaptation": {
+    "project": "dagster",
+    "repository": "dagster-io/dagster",
+    "commit_sha": "be4184924fec7b61de19a828cae73427d33d0187",
+    "source_path": "python_modules/dagster/dagster/_core/definitions/data_version.py",
+    "source_git_blob_sha": "08aed0b1ae775478dd3f236b95b7a1bdb30d98a2",
+    "source_url": "https://github.com/dagster-io/dagster/blob/be4184924fec7b61de19a828cae73427d33d0187/python_modules/dagster/dagster/_core/definitions/data_version.py",
+    "source_lines": [
+      279,
+      282
+    ],
+    "reused_symbols": [
+      "StaleCauseCategory.CODE",
+      "StaleCauseCategory.DATA",
+      "StaleCauseCategory.DEPENDENCIES"
+    ],
+    "copied_or_adapted_in_this_work": true,
+    "local_files": [
+      "src/beast20/synthesis_provenance.py",
+      "tests_beast20/test_synthesis_provenance.py"
+    ],
+    "license": {
+      "spdx": "Apache-2.0",
+      "copyright": "Copyright 2025 Dagster Labs, Inc.",
+      "path": "LICENSE",
+      "git_blob_sha": "82b6b68d6ad4d65757310c2e7dab12ccae01de36",
+      "url": "https://github.com/dagster-io/dagster/blob/be4184924fec7b61de19a828cae73427d33d0187/LICENSE",
+      "local_copy": "docs/native1728/LICENSE-DAGSTER-APACHE-2.0.txt",
+      "notice": "docs/native1728/NOTICE-SYNTHESIS20.md",
+      "root_notice_file_observed": false
+    },
+    "changes": [
+      "Retained the three upstream category names; added PEER_EVIDENCE and CHECKS.",
+      "Used a string-valued Enum and explicit category/key ordering instead of upstream total-order decoration.",
+      "Added strict bounded ordinary-builtin records with lowercase SHA-256 values and detached copies.",
+      "Hash keyed canonical JSON including map field names and dependency labels.",
+      "Return every change, including removed and added entries; absent values are null."
+    ],
+    "not_reused": [
+      "Dagster framework, event storage, asset types or staleness resolver",
+      "compute_logical_data_version and its unframed concatenated-string hashing"
+    ],
+    "upstream_counterexample": {
+      "description": "The inspected logical version function concatenates code and input version strings and omits input names. Distinct component boundaries can yield identical input bytes before hashing.",
+      "inspection_lines": [
+        217,
+        249
+      ],
+      "local_response": "Reject non-digest values, preserve keys and map domains in canonical JSON; tests cover invalid raw splits, valid key-boundary alternatives, domain changes and dependency renames."
+    }
+  },
+  "design_references": [
+    {
+      "id": "langgraph",
+      "repository": "langchain-ai/langgraph",
+      "commit_sha": "c6335a4255dc1d8abc25a7677f9c072c7ab27b9c",
+      "source_path": "libs/checkpoint/langgraph/checkpoint/base/__init__.py",
+      "source_git_blob_sha": "c7cacc7bfd703f298427e870bd6d07b4aa395812",
+      "source_url": "https://github.com/langchain-ai/langgraph/blob/c6335a4255dc1d8abc25a7677f9c072c7ab27b9c/libs/checkpoint/langgraph/checkpoint/base/__init__.py",
+      "license": {
+        "spdx": "MIT",
+        "copyright": "Copyright (c) 2024 LangChain, Inc.",
+        "git_blob_sha": "fc0602feecdd6748623c852ab534e1ca612673c7",
+        "url": "https://github.com/langchain-ai/langgraph/blob/c6335a4255dc1d8abc25a7677f9c072c7ab27b9c/LICENSE"
+      },
+      "concept": "Checkpoint parent/version lineage; external effects require their own idempotency and unknown-outcome handling.",
+      "documentation_url": "https://docs.langchain.com/oss/python/langgraph/fault-tolerance",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "temporal-python",
+      "repository": "temporalio/sdk-python",
+      "commit_sha": "9f2195a7f0a19ddb55c6ec5f9fe70943051ada3c",
+      "source_path": "temporalio/worker/_replayer.py",
+      "source_git_blob_sha": "1542b3e0f2bcd3bf61fec1d4f78cb1cfaec99d47",
+      "source_url": "https://github.com/temporalio/sdk-python/blob/9f2195a7f0a19ddb55c6ec5f9fe70943051ada3c/temporalio/worker/_replayer.py",
+      "license": {
+        "spdx": "MIT",
+        "copyright": "Copyright (c) 2022 Temporal Technologies Inc. All rights reserved.",
+        "git_blob_sha": "c7f1b9e7e809f4134614fdd5bd1b00c5e3a8df87",
+        "url": "https://github.com/temporalio/sdk-python/blob/9f2195a7f0a19ddb55c6ec5f9fe70943051ada3c/LICENSE"
+      },
+      "concept": "Replay implementations against saved history; mismatch is a test failure, not a new successful execution.",
+      "documentation_url": "https://docs.temporal.io/develop/python/best-practices/testing-suite",
+      "copied_or_adapted_in_this_work": false
+    },
+    {
+      "id": "in-toto-attestation",
+      "repository": "in-toto/attestation",
+      "commit_sha": "50bf01716982189898823e90586075f37cd9bb7d",
+      "source_path": "spec/v1/statement.md",
+      "source_git_blob_sha": "630f773cb530fe5989fe2dbc30e7f73239cd943a",
+      "source_url": "https://github.com/in-toto/attestation/blob/50bf01716982189898823e90586075f37cd9bb7d/spec/v1/statement.md",
+      "license": {
+        "spdx": "Apache-2.0",
+        "copyright": "Copyright 2021 in-toto Developers",
+        "git_blob_sha": "702a3365c0666d8dd0658820ebaa157e7c2f5c27",
+        "url": "https://github.com/in-toto/attestation/blob/50bf01716982189898823e90586075f37cd9bb7d/LICENSE"
+      },
+      "concept": "Immutable subject digests and typed predicates inspire evidence binding; this module is not an in-toto attestation or signature implementation.",
+      "copied_or_adapted_in_this_work": false
+    }
+  ],
+  "existing_retry_policy": {
+    "local_path": "src/beast20/tool_policy.py",
+    "attribution_ledger": "docs/native1728/NATIVE1728_OSS_LEDGER.json",
+    "change": "UNCHANGED",
+    "note": "The previous Eigent adaptation remains separate. This module does not implement retry or dispatch."
+  },
+  "public_contract": {
+    "schema": "atlas.beast20.synthesis-provenance/v1",
+    "api": [
+      "make_provenance",
+      "validate_provenance",
+      "stale_causes"
+    ],
+    "record_fields": [
+      "schema",
+      "code_sha256",
+      "inputs",
+      "dependencies",
+      "peer_evidence",
+      "checks",
+      "sha256"
+    ],
+    "max_map_entries": 256,
+    "max_key_length": 160,
+    "key_pattern": "[A-Za-z0-9_.:/-]{1,160}",
+    "reserved_keys": [
+      "__proto__",
+      "prototype",
+      "constructor"
+    ],
+    "digest_pattern": "[a-f0-9]{64}",
+    "cause_categories": [
+      "CODE",
+      "DATA",
+      "DEPENDENCIES",
+      "PEER_EVIDENCE",
+      "CHECKS"
+    ],
+    "cause_fields": [
+      "category",
+      "key",
+      "before",
+      "after"
+    ],
+    "absent_value": null,
+    "canonical_encoding": "ASCII JSON with sorted keys, compact separators and all keyed body fields; sha256 itself is excluded."
+  },
+  "limits": [
+    "Hashes establish record consistency, not authenticity, identity, authorization, semantic correctness, successful checks or acceptance.",
+    "An empty cause list means unchanged recorded inputs; the caller must recheck external source state.",
+    "Cause enumeration does not persist a journal, mutate caches, resolve dissent, execute work, or award build/peer-turn credit.",
+    "Peer message bodies and private context are not included in this public research ledger."
+  ]
+}

@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+
+# Full strategy evidence is retained locally; exact gzip copies are published.
+/research/meta145c_glyph_knowledge/benchmarks/strategy1728/STRATEGY1728_TRACE.json
+/research/meta145c_glyph_knowledge/benchmarks/strategy1728/STRATEGY1728_CANDIDATES.json
+/research/meta145c_glyph_knowledge/benchmarks/native1728_evolution/LONG_HORIZON_REPORT.json
+/research/meta145c_glyph_knowledge/benchmarks/synthesis20/replication1728/LONG_HORIZON_REPORT.json

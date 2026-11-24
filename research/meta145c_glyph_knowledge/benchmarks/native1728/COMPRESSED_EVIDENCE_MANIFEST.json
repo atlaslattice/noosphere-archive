@@ -1,0 +1,35 @@
+{
+  "schema": "atlas.native1728.compressed-evidence/v1",
+  "base_directory": "research/meta145c_glyph_knowledge",
+  "format": "gzip",
+  "compression_level": 9,
+  "mtime": 0,
+  "stored_filename": "",
+  "zlib_version": "1.3.2",
+  "hash_semantics": "SHA-256 of exact compressed and uncompressed file bytes; logical trace/report digests are recorded separately.",
+  "original_json_retained": true,
+  "entries": [
+    {
+      "original_path": "benchmarks/strategy1728/STRATEGY1728_TRACE.json",
+      "gzip_path": "benchmarks/strategy1728/STRATEGY1728_TRACE.json.gz",
+      "uncompressed_bytes": 4924834,
+      "compressed_bytes": 1046966,
+      "uncompressed_sha256": "e00022cd1660518af2338c30d9347b71a1effdc1d2882ad743da5d39fbf28232",
+      "compressed_sha256": "443fe65d5f07e332d59a5e013b0ab869352b7a37ebd8357596c27196a4dc9d93",
+      "recorded_logical_digest": "03a601aa23bb140e8c199060eb7bc825d937ba17749efdf0a4a7496c2f7f15d9",
+      "exact_roundtrip_verified": true,
+      "repeat_compression_identical": true
+    },
+    {
+      "original_path": "benchmarks/strategy1728/STRATEGY1728_CANDIDATES.json",
+      "gzip_path": "benchmarks/strategy1728/STRATEGY1728_CANDIDATES.json.gz",
+      "uncompressed_bytes": 1586753,
+      "compressed_bytes": 63654,
+      "uncompressed_sha256": "d43e529dd7ae8fc6200a6adc649934ac2b7fba2bb2e8e7188e16240bed646c29",
+      "compressed_sha256": "cb5e128cc160d1eeac0879f2cd8709f068b58cdbed7f7c73aa26822a7530ba44",
+      "recorded_logical_digest": "f64c435222f71721dbc7b4b18229ef22a65367d0d1c8e5c0ffb92a1bd6b25b13",
+      "exact_roundtrip_verified": true,
+      "repeat_compression_identical": true
+    }
+  ]
+}

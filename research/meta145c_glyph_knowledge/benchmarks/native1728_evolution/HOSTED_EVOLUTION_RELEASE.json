@@ -1,0 +1,181 @@
+{
+  "schema": "atlas.native1728.hosted-evolution-release/v1",
+  "status": "DEPLOYED_AND_NATIVE_MCP_VERIFIED",
+  "sourceDateHonolulu": "2026-11-23",
+  "reportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+  "swarmchat": {
+    "projectId": "appgprj_6af53c11e53481918824eabc8eede04a",
+    "sourceCommit": "59d70591e360a8923ed413f8d0744f1a78663f3d",
+    "sourceMergeParents": [
+      "e54be32622ceb9a3cafe4c0990de26f849a391e5",
+      "adb366712bd9c3251c08a92585930d6b191cf343"
+    ],
+    "version": 53,
+    "versionId": "appgprj_6af53c11e53481918824eabc8eede04a~appgver_5f77a3ee71188191a7ff2c0ecf15386a",
+    "deployment": "appgdep_6b052195b8188191b73a40af221d1f12",
+    "deploymentStatus": "succeeded",
+    "url": "https://swarmchat-private-broker-20261112.tdavesheldon.chatgpt.site/work/integration/evolution",
+    "access": "public site; integration pages and tools owner-scoped",
+    "eligibleNativeTools": 78,
+    "evolutionComposition": {
+      "status": "COMPLETED",
+      "stepCount": 4,
+      "actualInvocations": 3,
+      "deduplicated": 1,
+      "planSha256": "d48d8f537d98415ffd2c787b75bdbbd8e49228b097f97f93296b7f8bdea4c725",
+      "receiptSha256": "a55f5c197fa73e1dd551793c14bbea0791e3b4af26a113a1e5229c1bcdd06483",
+      "receipts": [
+        {
+          "id": "house",
+          "tool": "swarm_native1728_evolution_page",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "nodes",
+          "tool": "swarm_native1728_evolution_page",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "status",
+          "tool": "swarm_native1728_evolution_status",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "same_status",
+          "tool": "swarm_native1728_evolution_status",
+          "status": "SUCCEEDED"
+        }
+      ],
+      "modelCalls": 0,
+      "roomPosts": 0,
+      "backgroundRuns": 0,
+      "canonEffect": "NONE",
+      "house": "H01",
+      "nodeDescendants": 144,
+      "nodePageCount": 12,
+      "firstNode": "H01.S01.N01",
+      "lastNode": "H01.S01.N12",
+      "reportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de"
+    },
+    "existingTwelveStepDemo": {
+      "status": "COMPLETED",
+      "stepCount": 12,
+      "actualInvocations": 12,
+      "deduplicated": 0,
+      "planSha256": "2474e2a476955e17d8fa36282ec10fae887e5b9c0a161e7f9243627dd5126a9a",
+      "receiptSha256": "3860136d6e1390f255301c5ad9048817c5e2b7ea9fb95de17b99b628529be1e7",
+      "receipts": [
+        {
+          "id": "ariadne",
+          "tool": "swarm_glyph_hsn_resolve",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "glyph",
+          "tool": "swarm_meta145_glyph",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "cymatic",
+          "tool": "swarm_cymatic_atlas_lookup",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "reefcore",
+          "tool": "swarm_reefcore_descriptor",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "reservoir",
+          "tool": "swarm_reefcore_reservoir_descriptor",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "glyphforge",
+          "tool": "swarm_glyphforge_descriptor",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "research",
+          "tool": "swarm_resilience_sources",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "assembly",
+          "tool": "swarm_factory_blueprint",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "macroturn",
+          "tool": "swarm_confluence_descriptor",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "program",
+          "tool": "swarm_meta145_excellence_status",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "ready",
+          "tool": "swarm_meta145_excellence_ready",
+          "status": "SUCCEEDED"
+        },
+        {
+          "id": "meta145",
+          "tool": "swarm_meta145_correlations",
+          "status": "SUCCEEDED"
+        }
+      ],
+      "modelCalls": 0,
+      "roomPosts": 0,
+      "backgroundRuns": 0,
+      "canonEffect": "NONE"
+    }
+  },
+  "atlasOne": {
+    "projectId": "appgprj_6b02e16d290c8191a6c6405fc5227889",
+    "sourceCommit": "9a7bd89ca42ae5151c1fa04f5933adbedb866306",
+    "version": 14,
+    "versionId": "appgprj_6b02e16d290c8191a6c6405fc5227889~appgver_15c2594cc9448191af00fbdc9d93ba2c",
+    "deployment": "appgdep_6b051fe2d7b081918124ccb81f239dad",
+    "deploymentStatus": "succeeded",
+    "url": "https://atlas-one-beta.tdavesheldon.chatgpt.site/integration/",
+    "access": "owner-private; one owner, no groups or external visitors",
+    "nativeMcpStatus": "READ_ONLY_EVIDENCE_AND_NATIVE_PLAN_PREVIEW",
+    "liveReportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+    "liveCounts": {
+      "acceptedCandidateChanges": 4,
+      "epochs": 1729,
+      "evaluatedTimelineYearUpdates": 5162766336,
+      "holdoutEpochs": 432,
+      "houses": 12,
+      "nodes": 1728,
+      "representedTimelineYears": 5162766336,
+      "spheres": 144,
+      "timelines": 1728,
+      "trainEpochs": 1297,
+      "yearsPerTimeline": 1728
+    },
+    "liveMeasuredRatio": 1.1350297287579603,
+    "grokseekProvider": "HOLD_PROVIDER_UNCONFIGURED",
+    "modelCalls": 0,
+    "sourceRequests": 0,
+    "workMessagesPosted": 0
+  },
+  "limits": [
+    "Synthetic years are modeled state transitions, not calendar forecasts, resident turns or model calls.",
+    "The measured improvement applies to the local Python implementation; native hosts expose its evidence and do not claim equivalent hosted latency gains.",
+    "Registered catalog membership is not execution of every component. Actual invocations are itemized.",
+    "This release did not configure a paid provider, add a background schedule, publish room messages or grant engineering completion."
+  ],
+  "subsequentAtlasPublication": {
+    "version": 15,
+    "versionId": "appgprj_6b02e16d290c8191a6c6405fc5227889~appgver_9b69a1a375708191b4e542dc82f2f01c",
+    "sourceCommit": "fffff209482fa78a805d64a83416f132b47a492a",
+    "deploymentId": "appgdep_6b0521b9c58c81919671b7a1cfb21fc6",
+    "status": "succeeded",
+    "reportStillMatches": true,
+    "liveReportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+    "meaning": "A concurrent publication followed this release's version 14. A fresh native integration-status call confirms the completed experiment remains available. This record does not claim that this turn built or tested the concurrent version 15 source."
+  }
+}

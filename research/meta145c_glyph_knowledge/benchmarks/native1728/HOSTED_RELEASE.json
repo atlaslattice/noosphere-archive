@@ -1,0 +1,78 @@
+{
+  "schema": "atlas.native1728.hosted-release/v1",
+  "user_date": "2026-11-23",
+  "status": "BOTH_HOSTS_DEPLOYED",
+  "swarmchat": {
+    "url": "https://swarmchat-private-broker-20261112.tdavesheldon.chatgpt.site",
+    "integration_path": "/work/integration",
+    "project_id": "appgprj_6af53c11e53481918824eabc8eede04a",
+    "version": 48,
+    "commit_sha": "d5fe7493ffab55578005561eb2d91f852b8a609b",
+    "archive_sha256": "sha256:88dab512f1afca42517726308d0f1f1845bc9f1a31a32e20bcd9f6f678552e48",
+    "deployment_id": "appgdep_6b050fe46ea0819192e3d100ebc7e7b3",
+    "deployment_status": "succeeded",
+    "published_at": "2026-11-24T04:17:50.701998+00:00",
+    "audience": "public",
+    "integration_access": "existing owner gate",
+    "existing_mcp_status_verified": true,
+    "tool_manifest_sha256": "4d12dee1c49efab61165a60defc28f2150b8f0a0e806408cf611dddb29ea4f2f",
+    "advertised_new_tools": [
+      "swarm_native1728_status",
+      "swarm_native1728_catalog",
+      "swarm_native1728_strategies",
+      "swarm_native1728_plan",
+      "swarm_native1728_demo",
+      "swarm_native1728_compose"
+    ],
+    "preserved_evolution_tools": [
+      "swarm_evolution_strategy_status",
+      "swarm_evolution_strategy_sphere",
+      "swarm_evolution_strategy_handoff"
+    ],
+    "live_new_tool_invocation": "NOT_OBSERVED_CURRENT_CONVERSATION_HANDLES_NOT_REFRESHED",
+    "local_actual_dispatch": {
+      "demo_steps": 12,
+      "demo_successful": 12,
+      "evolution_composition_steps": 3,
+      "evolution_composition_successful": 3
+    },
+    "browser": {
+      "public_entrance": "VERIFIED",
+      "owner_integration": "SIGN_IN_REQUIRED_BROWSER_NOT_AUTHENTICATED"
+    }
+  },
+  "atlas_one": {
+    "url": "https://atlas-one-beta.tdavesheldon.chatgpt.site",
+    "integration_path": "/integration/",
+    "project_id": "appgprj_6b02e16d290c8191a6c6405fc5227889",
+    "version": 11,
+    "commit_sha": "5432a9b429c56456081ff76fc1f0b7f654ef9ec5",
+    "archive_sha256": "sha256:67a6765dd0ee86befb1c449588bfa2363b776b1f4349c39862adbbdd4c08d866",
+    "deployment_id": "appgdep_6b051103d7988191b3241cd3622e94a5",
+    "deployment_status": "succeeded",
+    "published_at": "2026-11-24T04:22:36.578030+00:00",
+    "audience": "owner_private_custom",
+    "existing_mcp_status_verified": true,
+    "host_version": "atlas.librarian/v1.2.0",
+    "live_new_api_actions": [
+      "integration_status",
+      "integration_plan"
+    ],
+    "live_receipt": "ATLAS_ONE_LIVE_SERVICE_CHECK.json",
+    "compiled_plan_steps": 6,
+    "plan_hash": "185acbefa6219a81bcd39efbbcd8dc37c0f66ea1a554189681b601b2dddad671",
+    "new_queue": false,
+    "cross_host_execution": false,
+    "provider_status": "HOLD_PROVIDER_UNCONFIGURED"
+  },
+  "source_preservation": {
+    "swarmchat_upstream": "643e7ce41ac0ff9b73c2a75341bfa62163d303f2",
+    "atlas_one_upstream": "7777bdb711731b04260e615c2b8a1baa553c6139",
+    "method": "NORMAL_MERGES_HISTORY_RETAINED",
+    "private_source_bodies_in_public_package": false
+  },
+  "validation_receipt": "LOCAL_VERIFICATION.json",
+  "simulation_completion_is_engineering_completion": false,
+  "model_api_calls_by_new_integration": 0,
+  "work_messages_posted_by_verification": 0
+}
