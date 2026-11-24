@@ -7,7 +7,9 @@ on:
       - 'schemas/rehydration-contract-v0.schema.json'
       - 'examples/example-memory-bundle.redacted.json'
       - 'examples/example-rehydration-contract.redacted.json'
-      - 'tests/test_digital_continuity.py'
+      - 'tests/test_*continuity*.py'
+      - 'tests/test_parse_text_*.py'
+      - 'tests/test_snapshot_boundary.py'
       - '.github/workflows/digital-continuity-v0.yml'
   workflow_dispatch:
 permissions:
@@ -31,4 +33,6 @@ jobs:
         run: |
           export PYTHONDONTWRITEBYTECODE=1
           python -m core.digital_continuity
-          python -m unittest discover -s tests -p 'test_digital_continuity.py' -v
+          python -m unittest discover -s tests -p 'test_*continuity*.py' -v
+          python -m unittest discover -s tests -p 'test_parse_text_*.py' -v
+          python -m unittest discover -s tests -p 'test_snapshot_boundary.py' -v
