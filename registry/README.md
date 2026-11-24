@@ -37,3 +37,8 @@ Index coverage must never inflate evidence quality or human flourishing. No auto
 - **Wave D:** attach exact Ariadne HSN source/passport, dated provenance and typed, reviewer-signed semantic edges; no auto-join, deploy, or CANON promotion.
 
 The original issue and any conflicting architectures stay visible. No migration, rename, deletion, private cross-mode reads, paid calls, background agents or authority effects happen here.
+
+## Separate owner-approved project canon record
+
+[Atlas Unified HyperMatrix](../docs/canon/ATLAS_UNIFIED_HYPERMATRIX_20261123.md) has an explicit, scoped owner adoption record under `registry/project_canon/`. It preserves independent coordinate systems and revisable functional mappings. This does not promote the 272 repository metadata records or their empty semantic tags. Their original candidate/rights status above remains unchanged. [Shared amendment discussion](https://github.com/atlaslattice/Atlas-Intelligence/issues/40).
+
