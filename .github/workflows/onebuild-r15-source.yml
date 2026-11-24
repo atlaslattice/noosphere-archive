@@ -1,0 +1,25 @@
+name: OneBuild R15 public source checks
+on:
+  pull_request:
+    paths:
+      - 'tools/onebuild-r15/**'
+      - '.github/workflows/onebuild-r15-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  portable-source-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11','3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Portable synthetic negative tests
+        run: python -m unittest discover -s tools/onebuild-r15/tests_public -p 'test_*.py'
+      - name: Repeat with Python optimization mode
+        run: python -O -m unittest discover -s tools/onebuild-r15/tests_public -p 'test_*.py'
