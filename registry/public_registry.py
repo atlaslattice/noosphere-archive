@@ -37,7 +37,7 @@ EXPECTED_RECORD_KEYS = frozenset({
 })
 NAME = re.compile(r"atlaslattice/[A-Za-z0-9_.-]{1,100}\Z")
 BRANCH = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.\/-]{0,180}\Z")
-ISSUE_URL = re.compile(r"https://github\.com/(atlaslattice/[A-Za-z0-9_.-]{1,100})/(issues|pull)/(\d{1,12})\Z")
+ISSUE_URL = re.compile(r"https://github\.com/(atlaslattice/[A-Za-z0-9_.-]{1,100})/(issues|pull)/([0-9]{1,12})\Z")
 MAX_CATALOG_BYTES = 4 * 1024 * 1024  # public metadata import size guard
 
 
@@ -105,13 +105,61 @@ def _reject_redirect_or_query(url: str, fullname: str) -> None:
     _require(p.scheme == "https" and p.hostname == "github.com" and not p.query and not p.fragment and not p.username, "UNSAFE_URL")
 
 
+def _snapshot_catalog(raw: Any) -> dict[str, Any]:
+    """Own plain JSON values before validation; never invoke caller callbacks.
+
+    Direct Python callers can supply subclasses whose equality methods mutate
+    a previously checked row. Reject those objects before comparing fields,
+    and keep later lookup/summary reads on the same detached snapshot.
+    """
+    _require(type(raw) is dict, "CATALOG_NOT_OBJECT")
+    active: set[int] = set()
+    copied: dict[int, Any] = {}
+
+    def copy_plain(value: Any) -> Any:
+        kind = type(value)
+        if value is None or kind is str or kind is int or kind is bool:
+            return value
+        _require(kind is dict or kind is list, "CATALOG_NON_JSON_VALUE")
+        identity = id(value)
+        _require(identity not in active, "CATALOG_CYCLIC_VALUE")
+        # Preserve sharing inside the owned snapshot. Re-copying each alias
+        # can exponentially expand a compact acyclic Python caller graph.
+        if identity in copied:
+            return copied[identity]
+        active.add(identity)
+        try:
+            if kind is list:
+                result = [copy_plain(item) for item in value]
+            else:
+                result = {}
+                for key, item in value.items():
+                    _require(type(key) is str, "CATALOG_NON_JSON_VALUE")
+                    result[key] = copy_plain(item)
+            copied[identity] = result
+            return result
+        finally:
+            active.remove(identity)
+
+    try:
+        return copy_plain(raw)
+    except RecursionError as exc:
+        raise RegistryError("CATALOG_NESTING_TOO_DEEP") from exc
+    except RuntimeError as exc:
+        raise RegistryError("CATALOG_MUTATED_DURING_SNAPSHOT") from exc
+
+
 def validate_catalog(raw: Any) -> dict[str, Any]:
     """Validate exact snapshot shape and identity, return structural counts only.
 
     This does not recheck current public visibility, permissions, source semantics,
     source completeness, repository contents or rights-at-return.
     """
-    _require(type(raw) is dict, "CATALOG_NOT_OBJECT")
+    return _validate_catalog_snapshot(_snapshot_catalog(raw))
+
+
+def _validate_catalog_snapshot(raw: dict[str, Any]) -> dict[str, Any]:
+    """Validate only an owned plain-value snapshot, with no caller hooks."""
     _require(set(raw) == EXPECTED_TOP_KEYS, "CATALOG_FIELDS_UNEXPECTED_OR_MISSING")
     _require(raw["schema"] == SCHEMA, "SCHEMA_MISMATCH")
     _require(raw["source_query"] == SOURCE_QUERY and raw["coverage"] == COVERAGE, "SOURCE_SCOPE_MISMATCH")
@@ -167,7 +215,12 @@ def validate_catalog(raw: Any) -> dict[str, Any]:
 
 def lookup_public_repo(raw: Mapping[str, Any], name: str) -> dict[str, Any]:
     """Only return a pointer to an exactly indexed public repo; no fuzzy matches."""
-    validate_catalog(raw)
+    snapshot = _snapshot_catalog(raw)
+    _validate_catalog_snapshot(snapshot)
+    return _lookup_validated_public_repo(snapshot, name)
+
+
+def _lookup_validated_public_repo(raw: dict[str, Any], name: str) -> dict[str, Any]:
     _require(type(name) is str and NAME.fullmatch(name) is not None, "INVALID_PUBLIC_LOOKUP")
     matches = [r for r in raw["records"] if r["repo_full_name"] == name]
     _require(len(matches) == 1, "PUBLIC_REPO_NOT_IN_SOURCE_CUT")
@@ -185,11 +238,12 @@ def lookup_public_repo(raw: Mapping[str, Any], name: str) -> dict[str, Any]:
 
 def route_public_issue(raw: Mapping[str, Any], url: str) -> dict[str, Any]:
     """Resolve GitHub issue/PR URL to one public repo pointer, never close or merge."""
-    validate_catalog(raw)
+    snapshot = _snapshot_catalog(raw)
+    _validate_catalog_snapshot(snapshot)
     _require(type(url) is str, "INVALID_PUBLIC_LINK")
     m = ISSUE_URL.fullmatch(url)
     _require(m is not None and int(m.group(3)) > 0, "INVALID_PUBLIC_LINK")
-    repo = lookup_public_repo(raw, m.group(1))
+    repo = _lookup_validated_public_repo(snapshot, m.group(1))
     return {
         "repo_full_name": repo["repo_full_name"],
         "resource_type": "PR" if m.group(2) == "pull" else "ISSUE",
