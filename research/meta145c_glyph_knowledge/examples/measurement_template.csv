@@ -1,0 +1,1 @@
+measurement_id,source_sha256,plate_spec_revision,boundary,excitation_x_norm,excitation_y_norm,driving_frequency_hz,mode_m,mode_n,instrument_type,instrument_calibration_ref,image_sha256,registration_method,nodal_mask_filename,uncertainty_hz,license,review_state
