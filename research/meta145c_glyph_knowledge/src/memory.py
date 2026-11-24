@@ -65,3 +65,52 @@ class LocalMemory:
         rows=self.events()
         retracted={r['retract_event_id'] for r in rows if r['action']=='RETRACT'}
         return sum((1 if r['action']=='NOTE' else -1) for r in rows if r['coordinate']==coordinate and r['topic_id']==topic_id and r['action'] in ('NOTE','CHALLENGE') and r['event_id'] not in retracted)
+
+    def verified_triage_batch(self, coordinates, *, expected_tip, expected_count):
+        """Return coordinate/topic deltas from one verified snapshot; local only.
+
+        The caller must obtain the expected tip/count from an independent trusted
+        checkpoint. This verifies local integrity, not host consent or authority.
+        A fresh rights check at RETURN remains the host publisher's responsibility.
+        """
+        if (not isinstance(expected_tip, str) or not re.fullmatch(r'[a-f0-9]{64}', expected_tip)
+                or type(expected_count) is not int or expected_count < 0):
+            raise ValueError('CHECKPOINT_INVALID')
+        if not isinstance(coordinates, (tuple, list)) or not 1 <= len(coordinates) <= 1728:
+            raise ValueError('BATCH_SCOPE_INVALID')
+        for coordinate in coordinates:
+            hsn_parts(coordinate)
+        if len(set(coordinates)) != len(coordinates):
+            raise ValueError('DUPLICATE_COORDINATE')
+        rows = self.events()
+        prev = '0' * 64
+        seen = {}
+        retracted = set()
+        for row in rows:
+            payload = {k:row[k] for k in ('event_id','mode','coordinate','topic_id','action','source_ref','source_digest','retract_event_id')}
+            if row['prev_hash'] != prev or sha(prev+'|'+canonical(payload)) != row['event_hash']:
+                raise ValueError('FAIL_CHAIN')
+            hsn_parts(row['coordinate'])
+            event_id, action, target = row['event_id'], row['action'], row['retract_event_id']
+            if row['mode'] != 'WORK' or action not in ACTIONS or event_id in seen:
+                raise ValueError('EVENT_SCOPE_INVALID')
+            if action == 'RETRACT':
+                original = seen.get(target)
+                if (original is None or original['action'] == 'RETRACT' or target in retracted
+                        or original['coordinate'] != row['coordinate'] or original['topic_id'] != row['topic_id']):
+                    raise ValueError('INVALID_RETRACTION')
+                retracted.add(target)
+            elif target is not None:
+                raise ValueError('INVALID_RETRACTION')
+            seen[event_id] = row
+            prev = row['event_hash']
+        if len(rows) != expected_count or prev != expected_tip:
+            raise ValueError('CHECKPOINT_CHANGED')
+        result = {coordinate: {} for coordinate in coordinates}
+        for row in rows:
+            if (row['coordinate'] in result and row['event_id'] not in retracted
+                    and row['action'] in ('NOTE', 'CHALLENGE')):
+                topics = result[row['coordinate']]
+                topic = row['topic_id']
+                topics[topic] = topics.get(topic, 0) + (1 if row['action'] == 'NOTE' else -1)
+        return result
