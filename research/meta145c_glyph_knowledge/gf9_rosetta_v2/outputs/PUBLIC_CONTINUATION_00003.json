@@ -1,0 +1,77 @@
+{
+  "schema": "atlas.gf9-r2.public-continuation/v1",
+  "status": "REVIEW_ONLY_SYNTHETIC_NOT_HOSTED",
+  "source_pr": 42,
+  "source_commit": "b98790a8baa0e1f7c7abb89211f319c7000c6653",
+  "dependency_commit": "f7cedfd0fc917671d017e3f9d9654a57e0b743a0",
+  "source_registry_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+  "prior": {
+    "count": 15288,
+    "tip": "098110acd39bdf11a252ec2b82543ce051b5a81f248d24774347a66482c02572"
+  },
+  "continuation": {
+    "batch": 3,
+    "trials": 144,
+    "accepted_raw": 20,
+    "rejected": 124
+  },
+  "checkpoint": {
+    "count": 15432,
+    "accepted_raw": 3552,
+    "rejected": 11880,
+    "tip": "4f9280390536f15a2b643d4c804cd46f4d2d286b56d88cafa28e7f97f6bc8b36",
+    "sha256": "46954eecf167cf08d36598e16ac9294b64d8fe2af8cab10b98b81e303a26c2f5",
+    "log_sha256": "22effa35bca95a349e050ed77fb0bb4d0d9694020b771e3692494653a43834e6",
+    "private_receipt_sha256": "81b9a8a58b12e723d91eef59f3503c85eb1291a178f025122da36e44d32aac68"
+  },
+  "history": "ANCHOR_AND_RECORDED_DECISION_REPLAY_PASS_NOT_SIGNED_OR_HISTORICAL_FRAME_RESIMULATION",
+  "lesson_fixtures": 1728,
+  "numeric_all_12_pass_raw": {
+    "before": 119,
+    "after": 125,
+    "review_projection": 144,
+    "fallback": 19,
+    "promotion": "HOLD"
+  },
+  "heldout": {
+    "namespace": "GF9-R2-CONT03-BURST-HOLDOUT-V1",
+    "frames_per_method_per_scenario": 1728,
+    "wire_bytes_per_method_per_scenario": 1141776,
+    "methods": [
+      "adjacent_majority",
+      "interleaved_majority",
+      "hamming_xor_interleaved"
+    ],
+    "exact": {
+      "iid": [
+        1645,
+        1646,
+        1728
+      ],
+      "burst": [
+        0,
+        1728,
+        0
+      ],
+      "correlated": [
+        0,
+        1666,
+        1728
+      ]
+    },
+    "wrong_objects": 0
+  },
+  "test_counts": {
+    "normal": 40,
+    "optimized": 40
+  },
+  "source_blobs": {
+    "src/burst_ecc.py": "c1ab5d931dc3931d8e77d0f0a46447344eb3d2b2",
+    "tests/test_burst_ecc.py": "9960a23ebf9475fd4cc8c17656a9f08c14c42c93"
+  },
+  "physical_measurements": 0,
+  "translations": 0,
+  "model_calls": 0,
+  "host_changes": 0,
+  "next_falsifier": "Compare interleaved Reed-Solomon or BCH under matched budget, variable burst lengths, multi-lane corruption and framing overhead. No promotion."
+}
