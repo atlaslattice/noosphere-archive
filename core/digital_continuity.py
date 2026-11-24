@@ -188,7 +188,12 @@ def main(argv=None):
         c=parse_text(a.contract.read_text(encoding="utf-8"))
         print(json.dumps(prepare_rehydration(b,c),sort_keys=True,indent=2))
         return 0
-    except (ContinuityHold,ValueError,KeyError,TypeError,OverflowError,OSError,UnicodeError) as e:
+    except (OSError,UnicodeError):
+        # Read/encoding errors may embed local filenames or input-byte details.
+        # Keep downstream receipts useful without copying those details into them.
+        print(json.dumps({"status":"HOLD","reason":"INPUT_READ_FAILED"}))
+        return 2
+    except (ContinuityHold,ValueError,KeyError,TypeError,OverflowError) as e:
         print(json.dumps({"status":"HOLD","reason":type(e).__name__+": "+str(e)}))
         return 2
 
