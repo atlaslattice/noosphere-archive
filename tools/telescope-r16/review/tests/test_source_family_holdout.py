@@ -1,11 +1,11 @@
-import unittest,sys
+import unittest,sys,hashlib
 from pathlib import Path
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from source_family_holdout import prepare_holdout
 
 def item(id,coord,split,family,prior,shock,series,tick):
     return dict(id=id,coord=coord,split=split,family=family,prior=prior,
-                shock=shock,series=series,tick=tick,scope='PUBLIC_WORK',sourceSha='a'*64)
+                shock=shock,series=series,tick=tick,scope='PUBLIC_WORK',sourceSha=hashlib.sha256(id.encode()).hexdigest())
 
 def fixture():
     return [item('a','H01.S01.N01','TRAIN','fam-a','prior-a','shock-a','series-a',10),
@@ -41,7 +41,7 @@ class Tests(unittest.TestCase):
     def test_11_extra_body_rejected(self):
         a=fixture();a[0]['privateBody']='secret';self.assertEqual(self.prep(a)['status'],'HOLD')
     def test_12_no_id_output(self):
-        r=self.prep();self.assertNotIn('fam-a',str(r));self.assertNotIn('a'*64,str(r))
+        r=self.prep();self.assertNotIn('fam-a',str(r));self.assertNotIn(hashlib.sha256(b'a').hexdigest(),str(r))
     def test_13_unknown_link_rejected(self):
         self.assertEqual(self.prep(links=[{'from':'a','to':'c','relation':'CERTIFIED_SAME_AS'}])['status'],'HOLD')
     def test_14_denied_on_missing_test(self):
