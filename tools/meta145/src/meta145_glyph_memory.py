@@ -372,7 +372,7 @@ def main():
         b=benchmark(load_registry(src),a.samples);write(out/'bench_current.json',b);print(canon(b))
     elif a.cmd=='memory':
         perf=json.loads((out/'bench_current.json').read_text());manifest=json.loads((out/'META145_GLYPH_MEMORY.json').read_text());event={
-          'eventId':'sphere-scoring-index-v1-'+manifest['meta145Digest'][:16],
+          'eventId':'sphere-scoring-index-v1-'+manifest['meta145Digest'][:16]+'-n'+str(perf['samplesPerMethod'])+'-'+digest(perf)[:10],
           'kind':'SCORING_INDEX_REPLAY','mode':'WORK','sourceSHA256':SOURCE_SHA,'sourceInputDigest':manifest['meta145Digest'],
           'outputsMatch':perf['exactOutputParity'],'benchmark':perf,'authorityEffect':'NONE','privateModeIngested':False,
           'status':'VERIFIED_LOCAL_PERFORMANCE' if perf['exactOutputParity'] and perf['medianSpeedup']>1 else 'REVIEW_CANDIDATE'}
