@@ -59,9 +59,11 @@ class SyntheticSourceTests(unittest.TestCase):
    db=initialize_db(Path(d)/'db.sqlite',self.s)
    db.executemany('INSERT INTO topics VALUES(?,?,?)',[('T10','synthetic topic A','UNREVIEWED'),('T11','synthetic topic B','UNREVIEWED')]);db.executemany('INSERT INTO topic_candidates VALUES(?,?,?,?)',[('T10','H01.S01.N01',1,'UNREVIEWED'),('T11','H01.S01.N01',2,'UNREVIEWED'),('T11','H02.S01.N01',1,'UNREVIEWED')]);db.commit()
    m=LocalMemory(Path(d)/'m.sqlite')
-   prior=topic_view(db,'H01.S01.N01',m);self.assertEqual(prior['items'][0]['topic_id'],'T10')
-   m.append({'event_id':'note1','mode':'WORK','scope':'SYNTHETIC_LOCAL_REVIEW','coordinate':'H01.S01.N01','topic_id':'T11','action':'NOTE','source_ref':'urn:atlas:synthetic:test','source_digest':'a'*64})
-   after=topic_view(db,'H01.S01.N01',m)
+   checkpoint={'expected_tip':'0'*64,'expected_count':0}
+   prior=topic_view(db,'H01.S01.N01',m,memory_checkpoint=checkpoint);self.assertEqual(prior['items'][0]['topic_id'],'T10')
+   receipt=m.append({'event_id':'note1','mode':'WORK','scope':'SYNTHETIC_LOCAL_REVIEW','coordinate':'H01.S01.N01','topic_id':'T11','action':'NOTE','source_ref':'urn:atlas:synthetic:test','source_digest':'a'*64},**checkpoint)
+   checkpoint={'expected_tip':receipt['event_hash'],'expected_count':receipt['count']}
+   after=topic_view(db,'H01.S01.N01',m,memory_checkpoint=checkpoint)
    self.assertEqual(after['items'][0]['topic_id'],'T11')
    self.assertFalse(after['semantic_equivalence_approved'])
    near=shared_topic_neighbors(db,'H01.S01.N01');self.assertEqual(near['total_candidate_paths'],1);self.assertFalse(near['subject_equivalence'])
