@@ -1,0 +1,133 @@
+{
+  "atlas": {
+    "failed": 0,
+    "newStartupTestsIncluded": 3,
+    "nodePassed": 386,
+    "registryPassed": 17,
+    "skipped": 0,
+    "status": "PASS",
+    "tests": 403,
+    "unchangedPreviousAssets": 170,
+    "unexpectedPreviousAssetChanges": []
+  },
+  "distinctTestsPassed": 1857,
+  "distinctTestsSkipped": 4,
+  "finalDataGate": {
+    "failed": 0,
+    "partialStaging": false,
+    "passed": 62,
+    "recordedCampaign": {
+      "canonicalTasksCompleted": 0,
+      "checkReceipts": 36,
+      "executorWrappers": 40,
+      "failedOrders": 0,
+      "genuineResidentTurns": 0,
+      "heldOrders": 2,
+      "localArtifactsComputed": 18,
+      "observedRounds": 20,
+      "replayExecutorCalls": 0,
+      "replayReusedOrders": 18
+    },
+    "reportSha256": "1d74a1edb0e9531e2457c265f43dedbab0c0e2e38b62f35bf3494b6cf7f2ee15",
+    "skipped": 0,
+    "sourceModuleHashes": {
+      "atlas": "12a66161f248b4c81419415a83ca748f6c6735d62d9efd197b3bc1b9b7000203",
+      "swarm": "248cdde529355440b8d281f4111dd96ef47d34ecaf2565771b9d67fd8ecfb3cc"
+    },
+    "status": "PASS",
+    "totalDistinctTests": 62
+  },
+  "inputReceiptSha256": {
+    "atlasStartup": "b23a03de44f7ff108d57a8edddbc572bc26fd7f710781cd38f3b99a23687af3a",
+    "finalData": "67e2e42f780b739091d4cc26b65dc0cb2a1ea5e9e7ffb8d40cc7de44ac17cb41",
+    "swarmFull": "a4812d5b3002df1a01206b5b00262e64261a139e832aff32b92ef27db7b6d41a"
+  },
+  "python": {
+    "auditCorrection": {
+      "issue": "The original gate used Python3.12.14; a copied matrix annotation and one Work summary incorrectly labeled it3.13.",
+      "newDistinctTestCredit": 0,
+      "originalReceiptSha256": "c329061af80efbf3798d17934684720db605015d808afdffbf90e0e0201d05c0",
+      "resolution": "Preserved the original receipt, corrected metadata, reran all18 commands explicitly with verified Python3.13.5, and appended a Work correction outside the20 numbered rounds."
+    },
+    "counts": {
+      "beast20Distinct": 333,
+      "beast20DistinctPassed": 333,
+      "commandsFailed": 0,
+      "commandsPassed": 18,
+      "distinctTestsPassed": 720,
+      "distinctTestsRun": 722,
+      "distinctTestsSkipped": 2,
+      "otherDistinct": 389,
+      "otherDistinctPassed": 387,
+      "repeatExecutionsExcludedFromDistinct": 578
+    },
+    "explicit313ReceiptSha256": "ff62820f73d4572ba149d5517e9c924cc7b40d58626aca341462d04b0c888d8a",
+    "frozenArtifactsUnchanged": true,
+    "fullReceiptSha256": "e8ba4f925f9a10b3188f5bc00726aa3c74879c55408a69c2bd9db41743e3edbd",
+    "originalSourcesUnchanged": true,
+    "remainingSkips": [
+      {
+        "case": "test_evolution.TestEvolution.test_15000_receipt_present_when_available",
+        "reason": "phase dataset omitted",
+        "suite": "gf9"
+      },
+      {
+        "case": "test_protocol.TestProtocol.test_original_registry_sha_only_private",
+        "reason": "exact private source absent",
+        "suite": "gf9"
+      }
+    ],
+    "repeatCounting": "One identity per distinct test across optimized/interpreter reruns.",
+    "runtimeVersionsVerified": [
+      "3.12.14",
+      "3.13.5"
+    ],
+    "schema": "atlas.native1728.synthesis-python-verification/v1",
+    "sourceHashes": {
+      "benchmarks/bench_synthesis20_falsifiers.py": "ce0d03c5b96e17b899949e86458eceda30b53454a940575959d23c8328e36ca4",
+      "benchmarks/export_synthesis20_hosts.py": "30b3f1b26cc41506c371d7b74d73dd5ccf43b250e12dc76a8a82b97707244565",
+      "benchmarks/run_synthesis20_campaign.py": "f5f9e84a0f25a01eaa49f864a2b08f1a073dc3ddbfbfd3be43391fafdcd8184f",
+      "benchmarks/synthesis20/PROVENANCE_FALSIFIER_RESULTS.json": "fb1c67732cb6e117a359a787c5a31b2c267568e055b950c7a271b0ef79f0c14d",
+      "src/beast20/synthesis.py": "23a77e5398bd0004391eab556b6d47f3fb9fe1a2326597cd9ac5f2dcd70c8094",
+      "src/beast20/synthesis_provenance.py": "2c950acdc7e5dfae64f7cb6a999c3c700e0558d6ae8b98dc53802ede19ad28a8",
+      "tests_beast20/test_synthesis.py": "3b83d8e898dd04ecf8ab8b066174430524a9874379aaea294aaa0599db8b2260",
+      "tests_beast20/test_synthesis_campaign.py": "3d73c716f08dbe04071f61c0ebc80c30359e37d1436dff5e1519d1d42f9d87ed",
+      "tests_beast20/test_synthesis_export_boundaries.py": "5dd07dbf7fa74a097a0cad62f3173a8c89039bfbc00be7fdc72f3124f08eb183",
+      "tests_beast20/test_synthesis_export_falsifier.py": "5746f8e9f5b7fc9270f0f4458bdf9e404158bb0b9c3edb6d4a53119b05ca676b",
+      "tests_beast20/test_synthesis_provenance.py": "8db564325805b42dc0bc163ad23d100a9e6749cad946a7df47dbd7e3e892541b"
+    },
+    "sourceHistoryUnchangedDuringGate": true,
+    "status": "PASS",
+    "unavailableWorkflowVersion": "3.11"
+  },
+  "repeatCounting": "Optimized, interpreter and final data-focused repeats are not additional distinct tests.",
+  "schema": "atlas.native1728.synthesis-release-verification/v1",
+  "scope": {
+    "atlas": "Full403-test gate after the startup fix, using final20-data; built worker first use also checked.",
+    "hosted": "Production startup and live tool receipts are separate in HOSTED_SYNTHESIS_RELEASE.json.",
+    "python": "Full source-only regression; both3.12.14 and3.13.5 verified.3.11 unavailable locally.",
+    "swarm": "Full source regression on preserved upstream base plus new code; final20-data refresh verified by42 included tests."
+  },
+  "status": "PASS_LOCAL_GATES",
+  "swarm": {
+    "counts": {
+      "cancelled": 0,
+      "fail": 0,
+      "pass": 734,
+      "skipped": 2,
+      "suites": 0,
+      "tests": 736,
+      "todo": 0
+    },
+    "displayCommand": "node --test --test-concurrency=2 --test-reporter=tap tests/*.test.mjs",
+    "logSha256": "9d85b66250f44b1c8e6f9c649f03d2dec91b15734621027da5e052dd3994f907",
+    "skips": [
+      "ok 279 - optional exact original verifies every1728 source record, ancestors and unchanged raw byte pin # SKIP",
+      "ok 552 - owner-private plan replay checks actual current source and never imports protected modes # SKIP"
+    ],
+    "sourceChangesDuringGate": [],
+    "sourceGitCommit": "479ee1b49ba4e577b93d46c4d41e805d58e05ce3",
+    "sourceManifestSha256": "c7e927fefbf003d1f7f5abd6eb5f3ca3f7b3ac622fbd0541facdb3954f05e2d1",
+    "testFiles": 81
+  }
+}

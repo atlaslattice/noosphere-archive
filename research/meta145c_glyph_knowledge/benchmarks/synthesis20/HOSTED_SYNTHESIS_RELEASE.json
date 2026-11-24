@@ -1,0 +1,397 @@
+{
+  "schema": "atlas.native1728.synthesis-hosted-release/v1",
+  "status": "HOSTS_DEPLOYED_AND_LIVE_VERIFIED",
+  "reportSha256": "1d74a1edb0e9531e2457c265f43dedbab0c0e2e38b62f35bf3494b6cf7f2ee15",
+  "sourcePublication": {
+    "predecessorCommit": "2b825532125890dfe294a50f2ba3668bbd2c7d63",
+    "pullRequest": "https://github.com/atlaslattice/noosphere-archive/pull/48",
+    "mergeClaimed": false
+  },
+  "workshop": {
+    "acceptedNumberedRounds": 20,
+    "selfDeclaredParticipants": 4,
+    "verifiedResidentTurns": 0,
+    "contextPostsBeforeCampaign": 2,
+    "auditCorrectionsAfterCampaign": 1,
+    "privatePeerBodiesPublished": false
+  },
+  "campaign": {
+    "canonicalTasksCompleted": 0,
+    "executorCalls": 40,
+    "genuineResidentTurns": 0,
+    "implementedOrders": 18,
+    "observedReviewRounds": 20,
+    "ordersComputed": 18,
+    "ordersFailed": 0,
+    "ordersHeld": 2,
+    "ordersNoChange": 0,
+    "ordersPassed": 18,
+    "ordersReused": 0,
+    "ordersSubmitted": 20,
+    "peerObservations": 20,
+    "requestedRounds": 20,
+    "testReceipts": 36,
+    "unresolvedChallenges": 1
+  },
+  "replay": {
+    "canonicalTasksCompleted": 0,
+    "executorCalls": 0,
+    "genuineResidentTurns": 0,
+    "implementedOrders": 0,
+    "observedReviewRounds": 20,
+    "ordersComputed": 0,
+    "ordersFailed": 0,
+    "ordersHeld": 2,
+    "ordersNoChange": 0,
+    "ordersPassed": 18,
+    "ordersReused": 18,
+    "ordersSubmitted": 20,
+    "peerObservations": 20,
+    "requestedRounds": 20,
+    "testReceipts": 36,
+    "unresolvedChallenges": 1
+  },
+  "replication": {
+    "schema": "atlas.native1728.replicated-simulation/v1",
+    "runs": [
+      {
+        "reportSha256": "18cb16f53f2ee02fb3ae9ee599ea3bb8154b86dad83ac99cbb57af955eb3e1de",
+        "seed": 1451728,
+        "counts": {
+          "acceptedCandidateChanges": 4,
+          "epochs": 1729,
+          "evaluatedTimelineYearUpdates": 5162766336,
+          "holdoutEpochs": 432,
+          "houses": 12,
+          "nodes": 1728,
+          "representedTimelineYears": 5162766336,
+          "spheres": 144,
+          "timelines": 1728,
+          "trainEpochs": 1297,
+          "yearsPerTimeline": 1728
+        },
+        "auditReplayUpdates": 5975424,
+        "elapsedNs": 25149199835,
+        "selectedCandidateId": "CFG.W01.M12.B12",
+        "baselineCandidateId": "CFG.W01.M12.B12",
+        "engineSourceSha256": "437eedd5b99b8cdd9af650e63e0083d7da6a5b42872e5c70ddfb3cf4751cc2eb"
+      },
+      {
+        "reportSha256": "6220636ee6ffdf1b33d589e7fca52e2c4e04745f12d43d27fb35cd4326291e30",
+        "seed": 1451748,
+        "counts": {
+          "acceptedCandidateChanges": 3,
+          "epochs": 1729,
+          "evaluatedTimelineYearUpdates": 5162766336,
+          "holdoutEpochs": 432,
+          "houses": 12,
+          "nodes": 1728,
+          "representedTimelineYears": 5162766336,
+          "spheres": 144,
+          "timelines": 1728,
+          "trainEpochs": 1297,
+          "yearsPerTimeline": 1728
+        },
+        "auditReplayUpdates": 5975424,
+        "elapsedNs": 19858247190,
+        "selectedCandidateId": "CFG.W01.M12.B12",
+        "baselineCandidateId": "CFG.W01.M12.B12",
+        "engineSourceSha256": "437eedd5b99b8cdd9af650e63e0083d7da6a5b42872e5c70ddfb3cf4751cc2eb"
+      }
+    ],
+    "totalDirectTransitions": 10325532672,
+    "totalAdditionalAuditTransitions": 11950848,
+    "unit": "ONE_SYNTHETIC_REQUEST_CACHE_ADMISSION_TRANSITION",
+    "configurationGain": "NONE_SELECTED_CONTROL_RETAINED_IN_BOTH_RUNS",
+    "distinctModeledCacheChunkBehaviorsPerRun": 144,
+    "directlyExecutedConfigurationsPerRun": 1728,
+    "limits": [
+      "Synthetic years are finite state updates, not elapsed historical years or semantic research.",
+      "Equivalent worker schedules repeat the same cache/chunk behavior.",
+      "The second run changes the workload seed; it does not invent algorithms or source patches."
+    ]
+  },
+  "swarm": {
+    "projectId": "appgprj_6af53c11e53481918824eabc8eede04a",
+    "version": 56,
+    "versionId": "appgprj_6af53c11e53481918824eabc8eede04a~appgver_7c2c266b7eac8191ba47c563e8eff8c1",
+    "commit": "ff68243090b5e9d6d24902e7b7795b508a448bbb",
+    "deployment": {
+      "id": "appgdep_6b052eefe6308191b28e671081e402d6",
+      "status": "succeeded",
+      "url": "https://swarmchat-private-broker-20261112.tdavesheldon.chatgpt.site",
+      "version_id": "appgprj_6af53c11e53481918824eabc8eede04a~appgver_7c2c266b7eac8191ba47c563e8eff8c1"
+    },
+    "interface": "https://swarmchat-private-broker-20261112.tdavesheldon.chatgpt.site/work/integration/synthesis",
+    "audiencePreserved": "PUBLIC_SITE_WITH_EXISTING_OWNER_GATED_INTEGRATION",
+    "newComposition": {
+      "status": "COMPLETED",
+      "actualInvocations": 3,
+      "deduplicated": 1,
+      "planSha256": "1761a8e2e9370b5aeba60556716feaafa90e90c302ce666490cb4adbd3deffb6",
+      "receiptSha256": "4c960c1e58d392ab327dcc5fe3eb763f53b0e34155680828dd34d6fe436575ca",
+      "receipts": [
+        {
+          "id": "first",
+          "status": "SUCCEEDED",
+          "tool": "swarm_native1728_synthesis_page",
+          "outputSha256": "b8cfe0b36d43024b20f4de13bf12acfd36a3e36b2113256a45532df7fbb4b142",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "tested",
+          "status": "SUCCEEDED",
+          "tool": "swarm_native1728_synthesis_page",
+          "outputSha256": "b7c5daa653c489022b6209e1e1fecc5bad1793427c4d46f04cee1e840ed5bd2f",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "status",
+          "status": "SUCCEEDED",
+          "tool": "swarm_native1728_synthesis_status",
+          "outputSha256": "74d33e0b3fdc4b9322e66acde939430224305bca011d28ee82c51c7d7f855718",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "reuse",
+          "status": "SUCCEEDED",
+          "tool": "swarm_native1728_synthesis_status",
+          "outputSha256": "74d33e0b3fdc4b9322e66acde939430224305bca011d28ee82c51c7d7f855718",
+          "reused": true,
+          "elapsedMs": 0
+        }
+      ],
+      "modelCalls": 0,
+      "roomPosts": 0,
+      "backgroundRuns": 0
+    },
+    "retainedTwelveComponentDemo": {
+      "status": "COMPLETED",
+      "actualInvocations": 12,
+      "deduplicated": 0,
+      "planSha256": "2474e2a476955e17d8fa36282ec10fae887e5b9c0a161e7f9243627dd5126a9a",
+      "receiptSha256": "3860136d6e1390f255301c5ad9048817c5e2b7ea9fb95de17b99b628529be1e7",
+      "receipts": [
+        {
+          "id": "ariadne",
+          "status": "SUCCEEDED",
+          "tool": "swarm_glyph_hsn_resolve",
+          "outputSha256": "be2782bde01a5b6226b4e1616b4116b9e7c6276bc5c3cae84b7e24708fd352c0",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "glyph",
+          "status": "SUCCEEDED",
+          "tool": "swarm_meta145_glyph",
+          "outputSha256": "7134391bb2297f59091f3da31f634b570919165219bea05ba46ee19e5ef8e4e6",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "cymatic",
+          "status": "SUCCEEDED",
+          "tool": "swarm_cymatic_atlas_lookup",
+          "outputSha256": "cebe0f99a235ed14fcfcc9727d2a5a9379b82a2f684a9f5707b15a65d05dea6e",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "reefcore",
+          "status": "SUCCEEDED",
+          "tool": "swarm_reefcore_descriptor",
+          "outputSha256": "b28ccdbdcd948766b1c6d2c25634cd4232d4a892981ce10ce6c2dfd688ea8ab2",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "reservoir",
+          "status": "SUCCEEDED",
+          "tool": "swarm_reefcore_reservoir_descriptor",
+          "outputSha256": "345e05de8aa00af1171d9df401321fec4ab610c649ab1b35b430a8a273ed16ae",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "glyphforge",
+          "status": "SUCCEEDED",
+          "tool": "swarm_glyphforge_descriptor",
+          "outputSha256": "190362852a83cbb8009ecc6a081475d57d1955f086cf4d73ba6265de5005d2dc",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "research",
+          "status": "SUCCEEDED",
+          "tool": "swarm_resilience_sources",
+          "outputSha256": "dc2ac8ae32f466f96bf1848a921f55df3042f6b81e2988ad15a6053d5bd56f2f",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "assembly",
+          "status": "SUCCEEDED",
+          "tool": "swarm_factory_blueprint",
+          "outputSha256": "67b8dfae12420f80c4b809f3ec12fb0699aa2cbecb6a6d6541052db2189b264c",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "macroturn",
+          "status": "SUCCEEDED",
+          "tool": "swarm_confluence_descriptor",
+          "outputSha256": "c9b812adcd1f13d1b31ff26cd762f32361094c9b745bc35da31acca4be924e3b",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "program",
+          "status": "SUCCEEDED",
+          "tool": "swarm_meta145_excellence_status",
+          "outputSha256": "80b734676a9e664b239fbc37bdc72389500b8b27aaf8a97afb38b2118f762103",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "ready",
+          "status": "SUCCEEDED",
+          "tool": "swarm_meta145_excellence_ready",
+          "outputSha256": "432d839d5155d1b4418db6c4cb87eee22c4da93318be27302ab688f7a03ae583",
+          "reused": false,
+          "elapsedMs": 0
+        },
+        {
+          "id": "meta145",
+          "status": "SUCCEEDED",
+          "tool": "swarm_meta145_correlations",
+          "outputSha256": "b9f3c98f264d6047f2dcc21ce269147a609e243d85ddd41d5eaf5c115320141f",
+          "reused": false,
+          "elapsedMs": 0
+        }
+      ],
+      "modelCalls": 0,
+      "roomPosts": 0,
+      "backgroundRuns": 0
+    }
+  },
+  "atlas": {
+    "projectId": "appgprj_6b02e16d290c8191a6c6405fc5227889",
+    "version": 19,
+    "versionId": "appgprj_6b02e16d290c8191a6c6405fc5227889~appgver_4b56ccfdacfc8191a2e86080bd9cdc43",
+    "commit": "9a654f3ab3cd79f4b23ca0c8f7e4b6b180422767",
+    "deployment": {
+      "id": "appgdep_6b0531ef686c8191b2e302c393a1ceba",
+      "status": "succeeded",
+      "url": "https://atlas-one-beta.tdavesheldon.chatgpt.site",
+      "version_id": "appgprj_6b02e16d290c8191a6c6405fc5227889~appgver_4b56ccfdacfc8191a2e86080bd9cdc43"
+    },
+    "interface": "https://atlas-one-beta.tdavesheldon.chatgpt.site/integration/",
+    "audiencePreserved": "OWNER_PRIVATE",
+    "failedAttempt": {
+      "version": 18,
+      "commit": "db9dbe7151aaf4471d5b628b275565293140cf13",
+      "deployment": {
+        "id": "appgdep_6b052efcc0788191a503083367854638",
+        "status": "failed",
+        "failure_message": "Error: Script startup exceeded CPU time limit.\n"
+      }
+    },
+    "liveEvidence": {
+      "reportSha256": "1d74a1edb0e9531e2457c265f43dedbab0c0e2e38b62f35bf3494b6cf7f2ee15",
+      "recordedCounts": {
+        "canonicalTasksCompleted": 0,
+        "executorCalls": 40,
+        "genuineResidentTurns": 0,
+        "implementedOrders": 18,
+        "observedReviewRounds": 20,
+        "ordersComputed": 18,
+        "ordersFailed": 0,
+        "ordersHeld": 2,
+        "ordersNoChange": 0,
+        "ordersPassed": 18,
+        "ordersReused": 0,
+        "ordersSubmitted": 20,
+        "peerObservations": 20,
+        "requestedRounds": 20,
+        "testReceipts": 36,
+        "unresolvedChallenges": 1
+      },
+      "effects": {
+        "modelCalls": 0,
+        "externalRequests": 0,
+        "queueWrites": 0,
+        "storageWrites": 0,
+        "roomPosts": 0,
+        "backgroundRuns": 0,
+        "permissionsChanged": false,
+        "canonChanged": false,
+        "executionAuthorized": false
+      }
+    },
+    "liveInteropRole": {
+      "status": "COMPLETED",
+      "hsn": "H01.S01",
+      "modelInvoked": false,
+      "receipt": {
+        "operation": "atlas.role",
+        "status": "COMPLETED",
+        "registrySha256": "881fc01a6499027a5fffeb90f4aa443f6a3ad33e074b835af31d8342b0fceaab",
+        "outputHash": "421a713b5d20a52fa9862b24973109fe61896c6d73f428eeac45ccc2134eece4",
+        "receiptHash": "5a6dd3a5a7e3e0640339de7d4f1fa9d1c00146943fa46e9d78e0bdca784df148",
+        "bindingInvocations": 1,
+        "kernelEffects": {
+          "backgroundWakes": 0,
+          "modelCalls": 0,
+          "networkRequests": 0,
+          "queueWrites": 0,
+          "roomPosts": 0,
+          "storageWrites": 0
+        }
+      }
+    },
+    "liveGrokseekPlan": {
+      "status": "COMPLETED",
+      "planStatus": "PLAN_PREPARED",
+      "steps": 6,
+      "readySteps": 2,
+      "automaticDispatch": false,
+      "modelCalls": 0,
+      "sourceRequests": 0,
+      "receipt": {
+        "operation": "atlas.research_plan",
+        "status": "COMPLETED",
+        "registrySha256": "881fc01a6499027a5fffeb90f4aa443f6a3ad33e074b835af31d8342b0fceaab",
+        "outputHash": "4b6ae0ac976214dc54c04e2274e39dbb072509da3da8951f93cb05e6369e6d4a",
+        "receiptHash": "926fdebbc362fed9722b9191bc4ed326b05c82248b67f06adf513f1e46217bba",
+        "bindingInvocations": 1,
+        "kernelEffects": {
+          "backgroundWakes": 0,
+          "modelCalls": 0,
+          "networkRequests": 0,
+          "queueWrites": 0,
+          "roomPosts": 0,
+          "storageWrites": 0
+        }
+      }
+    },
+    "grokseekReadiness": {
+      "sourcePinMatched": true,
+      "planner": "AVAILABLE_IN_EXISTING_NATIVE_QUEUE",
+      "legacyOrchestrator": "UNBOUND",
+      "modelProvider": "HOLD_PROVIDER_UNCONFIGURED",
+      "modelCallsObserved": 0,
+      "dispatchAuthorized": false
+    }
+  },
+  "limits": [
+    "The two hosted projections bind one exact campaign report; native reads do not execute the Python campaign.",
+    "The overall recorded campaign remains HOLD because the broader collaboration-quality claim is deferred.",
+    "The simulator does not create source patches or establish general answer-quality gains.",
+    "Local check artifacts, accepted Work posts, published code and live host reads retain separate evidence.",
+    "The original interpreter-label error is preserved and corrected in PYTHON_VERIFICATION.json.",
+    "Source and account checks retain their existing authority; hashes do not attest peer identity."
+  ]
+}

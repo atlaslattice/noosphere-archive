@@ -1,0 +1,4906 @@
+{
+  "counts": {
+    "caseComparisons": 60,
+    "cases": 20,
+    "encodingCalls": 120,
+    "methods": 3,
+    "registeredModuleCalls": 100
+  },
+  "designChallenges": [
+    "Complete review coverage can still contain a failed check; missing observations must hold.",
+    "Invariance can be correct: irrelevant labels do not alter provenance, and equal outputs do not erase changed inputs."
+  ],
+  "evidenceKind": "SYNTHETIC_CONTRACT_EXPERIMENT",
+  "execution": {
+    "countScope": "Top-level registered calls only; nested validation calls are not double counted. Encoding calls overlap module calls and are not additional independent work.",
+    "elapsedNs": 8695869,
+    "registeredModuleCallCounts": {
+      "make_provenance": 40,
+      "stale_causes": 20,
+      "validate_provenance": 40
+    },
+    "registeredModuleInvocations": [
+      {
+        "caseId": "F01",
+        "elapsedNs": 32649,
+        "operation": "make_provenance",
+        "ordinal": 1,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F01",
+        "elapsedNs": 22254,
+        "operation": "validate_provenance",
+        "ordinal": 2,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F01",
+        "elapsedNs": 14652,
+        "operation": "make_provenance",
+        "ordinal": 3,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F01",
+        "elapsedNs": 17667,
+        "operation": "validate_provenance",
+        "ordinal": 4,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F01",
+        "elapsedNs": 36405,
+        "operation": "stale_causes",
+        "ordinal": 5,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F02",
+        "elapsedNs": 21122,
+        "operation": "make_provenance",
+        "ordinal": 6,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F02",
+        "elapsedNs": 16875,
+        "operation": "validate_provenance",
+        "ordinal": 7,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F02",
+        "elapsedNs": 80842,
+        "operation": "make_provenance",
+        "ordinal": 8,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F02",
+        "elapsedNs": 19470,
+        "operation": "validate_provenance",
+        "ordinal": 9,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F02",
+        "elapsedNs": 620608,
+        "operation": "stale_causes",
+        "ordinal": 10,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F03",
+        "elapsedNs": 21022,
+        "operation": "make_provenance",
+        "ordinal": 11,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F03",
+        "elapsedNs": 17286,
+        "operation": "validate_provenance",
+        "ordinal": 12,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F03",
+        "elapsedNs": 12860,
+        "operation": "make_provenance",
+        "ordinal": 13,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F03",
+        "elapsedNs": 14582,
+        "operation": "validate_provenance",
+        "ordinal": 14,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F03",
+        "elapsedNs": 32509,
+        "operation": "stale_causes",
+        "ordinal": 15,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F04",
+        "elapsedNs": 70537,
+        "operation": "make_provenance",
+        "ordinal": 16,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F04",
+        "elapsedNs": 19039,
+        "operation": "validate_provenance",
+        "ordinal": 17,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F04",
+        "elapsedNs": 13450,
+        "operation": "make_provenance",
+        "ordinal": 18,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F04",
+        "elapsedNs": 14563,
+        "operation": "validate_provenance",
+        "ordinal": 19,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F04",
+        "elapsedNs": 33110,
+        "operation": "stale_causes",
+        "ordinal": 20,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F05",
+        "elapsedNs": 13490,
+        "operation": "make_provenance",
+        "ordinal": 21,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F05",
+        "elapsedNs": 14682,
+        "operation": "validate_provenance",
+        "ordinal": 22,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F05",
+        "elapsedNs": 12649,
+        "operation": "make_provenance",
+        "ordinal": 23,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F05",
+        "elapsedNs": 17637,
+        "operation": "validate_provenance",
+        "ordinal": 24,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F05",
+        "elapsedNs": 30676,
+        "operation": "stale_causes",
+        "ordinal": 25,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F06",
+        "elapsedNs": 13310,
+        "operation": "make_provenance",
+        "ordinal": 26,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F06",
+        "elapsedNs": 13431,
+        "operation": "validate_provenance",
+        "ordinal": 27,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F06",
+        "elapsedNs": 13140,
+        "operation": "make_provenance",
+        "ordinal": 28,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F06",
+        "elapsedNs": 13911,
+        "operation": "validate_provenance",
+        "ordinal": 29,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F06",
+        "elapsedNs": 30185,
+        "operation": "stale_causes",
+        "ordinal": 30,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F07",
+        "elapsedNs": 15393,
+        "operation": "make_provenance",
+        "ordinal": 31,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F07",
+        "elapsedNs": 15023,
+        "operation": "validate_provenance",
+        "ordinal": 32,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F07",
+        "elapsedNs": 12389,
+        "operation": "make_provenance",
+        "ordinal": 33,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F07",
+        "elapsedNs": 14101,
+        "operation": "validate_provenance",
+        "ordinal": 34,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F07",
+        "elapsedNs": 30976,
+        "operation": "stale_causes",
+        "ordinal": 35,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F08",
+        "elapsedNs": 12629,
+        "operation": "make_provenance",
+        "ordinal": 36,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F08",
+        "elapsedNs": 13901,
+        "operation": "validate_provenance",
+        "ordinal": 37,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F08",
+        "elapsedNs": 11678,
+        "operation": "make_provenance",
+        "ordinal": 38,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F08",
+        "elapsedNs": 13701,
+        "operation": "validate_provenance",
+        "ordinal": 39,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F08",
+        "elapsedNs": 29284,
+        "operation": "stale_causes",
+        "ordinal": 40,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F09",
+        "elapsedNs": 45930,
+        "operation": "make_provenance",
+        "ordinal": 41,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F09",
+        "elapsedNs": 14752,
+        "operation": "validate_provenance",
+        "ordinal": 42,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F09",
+        "elapsedNs": 12238,
+        "operation": "make_provenance",
+        "ordinal": 43,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F09",
+        "elapsedNs": 13661,
+        "operation": "validate_provenance",
+        "ordinal": 44,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F09",
+        "elapsedNs": 36535,
+        "operation": "stale_causes",
+        "ordinal": 45,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F10",
+        "elapsedNs": 12629,
+        "operation": "make_provenance",
+        "ordinal": 46,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F10",
+        "elapsedNs": 14212,
+        "operation": "validate_provenance",
+        "ordinal": 47,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F10",
+        "elapsedNs": 11918,
+        "operation": "make_provenance",
+        "ordinal": 48,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F10",
+        "elapsedNs": 13631,
+        "operation": "validate_provenance",
+        "ordinal": 49,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F10",
+        "elapsedNs": 32429,
+        "operation": "stale_causes",
+        "ordinal": 50,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F11",
+        "elapsedNs": 12098,
+        "operation": "make_provenance",
+        "ordinal": 51,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F11",
+        "elapsedNs": 13109,
+        "operation": "validate_provenance",
+        "ordinal": 52,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F11",
+        "elapsedNs": 17316,
+        "operation": "make_provenance",
+        "ordinal": 53,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F11",
+        "elapsedNs": 12710,
+        "operation": "validate_provenance",
+        "ordinal": 54,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F11",
+        "elapsedNs": 59770,
+        "operation": "stale_causes",
+        "ordinal": 55,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F12",
+        "elapsedNs": 278771,
+        "operation": "make_provenance",
+        "ordinal": 56,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F12",
+        "elapsedNs": 19970,
+        "operation": "validate_provenance",
+        "ordinal": 57,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F12",
+        "elapsedNs": 15233,
+        "operation": "make_provenance",
+        "ordinal": 58,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F12",
+        "elapsedNs": 85019,
+        "operation": "validate_provenance",
+        "ordinal": 59,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F12",
+        "elapsedNs": 37426,
+        "operation": "stale_causes",
+        "ordinal": 60,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F13",
+        "elapsedNs": 17156,
+        "operation": "make_provenance",
+        "ordinal": 61,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F13",
+        "elapsedNs": 15614,
+        "operation": "validate_provenance",
+        "ordinal": 62,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F13",
+        "elapsedNs": 11438,
+        "operation": "make_provenance",
+        "ordinal": 63,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F13",
+        "elapsedNs": 12659,
+        "operation": "validate_provenance",
+        "ordinal": 64,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F13",
+        "elapsedNs": 62885,
+        "operation": "stale_causes",
+        "ordinal": 65,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F14",
+        "elapsedNs": 13310,
+        "operation": "make_provenance",
+        "ordinal": 66,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F14",
+        "elapsedNs": 13591,
+        "operation": "validate_provenance",
+        "ordinal": 67,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F14",
+        "elapsedNs": 10886,
+        "operation": "make_provenance",
+        "ordinal": 68,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F14",
+        "elapsedNs": 12419,
+        "operation": "validate_provenance",
+        "ordinal": 69,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F14",
+        "elapsedNs": 28082,
+        "operation": "stale_causes",
+        "ordinal": 70,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F15",
+        "elapsedNs": 12269,
+        "operation": "make_provenance",
+        "ordinal": 71,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F15",
+        "elapsedNs": 13210,
+        "operation": "validate_provenance",
+        "ordinal": 72,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F15",
+        "elapsedNs": 12078,
+        "operation": "make_provenance",
+        "ordinal": 73,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F15",
+        "elapsedNs": 15334,
+        "operation": "validate_provenance",
+        "ordinal": 74,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F15",
+        "elapsedNs": 30876,
+        "operation": "stale_causes",
+        "ordinal": 75,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F16",
+        "elapsedNs": 12118,
+        "operation": "make_provenance",
+        "ordinal": 76,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F16",
+        "elapsedNs": 14562,
+        "operation": "validate_provenance",
+        "ordinal": 77,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F16",
+        "elapsedNs": 11317,
+        "operation": "make_provenance",
+        "ordinal": 78,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F16",
+        "elapsedNs": 12569,
+        "operation": "validate_provenance",
+        "ordinal": 79,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F16",
+        "elapsedNs": 27532,
+        "operation": "stale_causes",
+        "ordinal": 80,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F17",
+        "elapsedNs": 12439,
+        "operation": "make_provenance",
+        "ordinal": 81,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F17",
+        "elapsedNs": 13020,
+        "operation": "validate_provenance",
+        "ordinal": 82,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F17",
+        "elapsedNs": 11387,
+        "operation": "make_provenance",
+        "ordinal": 83,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F17",
+        "elapsedNs": 12939,
+        "operation": "validate_provenance",
+        "ordinal": 84,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F17",
+        "elapsedNs": 28043,
+        "operation": "stale_causes",
+        "ordinal": 85,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F18",
+        "elapsedNs": 12969,
+        "operation": "make_provenance",
+        "ordinal": 86,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F18",
+        "elapsedNs": 13430,
+        "operation": "validate_provenance",
+        "ordinal": 87,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F18",
+        "elapsedNs": 29885,
+        "operation": "make_provenance",
+        "ordinal": 88,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F18",
+        "elapsedNs": 13330,
+        "operation": "validate_provenance",
+        "ordinal": 89,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F18",
+        "elapsedNs": 29084,
+        "operation": "stale_causes",
+        "ordinal": 90,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F19",
+        "elapsedNs": 52600,
+        "operation": "make_provenance",
+        "ordinal": 91,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F19",
+        "elapsedNs": 24567,
+        "operation": "validate_provenance",
+        "ordinal": 92,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F19",
+        "elapsedNs": 16064,
+        "operation": "make_provenance",
+        "ordinal": 93,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F19",
+        "elapsedNs": 13761,
+        "operation": "validate_provenance",
+        "ordinal": 94,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F19",
+        "elapsedNs": 29715,
+        "operation": "stale_causes",
+        "ordinal": 95,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F20",
+        "elapsedNs": 12338,
+        "operation": "make_provenance",
+        "ordinal": 96,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F20",
+        "elapsedNs": 13360,
+        "operation": "validate_provenance",
+        "ordinal": 97,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F20",
+        "elapsedNs": 11498,
+        "operation": "make_provenance",
+        "ordinal": 98,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F20",
+        "elapsedNs": 13310,
+        "operation": "validate_provenance",
+        "ordinal": 99,
+        "status": "RETURNED"
+      },
+      {
+        "caseId": "F20",
+        "elapsedNs": 40361,
+        "operation": "stale_causes",
+        "ordinal": 100,
+        "status": "RETURNED"
+      }
+    ],
+    "timingScope": "Actual whole-comparison and registered-call wall time. Methods do different validation work; timings are not a performance comparison or speedup."
+  },
+  "fixtureGeneration": "Fixed seed labels hashed into synthetic digest values; no random case selection.",
+  "groundTruthDeclaredBeforeEvaluation": true,
+  "implementation": {
+    "afterSha256": {
+      "provenanceModule": "2c950acdc7e5dfae64f7cb6a999c3c700e0558d6ae8b98dc53802ede19ad28a8",
+      "runner": "ce0d03c5b96e17b899949e86458eceda30b53454a940575959d23c8328e36ca4"
+    },
+    "beforeSha256": {
+      "provenanceModule": "2c950acdc7e5dfae64f7cb6a999c3c700e0558d6ae8b98dc53802ede19ad28a8",
+      "runner": "ce0d03c5b96e17b899949e86458eceda30b53454a940575959d23c8328e36ca4"
+    },
+    "modulePinSha256": "2c950acdc7e5dfae64f7cb6a999c3c700e0558d6ae8b98dc53802ede19ad28a8",
+    "paths": {
+      "provenanceModule": "src/beast20/synthesis_provenance.py",
+      "runner": "benchmarks/bench_synthesis20_falsifiers.py"
+    }
+  },
+  "limitations": [
+    "The oracle is an explicit contract declared in source before evaluation, not independently preregistered or blinded ground truth.",
+    "The two reference encodings are deliberate simplified ablations, not Dagster, LangGraph, Temporal or in-toto production implementations.",
+    "Fixed-length digest inputs do not reproduce Dagster's arbitrary-length concatenation example; the omission reference tests lost names and map domains.",
+    "All methods share the same synthetic observation guard. Its FAIL/HOLD behavior is not a gain attributable to the full encoding.",
+    "Each method receives every case once, but CPU work differs; no matched model-budget or runtime speed claim is made.",
+    "Synthetic check documents and expected outputs are fixtures, not actual peer judgments, model answers or executed acceptance commands.",
+    "Full encoding agreement with this declared policy is contract evidence, not a generalization estimate, cognitive-quality result or collaboration benefit.",
+    "Only recorded provenance is compared; omitted real dependencies, unauthenticated evidence and unknown source changes remain outside this experiment.",
+    "No private Work message bodies, room identifiers or peer identities are included. No source invalidation, dispatch, publication or permissions are performed."
+  ],
+  "methods": [
+    {
+      "actualModule": false,
+      "caseBudget": 20,
+      "description": "Simplified omission reference: fixed-length digest values, but no key names or domain boundaries.",
+      "id": "VALUES_ONLY_ALL_DOMAINS",
+      "productionBaseline": false
+    },
+    {
+      "actualModule": false,
+      "caseBudget": 20,
+      "description": "Simplified overbinding reference: canonical JSON also includes neutral annotations, outputs and observation availability.",
+      "id": "WHOLE_PACKET",
+      "productionBaseline": false
+    },
+    {
+      "actualModule": true,
+      "caseBudget": 20,
+      "description": "Actual pinned make_provenance and validate_provenance, with an additional actual stale_causes diagnostic.",
+      "id": "FULL_KEYED_PROVENANCE",
+      "productionBaseline": false
+    }
+  ],
+  "pairwiseOutcomes": {
+    "VALUES_ONLY_ALL_DOMAINS": {
+      "bothCorrect": 17,
+      "bothIncorrect": 0,
+      "fullOnlyCorrect": 3,
+      "referenceOnlyCorrect": 0
+    },
+    "WHOLE_PACKET": {
+      "bothCorrect": 16,
+      "bothIncorrect": 0,
+      "fullOnlyCorrect": 4,
+      "referenceOnlyCorrect": 0
+    }
+  },
+  "policy": {
+    "bestOfSelection": false,
+    "caseBudgetPerMethod": 20,
+    "comparisonsPerCase": 1,
+    "encodingCallsPerComparison": 2,
+    "identityFields": [
+      "code_sha256",
+      "inputs",
+      "dependencies",
+      "peer_evidence",
+      "checks"
+    ],
+    "identityMeaning": "Exact recorded code digest and keyed, domain-specific digest maps.",
+    "identityNeutral": [
+      "map insertion order",
+      "annotation",
+      "output_sha256",
+      "observations"
+    ],
+    "observationMeaning": "Synthetic check documents, each bound to its declared check digest; not real peer judgments.",
+    "requiredChecks": [
+      "positive",
+      "negative"
+    ],
+    "reviewDecisionOrder": [
+      "Any absent check reference or absent/null/malformed/wrong-digest observation yields HOLD.",
+      "Otherwise a complete set containing any FAIL yields FAIL, even at 100% review coverage.",
+      "Otherwise a changed provenance identity yields RECHECK_REQUIRED.",
+      "Otherwise the unchanged observed fixture yields PASS within this synthetic contract only."
+    ],
+    "schema": "atlas.beast20.provenance-falsifier-policy/v1",
+    "scoring": "Identity relation and review decision are scored separately; both must match for a complete case match.",
+    "unchangedIdentityRule": "An irrelevant tag change or reordered maps must not force a provenance change.",
+    "unchangedOutputRule": "Equal output hashes do not waive a provenance change or missing review evidence."
+  },
+  "policySha256": "e5b08b24a33bafca46a2f3172dd3313cf920afe2ef33aee730ed986b3ef6abd3",
+  "reportSha256": "20672b85350eeeaed3c24873323fd71aff810993178305eea892befbe240b7b5",
+  "results": [
+    {
+      "caseId": "F01",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 135405,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        },
+        {
+          "afterIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 69766,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        },
+        {
+          "afterIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [],
+          "decisionMatches": true,
+          "elapsedNs": 164859,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        }
+      ]
+    },
+    {
+      "caseId": "F02",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 42684,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        },
+        {
+          "afterIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 114193,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        },
+        {
+          "afterIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [],
+          "decisionMatches": true,
+          "elapsedNs": 827139,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        }
+      ]
+    },
+    {
+      "caseId": "F03",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 54763,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        },
+        {
+          "afterIdentity": "b4f277e23d57a1c4dc9dc9eba81f1a75f99dca8a14b49dac414193ea8db43804",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": false,
+          "elapsedNs": 105479,
+          "error": null,
+          "identityMatches": false,
+          "identityRelation": "CHANGED",
+          "lossReasons": [
+            "SPURIOUS_CHANGE",
+            "WRONG_REVIEW_DECISION"
+          ],
+          "matchesBoth": false,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [],
+          "decisionMatches": true,
+          "elapsedNs": 162345,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        }
+      ]
+    },
+    {
+      "caseId": "F04",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "d9fb18d92b04b6bcd3ad206d81931056cd53ae5ffa2633b2b34e819320f8f8b0",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 41343,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "c76d81ae95cb8c280519e6fae6d437014f1f2e95680914756ac5e5e04471db17",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 49205,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "53c94e563374cb1b7855fec2971fbb8dfde6d1b16682990c88aaecc80a3ed862",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": "65a9df673433461e58a04faf6d04c82ed9046d17c951c323454534b8594489b6",
+              "before": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+              "category": "CODE",
+              "key": "code_sha256"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 186642,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F05",
+      "outputEqual": false,
+      "results": [
+        {
+          "afterIdentity": "a8505d97e53a36ba56692365bd2cd6bd1d6b16f4d58898c5c8d5633458d485e8",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 42625,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "2215e62e14491bc7725ed33101bb33d665f4ca868dd699917e92f1e43600e434",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 48443,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "7a7f19faf2874c1e496f519464654014af92648aa80120b9f00dda8c9ec80c18",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": "a56c84cd83fa09c530b96acc94ab6c0aa3bde5a92a8adb5fee9bfb3fa82d7ebb",
+              "before": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+              "category": "DATA",
+              "key": "a"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 123346,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F06",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "19cf8473f13d16ca86e34f34d09b9632791ebc9303ecf2f3717ea196f81f691f",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 39609,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "d547c21fa0434892c407896519019c80ffc35884957c62625fb6551d502f1e54",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 46630,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "64138017776f135b8de3ab47cad21698d53a44139fd050309fd142fc8817a73f",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": "858e15ba7a7b991fc74ba3fa3c7ec85b89a1991bc057531fdeb8d48468de1684",
+              "before": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+              "category": "DEPENDENCIES",
+              "key": "b"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 116516,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F07",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "c94b7883725420eeb5aec042228870a6b179161a18f5bbe3eb7e4a1efc7ebe06",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 46160,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "2ae12974c5fcd0a30fd6f392c7046086d388f598fdd86ac5d546c86bbafe60d9",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 132390,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "9286794def97ba8557ce0997d65af083c9349408ef780bde12acc5be7f993703",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": "88948304153f4545b06e19e0a8aa4052c7a1546cad90f92f9d2947edb36ea56b",
+              "before": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+              "category": "PEER_EVIDENCE",
+              "key": "challenge"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 127132,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F08",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "5c6e753513c71bc19e116d27eb5fde3b7b38e28dfd56fa8063ec102ffe535998",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 40241,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "d663023ac6eeef64a7ca60ffa39cd7a65b79a881931091196e318775e845df5d",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 50126,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "e9eec6493705a9fda8496fa7763703c6ab8d01a0fc60125791b51e4d09ef31d0",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": "86e130799a55c289ce9270e1717b28f43147de54a252650cbd13fbfc974f08a7",
+              "before": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+              "category": "CHECKS",
+              "key": "negative"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 114483,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F09",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": false,
+          "elapsedNs": 38287,
+          "error": null,
+          "identityMatches": false,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [
+            "MISSED_CHANGE",
+            "WRONG_REVIEW_DECISION"
+          ],
+          "matchesBoth": false,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        },
+        {
+          "afterIdentity": "5ea0a17e942fc8751deb676c710b13e6b3e0a8c5e2ec959f10a1ce81b732dca5",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 45819,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "bba1cf2a67ba17d74b56c1b8c40007de3fd17c4199e88bea07abdb00a71a9b4f",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": null,
+              "before": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+              "category": "DATA",
+              "key": "a"
+            },
+            {
+              "after": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+              "before": null,
+              "category": "DATA",
+              "key": "aa"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 165921,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F10",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": false,
+          "elapsedNs": 40230,
+          "error": null,
+          "identityMatches": false,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [
+            "MISSED_CHANGE",
+            "WRONG_REVIEW_DECISION"
+          ],
+          "matchesBoth": false,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        },
+        {
+          "afterIdentity": "7f40f2adbe38f957abdbc387f64c92086e7d10235c44961e737eec91542b2f78",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 48063,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "8cea12a3a14427bfa59f60dd7436c50c32c867562ef1c7d0412aa91dbb51f447",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": null,
+              "before": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+              "category": "DEPENDENCIES",
+              "key": "b"
+            },
+            {
+              "after": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+              "before": null,
+              "category": "DEPENDENCIES",
+              "key": "bb"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 116677,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F11",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "048dd229812d67a91e8426c07d76a03970d4b07adc03a9b26f8463913d2f5e1c",
+          "beforeIdentity": "048dd229812d67a91e8426c07d76a03970d4b07adc03a9b26f8463913d2f5e1c",
+          "causeRows": null,
+          "decisionMatches": false,
+          "elapsedNs": 35584,
+          "error": null,
+          "identityMatches": false,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [
+            "MISSED_CHANGE",
+            "WRONG_REVIEW_DECISION"
+          ],
+          "matchesBoth": false,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "PASS"
+        },
+        {
+          "afterIdentity": "98f4f7d5ae15a13ba0ff3ed72238aa94da5ae1420d99b6ef713d28444bc8c554",
+          "beforeIdentity": "b16c2b4633f8c2ecbb35a498c14707f34ce4f7b4073505387767bdea3423b6c7",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 46249,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "d17b6c289d3d3edcd07a89e44ebb60c3e74b4bbd7bcf543863987306e18cc105",
+          "beforeIdentity": "e0ea97a71aaabec633705a919c6866c192a442d84f99858f1c477a5d56c8bfb7",
+          "causeRows": [
+            {
+              "after": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+              "before": null,
+              "category": "DATA",
+              "key": "b"
+            },
+            {
+              "after": null,
+              "before": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+              "category": "DEPENDENCIES",
+              "key": "b"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 147703,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F12",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "a953a0f0052e302cd6d5d38183b9420f6968ac4534b7aebdf4c65abeccd972d2",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 118639,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "c8f73f420bdcc3d70d8b4c96cb7f0fc8db374f41d636106453ac151f4961a0fd",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 52168,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "404e1c4bdb4d3bc3d714d6ae10c502503a1b07c0d6a4629e3678f1c7ddc5cf47",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": "d78bc66b326a905198973bf12d151242c61abb144b327233925930ec5cc4d16d",
+              "before": null,
+              "category": "DEPENDENCIES",
+              "key": "c"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 476740,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F13",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "487ff0c38ae353bd3a8b80c9179e647ea92dd8f0501baec4f51d8e58a5c77ba9",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 46270,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "16a39ac06d2adaa44ccfeb32273033e6fe5ed80e3018eb94d11ce44d9bb61ad0",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 135574,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "dbe7120f285f515ac0e2571a20d7213b0fe33a05bad0b493985d8d6d8cf6cd4f",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": null,
+              "before": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb",
+              "category": "DEPENDENCIES",
+              "key": "y"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 154994,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F14",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "9af105f42e8e84adf70fd9ab64f42f3444c2c02e61dfb3534f11202f3f9c54a6",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 39680,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "8c65de113c64f969137819efcecef45dfe597a664a2b6699190cd5719625a9e6",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 46270,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "dd123713f5c8dda79a2630ff7fa6c0bb4c0b6a37e4c7e933ddc975c6aee21183",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": null,
+              "before": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+              "category": "PEER_EVIDENCE",
+              "key": "challenge"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 111879,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F15",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "cd2b56e4d16b973ee9b12afbb9ce2994b952ce0e8a5b908b9b8350558e3531ef",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 34271,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "CHECK_REFERENCE_ABSENT"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        },
+        {
+          "afterIdentity": "e8e0732edd13cbff103210a9b50b58b220d0aeeda1e881292ed5680cb96b87d0",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 42844,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "CHECK_REFERENCE_ABSENT"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        },
+        {
+          "afterIdentity": "b2e229a7f19c1ff5cdab8f1f01e76258a0de39f93caf2d1e03868a4ffb94c020",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": null,
+              "before": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+              "category": "CHECKS",
+              "key": "negative"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 114083,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "CHECK_REFERENCE_ABSENT"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        }
+      ]
+    },
+    {
+      "caseId": "F16",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "f8a26ee3f558eff5460b5a5aec0e02096fb06aebe4fb438b9dca78d52fb3e206",
+          "beforeIdentity": "361e2a66b7f8a1c41656b9732d8726a6395a7ba0f5e0e41e8274c932863eae99",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 36365,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "868312fb92cce948006416d80054bcf682aca55513a345afe55e6085bef5c4f1",
+          "beforeIdentity": "964b8d32511fd2d942ca426045a1389829815676210001a8055fd7d49eb90ed3",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 43766,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        },
+        {
+          "afterIdentity": "39a539073219fd11833abebe290123df3ba29bf742e50bab42ebd2dc205c4350",
+          "beforeIdentity": "4ea2dcd7c42fed094cb629da3e4274fee77aba46f8e8493842b693b18029cd4e",
+          "causeRows": [
+            {
+              "after": "1228a387aca6be6c272d913adb737d9050ee0eefbd7568234a6104ac7f2b0fa2",
+              "before": "b10faebab83cfeb34bfb9e0fdff88054b5662a4c0b6a01c0fee4e38885dc8a97",
+              "category": "DATA",
+              "key": "number"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 110567,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "PASS"
+          },
+          "reviewDecision": "RECHECK_REQUIRED"
+        }
+      ]
+    },
+    {
+      "caseId": "F17",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "41267bdd727d785ea3694c2b402f80fb822c3c8c722e12b1ac057c039333b85a",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 37437,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [
+              "negative"
+            ],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "FAIL"
+          },
+          "reviewDecision": "FAIL"
+        },
+        {
+          "afterIdentity": "dae4f1eb2cf5406fea8f2bf560bf2ba55df783f0c76c208f4de3d494f11c82ee",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 46089,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [
+              "negative"
+            ],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "FAIL"
+          },
+          "reviewDecision": "FAIL"
+        },
+        {
+          "afterIdentity": "4e6fe858ee88557d5616feddd0273078c875915fd137014cce7d2b514e200842",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [
+            {
+              "after": "31afaaedb821be43202648197128d0d7b7dda9b21aca1993e9fe44235f728750",
+              "before": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+              "category": "CHECKS",
+              "key": "negative"
+            }
+          ],
+          "decisionMatches": true,
+          "elapsedNs": 110467,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "CHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [
+              "negative"
+            ],
+            "missing": [],
+            "observed": 2,
+            "required": 2,
+            "state": "FAIL"
+          },
+          "reviewDecision": "FAIL"
+        }
+      ]
+    },
+    {
+      "caseId": "F18",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 31958,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "OBSERVATION_ABSENT"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        },
+        {
+          "afterIdentity": "e1df8ece6d97d5b76c80e5a29e382ecb650cb4b5b94f303aad43c1a286c2d74b",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 41212,
+          "error": null,
+          "identityMatches": false,
+          "identityRelation": "CHANGED",
+          "lossReasons": [
+            "SPURIOUS_CHANGE"
+          ],
+          "matchesBoth": false,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "OBSERVATION_ABSENT"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        },
+        {
+          "afterIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [],
+          "decisionMatches": true,
+          "elapsedNs": 126361,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "OBSERVATION_ABSENT"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        }
+      ]
+    },
+    {
+      "caseId": "F19",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 87682,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "OBSERVATION_NULL"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        },
+        {
+          "afterIdentity": "b4cd27a14201a50f0f8f724ef51309e4c62a236714a2fd6918b459642c0fb89e",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 79751,
+          "error": null,
+          "identityMatches": false,
+          "identityRelation": "CHANGED",
+          "lossReasons": [
+            "SPURIOUS_CHANGE"
+          ],
+          "matchesBoth": false,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "OBSERVATION_NULL"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        },
+        {
+          "afterIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [],
+          "decisionMatches": true,
+          "elapsedNs": 167783,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "OBSERVATION_NULL"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        }
+      ]
+    },
+    {
+      "caseId": "F20",
+      "outputEqual": true,
+      "results": [
+        {
+          "afterIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "beforeIdentity": "464952b79eb490bb9bf64042e42317a035a570c5be58e7dcd1e46a0508d83c01",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 42484,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "VALUES_ONLY_ALL_DOMAINS",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "OBSERVATION_DIGEST_MISMATCH"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        },
+        {
+          "afterIdentity": "78a3f0d8838ec06d29e90a956b56156ae27d993821a17046b24b70558606db8e",
+          "beforeIdentity": "137f962a70d86eac0df0201212c50ff5e455e21cce3c8fefbf3525169dfcaa2e",
+          "causeRows": null,
+          "decisionMatches": true,
+          "elapsedNs": 48563,
+          "error": null,
+          "identityMatches": false,
+          "identityRelation": "CHANGED",
+          "lossReasons": [
+            "SPURIOUS_CHANGE"
+          ],
+          "matchesBoth": false,
+          "method": "WHOLE_PACKET",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "OBSERVATION_DIGEST_MISMATCH"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        },
+        {
+          "afterIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "beforeIdentity": "0d8d2a58a6bcd6cb64dd5831ccffd5aa17d8531a3cd9ccd02f35eed9573bf588",
+          "causeRows": [],
+          "decisionMatches": true,
+          "elapsedNs": 123307,
+          "error": null,
+          "identityMatches": true,
+          "identityRelation": "UNCHANGED",
+          "lossReasons": [],
+          "matchesBoth": true,
+          "method": "FULL_KEYED_PROVENANCE",
+          "observation": {
+            "failed": [],
+            "missing": [
+              {
+                "key": "negative",
+                "reason": "OBSERVATION_DIGEST_MISMATCH"
+              }
+            ],
+            "observed": 1,
+            "required": 2,
+            "state": "HOLD"
+          },
+          "reviewDecision": "HOLD"
+        }
+      ]
+    }
+  ],
+  "schema": "atlas.beast20.provenance-falsifiers/v1",
+  "seed": 1452020,
+  "selfChecks": {
+    "actualModuleCallBudgetExecuted": true,
+    "allTwentyCasesRetainedForEveryMethod": true,
+    "equalEncodingCallBudgetExecuted": true,
+    "lossesRetained": true,
+    "sourceHashesUnchanged": true,
+    "workloadAndOracleUnchanged": true
+  },
+  "semanticResultsSha256": "aac87a7a2c602b65b16bd5db6c35cd71982b3449f7b75f57f3120ba94ab07793",
+  "status": "COMPLETED",
+  "summary": {
+    "FULL_KEYED_PROVENANCE": {
+      "caseComparisons": 20,
+      "completeFailedCases": [
+        "F17"
+      ],
+      "decisionMatches": 20,
+      "encodingCalls": 40,
+      "encodingErrors": 0,
+      "heldCases": [
+        "F15",
+        "F18",
+        "F19",
+        "F20"
+      ],
+      "identityMatches": 20,
+      "losses": 0,
+      "matchesBoth": 20,
+      "missedChanges": 0,
+      "spuriousChanges": 0
+    },
+    "VALUES_ONLY_ALL_DOMAINS": {
+      "caseComparisons": 20,
+      "completeFailedCases": [
+        "F17"
+      ],
+      "decisionMatches": 17,
+      "encodingCalls": 40,
+      "encodingErrors": 0,
+      "heldCases": [
+        "F15",
+        "F18",
+        "F19",
+        "F20"
+      ],
+      "identityMatches": 17,
+      "losses": 3,
+      "matchesBoth": 17,
+      "missedChanges": 3,
+      "spuriousChanges": 0
+    },
+    "WHOLE_PACKET": {
+      "caseComparisons": 20,
+      "completeFailedCases": [
+        "F17"
+      ],
+      "decisionMatches": 19,
+      "encodingCalls": 40,
+      "encodingErrors": 0,
+      "heldCases": [
+        "F15",
+        "F18",
+        "F19",
+        "F20"
+      ],
+      "identityMatches": 16,
+      "losses": 4,
+      "matchesBoth": 16,
+      "missedChanges": 0,
+      "spuriousChanges": 4
+    }
+  },
+  "workload": [
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "UNCHANGED",
+        "reviewDecision": "PASS"
+      },
+      "explanation": "",
+      "id": "F01",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "identical_snapshot",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "UNCHANGED",
+        "reviewDecision": "PASS"
+      },
+      "explanation": "Map construction order is not an input identity change.",
+      "id": "F02",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "negative",
+            "positive"
+          ],
+          "dependencies": [
+            "y",
+            "b"
+          ],
+          "inputs": [
+            "z",
+            "a"
+          ],
+          "peer_evidence": [
+            "response",
+            "challenge"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "reordered_maps",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "different-label"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "UNCHANGED",
+        "reviewDecision": "PASS"
+      },
+      "explanation": "The explicit neutral annotation must not force invalidation.",
+      "id": "F03",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "irrelevant_parent_label",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "65a9df673433461e58a04faf6d04c82ed9046d17c951c323454534b8594489b6",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "",
+      "id": "F04",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "code_digest_change",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "6a411391f482258d946527d7db7d09ff935646aee9e5a0706cfea359b2141d5c",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "a56c84cd83fa09c530b96acc94ab6c0aa3bde5a92a8adb5fee9bfb3fa82d7ebb",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "",
+      "id": "F05",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "data_digest_change",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "858e15ba7a7b991fc74ba3fa3c7ec85b89a1991bc057531fdeb8d48468de1684",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "",
+      "id": "F06",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "dependency_digest_change",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "88948304153f4545b06e19e0a8aa4052c7a1546cad90f92f9d2947edb36ea56b",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "",
+      "id": "F07",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "peer_evidence_digest_change",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "1ac740c1e96c152ba0fc6fcd3189578b5a3bbafa742e7a44849fed86a61d0460",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "86e130799a55c289ce9270e1717b28f43147de54a252650cbd13fbfc974f08a7",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "",
+      "id": "F08",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "check_receipt_digest_change",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "aa": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "The input digest is unchanged, but the binding name changes.",
+      "id": "F09",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "z",
+            "aa"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "input_key_rename",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "bb": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "",
+      "id": "F10",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "y",
+            "bb"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "dependency_key_rename",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {},
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "The same ordered digest values now occupy different semantic maps.",
+      "id": "F11",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [],
+          "inputs": [
+            "a",
+            "b"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b"
+          ],
+          "inputs": [
+            "a"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "dependency_moves_to_input_domain",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "c": "d78bc66b326a905198973bf12d151242c61abb144b327233925930ec5cc4d16d",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "",
+      "id": "F12",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y",
+            "c"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "dependency_added",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "",
+      "id": "F13",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "dependency_removed",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "Removing a challenge reference must be visible; this does not resolve dissent.",
+      "id": "F14",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "challenge_reference_removed",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "HOLD"
+      },
+      "explanation": "An observation without the required bound reference cannot complete the review.",
+      "id": "F15",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "negative_check_reference_removed",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "8b0e55cfa7c56c10741a9e2f5a9fd7427ed5a171781090f4975fa352666fcb95",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "number": "1228a387aca6be6c272d913adb737d9050ee0eefbd7568234a6104ac7f2b0fa2"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "8b0e55cfa7c56c10741a9e2f5a9fd7427ed5a171781090f4975fa352666fcb95",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "number": "b10faebab83cfeb34bfb9e0fdff88054b5662a4c0b6a01c0fee4e38885dc8a97"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "RECHECK_REQUIRED"
+      },
+      "explanation": "abs(3) equals abs(-3), but input provenance changes and requires recheck.",
+      "id": "F16",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "number"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "number"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "changed_input_with_invariant_output",
+      "semanticWitness": {
+        "afterInput": -3,
+        "afterOutput": 3,
+        "beforeInput": 3,
+        "beforeOutput": 3,
+        "operation": "abs"
+      }
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "cffd711dec1faf039847bcfa1893a0be9b7576374794668a66cf92695c14ba9b",
+            "outcome": "FAIL",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "31afaaedb821be43202648197128d0d7b7dda9b21aca1993e9fe44235f728750",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "CHANGED",
+        "reviewDecision": "FAIL"
+      },
+      "explanation": "Both required observations are present and bound; a failed result remains FAIL.",
+      "id": "F17",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "complete_review_contains_failure",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "UNCHANGED",
+        "reviewDecision": "HOLD"
+      },
+      "explanation": "The referenced check is unchanged, but no observation is available.",
+      "id": "F18",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "negative_observation_absent",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": null,
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "UNCHANGED",
+        "reviewDecision": "HOLD"
+      },
+      "explanation": "Null is a distinct missing-observation case, not a passing check.",
+      "id": "F19",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "negative_observation_explicit_null",
+      "semanticWitness": null
+    },
+    {
+      "after": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "6c06193f55753f883752196ac730836e9a755f517cb0862c79ccf230250fc2af",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "before": {
+        "annotation": {
+          "parentExperiment": "synthetic-control"
+        },
+        "observations": {
+          "negative": {
+            "fixture": "48ec6416eeec06720eb0195e3811a07bdb3665da0eccc9061b0e5dbf4a13af77",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          },
+          "positive": {
+            "fixture": "61cbe8cddcde16d7f1a82e31bb0b1e694fa23a532463e9c24b895104e832b3be",
+            "outcome": "PASS",
+            "schema": "atlas.beast20.synthetic-check/v1"
+          }
+        },
+        "output_sha256": "d50e570dcff6090a520c3778cdcd5f560d398d6faed917c29a8f07ac15a430c0",
+        "provenance": {
+          "checks": {
+            "negative": "910cc1e550efefd3e86ccc1da637e3fe0fecfd218d53d16125913532a76049bf",
+            "positive": "f683e7a1186f3cd6aee33facc1e087aa084098a4356de76b8fd9d9869928427d"
+          },
+          "code_sha256": "4ef61687df9873ce96ab6711234c73c702d436deb8c4d1d4be72f3866c7dc8ef",
+          "dependencies": {
+            "b": "af8e51f013689706b5485dbb6ecdbbc0c374f549638c953b5abe1b092d853cb6",
+            "y": "fa142e2d1cb5f3c106327ab36afd5e5944bd013d9791f8be2203cf04aa4507bb"
+          },
+          "inputs": {
+            "a": "186c10fa8f6586d92fa9b585efb9d4403c5a8bf29b39bcd5bcdf48a1589d2bb9",
+            "z": "3a130e968089b5a6885ea0bf500e5a7a5e07371f904c5e0c31a76deaf0022c60"
+          },
+          "peer_evidence": {
+            "challenge": "5b5d60efd25d1052bc23a1625683d95003d0cd0a1b9c63e2be8ea23f6be2df8e",
+            "response": "d8f9a3c9e69c6b548d0dc93af11582da8fc367cc78a97bd3287b1c2776f36e5a"
+          }
+        }
+      },
+      "expected": {
+        "identityRelation": "UNCHANGED",
+        "reviewDecision": "HOLD"
+      },
+      "explanation": "A passing-looking observation for another digest cannot satisfy the bound check.",
+      "id": "F20",
+      "mapConstructionOrders": {
+        "after": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        },
+        "before": {
+          "checks": [
+            "positive",
+            "negative"
+          ],
+          "dependencies": [
+            "b",
+            "y"
+          ],
+          "inputs": [
+            "a",
+            "z"
+          ],
+          "peer_evidence": [
+            "challenge",
+            "response"
+          ]
+        }
+      },
+      "name": "negative_observation_wrong_digest",
+      "semanticWitness": null
+    }
+  ],
+  "workloadSha256": "2d02a2d137205ebeb2157164068af6ab22fd1420b8438e17bf3c5e8bafcf9fc1"
+}

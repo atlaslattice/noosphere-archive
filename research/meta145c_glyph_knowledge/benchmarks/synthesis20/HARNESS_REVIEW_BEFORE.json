@@ -1,0 +1,27 @@
+{
+  "caseId": "F09",
+  "forgedBaselineLossErasureAccepted": true,
+  "forgedCauseRemovalAccepted": true,
+  "forgedCountAccepted": true,
+  "forgedParentAccepted": true,
+  "genuineAccepted": true,
+  "heldFromCurrentDependencyPolicy": [
+    10,
+    14,
+    18,
+    20
+  ],
+  "originalBaseline": {
+    "decisionMatches": false,
+    "identityMatches": false,
+    "identityRelation": "UNCHANGED",
+    "lossReasons": [
+      "MISSED_CHANGE",
+      "WRONG_REVIEW_DECISION"
+    ],
+    "matchesBoth": false
+  },
+  "runnerSha256": "eff82824509a4d7c54e3e42de5b550f36abe09454b71a4951c7178aa55c4bac5",
+  "schema": "atlas.local.synthesis-harness-review/v1",
+  "scope": "Local validator falsifiers on synthetic contract case. No private room data or actual source mutation."
+}

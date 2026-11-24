@@ -1,0 +1,16 @@
+{
+  "atlas": {
+    "path": "librarian/hosting/native1728-synthesis-evidence.mjs",
+    "sha256": "12a66161f248b4c81419415a83ca748f6c6735d62d9efd197b3bc1b9b7000203"
+  },
+  "newHostOperations": 2,
+  "partialStaging": false,
+  "publicationPerformedByExporter": false,
+  "reportSha256": "1d74a1edb0e9531e2457c265f43dedbab0c0e2e38b62f35bf3494b6cf7f2ee15",
+  "schema": "atlas.native1728.synthesis-host-export/v1",
+  "status": "VERIFIED_SOURCE_EXPORTS",
+  "swarm": {
+    "path": "lib/native1728-synthesis-release.mjs",
+    "sha256": "248cdde529355440b8d281f4111dd96ef47d34ecaf2565771b9d67fd8ecfb3cc"
+  }
+}

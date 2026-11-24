@@ -1,5 +1,7 @@
 # Atlas META145C · Public-safe source package
 
+The Native1728 synthesis increment is documented in [README_SYNTHESIS20.md](README_SYNTHESIS20.md): bounded peer-linked build orders, preserved dissent, executable provenance falsifiers, two native host views, and the second complete repeated simulation. The earlier implementation measurements remain separately documented in [README_EVOLUTION1728.md](README_EVOLUTION1728.md).
+
 The code is derived from one real, source-verified offline owner-private 144-Sphere circuit. This *public package* deliberately contains **NO original Ariadne registry, historical OpenAlex crosswalk, R10 private evidence DB, original fiction sources, private Brain/Palace state, or owner sessions**. Its synthetic tests run with the Python standard library:
 
 ```
