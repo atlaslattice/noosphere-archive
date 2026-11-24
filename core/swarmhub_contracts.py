@@ -286,3 +286,29 @@ class AetherforgeCandidate:
             "source_class": "SIMULATION_METADATA_ONLY", "original_leisure_bodies_imported": False,
             "promote": "EXTERNAL_HUMAN_AND_COMMUNITY_PROCESS_ONLY",
         }
+
+def prepare_excellence_work(reference_bytes: bytes, expected_reference_sha256: str, *,
+                            task_id: str, room_id: str, mode: str = "WORK") -> dict[str, Any]:
+    """Route a source-only engineering task through the existing candidate review.
+
+    CANDIDATE, NOT CANON. This performs no source retrieval or host operation.
+    Engineering EX1728 identifiers are never parsed as knowledge HSN addresses.
+    """
+    from .excellence_reference import prepare_task_reference
+    packet = prepare_task_reference(reference_bytes, expected_reference_sha256,
+                                    task_id=task_id, room_id=room_id, mode=mode)
+    return Orchestrator(Sentinel()).route(packet)
+
+
+def prepare_civilization_kernel_work(reference_bytes: bytes, expected_reference_sha256: str, *,
+                                      house_id: str, room_id: str, mode: str = "WORK") -> dict[str, Any]:
+    """Prepare an optional pinned R01 supporting-kernel candidate through Sentinel.
+
+    Source metadata only. Current host READ/RETURN checks and kernel execution
+    remain with the canonical runtime; this helper posts and promotes nothing.
+    """
+    from .civilization_kernel_reference import prepare_kernel_reference
+    packet = prepare_kernel_reference(reference_bytes, expected_reference_sha256,
+                                      house_id=house_id, room_id=room_id, mode=mode)
+    return Orchestrator(Sentinel()).route(packet)
+

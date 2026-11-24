@@ -6,6 +6,7 @@ ChatGPT memory, Brain/Palace/Play, connected accounts, or executes model prompts
 """
 from __future__ import annotations
 from copy import deepcopy
+from datetime import date
 from hashlib import sha256
 import argparse
 import json
@@ -109,13 +110,33 @@ def _snapshot_plain_json(value: Any) -> Any:
         raise ContinuityHold("NON_JSON_OR_MUTABLE_INPUT_HOLD") from exc
 
 
+def _valid_recorded_date(value: Any) -> bool:
+    """Require an ASCII calendar day, not only a date-shaped source label."""
+    if type(value) is not str or re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", value) is None:
+        return False
+    try:
+        date.fromisoformat(value)
+    except ValueError:
+        return False
+    return True
+
+
+def _disclosure_has_text(value: Any) -> bool:
+    """Require text beyond ASCII whitespace; retain the original string.
+
+    The schema uses the same U+0009–U+000D and U+0020 whitespace policy.
+    This structural check does not attest to a disclosure's truth or adequacy.
+    """
+    return string(value) and re.search(r"[^\u0009-\u000D\u0020]", value) is not None
+
+
 def validate_bundle(raw: Any) -> dict[str, Any]:
     """Fail closed on wrong scope or claims; never return private source bodies."""
     raw = _snapshot_plain_json(raw)
     require(type(raw) is dict and set(raw) == BUNDLE_FIELDS, "BUNDLE_FIELDS_INVALID")
     require(raw["schema_version"] == SCHEMA and raw["status"] == "CANDIDATE_NOT_CANON", "BUNDLE_SCHEMA_OR_STATUS_MISMATCH")
     require(string(raw["bundle_id"]) and re.fullmatch(r"[a-z][a-z0-9_-]{2,80}",raw["bundle_id"]) is not None, "BUNDLE_ID_INVALID")
-    require(isinstance(raw["recorded_at"],str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}",raw["recorded_at"]) is not None, "DATE_INVALID")
+    require(_valid_recorded_date(raw["recorded_at"]), "DATE_INVALID")
     require(string(raw["context_summary"]) and len(raw["context_summary"]) <= 10000, "SUMMARY_INVALID")
     subject=raw["subject"]
     require(type(subject) is dict and set(subject)=={"kind","opaque_subject_id"}, "SUBJECT_FIELDS_INVALID")
@@ -158,7 +179,7 @@ def validate_contract(raw: Any) -> dict[str, Any]:
     require(raw["schema_version"]=="atlas.rehydration-contract/v0" and raw["contract_id"]=="atlas.rehydration-contract/v0-demo" and raw["bundle_schema"]==SCHEMA, "CONTRACT_SCHEMA_MISMATCH")
     require(raw["identity_claim"]=="ARCHIVAL_CONTEXT_ONLY" and raw["source_rights_policy"]=="HOST_CHECK_READ_AND_RETURN" and raw["opt_out"]=="SUPPORTED_NOT_OBSERVED", "CONTRACT_RIGHTS_OR_IDENTITY_HOLD")
     require(raw["human_confirmation_required"] is True and raw["promotions"]=="NONE" and raw["disclosure"]=="NOT_PERSON_OR_CONSCIOUSNESS", "CONTRACT_AUTHORITY_HOLD")
-    require(raw["allowed_reconstruction"]==["ATTRIBUTE_VERBATIM_SOURCE_POINTERS","DRAFT_HUMAN_REVIEW_SUMMARY"] and type(raw["uncertainty_mandatory"]) is list and len(raw["uncertainty_mandatory"])>=1, "CONTRACT_RECONSTRUCTION_HOLD")
+    require(raw["allowed_reconstruction"]==["ATTRIBUTE_VERBATIM_SOURCE_POINTERS","DRAFT_HUMAN_REVIEW_SUMMARY"] and type(raw["uncertainty_mandatory"]) is list and len(raw["uncertainty_mandatory"])>=1 and all(_disclosure_has_text(item) for item in raw["uncertainty_mandatory"]), "CONTRACT_RECONSTRUCTION_HOLD")
     return {"status":"LOCAL_CONTRACT_VALID_NOT_HOSTED","can_rehydrate_real_identity":False,"consent_granted":False}
 
 
