@@ -16,6 +16,15 @@ jobs:
         python-version: ['3.11', '3.13']
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Pinned Atlas engineering source
+        uses: actions/checkout@v4
+        with:
+          repository: atlaslattice/Atlas-Intelligence
+          ref: 389965f3aaa90c99815f8c727836ca342ef7f313
+          path: upstream-atlas-intelligence
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
@@ -30,7 +39,16 @@ jobs:
           python -m unittest discover -s tests -p 'test*.py'
       - name: BEAST20 integration and independent regressions
         working-directory: research/meta145c_glyph_knowledge
+        env:
+          ATLAS_EXCELLENCE_ROOT: ${{ github.workspace }}/upstream-atlas-intelligence
+          ATLAS_EXCELLENCE_PLAN: ${{ github.workspace }}/upstream-atlas-intelligence/programs/excellence1728/outputs/ATLAS_EXCELLENCE_1728_PLAN.json
         run: |
           python -m unittest discover -s tests_beast20 -p 'test*.py'
           python -O -m unittest discover -s tests_beast20 -p 'test*.py'
           python -m src.beast20 demo
+      - name: GF9 and unified 1728 source contracts
+        working-directory: research/meta145c_glyph_knowledge/gf9_rosetta_v2
+        run: python -m unittest discover -s tests -p 'test*.py'
+      - name: Unified 1728 source contracts
+        working-directory: research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1
+        run: python -m unittest discover -s tests -p 'test*.py'

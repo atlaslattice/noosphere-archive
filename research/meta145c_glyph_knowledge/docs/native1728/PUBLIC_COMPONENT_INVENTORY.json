@@ -1,0 +1,873 @@
+{
+  "schema": "atlas.public.component-inventory/v1",
+  "observed_at_utc": "2026-11-24T03:50:45.870883+00:00",
+  "coverage": "BOUNDED_PUBLIC_GITHUB_SOURCE_INSPECTION_NOT_COMPLETE_ACCOUNT_OR_COMPONENT_CENSUS",
+  "public_only": true,
+  "private_room_content_read": false,
+  "external_mutations_performed": false,
+  "repositories_with_source_inspected": 3,
+  "components": [
+    {
+      "component_id": "BEAST20",
+      "repository": "atlaslattice/noosphere-archive",
+      "commit": "34e1b26fd9f17506e2afef66467286118edd5fd6",
+      "source_url": "https://github.com/atlaslattice/noosphere-archive/tree/34e1b26fd9f17506e2afef66467286118edd5fd6",
+      "pr_url": "https://github.com/atlaslattice/noosphere-archive/pull/43",
+      "publication_state": "OPEN_DRAFT",
+      "interfaces": [
+        "Scope",
+        "ArtifactStore",
+        "AsyncExecutor",
+        "TaskSpec",
+        "AtlasBeastRuntime",
+        "CascadeCompiler"
+      ],
+      "integration_recommendation": "Reuse existing integrated spine; add adapters and measured selection without replacing source history.",
+      "notes": [
+        "Current tested BEAST20 baseline; source does not establish hosted deployment."
+      ],
+      "source_files": [
+        {
+          "path": "research/meta145c_glyph_knowledge/src/beast20/__init__.py",
+          "git_blob_sha": "de2cfd7b6c9aba5ae5513c834bfa972892c5ef6a",
+          "sha256": "dda937d97c5a4e39e56c8d210a90ca88360ea173263369a6ed1031dde108bda2",
+          "bytes": 235,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/34e1b26fd9f17506e2afef66467286118edd5fd6/research/meta145c_glyph_knowledge/src/beast20/__init__.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/src/beast20/__main__.py",
+          "git_blob_sha": "fc066e1fd9b7b117104a3090fbc63fabbd073842",
+          "sha256": "c91e6b5b812f03fab2f52c1eb560e84d240b50a0c0e2810325910917a96ffdd1",
+          "bytes": 4633,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/34e1b26fd9f17506e2afef66467286118edd5fd6/research/meta145c_glyph_knowledge/src/beast20/__main__.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/src/beast20/execution.py",
+          "git_blob_sha": "f503903097ca7fb5366522499e3d5c9662158f21",
+          "sha256": "8694cc7e99455844fd6d3869c46cdca4f053a11c08d7ce7050bdb01d57dbf73e",
+          "bytes": 20306,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/34e1b26fd9f17506e2afef66467286118edd5fd6/research/meta145c_glyph_knowledge/src/beast20/execution.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/src/beast20/feeds.py",
+          "git_blob_sha": "69e7fc4ca163f822fd515f38e20c8305ba49c3f1",
+          "sha256": "eebebcbdc0e002e1bb9dba4b90b3767c7c60e4a3424e38f19cc58788102efd6b",
+          "bytes": 25403,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/34e1b26fd9f17506e2afef66467286118edd5fd6/research/meta145c_glyph_knowledge/src/beast20/feeds.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/src/beast20/runtime.py",
+          "git_blob_sha": "e39e4c74166ad44342d37bdf01f10d979a4f680c",
+          "sha256": "b76185943fb5f1e681a8ac67415a5ea0d0fa59d3e4d3ea8d54873c63d4f005f8",
+          "bytes": 18866,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/34e1b26fd9f17506e2afef66467286118edd5fd6/research/meta145c_glyph_knowledge/src/beast20/runtime.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/src/beast20/storage.py",
+          "git_blob_sha": "0fa4979100d848f31650eaf8f2499190b0e4e03a",
+          "sha256": "d93f976b9dcf6a0e8ec7564dd51a292bed356ddc623918dcf13d4d8b40efede7",
+          "bytes": 24518,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/34e1b26fd9f17506e2afef66467286118edd5fd6/research/meta145c_glyph_knowledge/src/beast20/storage.py"
+        }
+      ]
+    },
+    {
+      "component_id": "R10_MEMORY_REPAIR",
+      "repository": "atlaslattice/noosphere-archive",
+      "commit": "cfd3a6a69732a542953889c5f5ad180f196d51c3",
+      "source_url": "https://github.com/atlaslattice/noosphere-archive/tree/cfd3a6a69732a542953889c5f5ad180f196d51c3",
+      "pr_url": "https://github.com/atlaslattice/noosphere-archive/pull/38",
+      "publication_state": "OPEN_DRAFT",
+      "interfaces": [
+        "LocalMemory",
+        "verified_triage_batch",
+        "topic_view(memory_checkpoint=...)"
+      ],
+      "integration_recommendation": "Integrate the additive repair before composing consumers; migrate memory callers to explicit independent checkpoints.",
+      "notes": [
+        "Successor to fba6086. Consumer signature tightens. Appends acquire BEGIN IMMEDIATE; no schema or historical hash change."
+      ],
+      "source_files": [
+        {
+          "path": "research/meta145c_glyph_knowledge/src/knowledge.py",
+          "git_blob_sha": "96a2d143956f2536a8818e96209debf792dfb880",
+          "sha256": "30a8116a4c0378a2d20e1a82cfa34e60fcea665664ab038ab9819c71ef25c323",
+          "bytes": 3812,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/cfd3a6a69732a542953889c5f5ad180f196d51c3/research/meta145c_glyph_knowledge/src/knowledge.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/src/memory.py",
+          "git_blob_sha": "6ff5acf6729a69f7055c9f665c4cd46b57a60e6a",
+          "sha256": "50028b173751fd9264ca93e214fcc62073774e69c1bfd1cf9e0a87fa869ed3a5",
+          "bytes": 8616,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/cfd3a6a69732a542953889c5f5ad180f196d51c3/research/meta145c_glyph_knowledge/src/memory.py"
+        }
+      ]
+    },
+    {
+      "component_id": "R11_GF8_TEST_COMPLETION",
+      "repository": "atlaslattice/noosphere-archive",
+      "commit": "bdc9e937ef5d0afa5b15c3294ec8fe1c1101ae39",
+      "source_url": "https://github.com/atlaslattice/noosphere-archive/tree/bdc9e937ef5d0afa5b15c3294ec8fe1c1101ae39",
+      "pr_url": "https://github.com/atlaslattice/noosphere-archive/pull/41",
+      "publication_state": "OPEN_DRAFT",
+      "interfaces": [
+        "Plate",
+        "build_context",
+        "review_claim"
+      ],
+      "integration_recommendation": "Retain GF8 source already present; bring successor tests/documentation when integrating history.",
+      "notes": [
+        "Production source unchanged from 6ea414d; successor adds actual-dependency regressions."
+      ],
+      "source_files": [
+        {
+          "path": "research/meta145c_glyph_knowledge/src/gf8.py",
+          "git_blob_sha": "565a914b737786bd5199e72103eb7952fea38f4d",
+          "sha256": "e2a2d2f10c6406e990469f39433ee11f5a7bd91568e9fb6a3ce182e1e76c1a17",
+          "bytes": 12102,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/bdc9e937ef5d0afa5b15c3294ec8fe1c1101ae39/research/meta145c_glyph_knowledge/src/gf8.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/src/reasoning_filter.py",
+          "git_blob_sha": "004864ace8d51f1cc809cb8a9dafdcd17bf7718a",
+          "sha256": "c5ed108621c3f0b0c074ea826cfaf0e99985b6f9a49b4180461388fe0e46d0dc",
+          "bytes": 6245,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/bdc9e937ef5d0afa5b15c3294ec8fe1c1101ae39/research/meta145c_glyph_knowledge/src/reasoning_filter.py"
+        }
+      ]
+    },
+    {
+      "component_id": "GF9_ROSETTA_R2",
+      "repository": "atlaslattice/noosphere-archive",
+      "commit": "b98790a8baa0e1f7c7abb89211f319c7000c6653",
+      "source_url": "https://github.com/atlaslattice/noosphere-archive/tree/b98790a8baa0e1f7c7abb89211f319c7000c6653",
+      "pr_url": "https://github.com/atlaslattice/noosphere-archive/pull/42",
+      "publication_state": "OPEN_DRAFT",
+      "interfaces": [
+        "protocol.make_message",
+        "protocol encode/decode",
+        "compiler",
+        "promotion"
+      ],
+      "integration_recommendation": "Mount as a separately versioned protocol/packet adapter; preserve source and CRC semantics.",
+      "notes": [
+        "Finite synthetic engineering/protocol trials; do not report real machine intelligence or physical calibration."
+      ],
+      "source_files": [
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/__init__.py",
+          "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b98790a8baa0e1f7c7abb89211f319c7000c6653/research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/__init__.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/compiler.py",
+          "git_blob_sha": "1a414f7a6f5be96d364492ebf4eefdc55f99dede",
+          "sha256": "61d2b0a83e8d744ce0996dc77a86e6ab36732ea6b929352dff62d4ed1e90bf40",
+          "bytes": 5464,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b98790a8baa0e1f7c7abb89211f319c7000c6653/research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/compiler.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/dashboard.py",
+          "git_blob_sha": "f70965d03e92ac2b1b14e1393b7bb44e048295e5",
+          "sha256": "9d13800414e86f722c88c7df1610a19c7b293b7627c045f9a445067d0271217f",
+          "bytes": 11921,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b98790a8baa0e1f7c7abb89211f319c7000c6653/research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/dashboard.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/evolution.py",
+          "git_blob_sha": "d0b6241f9122f8818a988403bf380694577409fa",
+          "sha256": "08243ed484a77e3f37a099b9b46edae0de0dc922c75d4f5a44ee7d0cecb472e8",
+          "bytes": 9405,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b98790a8baa0e1f7c7abb89211f319c7000c6653/research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/evolution.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/gf9_reference.py",
+          "git_blob_sha": "0e5ba7ee01231df8112da11c75975d50386b1131",
+          "sha256": "6f7e71e44f419986761ee27ef8c3ae0b9ee9d389bc0ffe8e82ba59986d7a6405",
+          "bytes": 10390,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b98790a8baa0e1f7c7abb89211f319c7000c6653/research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/gf9_reference.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/linguistics.py",
+          "git_blob_sha": "9ee5d9246bebccbbd82c74d176671dbe99e2b736",
+          "sha256": "03485710bdd6164a56677d0dd75cf688335f1b0ff1aad98e915df07311f4caaf",
+          "bytes": 5996,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b98790a8baa0e1f7c7abb89211f319c7000c6653/research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/linguistics.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/ontology.py",
+          "git_blob_sha": "1e459539ffdba1239896e2c088bbb996c947dc22",
+          "sha256": "f52c1c6eacc2654f8c86f8a4e5ae5828a8dcacdc44a203bc7b15312b10588613",
+          "bytes": 1885,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b98790a8baa0e1f7c7abb89211f319c7000c6653/research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/ontology.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/promotion.py",
+          "git_blob_sha": "822c7b9c5931d2c336182f60fa51bb35e095e2ad",
+          "sha256": "1cd9104d1f1e8591c732329429e3fb096c1b91784d20e5afb59c1effe5a315ff",
+          "bytes": 3657,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b98790a8baa0e1f7c7abb89211f319c7000c6653/research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/promotion.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/protocol.py",
+          "git_blob_sha": "1612e82bda6ecc989d5025665163fe4f4e2b4b08",
+          "sha256": "3c685760936ff4a1cf18b95687533b9501b71cb4796d3769cc38404f81440871",
+          "bytes": 7657,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b98790a8baa0e1f7c7abb89211f319c7000c6653/research/meta145c_glyph_knowledge/gf9_rosetta_v2/src/protocol.py"
+        }
+      ]
+    },
+    {
+      "component_id": "UNIFIED_ATLAS1728_PYTHON",
+      "repository": "atlaslattice/noosphere-archive",
+      "commit": "c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c",
+      "source_url": "https://github.com/atlaslattice/noosphere-archive/tree/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c",
+      "pr_url": "https://github.com/atlaslattice/noosphere-archive/pull/44",
+      "publication_state": "OPEN_DRAFT",
+      "interfaces": [
+        "Corpus.original",
+        "Corpus.synthetic",
+        "compile_build",
+        "run_modules",
+        "verify_build",
+        "SourceIndex",
+        "CompiledGF9Packets"
+      ],
+      "integration_recommendation": "Import intact module namespace as optional exact-source bridge; execute public synthetic and original-source paths separately.",
+      "notes": [
+        "12 House modules, 144 Sphere paths, 1728 node profiles; original source and EX engineering namespaces remain distinct."
+      ],
+      "source_files": [
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/__init__.py",
+          "git_blob_sha": "b75fbc045509a1cbb43fe85c68c3705f39244283",
+          "sha256": "550d49eeceb8db67a4e9f611ac27bb78404efd947cb44d226783afac0a00cb28",
+          "bytes": 213,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/__init__.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/engine.py",
+          "git_blob_sha": "3da485a638cceaf097b8f0c58ef6865641857acc",
+          "sha256": "0a1ddf737c5d8d78449af6ac4c21043198727fe4ae0c161e40c3cffb297d5862",
+          "bytes": 12891,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/engine.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/gf9_cache.py",
+          "git_blob_sha": "91c7bcbab9961d6ac5c279ceac27a8e8158c0e3a",
+          "sha256": "2e3ccf0708cfa98fc69d0d0113c1bec989ae98268d2015a42f5ef777f80b7953",
+          "bytes": 3867,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/gf9_cache.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/index.py",
+          "git_blob_sha": "4ff361343af5bad2278e23695511949c50ced0d4",
+          "sha256": "a091cbd26c3270dcea941e2e5c1eb18ed3f132eb31b33f4d250f3991b522dcca",
+          "bytes": 2350,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/index.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/__init__.py",
+          "git_blob_sha": "13085ed49aace26e3f0686c1f6721ec6ebaadb1e",
+          "sha256": "92b4f9cf86371436111615b62981c012dc4596d1578b49dfe5a7cfa5acaff3da",
+          "bytes": 732,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/__init__.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m01_energy.py",
+          "git_blob_sha": "bd698d2734d0357d4c1f6d131dd77e2ae10c0567",
+          "sha256": "88366197dfd6e98450b63c879fa5e2391e1f5bea13b70e79531f62b66b52b79f",
+          "bytes": 485,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m01_energy.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m02_resources.py",
+          "git_blob_sha": "04fe467f4ee3e5a9b36d2ae10c1e45f92f26bb79",
+          "sha256": "eca7813bb70ffa6c20d44882267d99029bb8e5516e556a6b84849567cc165fca",
+          "bytes": 607,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m02_resources.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m03_ecology.py",
+          "git_blob_sha": "30fbe70367f172cc537782e2c39405d3528a8170",
+          "sha256": "253cac4111e3c24034c99ad1eb0b1b1f66e0092fae2b2d3c7def25e0285ab3bc",
+          "bytes": 529,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m03_ecology.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m04_health.py",
+          "git_blob_sha": "11a16cd9bd4c73f8dfaffa22aa897d0645a4dce4",
+          "sha256": "e0694923f30a9906802455d6ee29cc2034f5f5672318bd53d45ea159432ca53c",
+          "bytes": 444,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m04_health.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m05_knowledge.py",
+          "git_blob_sha": "90a173c7fc4c3520f3c88babe8be17f0bd0b9e9c",
+          "sha256": "e8d1adbedb521bc3ba8dfedbb40a70ee00d0cc6aaa69d464358480fde797aa5f",
+          "bytes": 609,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m05_knowledge.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m06_security.py",
+          "git_blob_sha": "cd8370e851b5db5a271d93ed01434f16196a13ee",
+          "sha256": "516c671810444527309d32186a8f460b9b79148b5f2a2d65b0d9693b58e25a62",
+          "bytes": 506,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m06_security.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m07_governance.py",
+          "git_blob_sha": "52044b728f80767f52252904b4fbb265b27a1fe3",
+          "sha256": "6594bc436f0973d09e49c23efef5a8a0cbfd61ab4e4831dc370776617e5db9f3",
+          "bytes": 465,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m07_governance.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m08_creativity.py",
+          "git_blob_sha": "c9bb305320c657adf50ddba67228f50dab10f437",
+          "sha256": "c3f5a0ef343a78e2252bab10730ca30f0bdc61e85660f03bc55a3ae0277b450b",
+          "bytes": 593,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m08_creativity.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m09_epistemics.py",
+          "git_blob_sha": "15e809c56627a1dc91c72b3989a4ecd3d4b08976",
+          "sha256": "99b0c494a85d10a610bbfde7d220906c62654e903e204fec83793e97510bfe90",
+          "bytes": 553,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m09_epistemics.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m10_community.py",
+          "git_blob_sha": "274572dd041dfc21e376caa320c28ed58a8ddf4b",
+          "sha256": "e6fed3772282f71e76fa899de4803e5a0fd0827e34576b6eb76e58e869c13e51",
+          "bytes": 370,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m10_community.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m11_rights.py",
+          "git_blob_sha": "5550d7f1500cec8f8c267bbd60edd7efdf3b343d",
+          "sha256": "8231ab8520eac4cbfbe8ee36dabaf3a1fcc8682e5a0dfe36247522a65b06d0a1",
+          "bytes": 446,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m11_rights.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m12_space.py",
+          "git_blob_sha": "dfe8e6b72a92a61c8d2c072138818b4e1060f9c2",
+          "sha256": "363c8d4b5dd11c145144f644c1f1058f8569b8c5ccd6caa01daeee12c9cb3973",
+          "bytes": 724,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/modules/m12_space.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/shared.py",
+          "git_blob_sha": "91dd86501acb702515273f306d988126da4d1635",
+          "sha256": "a7b1104b83dadc7ca00bc803eceedbc91d752295cf74a4096e6688ccb8c1fde0",
+          "bytes": 3376,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/shared.py"
+        },
+        {
+          "path": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/source.py",
+          "git_blob_sha": "345c28de7ba35c98168b1d3278b63345a4b521ec",
+          "sha256": "39a3f0fb3fd371a46ef09c299eadd313c8795a0b3871f0b068c0900be882c893",
+          "bytes": 5800,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c/research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728/source.py"
+        }
+      ]
+    },
+    {
+      "component_id": "EXCELLENCE1728_CORE",
+      "repository": "atlaslattice/Atlas-Intelligence",
+      "commit": "389965f3aaa90c99815f8c727836ca342ef7f313",
+      "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/tree/389965f3aaa90c99815f8c727836ca342ef7f313",
+      "pr_url": "https://github.com/atlaslattice/Atlas-Intelligence/pull/43",
+      "publication_state": "MERGED_MAIN",
+      "interfaces": [
+        "compile_plan",
+        "validate_plan",
+        "read_task",
+        "query_tasks",
+        "WorkBudget",
+        "ready_tasks",
+        "AcceptanceRunner",
+        "EvidenceLedger",
+        "FunctionalMemory",
+        "review_perspective",
+        "aggregate_meta145"
+      ],
+      "integration_recommendation": "Use as authoritative engineering-plan/evidence API rather than inventing a second task schema.",
+      "notes": [
+        "1728 planned tasks; zero completed production tasks initially. Task text never supplies executable code; host registers acceptance policy. EX.Wxx.Cxx.Pxx is not HSN."
+      ],
+      "source_files": [
+        {
+          "path": "programs/excellence1728/runtime/excellence1728/__init__.py",
+          "git_blob_sha": "869b448e0a12a4106b7dc1d1cfd3467e440b955e",
+          "sha256": "96ee3fc4c84f0cd06c04384cab544f1ea3784f786820946529a42815b79d6dec",
+          "bytes": 716,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/389965f3aaa90c99815f8c727836ca342ef7f313/programs/excellence1728/runtime/excellence1728/__init__.py"
+        },
+        {
+          "path": "programs/excellence1728/runtime/excellence1728/__main__.py",
+          "git_blob_sha": "de684354e954bb09bc42c1f9b8bac53c14adec02",
+          "sha256": "e2915a16a3c6f055bfd424b0478cd986be213985d0e32d68bce5c3a8c4cd1cbf",
+          "bytes": 3891,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/389965f3aaa90c99815f8c727836ca342ef7f313/programs/excellence1728/runtime/excellence1728/__main__.py"
+        },
+        {
+          "path": "programs/excellence1728/runtime/excellence1728/ledger.py",
+          "git_blob_sha": "61c75bc293517e070c1edb9bc6aef65fbd8dbd1e",
+          "sha256": "8c30e6e32a1cc71b35835c283aee9577eeec3766dc7c18ce4e6443284065eae3",
+          "bytes": 11002,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/389965f3aaa90c99815f8c727836ca342ef7f313/programs/excellence1728/runtime/excellence1728/ledger.py"
+        },
+        {
+          "path": "programs/excellence1728/runtime/excellence1728/memory.py",
+          "git_blob_sha": "e73e28640e7a6004d12fbbc297933b3dedf384ce",
+          "sha256": "0b01d96456cb41aeb08edd01ea3fcf77b53072d7937ef83843ff6b3b417b846f",
+          "bytes": 4916,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/389965f3aaa90c99815f8c727836ca342ef7f313/programs/excellence1728/runtime/excellence1728/memory.py"
+        },
+        {
+          "path": "programs/excellence1728/runtime/excellence1728/meta145.py",
+          "git_blob_sha": "091ec7b01fab2c0ba6163f814c987021a76e5986",
+          "sha256": "7d56dda1237929c46cedd1332e645717b5f1348ca61d68da67b1ee4cb4ea2a59",
+          "bytes": 9144,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/389965f3aaa90c99815f8c727836ca342ef7f313/programs/excellence1728/runtime/excellence1728/meta145.py"
+        },
+        {
+          "path": "programs/excellence1728/runtime/excellence1728/model.py",
+          "git_blob_sha": "00b0b4697145846f93005806e38ab04b2001964c",
+          "sha256": "d450d344ca1b773f855fd3f8ce97df85e8575552c7dc99639ecf6ee9aa5b8afb",
+          "bytes": 15895,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/389965f3aaa90c99815f8c727836ca342ef7f313/programs/excellence1728/runtime/excellence1728/model.py"
+        },
+        {
+          "path": "programs/excellence1728/runtime/excellence1728/runner.py",
+          "git_blob_sha": "3c66d246ce1a705ac556d1542b75e08163159638",
+          "sha256": "7927a6ffe53526ba748eed3c6269436523fcb62178004c2bdd709f7f67cd821a",
+          "bytes": 20751,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/389965f3aaa90c99815f8c727836ca342ef7f313/programs/excellence1728/runtime/excellence1728/runner.py"
+        }
+      ]
+    },
+    {
+      "component_id": "EXCELLENCE1728_JS_PORT",
+      "repository": "atlaslattice/Atlas-Intelligence",
+      "commit": "389965f3aaa90c99815f8c727836ca342ef7f313",
+      "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/tree/389965f3aaa90c99815f8c727836ca342ef7f313",
+      "pr_url": "https://github.com/atlaslattice/Atlas-Intelligence/pull/43",
+      "publication_state": "MERGED_MAIN",
+      "interfaces": [
+        "createExcellenceProgram",
+        "isVerifiedProgram",
+        "createExcellenceWorkBridge",
+        "descriptor",
+        "query",
+        "task",
+        "ready"
+      ],
+      "integration_recommendation": "Use fixed schema and verified-program membership in current Atlas/SwarmChat Work host; metadata only until actual execution receipt.",
+      "notes": [
+        "Current source references independently pin canonical plan SHA256 47084b895a6317db16275a92c3878a340d31af15fb9ab479db7101953c18e49c."
+      ],
+      "source_files": [
+        {
+          "path": "programs/excellence1728/integrations/excellence-host.mjs",
+          "git_blob_sha": "9236e2bdd2c900bb96f69e0ba30e6d9d655fdab5",
+          "sha256": "c06c00358b3ca643201d89a75d63fd9d8becc99904c577d15140f675c944f855",
+          "bytes": 3722,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/389965f3aaa90c99815f8c727836ca342ef7f313/programs/excellence1728/integrations/excellence-host.mjs"
+        },
+        {
+          "path": "programs/excellence1728/integrations/excellence-program.mjs",
+          "git_blob_sha": "9c320e88605749c1f37b7d96d11b3d5e83c6cf13",
+          "sha256": "6619b3ed740c074b4061265a0c5e0cd20d6b4d6dff15479fcc5bf712785c16c0",
+          "bytes": 14645,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/389965f3aaa90c99815f8c727836ca342ef7f313/programs/excellence1728/integrations/excellence-program.mjs"
+        }
+      ]
+    },
+    {
+      "component_id": "NOOSPHERE_EXCELLENCE_PORT",
+      "repository": "atlaslattice/noosphere-archive",
+      "commit": "b7ceb3eadecece65029b4c5fbf85e180e6820358",
+      "source_url": "https://github.com/atlaslattice/noosphere-archive/tree/b7ceb3eadecece65029b4c5fbf85e180e6820358",
+      "pr_url": "https://github.com/atlaslattice/noosphere-archive/pull/45",
+      "publication_state": "MERGED_MAIN",
+      "interfaces": [
+        "prepare_excellence_work",
+        "prepare_task_reference",
+        "Orchestrator",
+        "Sentinel"
+      ],
+      "integration_recommendation": "Merge current main to reuse the already-connected source metadata path.",
+      "notes": [
+        "No room posting or execution implied; retains source digest and protects modes."
+      ],
+      "source_files": [
+        {
+          "path": "core/excellence_reference.py",
+          "git_blob_sha": "86d9944e9ea5c002a6d1b37e07a8d346a19df05c",
+          "sha256": "4c7c447ef6316c34791c6c328eca2d6121f0f4fd3e864ec1d7e8409322c980e7",
+          "bytes": 7430,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b7ceb3eadecece65029b4c5fbf85e180e6820358/core/excellence_reference.py"
+        },
+        {
+          "path": "core/swarmhub_contracts.py",
+          "git_blob_sha": "39dca33d6292bceeaa5f6d9fec9981e18862c4a7",
+          "sha256": "cb6f63f5e29d9bd8bc56a9989b66836923c1214dd1e92b9ffb5a0d84982bbd37",
+          "bytes": 15388,
+          "source_url": "https://github.com/atlaslattice/noosphere-archive/blob/b7ceb3eadecece65029b4c5fbf85e180e6820358/core/swarmhub_contracts.py"
+        }
+      ]
+    },
+    {
+      "component_id": "PROVIDERS_GOAL_PORT",
+      "repository": "atlaslattice/atlas-lattice-providers",
+      "commit": "83a45e886f40933979e5a9f424785afce4b9c1e8",
+      "source_url": "https://github.com/atlaslattice/atlas-lattice-providers/tree/83a45e886f40933979e5a9f424785afce4b9c1e8",
+      "pr_url": null,
+      "publication_state": "MERGED_MAIN",
+      "interfaces": [
+        "HierarchicalGoalDecompositionEngine.decompose(excellence_reference_bytes=...)",
+        "prepare_task_reference"
+      ],
+      "integration_recommendation": "Call the explicit verified-reference path; keep legacy zero-based parser out of EX/HSN interpretation.",
+      "notes": [
+        "Default goal decomposition still returns placeholder subgoals when no reference is supplied."
+      ],
+      "source_files": [
+        {
+          "path": "config/excellence1728/source_reference.json",
+          "git_blob_sha": "a27a227f4fef5c91aa3ace34d6becaacc6ec367c",
+          "sha256": "e8471ea75fa6fc9abfc48b849ad60399d5378ff2d181891e9e811141e1f6066c",
+          "bytes": 5047,
+          "source_url": "https://github.com/atlaslattice/atlas-lattice-providers/blob/83a45e886f40933979e5a9f424785afce4b9c1e8/config/excellence1728/source_reference.json"
+        },
+        {
+          "path": "core/excellence_reference.py",
+          "git_blob_sha": "86d9944e9ea5c002a6d1b37e07a8d346a19df05c",
+          "sha256": "4c7c447ef6316c34791c6c328eca2d6121f0f4fd3e864ec1d7e8409322c980e7",
+          "bytes": 7430,
+          "source_url": "https://github.com/atlaslattice/atlas-lattice-providers/blob/83a45e886f40933979e5a9f424785afce4b9c1e8/core/excellence_reference.py"
+        },
+        {
+          "path": "core/hierarchical_goal_decomposer.py",
+          "git_blob_sha": "5e8007e8c744a9ddf48bf73d361a37bae5e5e76d",
+          "sha256": "42df2e451abdc41c35ef7a9b6561671d83f3c067a0475cf3cda6f9fa08bcbd25",
+          "bytes": 1461,
+          "source_url": "https://github.com/atlaslattice/atlas-lattice-providers/blob/83a45e886f40933979e5a9f424785afce4b9c1e8/core/hierarchical_goal_decomposer.py"
+        }
+      ]
+    },
+    {
+      "component_id": "PROVIDERS_OPENAI_CANDIDATE",
+      "repository": "atlaslattice/atlas-lattice-providers",
+      "commit": "83a45e886f40933979e5a9f424785afce4b9c1e8",
+      "source_url": "https://github.com/atlaslattice/atlas-lattice-providers/tree/83a45e886f40933979e5a9f424785afce4b9c1e8",
+      "pr_url": null,
+      "publication_state": "MERGED_PLACEHOLDER",
+      "interfaces": [
+        "OpenAIAgentOrchestratorAdapter.orchestrate_agent_workflow",
+        "OpenAIAgentOrchestratorAdapter.run"
+      ],
+      "integration_recommendation": "Rewrite implementation behind a truthful native tool contract; do not count existing stub as Agents SDK integration.",
+      "notes": [
+        "Inspected code produces a string-list simulated workflow; simulate flag is unused; zero SDK/API calls. No actual agent orchestration, persistent session or tool dispatch."
+      ],
+      "source_files": [
+        {
+          "path": "providers/openai/openai_agent_orchestrator_adapter.py",
+          "git_blob_sha": "86ebe396eea302a34ff3e21936db181bcbc1ffe3",
+          "sha256": "8c463064cfc4aaf4f7964ad50748779139fb41b40651d3b7d14b1ba5afe58a0c",
+          "bytes": 1944,
+          "source_url": "https://github.com/atlaslattice/atlas-lattice-providers/blob/83a45e886f40933979e5a9f424785afce4b9c1e8/providers/openai/openai_agent_orchestrator_adapter.py"
+        }
+      ]
+    },
+    {
+      "component_id": "ATLAS_ONE_CIVILIZATION_JS",
+      "repository": "atlaslattice/Atlas-Intelligence",
+      "commit": "fc74dd5a6c744bed4a7b454762936f93ca45bb8f",
+      "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/tree/fc74dd5a6c744bed4a7b454762936f93ca45bb8f",
+      "pr_url": "https://github.com/atlaslattice/Atlas-Intelligence/pull/42",
+      "publication_state": "OPEN_DRAFT",
+      "interfaces": [
+        "CivilizationUnifiedBuild",
+        "evaluateModuleFunction",
+        "sampleModuleInput",
+        "CivilizationWorkHostBridge.inspect",
+        "Meta145GlyphCircuit"
+      ],
+      "integration_recommendation": "Mount exact source and required prior artifact manifests through current Atlas ONE host interface.",
+      "notes": [
+        "Source snapshot isolation repair included. Full constructor requires original Ariadne bytes, META145 manifest and prior R14 artifact bytes. Host bridge produces pointers and does not post."
+      ],
+      "source_files": [
+        {
+          "path": "packages/atlas-one-v2/src/civilization-circuit.mjs",
+          "git_blob_sha": "97bf7c3d85ad8097f9341d06be9175d1c8be857f",
+          "sha256": "123c7866da657960b641e878a5cbea788315e75990ee982d7bbafb10f60369bf",
+          "bytes": 13537,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/fc74dd5a6c744bed4a7b454762936f93ca45bb8f/packages/atlas-one-v2/src/civilization-circuit.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/civilization-host-bridge.mjs",
+          "git_blob_sha": "16d27077060507e28f5a94f10827bd8f936174e9",
+          "sha256": "3a28ef62b4da664488e4e73f0785a8d193f807d20b515dde79a3666e3e03ea2d",
+          "bytes": 2478,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/fc74dd5a6c744bed4a7b454762936f93ca45bb8f/packages/atlas-one-v2/src/civilization-host-bridge.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/civilization-unified.mjs",
+          "git_blob_sha": "36b9afa15f5ad0298528c62c70da523924eebe92",
+          "sha256": "42f1b38eb03a3a1864f420dacff47dcd3f8dfc814dbf44777f8ce2e9f525dec6",
+          "bytes": 17678,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/fc74dd5a6c744bed4a7b454762936f93ca45bb8f/packages/atlas-one-v2/src/civilization-unified.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/index.mjs",
+          "git_blob_sha": "7afd7d8a6eefaa66ee7c7f463891ae84bff3ceab",
+          "sha256": "b2fe3620faaa2be8f0386cb0e4c5211502cda8b984fec37413de1fec2634ac3a",
+          "bytes": 11066,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/fc74dd5a6c744bed4a7b454762936f93ca45bb8f/packages/atlas-one-v2/src/index.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/meta145-glyph.mjs",
+          "git_blob_sha": "44d59952907a46ce781b38d1db557d00d44465c3",
+          "sha256": "e5083418983d65bb3e91455184d0b0c05779d39ae04886a57e683e4763aa2086",
+          "bytes": 12917,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/fc74dd5a6c744bed4a7b454762936f93ca45bb8f/packages/atlas-one-v2/src/meta145-glyph.mjs"
+        }
+      ]
+    },
+    {
+      "component_id": "TELESCOPE12",
+      "repository": "atlaslattice/Atlas-Intelligence",
+      "commit": "6afb3c250b4e632c09721727b30711cbaeebff7d",
+      "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/tree/6afb3c250b4e632c09721727b30711cbaeebff7d",
+      "pr_url": "https://github.com/atlaslattice/Atlas-Intelligence/pull/33",
+      "publication_state": "OPEN_DRAFT",
+      "interfaces": [
+        "runTelescope(raw,digest,{steps,fromHead})",
+        "verifyTelescope(raw,digest,report)",
+        "runTelescopeRounds(raw,digest,{rounds,fromHead,maxComparisons})"
+      ],
+      "integration_recommendation": "Adapt stage receipts as deterministic pipeline results; avoid counting repeated source comparisons as independent agent turns.",
+      "notes": [
+        "Explicitly one bounded pass at a time. No built-in broker, hosted callbacks or automatic canon."
+      ],
+      "source_files": [
+        {
+          "path": "packages/atlas-one-v2/src/r07-workburst-bridge.mjs",
+          "git_blob_sha": "e2b0f2b7203704c7c856a97668dc63acaaaed2d7",
+          "sha256": "92c252ccb003764ea5cf4298c83160ae6540cc265884d1abf0e4484514beab45",
+          "bytes": 13918,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/r07-workburst-bridge.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/core.mjs",
+          "git_blob_sha": "788a3ce11d2469a7fa6ff34136afafa811cf9756",
+          "sha256": "37600527e57b617d2b936deac8b03ff39ad7796ac21b1a3dc87682a8347ffc0f",
+          "bytes": 9230,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/core.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass01-source.mjs",
+          "git_blob_sha": "061bde59d288271f02ef68e7bbea39cf01cba4ab",
+          "sha256": "0d7adcd66d03e2d53db44b54ce82b12935192aaf5037a5ff7bbb3f89f667515a",
+          "bytes": 385,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass01-source.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass02-roles.mjs",
+          "git_blob_sha": "9b8ebab5d94d0c8026117bce2cdaad51a38ab82c",
+          "sha256": "8d21aef1b2a85c1a505c7a8e64b23b9da6f5978042e646d5acb8c16e958d0753",
+          "bytes": 837,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass02-roles.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass03-identity.mjs",
+          "git_blob_sha": "a863a794fe774b86c422768cfdaf5f40ca38ae04",
+          "sha256": "1dc26dc44d278303561ad696908d949b12fd6e13764ac2c03bdbb24d9bc86407",
+          "bytes": 773,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass03-identity.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass04-fourlanes.mjs",
+          "git_blob_sha": "67b9bbbe2532fe5d6d0a02453c77d937f886bd0f",
+          "sha256": "8c43e94bd6d250a1c24d8cacbc561fba56948450ce874a329fd84c5c7051115a",
+          "bytes": 816,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass04-fourlanes.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass05-iron.mjs",
+          "git_blob_sha": "eb941bbdbe679a229cdb631530ba4a091003ea62",
+          "sha256": "5e6a40b69dd6ec91471f63baa14b0b2da54f672ee7dc04a06366fbafab1d6291",
+          "bytes": 2816,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass05-iron.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass06-graph.mjs",
+          "git_blob_sha": "1f5ca04f4fb0584dcac2608cd51f43fb85b4e503",
+          "sha256": "b08a4256c19400dbe5c6ef0160c4bca8fa76dc85303ca3af16afa0512156e4b0",
+          "bytes": 1056,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass06-graph.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass07-protection.mjs",
+          "git_blob_sha": "3fff4817f2e24a60d3d3af40c44a7df2a9d2b665",
+          "sha256": "5560d2e45291a60c90279b0b4de64a4e1e0c4589e81320805a71c9247cc1bc77",
+          "bytes": 911,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass07-protection.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass08-workburst.mjs",
+          "git_blob_sha": "a1bd14d12ca2c4cc13007379634dd8661190ff4b",
+          "sha256": "00e6e9e306bf66d83c98ef841847eed0764209040e24edf4aec3bfb95f4ed13d",
+          "bytes": 1325,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass08-workburst.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass09-adversary.mjs",
+          "git_blob_sha": "89a780945cf83e9565e85bc5c4e1ad190d40da7e",
+          "sha256": "cbc96064a14df8bdd5a8148d7428b625da5c801406b956d60823182ce02b5b4c",
+          "bytes": 1993,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass09-adversary.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass10-swarm.mjs",
+          "git_blob_sha": "df83f0e7fe611d065e595891e0b35bde36ace243",
+          "sha256": "1221724d69cd30e3587d076fbeeca9b7b3900400f6a8cbbedb669cc4d404e0bf",
+          "bytes": 3416,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass10-swarm.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass11-replay.mjs",
+          "git_blob_sha": "a8233e2ca14f9785f1d63f255d406638948c871b",
+          "sha256": "6a75c70a70fc6c3819a37616d20de9f46edd8cf08fcbe0c4a3e6fe3f4e14e86e",
+          "bytes": 1153,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass11-replay.mjs"
+        },
+        {
+          "path": "packages/atlas-one-v2/src/telescope/pass12-synthesis.mjs",
+          "git_blob_sha": "2b6ac80b053c66eb7118e1604d0cfcfae5fd48bf",
+          "sha256": "f9fa39c1a09ced835c699d2137050186b60ad137c288d8fd4f4bea38def4cddf",
+          "bytes": 847,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/6afb3c250b4e632c09721727b30711cbaeebff7d/packages/atlas-one-v2/src/telescope/pass12-synthesis.mjs"
+        }
+      ]
+    },
+    {
+      "component_id": "ARIADNE_WIKIMEDIA_V10",
+      "repository": "atlaslattice/Atlas-Intelligence",
+      "commit": "632bc5b42b079738a4a2559d7e66493129967026",
+      "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/tree/632bc5b42b079738a4a2559d7e66493129967026",
+      "pr_url": "https://github.com/atlaslattice/Atlas-Intelligence/pull/35",
+      "publication_state": "OPEN_DRAFT",
+      "interfaces": [
+        "openalex_topic_anchor",
+        "parse_page_response",
+        "parse_entity_response",
+        "prepare_hsn_candidate",
+        "initialize_evidence_db",
+        "store_unreviewed_candidate"
+      ],
+      "integration_recommendation": "Use inert source candidates and declared licensing metadata with existing public-source ingestion; keep historical OpenAlex candidates unreviewed.",
+      "notes": [
+        "Wikipedia text and Wikidata structured data have distinct licenses; source packets are candidates, not semantic equivalence or canon."
+      ],
+      "source_files": [
+        {
+          "path": "packages/atlas-one-v2/research/v10_wikimedia/src/civilization_12pass.py",
+          "git_blob_sha": "281a9a96f1aff764075732239845d8b13d1e891f",
+          "sha256": "4b8fa066f8dea027b3b4df973c89c6c80cef1e385d337e85eccbcac04b940df1",
+          "bytes": 6540,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/632bc5b42b079738a4a2559d7e66493129967026/packages/atlas-one-v2/research/v10_wikimedia/src/civilization_12pass.py"
+        },
+        {
+          "path": "packages/atlas-one-v2/research/v10_wikimedia/src/wikimedia_bridge.py",
+          "git_blob_sha": "bb3c27061949a6fc25a50bf60143b87ea482da86",
+          "sha256": "0d96991b3dab5208064028f87faa58295967947aec64d277a7529e1f2af1000e",
+          "bytes": 20885,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/632bc5b42b079738a4a2559d7e66493129967026/packages/atlas-one-v2/research/v10_wikimedia/src/wikimedia_bridge.py"
+        },
+        {
+          "path": "packages/atlas-one-v2/research/v10_wikimedia/src/wikimedia_client.py",
+          "git_blob_sha": "4e2737f811e60ec3304fa8ece46edd96e23a9f47",
+          "sha256": "a5334ad4ed6e43b79c4307f1b872383ef89afe0752556c3234e701a9eb742255",
+          "bytes": 8975,
+          "source_url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/632bc5b42b079738a4a2559d7e66493129967026/packages/atlas-one-v2/research/v10_wikimedia/src/wikimedia_client.py"
+        }
+      ]
+    }
+  ],
+  "source_namespace_constraints": [
+    "H01.S01.N01 Ariadne v0.7 original registry identity; 1008 domain plus 720 epistemic nodes",
+    "EX.W01.C01.P01 engineering workstream/capability/phase; ordinal overlap does not grant SAME_AS",
+    "GF7/GF8/GF9 physical, visualization and packet namespaces remain independent",
+    "H00.S00.N00 founder coordinate and E145 meta operator are symbolic/project identifiers, not authentication credentials",
+    "144 Sphere synthesis receipts do not establish 144 independently authenticated resident turns"
+  ],
+  "not_found_in_bounded_public_repository_search": [
+    "GrokSeek standalone public repository",
+    "Ariadne standalone public repository",
+    "SwarmChat standalone public source repository"
+  ],
+  "search_limitations": [
+    "Search indexing is incomplete and does not cover owner-private Sites or Library projects",
+    "Only selected current code-bearing branches were inspected; not every public archive or historical PR",
+    "No source completeness claim for every SwarmChat-produced component",
+    "All exposed benchmark gains remain workload/revision-specific"
+  ],
+  "integration_order": [
+    "Update current Noosphere main and checkpoint-aware R10 consumer",
+    "Preserve BEAST20 executor/storage/feeds spine",
+    "Use merged EX1728 plan/evidence engine and exact canonical plan",
+    "Mount source-verified GF9 and unified source modules without namespace conflation",
+    "Bridge selected JS native host modules through immutable contracts",
+    "Replace simulated provider adapters only when real implementation and permissions are available"
+  ],
+  "verification": [
+    {
+      "suite": "providers explicit engineering source port",
+      "tests": 10,
+      "exit_code": 0,
+      "kind": "executed_by_inventory_agent"
+    },
+    {
+      "suite": "EX1728 Python engine",
+      "tests": 37,
+      "exit_code": 0,
+      "elapsed_seconds": 59.984,
+      "kind": "executed_by_inventory_agent"
+    },
+    {
+      "suite": "EX1728 JS ports before required compile step",
+      "tests": 19,
+      "passed": 18,
+      "failed": 1,
+      "exit_code": 1,
+      "failure": "ENOENT generated ATLAS_EXCELLENCE_1728_PLAN.json; required documented build not yet run",
+      "kind": "executed_by_inventory_agent"
+    },
+    {
+      "suite": "EX1728 JS ports after documented canonical plan compile",
+      "tests": 19,
+      "passed": 19,
+      "failed": 0,
+      "exit_code": 0,
+      "kind": "executed_by_inventory_agent"
+    }
+  ],
+  "canonical_plan": {
+    "sha256": "47084b895a6317db16275a92c3878a340d31af15fb9ab479db7101953c18e49c",
+    "tasks": 1728,
+    "capabilities": 144,
+    "workstreams": 12,
+    "completed_tasks": 0
+  },
+  "portable_mount_contract": "Caller supplies explicit checkout roots and generated plan path; inventory includes no machine-specific absolute paths."
+}

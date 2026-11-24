@@ -1,0 +1,111 @@
+{
+  "schema": "atlas.gf9-r2.public-execution-receipt/v1",
+  "date": "2026-11-23 (HST)",
+  "source_pin": "Ariadne v0.7 original SHA256 07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+  "roles": {
+    "spheres": 144,
+    "chapters_per_sphere": 12,
+    "lesson_slots": 1728,
+    "writing_systems_sampled": 18
+  },
+  "main_trials": {
+    "accepted": 3462,
+    "evaluated": 15000,
+    "false_acceptances": 0,
+    "postflight_holds": 12737,
+    "rejected": 11538
+  },
+  "initial_5000": {
+    "accepted": 1267,
+    "elapsed_s_local_cpu_wall": 17.054,
+    "entry_tip": "0000000000000000000000000000000000000000000000000000000000000000",
+    "exit_tip": "358de3710731fde3c59d356e111ebcc303dd4921e0cb1c43b9e6cc089ab4fc41",
+    "from": 1,
+    "full_144_batches": 34,
+    "partial_batch": 104,
+    "phase": "PHASE_1_GROUNDING",
+    "rejected": 3733,
+    "status": "FINITE_SIMULATION_COMPLETED_NOT_FUTURE_AUTONOMY",
+    "to": 5000,
+    "trials": 5000
+  },
+  "next_10000": {
+    "phase": "PHASE_2_EXPANSION",
+    "trials": 10000,
+    "from": 5001,
+    "to": 15000,
+    "full_144_batches": 69,
+    "partial_batch": 64,
+    "accepted": 2195,
+    "rejected": 7805,
+    "entry_tip": "358de3710731fde3c59d356e111ebcc303dd4921e0cb1c43b9e6cc089ab4fc41",
+    "exit_tip": "141cb2ba80a8dab7d12444c54b880f33dbb5083e87d21b86b642a71999e6da78",
+    "elapsed_s_local_cpu_wall": "PARTIAL_ATTEMPT_TIMED_OUT_NOT_ESTIMATED",
+    "status": "FINITE_SIMULATION_RECOVERED_AND_COMPLETED"
+  },
+  "replay": {
+    "status": "CHAIN_AND_POLICY_REPLAY_PASS",
+    "records_verified": 15000,
+    "accepted_replay": 3462,
+    "head": "141cb2ba80a8dab7d12444c54b880f33dbb5083e87d21b86b642a71999e6da78",
+    "problems": [],
+    "externally_signed": false,
+    "rollback_protection": "REQUIRES_TRUSTED_EXTERNAL_TIP_AND_COUNT"
+  },
+  "holdout": {
+    "schema": "atlas.gf9-r2.blind-benchmark/v2",
+    "benchmark_seed_namespace": "GF9-R2-INDEPENDENT-BLIND",
+    "no_selection_on_this_dataset": true,
+    "per_method_packet_trials": 6912,
+    "total_packet_trials": 27648,
+    "metrics": {
+      "initial_minimal": {
+        "passed": 510,
+        "total": 6912,
+        "rate": 0.0737847,
+        "postflight_holds": 802,
+        "wire_bytes": 1501632
+      },
+      "fixed_robust": {
+        "passed": 5950,
+        "total": 6912,
+        "rate": 0.8608218,
+        "postflight_holds": 0,
+        "wire_bytes": 4567104
+      },
+      "evolved_15000": {
+        "passed": 5390,
+        "total": 6912,
+        "rate": 0.7798032,
+        "postflight_holds": 621,
+        "wire_bytes": 5262504
+      },
+      "guarded_selection": {
+        "passed": 6659,
+        "total": 6912,
+        "rate": 0.963397,
+        "postflight_holds": 0,
+        "wire_bytes": 6977016
+      }
+    },
+    "not_real_communication": true,
+    "not_model_training": true
+  },
+  "continuation": {
+    "batch_count": 1,
+    "additional_trials": 144,
+    "cumulative_trial_count": 15144,
+    "cumulative_accepted": 3505,
+    "cumulative_rejected": 11639,
+    "head": "fcb37d2bcdf5525541211b1bc2cf738ae118693047ca067a8190feb49c4e6028"
+  },
+  "framework": "FINITE_SYNTHETIC_MATH_AND_TRANSPORT_POLICY_NOT_REAL_LANGUAGE_OR_AUTONOMOUS_HOSTING",
+  "source_only_tests": 28,
+  "browser_checks": 18,
+  "model_calls": 0,
+  "physical_measurements": 0,
+  "historical_script_translations": 0,
+  "hosted_publisher_updates": 0,
+  "gpt_weight_updates": 0,
+  "source_rights": "GF9 ORIGINAL_ART_NOT_TOLKIEN_COPY; ANCIENT_SCRIPT_METADATA_REFERENCES_ONLY"
+}

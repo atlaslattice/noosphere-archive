@@ -12,13 +12,17 @@ def run(db_path,memory_path):
     db=sqlite3.connect(db_path);mem=LocalMemory(memory_path)
     hsn='H01.S05.N10';target='T10642';src='urn:atlas:synthetic:triage-pilot-t10642'
     event={'event_id':'triagenote01','mode':'WORK','scope':'SYNTHETIC_LOCAL_REVIEW','coordinate':hsn,'topic_id':target,'action':'NOTE','source_ref':src,'source_digest':hashlib.sha256(src.encode()).hexdigest()}
-    before=topic_view(db,hsn,mem,limit=20)
-    mem.append(event)
-    noted=topic_view(db,hsn,mem,limit=20)
+    # Fresh synthetic trial: retain the expected anchor in the caller, not the DB.
+    checkpoint={'expected_tip':'0'*64,'expected_count':0}
+    before=topic_view(db,hsn,mem,limit=20,memory_checkpoint=checkpoint)
+    receipt=mem.append(event,**checkpoint)
+    checkpoint={'expected_tip':receipt['event_hash'],'expected_count':receipt['count']}
+    noted=topic_view(db,hsn,mem,limit=20,memory_checkpoint=checkpoint)
     mem.close();mem=LocalMemory(memory_path)
-    after_restart=topic_view(db,hsn,mem,limit=20)
-    mem.append({**event,'event_id':'triageretract01','action':'RETRACT','retract_event_id':'triagenote01'})
-    retracted=topic_view(db,hsn,mem,limit=20)
+    after_restart=topic_view(db,hsn,mem,limit=20,memory_checkpoint=checkpoint)
+    receipt=mem.append({**event,'event_id':'triageretract01','action':'RETRACT','retract_event_id':'triagenote01'},**checkpoint)
+    checkpoint={'expected_tip':receipt['event_hash'],'expected_count':receipt['count']}
+    retracted=topic_view(db,hsn,mem,limit=20,memory_checkpoint=checkpoint)
     card=source_card(db,hsn,'07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6')
     neighbors=shared_topic_neighbors(db,hsn)
     result={'node':hsn,'topic':target,
@@ -26,7 +30,7 @@ def run(db_path,memory_path):
       'after_note_first':noted['items'][0]['topic_id'],
       'after_restart_first':after_restart['items'][0]['topic_id'],
       'after_retraction_first':retracted['items'][0]['topic_id'],
-      'memory_chain_verification':mem.verify(),
+      'memory_chain_verification':mem.verify(),'retained_local_checkpoint':checkpoint,
       'source_card':{k:card[k] for k in ('hsn','name','role','record_digest')},
       'shared_topic_candidate_paths':neighbors['total_candidate_paths'],
       'no_hosting':True,'no_model_weight_updates':True,'no_accepted_semantic_edges':True,'no_auto_canon':True}

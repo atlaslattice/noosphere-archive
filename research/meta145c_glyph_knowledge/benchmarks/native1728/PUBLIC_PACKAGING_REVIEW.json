@@ -1,0 +1,61 @@
+{
+  "schema": "atlas.native1728.public-packaging-review/v1",
+  "scope": "PUBLIC_ARTIFACTS_AND_LOCAL_HOST_SOURCE_PARITY",
+  "publicationStatus": "BOTH_HOSTS_DEPLOYED",
+  "hostSource": {
+    "module": "lib/native1728-release.mjs",
+    "sha256": "ad45808f7f5721c2e7015ddebfaab916196b2b68d4ba80b825edfd34dd685458",
+    "candidateCount": 1728
+  },
+  "hostReleaseParity": {
+    "candidateRows": true,
+    "selection": true,
+    "measurement": true,
+    "axes": true,
+    "spheres": true,
+    "houses": true,
+    "sourceDigest": true,
+    "logicalReportDigest": true,
+    "logicalTraceDigest": true
+  },
+  "measuredImplementationParity": {
+    "benchmarks/bench_strategy1728.py": true,
+    "src/beast20/execution.py": true,
+    "src/beast20/runtime.py": true,
+    "src/beast20/storage.py": true,
+    "src/beast20/strategy_lab.py": true
+  },
+  "compressedEvidence": [
+    {
+      "gzip_path": "benchmarks/strategy1728/STRATEGY1728_TRACE.json.gz",
+      "uncompressed_sha256": "e00022cd1660518af2338c30d9347b71a1effdc1d2882ad743da5d39fbf28232",
+      "compressed_sha256": "443fe65d5f07e332d59a5e013b0ab869352b7a37ebd8357596c27196a4dc9d93",
+      "exact_roundtrip_verified": true,
+      "repeat_compression_identical": true
+    },
+    {
+      "gzip_path": "benchmarks/strategy1728/STRATEGY1728_CANDIDATES.json.gz",
+      "uncompressed_sha256": "d43e529dd7ae8fc6200a6adc649934ac2b7fba2bb2e8e7188e16240bed646c29",
+      "compressed_sha256": "cb5e128cc160d1eeac0879f2cd8709f068b58cdbed7f7c73aa26822a7530ba44",
+      "exact_roundtrip_verified": true,
+      "repeat_compression_identical": true
+    }
+  ],
+  "federation": {
+    "receipt": "benchmarks/native1728/FEDERATION_EXECUTION_RECEIPT.json",
+    "receiptSha256": "f795be8bb46821f5b0a6657da84df84d87e956bfd2f9055b7ce273d94952f971",
+    "sourceShaMatchesReceipt": true,
+    "callCount": 9,
+    "mountedPackages": 3,
+    "originalSourceBodiesReturned": false
+  },
+  "reviewBoundaries": {
+    "noPrivateGrokSeekBodyIncluded": true,
+    "noMachineSpecificPathsInFederationReceipt": true,
+    "publicSourceLedgerOnly": true,
+    "rawFullTraceAndCandidateJSONRetainedLocally": true,
+    "performanceScope": "LOCAL_COMPOSITE_REPLAY_NOT_HOSTED_LATENCY",
+    "sourceHashIsNotRuntimeAuthorization": true
+  },
+  "publicationReceipt": "HOSTED_RELEASE.json"
+}

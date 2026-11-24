@@ -138,6 +138,7 @@ class AtlasBeastRuntime:
                     "primary_count": sum(row["historical_rank"] == 1 for row in rows),
                     "alternate_count": sum(row["historical_rank"] > 1 for row in rows),
                     "items": rows[:limit], "triage_memory_used": True,
+                    "memory_integrity": "CALLER_CHECKPOINT_MATCHED_LOCAL_SNAPSHOT",
                     "semantic_equivalence_approved": False, "hosted_verified": False,
                     "privacy": "WORK_SYNTHETIC_LOCAL_ONLY", "canon_effect": "NONE"}
             # Catch a memory update during projection; no cached count/tip is

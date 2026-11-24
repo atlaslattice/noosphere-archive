@@ -32,6 +32,13 @@ def main():
     feed.add_argument("--state", type=Path, required=True)
     feed.add_argument("--allow-network", action="store_true", required=True)
     feed.add_argument("--query")
+    strategy = sub.add_parser("strategy-summary", help="Verify and inspect a completed 1,728-strategy report")
+    strategy.add_argument("--report", type=Path, required=True)
+    federation = sub.add_parser("federation", help="Delegate to explicitly configured source-pinned Atlas packages")
+    federation.add_argument("--config", type=Path, required=True)
+    federation.add_argument("--component", choices=("excellence", "gf9", "unified"))
+    federation.add_argument("--action")
+    federation.add_argument("--arguments", type=Path)
     args = parser.parse_args()
     if args.operation == "demo":
         scope = Scope(REGISTRY_SHA, "ariadne-reader/v0.7", "local-synthetic-demo", 1)
@@ -63,6 +70,26 @@ def main():
                           "source_sha256": snapshot.registry_sha, "stats": graph.stats,
                           "meta": graph.outputs.get("META145"), "model_calls": 0,
                           "hosted_authorization_proven": False}
+    elif args.operation == "strategy-summary":
+        from .strategy_lab import compact_summary
+        result = compact_summary(json.loads(args.report.read_text(encoding="utf-8")))
+    elif args.operation == "federation":
+        from .federation import PinnedFederation
+        config = json.loads(args.config.read_text(encoding="utf-8"))
+        allowed = {"inventory", "roots", "plan_path", "expected_plan_sha256", "registry_path", "topics_path"}
+        if type(config) is not dict or set(config) - allowed or not {"inventory", "roots"} <= set(config):
+            raise ValueError("FEDERATION_CONFIG_INVALID")
+        inventory = json.loads(Path(config.pop("inventory")).read_text(encoding="utf-8"))
+        with PinnedFederation.from_inventory(inventory, **config) as mounted:
+            if args.component:
+                if not args.action:
+                    raise ValueError("FEDERATION_ACTION_REQUIRED")
+                arguments = json.loads(args.arguments.read_text(encoding="utf-8")) if args.arguments else {}
+                result = mounted.call(args.component, args.action, arguments)
+            else:
+                if args.action or args.arguments:
+                    raise ValueError("FEDERATION_COMPONENT_REQUIRED")
+                result = mounted.status()
     else:
         args.state.mkdir(parents=True, exist_ok=True)
         scope = Scope(sha256(args.url.encode()).hexdigest(), "public-feed/v1", "owner-local-feed", 1)

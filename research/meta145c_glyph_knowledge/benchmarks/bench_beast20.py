@@ -180,18 +180,26 @@ def memory_benchmarks(snapshot, scope, runtime, repeats, temporary, *, include_l
                        "source_digest": scope.source_digest})
     checkpoint = memory.verify()
     coordinates = list(snapshot.node_ids)
+    anchor = {"expected_tip": checkpoint["tip"], "expected_count": checkpoint["count"]}
 
     def legacy(_=0):
-        return {nid: topic_view(db, nid, memory) for nid in coordinates}
+        # The current public API requires an independent checkpoint for every
+        # memory projection. This comparator is now a repeated anchored scan;
+        # historical unanchored results remain in the immutable initial report.
+        return {nid: topic_view(db, nid, memory, memory_checkpoint=anchor)
+                for nid in coordinates}
 
     def r10(_=0):
         batch = memory.verified_triage_batch(coordinates, expected_tip=checkpoint["tip"],
                                              expected_count=checkpoint["count"])
         class BatchAdapter:
-            def triage_delta(self, coordinate, topic_id=None):
-                return batch[coordinate].get(topic_id, 0)
+            def verified_triage_batch(self, selected, *, expected_tip, expected_count):
+                if (expected_tip, expected_count) != (anchor["expected_tip"], anchor["expected_count"]):
+                    raise ValueError("CHECKPOINT_CHANGED")
+                return {coordinate: batch[coordinate] for coordinate in selected}
         adapter = BatchAdapter()
-        return {nid: topic_view(db, nid, adapter) for nid in coordinates}
+        return {nid: topic_view(db, nid, adapter, memory_checkpoint=anchor)
+                for nid in coordinates}
 
     def combined(_=0):
         return runtime.topic_views(db, memory, coordinates, expected_tip=checkpoint["tip"],
@@ -205,9 +213,9 @@ def memory_benchmarks(snapshot, scope, runtime, repeats, temporary, *, include_l
     try:
         results = []
         if include_legacy:
-            results.append(paired("legacy_topic_loop_vs_r10_verified_batch", legacy, r10, repeats,
+            results.append(paired("repeated_checkpoint_topic_loop_vs_r10_verified_batch", legacy, r10, repeats,
                    workload=workload, limitations=[
-                       "Legacy repeated scans do not verify the memory checkpoint.",
+                       "Current repeated-scan comparator verifies the checkpoint for every coordinate; historical unanchored results are retained separately.",
                        "R10 verifies once and retains existing per-coordinate topic queries.",
                        "Synthetic reviews affect ordering only; topic candidates remain unreviewed."]))
         results.append(paired("r10_verified_memory_vs_beast20_batched_topic_views", r10, combined, repeats,

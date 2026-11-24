@@ -1,0 +1,104 @@
+{
+  "schema": "atlas.native1728.local-verification/v1",
+  "source_date_honolulu": "2026-11-23",
+  "status": "PASS",
+  "python": {
+    "distinct_passed": 584,
+    "optional_skipped": 2,
+    "beast20_optimized_all_197_passed": true,
+    "suites": [
+      {
+        "suite": "repository",
+        "exit_code": 0,
+        "elapsed_seconds": 0.561,
+        "summary": "Ran 176 tests in 0.412s\n\nOK"
+      },
+      {
+        "suite": "meta145",
+        "exit_code": 0,
+        "elapsed_seconds": 0.083,
+        "summary": "Ran 10 tests in 0.000s\n\nOK"
+      },
+      {
+        "suite": "glyph_memory",
+        "exit_code": 0,
+        "elapsed_seconds": 4.232,
+        "summary": "Ran 70 tests in 4.073s\n\nOK"
+      },
+      {
+        "suite": "gf8_and_reasoning",
+        "exit_code": 0,
+        "elapsed_seconds": 0.329,
+        "summary": "Ran 69 tests in 0.206s\n\nOK"
+      },
+      {
+        "suite": "gf9",
+        "exit_code": 0,
+        "elapsed_seconds": 0.416,
+        "summary": "Ran 28 tests in 0.293s\n\nOK (skipped=2)"
+      },
+      {
+        "suite": "federation_bound",
+        "exit_code": 0,
+        "elapsed_seconds": 12.634,
+        "summary": "Ran 23 tests in 12.506s\n\nOK"
+      },
+      {
+        "suite": "beast20_optimized",
+        "exit_code": 0,
+        "elapsed_seconds": 16.148,
+        "summary": "Ran 197 tests in 15.684s\n\nOK"
+      },
+      {
+        "suite": "unified1728_original_source",
+        "exit_code": 0,
+        "tests": 36,
+        "passed": 36,
+        "elapsed_seconds": 2.441,
+        "correction": "Initial runner used parent directory and could not import atlas1728. Correct package working directory rerun passed with both exact original sources bound."
+      }
+    ]
+  },
+  "swarmchat": {
+    "existing_host_gate": {
+      "tests": 136,
+      "passed": 135,
+      "skipped": 1
+    },
+    "merged_native_gate": {
+      "tests": 85,
+      "passed": 85,
+      "skipped": 0,
+      "suites": {
+        "composer": 32,
+        "api_and_page": 19,
+        "tool_policy": 15,
+        "atlas_context_host": 4,
+        "evolution_bridge": 15
+      }
+    },
+    "production_build": "PASS"
+  },
+  "cli": {
+    "strategy_summary": "PASS",
+    "source_pinned_gf9_packet_roundtrip": "PASS"
+  },
+  "measurement": {
+    "implementation_manifest_matches": true,
+    "source": "benchmarks/strategy1728/STRATEGY1728_MEASURED_REPLAY.json"
+  },
+  "limits": [
+    "Counts are distinct tests within the named gates; repeated normal/optimized runs are not added together.",
+    "Two GF9 optional source datasets and one host original-source optional test were absent at their test-specific paths.",
+    "Production publication and live invocation verification are recorded separately."
+  ],
+  "atlas_one": {
+    "merged_service_tests": 206,
+    "retrieval_evolution_tests": 64,
+    "passed": 270,
+    "failed": 0,
+    "skipped": 0,
+    "production_build": "PASS",
+    "catalog_tools": 22
+  }
+}

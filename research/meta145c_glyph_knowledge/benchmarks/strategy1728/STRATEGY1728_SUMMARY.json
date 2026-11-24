@@ -1,0 +1,1312 @@
+{
+  "assumptions": [
+    "Memo entries do not expire during each split; splits start with an empty memo.",
+    "CPU handler service is serialized; only explicit async wait can overlap.",
+    "Batch cost is a calibrated linear estimate; runtime scheduler/SQLite overhead is not fully modeled.",
+    "All equal cache keys have equal output digests in the supplied trace.",
+    "Trace checksum detects alteration relative to supplied expected bytes; it does not authenticate measurement."
+  ],
+  "axes": {
+    "chunk_size": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      96,
+      128,
+      192,
+      256,
+      400
+    ],
+    "max_memo_entries": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024,
+      2048
+    ],
+    "workers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "baseline": {
+    "config": {
+      "chunk_size": 400,
+      "max_memo_entries": 256,
+      "workers": 4
+    },
+    "holdout": {
+      "cache_hits": 0,
+      "cache_misses": 5655,
+      "peak_memo_entries": 256,
+      "predicted_batch_queries": 15,
+      "predicted_cpu_service_ns": 623162980,
+      "predicted_peak_memo_bytes": 97792,
+      "predicted_wall_ns": 623162980,
+      "singleflight_coalesced": 0
+    },
+    "train": {
+      "cache_hits": 0,
+      "cache_misses": 5655,
+      "peak_memo_entries": 256,
+      "predicted_batch_queries": 15,
+      "predicted_cpu_service_ns": 638217510,
+      "predicted_peak_memo_bytes": 97792,
+      "predicted_wall_ns": 638217510,
+      "singleflight_coalesced": 0
+    }
+  },
+  "candidate_count": 1728,
+  "candidate_rows_omitted": 1728,
+  "constraints": {
+    "max_chunk_size": 400,
+    "max_memo_entries": 2048,
+    "max_predicted_memo_bytes": 1073741824,
+    "max_workers": 12
+  },
+  "coordinate_role": "CONFIGURATION_GROUPING_NOT_ONTOLOGY_OR_DEITY_MAPPING",
+  "edition": "ariadne-v0.7",
+  "eligible_count": 1728,
+  "full_report_sha256": "f64c435222f71721dbc7b4b18229ef22a65367d0d1c8e5c0ffb92a1bd6b25b13",
+  "holdout_used_for_selection": false,
+  "houses": [
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 1
+      },
+      "house": "H01",
+      "selected_id": "STRATEGY-H01.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 2
+      },
+      "house": "H02",
+      "selected_id": "STRATEGY-H02.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 3
+      },
+      "house": "H03",
+      "selected_id": "STRATEGY-H03.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 4
+      },
+      "house": "H04",
+      "selected_id": "STRATEGY-H04.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 5
+      },
+      "house": "H05",
+      "selected_id": "STRATEGY-H05.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 6
+      },
+      "house": "H06",
+      "selected_id": "STRATEGY-H06.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 7
+      },
+      "house": "H07",
+      "selected_id": "STRATEGY-H07.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 8
+      },
+      "house": "H08",
+      "selected_id": "STRATEGY-H08.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 9
+      },
+      "house": "H09",
+      "selected_id": "STRATEGY-H09.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 10
+      },
+      "house": "H10",
+      "selected_id": "STRATEGY-H10.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 11
+      },
+      "house": "H11",
+      "selected_id": "STRATEGY-H11.S12.N12",
+      "sphere_count": 12
+    },
+    {
+      "candidate_count": 144,
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 12
+      },
+      "house": "H12",
+      "selected_id": "STRATEGY-H12.S12.N12",
+      "sphere_count": 12
+    }
+  ],
+  "measurement_attestation": "CALLER_SUPPLIED_TRACE_WITH_CHECKSUM",
+  "meta145": {
+    "holdout_regression": false,
+    "holdout_resource_constraints_satisfied": true,
+    "predicted_holdout_ratio_baseline_over_candidate": 1.5355647033260476,
+    "selected": {
+      "config": {
+        "chunk_size": 400,
+        "max_memo_entries": 2048,
+        "workers": 1
+      },
+      "eligible": true,
+      "holdout": {
+        "cache_hits": 3766,
+        "cache_misses": 1889,
+        "peak_memo_entries": 1889,
+        "predicted_batch_queries": 15,
+        "predicted_cpu_service_ns": 405820073,
+        "predicted_peak_memo_bytes": 691877,
+        "predicted_wall_ns": 405820073,
+        "singleflight_coalesced": 0
+      },
+      "id": "STRATEGY-H01.S12.N12",
+      "slot": "H01.S12.N12",
+      "train": {
+        "cache_hits": 3766,
+        "cache_misses": 1889,
+        "peak_memo_entries": 1889,
+        "predicted_batch_queries": 15,
+        "predicted_cpu_service_ns": 405918042,
+        "predicted_peak_memo_bytes": 691884,
+        "predicted_wall_ns": 405918042,
+        "singleflight_coalesced": 0
+      },
+      "training_objective": 0.8621201752596853
+    },
+    "status": "SELECTED_FOR_MEASURED_REPLAY"
+  },
+  "non_claims": {
+    "canon_changed": false,
+    "global_optimum_proven": false,
+    "hosted_verified": false,
+    "measured_speedup": false,
+    "model_calls": 0,
+    "resident_turns": 0
+  },
+  "pareto_candidate_ids": [
+    "STRATEGY-H01.S01.N12",
+    "STRATEGY-H01.S12.N12"
+  ],
+  "runtime_controls": {
+    "chunk_size": "ArtifactStore.batch_get(chunk_size=)",
+    "max_memo_entries": "ArtifactStore(max_memo_entries=)",
+    "workers": "AsyncExecutor(workers=)"
+  },
+  "schema": "atlas.beast20.strategy1728/v1",
+  "selection_policy": "MINIMIZE_TRAINING_OBJECTIVE_WITH_DETERMINISTIC_TIES",
+  "simulation_engine_sha256": "b2b4b71d154601b16a78a66879d7969c7654f94b15f25cc8e12b28e18edb8ecd",
+  "source_digest": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+  "spheres": [
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S01.N12",
+      "sphere": "H01.S01",
+      "training_objective": 1.102578125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S02.N12",
+      "sphere": "H01.S02",
+      "training_objective": 1.1026562500000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S03.N12",
+      "sphere": "H01.S03",
+      "training_objective": 1.1028125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S04.N12",
+      "sphere": "H01.S04",
+      "training_objective": 1.1031250000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S05.N12",
+      "sphere": "H01.S05",
+      "training_objective": 1.10375
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S06.N12",
+      "sphere": "H01.S06",
+      "training_objective": 1.105
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S07.N12",
+      "sphere": "H01.S07",
+      "training_objective": 1.1075
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S08.N12",
+      "sphere": "H01.S08",
+      "training_objective": 1.1125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S09.N12",
+      "sphere": "H01.S09",
+      "training_objective": 1.1225
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S10.N12",
+      "sphere": "H01.S10",
+      "training_objective": 1.1425
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S11.N12",
+      "sphere": "H01.S11",
+      "training_objective": 1.1825
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H01.S12.N12",
+      "sphere": "H01.S12",
+      "training_objective": 0.8621201752596853
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S01.N12",
+      "sphere": "H02.S01",
+      "training_objective": 1.105078125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S02.N12",
+      "sphere": "H02.S02",
+      "training_objective": 1.10515625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S03.N12",
+      "sphere": "H02.S03",
+      "training_objective": 1.1053125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S04.N12",
+      "sphere": "H02.S04",
+      "training_objective": 1.105625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S05.N12",
+      "sphere": "H02.S05",
+      "training_objective": 1.10625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S06.N12",
+      "sphere": "H02.S06",
+      "training_objective": 1.1075
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S07.N12",
+      "sphere": "H02.S07",
+      "training_objective": 1.1099999999999999
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S08.N12",
+      "sphere": "H02.S08",
+      "training_objective": 1.115
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S09.N12",
+      "sphere": "H02.S09",
+      "training_objective": 1.125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S10.N12",
+      "sphere": "H02.S10",
+      "training_objective": 1.145
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S11.N12",
+      "sphere": "H02.S11",
+      "training_objective": 1.185
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H02.S12.N12",
+      "sphere": "H02.S12",
+      "training_objective": 0.8646201752596854
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S01.N12",
+      "sphere": "H03.S01",
+      "training_objective": 1.107578125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S02.N12",
+      "sphere": "H03.S02",
+      "training_objective": 1.1076562500000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S03.N12",
+      "sphere": "H03.S03",
+      "training_objective": 1.1078125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S04.N12",
+      "sphere": "H03.S04",
+      "training_objective": 1.1081250000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S05.N12",
+      "sphere": "H03.S05",
+      "training_objective": 1.1087500000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S06.N12",
+      "sphere": "H03.S06",
+      "training_objective": 1.11
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S07.N12",
+      "sphere": "H03.S07",
+      "training_objective": 1.1125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S08.N12",
+      "sphere": "H03.S08",
+      "training_objective": 1.1175000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S09.N12",
+      "sphere": "H03.S09",
+      "training_objective": 1.1275000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S10.N12",
+      "sphere": "H03.S10",
+      "training_objective": 1.1475000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S11.N12",
+      "sphere": "H03.S11",
+      "training_objective": 1.1875000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H03.S12.N12",
+      "sphere": "H03.S12",
+      "training_objective": 0.8671201752596853
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S01.N12",
+      "sphere": "H04.S01",
+      "training_objective": 1.110078125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S02.N12",
+      "sphere": "H04.S02",
+      "training_objective": 1.1101562500000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S03.N12",
+      "sphere": "H04.S03",
+      "training_objective": 1.1103125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S04.N12",
+      "sphere": "H04.S04",
+      "training_objective": 1.1106250000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S05.N12",
+      "sphere": "H04.S05",
+      "training_objective": 1.11125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S06.N12",
+      "sphere": "H04.S06",
+      "training_objective": 1.1125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S07.N12",
+      "sphere": "H04.S07",
+      "training_objective": 1.115
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S08.N12",
+      "sphere": "H04.S08",
+      "training_objective": 1.12
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S09.N12",
+      "sphere": "H04.S09",
+      "training_objective": 1.1300000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S10.N12",
+      "sphere": "H04.S10",
+      "training_objective": 1.1500000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S11.N12",
+      "sphere": "H04.S11",
+      "training_objective": 1.1900000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H04.S12.N12",
+      "sphere": "H04.S12",
+      "training_objective": 0.8696201752596854
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S01.N12",
+      "sphere": "H05.S01",
+      "training_objective": 1.112578125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S02.N12",
+      "sphere": "H05.S02",
+      "training_objective": 1.1126562500000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S03.N12",
+      "sphere": "H05.S03",
+      "training_objective": 1.1128125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S04.N12",
+      "sphere": "H05.S04",
+      "training_objective": 1.1131250000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S05.N12",
+      "sphere": "H05.S05",
+      "training_objective": 1.11375
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S06.N12",
+      "sphere": "H05.S06",
+      "training_objective": 1.115
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S07.N12",
+      "sphere": "H05.S07",
+      "training_objective": 1.1175
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S08.N12",
+      "sphere": "H05.S08",
+      "training_objective": 1.1225
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S09.N12",
+      "sphere": "H05.S09",
+      "training_objective": 1.1325
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S10.N12",
+      "sphere": "H05.S10",
+      "training_objective": 1.1525
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S11.N12",
+      "sphere": "H05.S11",
+      "training_objective": 1.1925000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H05.S12.N12",
+      "sphere": "H05.S12",
+      "training_objective": 0.8721201752596853
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S01.N12",
+      "sphere": "H06.S01",
+      "training_objective": 1.115078125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S02.N12",
+      "sphere": "H06.S02",
+      "training_objective": 1.11515625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S03.N12",
+      "sphere": "H06.S03",
+      "training_objective": 1.1153125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S04.N12",
+      "sphere": "H06.S04",
+      "training_objective": 1.115625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S05.N12",
+      "sphere": "H06.S05",
+      "training_objective": 1.11625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S06.N12",
+      "sphere": "H06.S06",
+      "training_objective": 1.1175
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S07.N12",
+      "sphere": "H06.S07",
+      "training_objective": 1.1199999999999999
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S08.N12",
+      "sphere": "H06.S08",
+      "training_objective": 1.125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S09.N12",
+      "sphere": "H06.S09",
+      "training_objective": 1.135
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S10.N12",
+      "sphere": "H06.S10",
+      "training_objective": 1.155
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S11.N12",
+      "sphere": "H06.S11",
+      "training_objective": 1.195
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H06.S12.N12",
+      "sphere": "H06.S12",
+      "training_objective": 0.8746201752596854
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S01.N12",
+      "sphere": "H07.S01",
+      "training_objective": 1.117578125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S02.N12",
+      "sphere": "H07.S02",
+      "training_objective": 1.1176562500000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S03.N12",
+      "sphere": "H07.S03",
+      "training_objective": 1.1178125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S04.N12",
+      "sphere": "H07.S04",
+      "training_objective": 1.1181250000000003
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S05.N12",
+      "sphere": "H07.S05",
+      "training_objective": 1.1187500000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S06.N12",
+      "sphere": "H07.S06",
+      "training_objective": 1.12
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S07.N12",
+      "sphere": "H07.S07",
+      "training_objective": 1.1225
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S08.N12",
+      "sphere": "H07.S08",
+      "training_objective": 1.1275000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S09.N12",
+      "sphere": "H07.S09",
+      "training_objective": 1.1375000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S10.N12",
+      "sphere": "H07.S10",
+      "training_objective": 1.1575000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S11.N12",
+      "sphere": "H07.S11",
+      "training_objective": 1.1975000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H07.S12.N12",
+      "sphere": "H07.S12",
+      "training_objective": 0.8771201752596853
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S01.N12",
+      "sphere": "H08.S01",
+      "training_objective": 1.120078125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S02.N12",
+      "sphere": "H08.S02",
+      "training_objective": 1.1201562500000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S03.N12",
+      "sphere": "H08.S03",
+      "training_objective": 1.1203125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S04.N12",
+      "sphere": "H08.S04",
+      "training_objective": 1.1206250000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S05.N12",
+      "sphere": "H08.S05",
+      "training_objective": 1.12125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S06.N12",
+      "sphere": "H08.S06",
+      "training_objective": 1.1225
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S07.N12",
+      "sphere": "H08.S07",
+      "training_objective": 1.125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S08.N12",
+      "sphere": "H08.S08",
+      "training_objective": 1.1300000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S09.N12",
+      "sphere": "H08.S09",
+      "training_objective": 1.1400000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S10.N12",
+      "sphere": "H08.S10",
+      "training_objective": 1.1600000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S11.N12",
+      "sphere": "H08.S11",
+      "training_objective": 1.2000000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H08.S12.N12",
+      "sphere": "H08.S12",
+      "training_objective": 0.8796201752596854
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S01.N12",
+      "sphere": "H09.S01",
+      "training_objective": 1.122578125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S02.N12",
+      "sphere": "H09.S02",
+      "training_objective": 1.1226562500000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S03.N12",
+      "sphere": "H09.S03",
+      "training_objective": 1.1228125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S04.N12",
+      "sphere": "H09.S04",
+      "training_objective": 1.1231250000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S05.N12",
+      "sphere": "H09.S05",
+      "training_objective": 1.12375
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S06.N12",
+      "sphere": "H09.S06",
+      "training_objective": 1.125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S07.N12",
+      "sphere": "H09.S07",
+      "training_objective": 1.1275
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S08.N12",
+      "sphere": "H09.S08",
+      "training_objective": 1.1325
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S09.N12",
+      "sphere": "H09.S09",
+      "training_objective": 1.1425
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S10.N12",
+      "sphere": "H09.S10",
+      "training_objective": 1.1625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S11.N12",
+      "sphere": "H09.S11",
+      "training_objective": 1.2025000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H09.S12.N12",
+      "sphere": "H09.S12",
+      "training_objective": 0.8821201752596853
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S01.N12",
+      "sphere": "H10.S01",
+      "training_objective": 1.125078125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S02.N12",
+      "sphere": "H10.S02",
+      "training_objective": 1.12515625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S03.N12",
+      "sphere": "H10.S03",
+      "training_objective": 1.1253125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S04.N12",
+      "sphere": "H10.S04",
+      "training_objective": 1.125625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S05.N12",
+      "sphere": "H10.S05",
+      "training_objective": 1.12625
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S06.N12",
+      "sphere": "H10.S06",
+      "training_objective": 1.1275
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S07.N12",
+      "sphere": "H10.S07",
+      "training_objective": 1.13
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S08.N12",
+      "sphere": "H10.S08",
+      "training_objective": 1.135
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S09.N12",
+      "sphere": "H10.S09",
+      "training_objective": 1.145
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S10.N12",
+      "sphere": "H10.S10",
+      "training_objective": 1.165
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S11.N12",
+      "sphere": "H10.S11",
+      "training_objective": 1.205
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H10.S12.N12",
+      "sphere": "H10.S12",
+      "training_objective": 0.8846201752596854
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S01.N12",
+      "sphere": "H11.S01",
+      "training_objective": 1.127578125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S02.N12",
+      "sphere": "H11.S02",
+      "training_objective": 1.1276562500000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S03.N12",
+      "sphere": "H11.S03",
+      "training_objective": 1.1278125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S04.N12",
+      "sphere": "H11.S04",
+      "training_objective": 1.1281250000000003
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S05.N12",
+      "sphere": "H11.S05",
+      "training_objective": 1.1287500000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S06.N12",
+      "sphere": "H11.S06",
+      "training_objective": 1.1300000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S07.N12",
+      "sphere": "H11.S07",
+      "training_objective": 1.1325
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S08.N12",
+      "sphere": "H11.S08",
+      "training_objective": 1.1375000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S09.N12",
+      "sphere": "H11.S09",
+      "training_objective": 1.1475000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S10.N12",
+      "sphere": "H11.S10",
+      "training_objective": 1.1675000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S11.N12",
+      "sphere": "H11.S11",
+      "training_objective": 1.2075000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H11.S12.N12",
+      "sphere": "H11.S12",
+      "training_objective": 0.8871201752596853
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S01.N12",
+      "sphere": "H12.S01",
+      "training_objective": 1.130078125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S02.N12",
+      "sphere": "H12.S02",
+      "training_objective": 1.1301562500000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S03.N12",
+      "sphere": "H12.S03",
+      "training_objective": 1.1303125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S04.N12",
+      "sphere": "H12.S04",
+      "training_objective": 1.1306250000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S05.N12",
+      "sphere": "H12.S05",
+      "training_objective": 1.13125
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S06.N12",
+      "sphere": "H12.S06",
+      "training_objective": 1.1325
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S07.N12",
+      "sphere": "H12.S07",
+      "training_objective": 1.135
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S08.N12",
+      "sphere": "H12.S08",
+      "training_objective": 1.1400000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S09.N12",
+      "sphere": "H12.S09",
+      "training_objective": 1.1500000000000001
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S10.N12",
+      "sphere": "H12.S10",
+      "training_objective": 1.1700000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S11.N12",
+      "sphere": "H12.S11",
+      "training_objective": 1.2100000000000002
+    },
+    {
+      "candidate_count": 12,
+      "eligible_count": 12,
+      "selected_id": "STRATEGY-H12.S12.N12",
+      "sphere": "H12.S12",
+      "training_objective": 0.8896201752596854
+    }
+  ],
+  "status": "SIMULATED",
+  "summary_sha256": "db0be0e0394bfec7ebe4c6344cad949b831f705ddb8780daff8a4d04dc5de8d5",
+  "trace_measurement_kind": "MEASURED_HANDLER_SERVICE_TIMES",
+  "trace_sha256": "03a601aa23bb140e8c199060eb7bc825d937ba17749efdf0a4a7496c2f7f15d9",
+  "unique_scheduler_replays": 24,
+  "units": {
+    "memory": "bytes",
+    "objective": "dimensionless",
+    "time": "nanoseconds"
+  },
+  "weights": {
+    "cache_reservation": 0.02,
+    "cpu": 0.1,
+    "latency": 1.0,
+    "workers": 0.01
+  }
+}

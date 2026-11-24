@@ -1,0 +1,3707 @@
+{
+  "schema": "atlas.native.federation-execution/v1",
+  "status": "REAL_UPSTREAM_DELEGATES_EXECUTED_LOCALLY",
+  "mounts": {
+    "schema": "atlas.native.federation-status/v1",
+    "mounted_components": [
+      {
+        "component_id": "EXCELLENCE1728_CORE",
+        "repository": "atlaslattice/Atlas-Intelligence",
+        "source_commit": "389965f3aaa90c99815f8c727836ca342ef7f313",
+        "package": "programs/excellence1728/runtime/excellence1728",
+        "source_files": 7,
+        "source_lock_sha256": "eeb64471c38fb2a7e706c1ad49aa8fded2e59266b5e58acc5a58bda0d0f222c6",
+        "revision_policy": "ANCESTOR_WITH_EXACT_PACKAGE_BYTES",
+        "alias": "excellence",
+        "namespace": "EX1728_ENGINEERING",
+        "operations": [
+          "plan_status",
+          "task",
+          "query",
+          "ready",
+          "perspective",
+          "review_perspective",
+          "meta145"
+        ],
+        "source_verified_now": true
+      },
+      {
+        "component_id": "GF9_ROSETTA_R2",
+        "repository": "atlaslattice/noosphere-archive",
+        "source_commit": "b98790a8baa0e1f7c7abb89211f319c7000c6653",
+        "package": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/src",
+        "source_files": 9,
+        "source_lock_sha256": "f24f6d99e0b57a435626fe4f708a4ea35709cd401050f8a1ec5fdd2ba1f88f20",
+        "revision_policy": "ANCESTOR_WITH_EXACT_PACKAGE_BYTES",
+        "alias": "gf9",
+        "namespace": "GF9_SYNTHETIC_PACKET",
+        "operations": [
+          "packet_roundtrip"
+        ],
+        "source_verified_now": true
+      },
+      {
+        "component_id": "UNIFIED_ATLAS1728_PYTHON",
+        "repository": "atlaslattice/noosphere-archive",
+        "source_commit": "c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c",
+        "package": "research/meta145c_glyph_knowledge/gf9_rosetta_v2/unified_1728_r1/atlas1728",
+        "source_files": 19,
+        "source_lock_sha256": "36452baf84ea238460fa87da4a634c0f0cbcb0a6cb32c4451a131e7b430f75a0",
+        "revision_policy": "ANCESTOR_WITH_EXACT_PACKAGE_BYTES",
+        "alias": "unified",
+        "namespace": "ARIADNE_HSN_SOURCE",
+        "operations": [
+          "source_status",
+          "node_reference",
+          "build_summary"
+        ],
+        "source_verified_now": true
+      }
+    ],
+    "external_effects": false,
+    "model_api_calls": 0,
+    "hosted_deployment_verified": false,
+    "namespace_equivalence_inferred": false
+  },
+  "calls": [
+    {
+      "schema": "atlas.native.federation-call/v1",
+      "component_id": "EXCELLENCE1728_CORE",
+      "operation": "plan_status",
+      "namespace": "EX1728_ENGINEERING",
+      "source_commit": "389965f3aaa90c99815f8c727836ca342ef7f313",
+      "source_lock_sha256": "eeb64471c38fb2a7e706c1ad49aa8fded2e59266b5e58acc5a58bda0d0f222c6",
+      "input_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "result_sha256": "ebe16c15f9e55477078244f37d31fbf7927213788db7772c5e82b9f0f4d41991",
+      "result": {
+        "ariadne_nodes": 1728,
+        "ariadne_spheres": 144,
+        "capabilities": 144,
+        "completed_tasks": 0,
+        "plan_sha256": "47084b895a6317db16275a92c3878a340d31af15fb9ab479db7101953c18e49c",
+        "tasks": 1728,
+        "topological_order_sha256": "a24c9ec2c3e023b4442735a9fa854ef45cab69407a875f6235b82e8150f048fd",
+        "topological_tasks": 1728,
+        "valid": true,
+        "workstreams": 12
+      },
+      "source_verified_before_and_after": true,
+      "network_requests": 0,
+      "model_calls": 0,
+      "work_messages_posted": 0,
+      "hosted_authority_granted": false,
+      "elapsed_ms": 926.679,
+      "receipt_sha256": "1c7da20326ffe1721de15afbf21ae040194877724a4c747ff37df77c463f0f33"
+    },
+    {
+      "schema": "atlas.native.federation-call/v1",
+      "component_id": "EXCELLENCE1728_CORE",
+      "operation": "ready",
+      "namespace": "EX1728_ENGINEERING",
+      "source_commit": "389965f3aaa90c99815f8c727836ca342ef7f313",
+      "source_lock_sha256": "eeb64471c38fb2a7e706c1ad49aa8fded2e59266b5e58acc5a58bda0d0f222c6",
+      "input_sha256": "8cfcac91bae6e0a7adabf9eef77f85725e7a3bf2e435bd748e6f36fa40ca1cff",
+      "result_sha256": "f2ecbe05e06865e7bc5ed9bd76d194583db82d14451c0811201004a9f72ef5c6",
+      "result": {
+        "current_source_and_permission_preflight_required": true,
+        "estimated_work_units": 12,
+        "genuine_macroturns_completed": 0,
+        "held": [
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W02.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W03.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W04.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W05.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W06.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W07.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W08.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W09.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W10.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W11.C12.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C01.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C02.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C03.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C04.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C05.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C06.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C07.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C08.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C09.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C10.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C11.P01"
+          },
+          {
+            "reason": "WORK_BUDGET_OR_BATCH_LIMIT",
+            "task_id": "EX.W12.C12.P01"
+          }
+        ],
+        "host_execution_authorized": false,
+        "plan_sha256": "47084b895a6317db16275a92c3878a340d31af15fb9ab479db7101953c18e49c",
+        "readiness": "DEPENDENCY_AND_BUDGET_ONLY",
+        "schema": "atlas.excellence.ready-batch.v1",
+        "task_ids": [
+          "EX.W01.C01.P01",
+          "EX.W01.C02.P01",
+          "EX.W01.C03.P01",
+          "EX.W01.C04.P01",
+          "EX.W01.C05.P01",
+          "EX.W01.C06.P01",
+          "EX.W01.C07.P01",
+          "EX.W01.C08.P01",
+          "EX.W01.C09.P01",
+          "EX.W01.C10.P01",
+          "EX.W01.C11.P01",
+          "EX.W01.C12.P01"
+        ],
+        "work_units_available": 12
+      },
+      "source_verified_before_and_after": true,
+      "network_requests": 0,
+      "model_calls": 0,
+      "work_messages_posted": 0,
+      "hosted_authority_granted": false,
+      "elapsed_ms": 887.405,
+      "receipt_sha256": "4442efaba3b75bde06d3e06c93d1e60dddd864f88e944b21c15930ef5bad3f25"
+    },
+    {
+      "schema": "atlas.native.federation-call/v1",
+      "component_id": "EXCELLENCE1728_CORE",
+      "operation": "query",
+      "namespace": "EX1728_ENGINEERING",
+      "source_commit": "389965f3aaa90c99815f8c727836ca342ef7f313",
+      "source_lock_sha256": "eeb64471c38fb2a7e706c1ad49aa8fded2e59266b5e58acc5a58bda0d0f222c6",
+      "input_sha256": "e43109ba380afd01c724b713298adb551fc1e3998fa0d40bfe5c1d208298dda7",
+      "result_sha256": "e08c5116ab6014f7d9ca4539e8ae46cbc535a20e7290b001caff65c1701113d9",
+      "result": {
+        "next_offset": 2,
+        "offset": 0,
+        "plan_sha256": "47084b895a6317db16275a92c3878a340d31af15fb9ab479db7101953c18e49c",
+        "query": "memory",
+        "schema": "atlas.excellence.query.v1",
+        "search_kind": "DETERMINISTIC_ALL_TOKEN_FILTER",
+        "semantic_crosswalk_inferred": false,
+        "tasks": [
+          {
+            "acceptance": [
+              "Reusable outputs are keyed by every output-affecting source implementation and parameter; current host rights are checked independently at use."
+            ],
+            "action": "Add explicit dependency keys invalidation and reuse rules appropriate to this capability. Scope: Reject changed source bytes before they enter a compiler or registry",
+            "artifact": "checks/EX.W01.C01/memory.json",
+            "artifact_description": "checks/EX.W01.C01/memory.json",
+            "benefit_claim_requires_measurement": true,
+            "capability_acceptance": [
+              "SHA-256 equals the independently expected pin before parsing",
+              "modified byte blocks admission"
+            ],
+            "capability_id": "EX.W01.C01",
+            "completion_outcomes": [
+              "CONTRACT_SATISFIED"
+            ],
+            "depends_on": [
+              "EX.W01.C01.P04"
+            ],
+            "engineering_coordinate": {
+              "capability": 1,
+              "phase": 7,
+              "workstream": 1
+            },
+            "estimated_work_units": 1,
+            "existing_targets": [
+              {
+                "classification": "verified_existing",
+                "path": "native-v2/src/index.mjs",
+                "project": "atlasgpt",
+                "source_id": "registry",
+                "symbols": [
+                  "AriadneRegistry",
+                  "parseStrictJson",
+                  "prepareResearch",
+                  "versionInfo"
+                ]
+              },
+              {
+                "classification": "verified_existing",
+                "path": "hypermatrix/canon.py",
+                "project": "hypermatrix",
+                "source_id": "canon",
+                "symbols": [
+                  "load_adoption",
+                  "adoption_receipt",
+                  "validate_amendment"
+                ]
+              },
+              {
+                "classification": "verified_existing",
+                "path": "lib/atlas-ariadne-source.mjs",
+                "project": "swarmchat",
+                "source_id": "ariadne",
+                "symbols": [
+                  "loadVerifiedAriadne",
+                  "verifyStructure",
+                  "parseCursor"
+                ]
+              },
+              {
+                "classification": "verified_existing",
+                "path": "librarian/hosting/store.mjs",
+                "project": "atlas_one",
+                "source_id": "librarian_store",
+                "symbols": [
+                  "D1Store",
+                  "canonicalJSON",
+                  "sha256"
+                ]
+              }
+            ],
+            "id": "EX.W01.C01.P07",
+            "input_contract": [
+              "raw source bytes",
+              "expected digest selected by caller",
+              "edition"
+            ],
+            "metrics": [
+              "admission_failure_detection",
+              "bytes_hashed",
+              "load_ms"
+            ],
+            "negative_cases": [
+              "Caller supplies matching digest for attacker-modified bytes without trusted expected pin"
+            ],
+            "objective": "Reject changed source bytes before they enter a compiler or registry",
+            "output_contract": [
+              "verified source descriptor",
+              "rejection reason"
+            ],
+            "phase_id": "P07",
+            "proposed_targets": [
+              {
+                "classification": "proposed_file",
+                "path": "tests/excellence/exact_source_pin_admission.test.mjs",
+                "project": "atlasgpt",
+                "symbol": "test_exact_source_pin_admission"
+              }
+            ],
+            "required_checks": {
+              "IMPLEMENTED": [
+                "EX.W01.C01.P07:implementation"
+              ],
+              "INTEGRATED": [
+                "EX.W01.C01.P07:integration"
+              ],
+              "VERIFIED": [
+                "EX.W01.C01.P07:verification"
+              ]
+            },
+            "source_refs": [
+              "ariadne",
+              "canon",
+              "librarian_store",
+              "registry"
+            ],
+            "status": "PLANNED",
+            "title": "Exact source pin admission \u2014 Bind reusable functional memory",
+            "workstream_id": "EX.W01",
+            "write_resources": [
+              "atlas_one:librarian/hosting/store.mjs",
+              "atlasgpt:native-v2/src/index.mjs",
+              "hypermatrix:hypermatrix/canon.py",
+              "swarmchat:lib/atlas-ariadne-source.mjs"
+            ]
+          },
+          {
+            "acceptance": [
+              "Reusable outputs are keyed by every output-affecting source implementation and parameter; current host rights are checked independently at use."
+            ],
+            "action": "Add explicit dependency keys invalidation and reuse rules appropriate to this capability. Scope: Keep original Ariadne and later projections addressable without silently merging editions",
+            "artifact": "checks/EX.W01.C02/memory.json",
+            "artifact_description": "checks/EX.W01.C02/memory.json",
+            "benefit_claim_requires_measurement": true,
+            "capability_acceptance": [
+              "Same label in two editions retains distinct coordinate identity",
+              "exact identity requires equal edition and verified entity"
+            ],
+            "capability_id": "EX.W01.C02",
+            "completion_outcomes": [
+              "CONTRACT_SATISFIED"
+            ],
+            "depends_on": [
+              "EX.W01.C02.P04"
+            ],
+            "engineering_coordinate": {
+              "capability": 2,
+              "phase": 7,
+              "workstream": 1
+            },
+            "estimated_work_units": 1,
+            "existing_targets": [
+              {
+                "classification": "verified_existing",
+                "path": "native-v2/src/index.mjs",
+                "project": "atlasgpt",
+                "source_id": "registry",
+                "symbols": [
+                  "AriadneRegistry",
+                  "parseStrictJson",
+                  "prepareResearch",
+                  "versionInfo"
+                ]
+              },
+              {
+                "classification": "verified_existing",
+                "path": "hypermatrix/model.py",
+                "project": "hypermatrix",
+                "source_id": "relations",
+                "symbols": [
+                  "Coordinate",
+                  "Relation",
+                  "RelationType",
+                  "classify_path"
+                ]
+              },
+              {
+                "classification": "verified_existing",
+                "path": "tools/contract_crosswalk.py",
+                "project": "noosphere",
+                "source_id": "crosswalk_audit",
+                "symbols": [
+                  "inspect",
+                  "compare"
+                ]
+              }
+            ],
+            "id": "EX.W01.C02.P07",
+            "input_contract": [
+              "source namespace",
+              "edition",
+              "content digest",
+              "candidate crosswalk"
+            ],
+            "metrics": [
+              "false_identity_count",
+              "edition_coverage",
+              "lookup_ms"
+            ],
+            "negative_cases": [
+              "Similar names in different editions collapse to one UID"
+            ],
+            "objective": "Keep original Ariadne and later projections addressable without silently merging editions",
+            "output_contract": [
+              "separate edition keys",
+              "typed comparison report"
+            ],
+            "phase_id": "P07",
+            "proposed_targets": [
+              {
+                "classification": "proposed_file",
+                "path": "tests/excellence/edition_aware_source_reconciliation.test.mjs",
+                "project": "atlasgpt",
+                "symbol": "test_edition_aware_source_reconciliation"
+              }
+            ],
+            "required_checks": {
+              "IMPLEMENTED": [
+                "EX.W01.C02.P07:implementation"
+              ],
+              "INTEGRATED": [
+                "EX.W01.C02.P07:integration"
+              ],
+              "VERIFIED": [
+                "EX.W01.C02.P07:verification"
+              ]
+            },
+            "source_refs": [
+              "crosswalk_audit",
+              "registry",
+              "relations"
+            ],
+            "status": "PLANNED",
+            "title": "Edition-aware source reconciliation \u2014 Bind reusable functional memory",
+            "workstream_id": "EX.W01",
+            "write_resources": [
+              "atlasgpt:native-v2/src/index.mjs",
+              "hypermatrix:hypermatrix/model.py",
+              "noosphere:tools/contract_crosswalk.py"
+            ]
+          }
+        ],
+        "total": 386
+      },
+      "source_verified_before_and_after": true,
+      "network_requests": 0,
+      "model_calls": 0,
+      "work_messages_posted": 0,
+      "hosted_authority_granted": false,
+      "elapsed_ms": 748.088,
+      "receipt_sha256": "786c75e7da7f79df32a029c7225f38fd5e6422df01394755dff34e9f0f4a9614"
+    },
+    {
+      "schema": "atlas.native.federation-call/v1",
+      "component_id": "EXCELLENCE1728_CORE",
+      "operation": "perspective",
+      "namespace": "EX1728_ENGINEERING",
+      "source_commit": "389965f3aaa90c99815f8c727836ca342ef7f313",
+      "source_lock_sha256": "eeb64471c38fb2a7e706c1ad49aa8fded2e59266b5e58acc5a58bda0d0f222c6",
+      "input_sha256": "4bcf0639557f60b492a7f35e9723cc857a41675e2426bc7bc80b0d7bdae0f0b1",
+      "result_sha256": "af72c0d30d86d10970e1a99e7d93abced5bfd7624cb48ac4732edc12e8d9e64d",
+      "result": {
+        "ariadne_source_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+        "independent_resident_review": false,
+        "kind": "SOURCE_COVERAGE_SLOT",
+        "plan_sha256": "47084b895a6317db16275a92c3878a340d31af15fb9ab479db7101953c18e49c",
+        "reviewed_task_count": 0,
+        "schema": "atlas.native.source-perspective-slot/v1",
+        "semantic_crosswalk_accepted": false,
+        "sphere_id": "H01.S01",
+        "status": "PENDING_SOURCE_REVIEW"
+      },
+      "source_verified_before_and_after": true,
+      "network_requests": 0,
+      "model_calls": 0,
+      "work_messages_posted": 0,
+      "hosted_authority_granted": false,
+      "elapsed_ms": 792.396,
+      "receipt_sha256": "31e3654f02c52498ee8b9375914d7467526bba7efa762b0be89ea884b7c277e7"
+    },
+    {
+      "schema": "atlas.native.federation-call/v1",
+      "component_id": "EXCELLENCE1728_CORE",
+      "operation": "meta145",
+      "namespace": "EX1728_ENGINEERING",
+      "source_commit": "389965f3aaa90c99815f8c727836ca342ef7f313",
+      "source_lock_sha256": "eeb64471c38fb2a7e706c1ad49aa8fded2e59266b5e58acc5a58bda0d0f222c6",
+      "input_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "result_sha256": "5a785c57152604322023a95d4a97b4ed17b2a26ec74767fef8a76bdd015cc075",
+      "result": {
+        "accepted_perspectives": 0,
+        "artifact_conflicts": [],
+        "build_ordinal": 145,
+        "canon_mutated": false,
+        "canon_reference": {
+          "canon_release": "0.2.0",
+          "decision_id": "ATLAS-UHM-CANON-20261123-001",
+          "public_adoption_sha256": "d3aeaf3aee92c7c7f61809652476d5ee267d449b3027b270fff3a276adc301c1",
+          "public_mapping_projection_sha256": "47a7e21dcfa43132991377f047452115cc008df547e5602730c532eb61225306",
+          "scope": "Existing project canon; this engineering plan does not amend accepted mappings",
+          "status": "OWNER_APPROVED_PROJECT_CANON",
+          "url": "https://github.com/atlaslattice/Atlas-Intelligence/blob/main/docs/canon/ATLAS_UNIFIED_HYPERMATRIX_20261123.md"
+        },
+        "compatible_gain_candidate_tasks": [],
+        "documented_no_gain_tasks": [],
+        "gain_candidate_scope": "Qualified local measurements only; no automatic approval of tradeoffs or end-to-end gain",
+        "genuine_macroturns_completed": 0,
+        "global_speedup_claimed": false,
+        "host_execution_authorized": false,
+        "house_coverage": [
+          {
+            "house_id": "H01",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H02",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H03",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H04",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H05",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H06",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H07",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H08",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H09",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H10",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H11",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          },
+          {
+            "house_id": "H12",
+            "reviewed_spheres": 0,
+            "sphere_total": 12,
+            "status": "PARTIAL_OR_PENDING"
+          }
+        ],
+        "independent_residents_executed": 0,
+        "integration_eligible_tasks": [],
+        "ledger_checkpoint_sha256": null,
+        "manifest_sha256": "4e4f9cb7d3bbd2ff3f15f99ef19b1ddc48a9cacb065f1fa284e74bf12375ba9c",
+        "measurement_groups": [],
+        "nonwork_content_imported": false,
+        "perspectives": [
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H01.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H02.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H03.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H04.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H05.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H06.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H07.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H08.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H09.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H10.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H11.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S01",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S02",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S03",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S04",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S05",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S06",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S07",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S08",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S09",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S10",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S11",
+            "status": "PENDING_SOURCE_REVIEW"
+          },
+          {
+            "reviewed_task_count": 0,
+            "sphere_id": "H12.S12",
+            "status": "PENDING_SOURCE_REVIEW"
+          }
+        ],
+        "plan_sha256": "47084b895a6317db16275a92c3878a340d31af15fb9ab479db7101953c18e49c",
+        "planned_steps": 1728,
+        "program_id": "ATLAS-EXCELLENCE-1728-20261123",
+        "regressed_tasks": [],
+        "reviewed_task_union_count": 0,
+        "schema": "atlas.excellence.meta145.v1",
+        "semantic_crosswalk_accepted": false,
+        "speedups_multiplied": false,
+        "status": "PARTIAL_OR_PLANNED",
+        "unmeasured_tasks": [],
+        "unreviewed_task_ids": [
+          "EX.W01.C01.P01",
+          "EX.W01.C01.P02",
+          "EX.W01.C01.P03",
+          "EX.W01.C01.P04",
+          "EX.W01.C01.P05",
+          "EX.W01.C01.P06",
+          "EX.W01.C01.P07",
+          "EX.W01.C01.P08",
+          "EX.W01.C01.P09",
+          "EX.W01.C01.P10",
+          "EX.W01.C01.P11",
+          "EX.W01.C01.P12",
+          "EX.W01.C02.P01",
+          "EX.W01.C02.P02",
+          "EX.W01.C02.P03",
+          "EX.W01.C02.P04",
+          "EX.W01.C02.P05",
+          "EX.W01.C02.P06",
+          "EX.W01.C02.P07",
+          "EX.W01.C02.P08",
+          "EX.W01.C02.P09",
+          "EX.W01.C02.P10",
+          "EX.W01.C02.P11",
+          "EX.W01.C02.P12",
+          "EX.W01.C03.P01",
+          "EX.W01.C03.P02",
+          "EX.W01.C03.P03",
+          "EX.W01.C03.P04",
+          "EX.W01.C03.P05",
+          "EX.W01.C03.P06",
+          "EX.W01.C03.P07",
+          "EX.W01.C03.P08",
+          "EX.W01.C03.P09",
+          "EX.W01.C03.P10",
+          "EX.W01.C03.P11",
+          "EX.W01.C03.P12",
+          "EX.W01.C04.P01",
+          "EX.W01.C04.P02",
+          "EX.W01.C04.P03",
+          "EX.W01.C04.P04",
+          "EX.W01.C04.P05",
+          "EX.W01.C04.P06",
+          "EX.W01.C04.P07",
+          "EX.W01.C04.P08",
+          "EX.W01.C04.P09",
+          "EX.W01.C04.P10",
+          "EX.W01.C04.P11",
+          "EX.W01.C04.P12",
+          "EX.W01.C05.P01",
+          "EX.W01.C05.P02",
+          "EX.W01.C05.P03",
+          "EX.W01.C05.P04",
+          "EX.W01.C05.P05",
+          "EX.W01.C05.P06",
+          "EX.W01.C05.P07",
+          "EX.W01.C05.P08",
+          "EX.W01.C05.P09",
+          "EX.W01.C05.P10",
+          "EX.W01.C05.P11",
+          "EX.W01.C05.P12",
+          "EX.W01.C06.P01",
+          "EX.W01.C06.P02",
+          "EX.W01.C06.P03",
+          "EX.W01.C06.P04",
+          "EX.W01.C06.P05",
+          "EX.W01.C06.P06",
+          "EX.W01.C06.P07",
+          "EX.W01.C06.P08",
+          "EX.W01.C06.P09",
+          "EX.W01.C06.P10",
+          "EX.W01.C06.P11",
+          "EX.W01.C06.P12",
+          "EX.W01.C07.P01",
+          "EX.W01.C07.P02",
+          "EX.W01.C07.P03",
+          "EX.W01.C07.P04",
+          "EX.W01.C07.P05",
+          "EX.W01.C07.P06",
+          "EX.W01.C07.P07",
+          "EX.W01.C07.P08",
+          "EX.W01.C07.P09",
+          "EX.W01.C07.P10",
+          "EX.W01.C07.P11",
+          "EX.W01.C07.P12",
+          "EX.W01.C08.P01",
+          "EX.W01.C08.P02",
+          "EX.W01.C08.P03",
+          "EX.W01.C08.P04",
+          "EX.W01.C08.P05",
+          "EX.W01.C08.P06",
+          "EX.W01.C08.P07",
+          "EX.W01.C08.P08",
+          "EX.W01.C08.P09",
+          "EX.W01.C08.P10",
+          "EX.W01.C08.P11",
+          "EX.W01.C08.P12",
+          "EX.W01.C09.P01",
+          "EX.W01.C09.P02",
+          "EX.W01.C09.P03",
+          "EX.W01.C09.P04",
+          "EX.W01.C09.P05",
+          "EX.W01.C09.P06",
+          "EX.W01.C09.P07",
+          "EX.W01.C09.P08",
+          "EX.W01.C09.P09",
+          "EX.W01.C09.P10",
+          "EX.W01.C09.P11",
+          "EX.W01.C09.P12",
+          "EX.W01.C10.P01",
+          "EX.W01.C10.P02",
+          "EX.W01.C10.P03",
+          "EX.W01.C10.P04",
+          "EX.W01.C10.P05",
+          "EX.W01.C10.P06",
+          "EX.W01.C10.P07",
+          "EX.W01.C10.P08",
+          "EX.W01.C10.P09",
+          "EX.W01.C10.P10",
+          "EX.W01.C10.P11",
+          "EX.W01.C10.P12",
+          "EX.W01.C11.P01",
+          "EX.W01.C11.P02",
+          "EX.W01.C11.P03",
+          "EX.W01.C11.P04",
+          "EX.W01.C11.P05",
+          "EX.W01.C11.P06",
+          "EX.W01.C11.P07",
+          "EX.W01.C11.P08",
+          "EX.W01.C11.P09",
+          "EX.W01.C11.P10",
+          "EX.W01.C11.P11",
+          "EX.W01.C11.P12",
+          "EX.W01.C12.P01",
+          "EX.W01.C12.P02",
+          "EX.W01.C12.P03",
+          "EX.W01.C12.P04",
+          "EX.W01.C12.P05",
+          "EX.W01.C12.P06",
+          "EX.W01.C12.P07",
+          "EX.W01.C12.P08",
+          "EX.W01.C12.P09",
+          "EX.W01.C12.P10",
+          "EX.W01.C12.P11",
+          "EX.W01.C12.P12",
+          "EX.W02.C01.P01",
+          "EX.W02.C01.P02",
+          "EX.W02.C01.P03",
+          "EX.W02.C01.P04",
+          "EX.W02.C01.P05",
+          "EX.W02.C01.P06",
+          "EX.W02.C01.P07",
+          "EX.W02.C01.P08",
+          "EX.W02.C01.P09",
+          "EX.W02.C01.P10",
+          "EX.W02.C01.P11",
+          "EX.W02.C01.P12",
+          "EX.W02.C02.P01",
+          "EX.W02.C02.P02",
+          "EX.W02.C02.P03",
+          "EX.W02.C02.P04",
+          "EX.W02.C02.P05",
+          "EX.W02.C02.P06",
+          "EX.W02.C02.P07",
+          "EX.W02.C02.P08",
+          "EX.W02.C02.P09",
+          "EX.W02.C02.P10",
+          "EX.W02.C02.P11",
+          "EX.W02.C02.P12",
+          "EX.W02.C03.P01",
+          "EX.W02.C03.P02",
+          "EX.W02.C03.P03",
+          "EX.W02.C03.P04",
+          "EX.W02.C03.P05",
+          "EX.W02.C03.P06",
+          "EX.W02.C03.P07",
+          "EX.W02.C03.P08",
+          "EX.W02.C03.P09",
+          "EX.W02.C03.P10",
+          "EX.W02.C03.P11",
+          "EX.W02.C03.P12",
+          "EX.W02.C04.P01",
+          "EX.W02.C04.P02",
+          "EX.W02.C04.P03",
+          "EX.W02.C04.P04",
+          "EX.W02.C04.P05",
+          "EX.W02.C04.P06",
+          "EX.W02.C04.P07",
+          "EX.W02.C04.P08",
+          "EX.W02.C04.P09",
+          "EX.W02.C04.P10",
+          "EX.W02.C04.P11",
+          "EX.W02.C04.P12",
+          "EX.W02.C05.P01",
+          "EX.W02.C05.P02",
+          "EX.W02.C05.P03",
+          "EX.W02.C05.P04",
+          "EX.W02.C05.P05",
+          "EX.W02.C05.P06",
+          "EX.W02.C05.P07",
+          "EX.W02.C05.P08",
+          "EX.W02.C05.P09",
+          "EX.W02.C05.P10",
+          "EX.W02.C05.P11",
+          "EX.W02.C05.P12",
+          "EX.W02.C06.P01",
+          "EX.W02.C06.P02",
+          "EX.W02.C06.P03",
+          "EX.W02.C06.P04",
+          "EX.W02.C06.P05",
+          "EX.W02.C06.P06",
+          "EX.W02.C06.P07",
+          "EX.W02.C06.P08",
+          "EX.W02.C06.P09",
+          "EX.W02.C06.P10",
+          "EX.W02.C06.P11",
+          "EX.W02.C06.P12",
+          "EX.W02.C07.P01",
+          "EX.W02.C07.P02",
+          "EX.W02.C07.P03",
+          "EX.W02.C07.P04",
+          "EX.W02.C07.P05",
+          "EX.W02.C07.P06",
+          "EX.W02.C07.P07",
+          "EX.W02.C07.P08",
+          "EX.W02.C07.P09",
+          "EX.W02.C07.P10",
+          "EX.W02.C07.P11",
+          "EX.W02.C07.P12",
+          "EX.W02.C08.P01",
+          "EX.W02.C08.P02",
+          "EX.W02.C08.P03",
+          "EX.W02.C08.P04",
+          "EX.W02.C08.P05",
+          "EX.W02.C08.P06",
+          "EX.W02.C08.P07",
+          "EX.W02.C08.P08",
+          "EX.W02.C08.P09",
+          "EX.W02.C08.P10",
+          "EX.W02.C08.P11",
+          "EX.W02.C08.P12",
+          "EX.W02.C09.P01",
+          "EX.W02.C09.P02",
+          "EX.W02.C09.P03",
+          "EX.W02.C09.P04",
+          "EX.W02.C09.P05",
+          "EX.W02.C09.P06",
+          "EX.W02.C09.P07",
+          "EX.W02.C09.P08",
+          "EX.W02.C09.P09",
+          "EX.W02.C09.P10",
+          "EX.W02.C09.P11",
+          "EX.W02.C09.P12",
+          "EX.W02.C10.P01",
+          "EX.W02.C10.P02",
+          "EX.W02.C10.P03",
+          "EX.W02.C10.P04",
+          "EX.W02.C10.P05",
+          "EX.W02.C10.P06",
+          "EX.W02.C10.P07",
+          "EX.W02.C10.P08",
+          "EX.W02.C10.P09",
+          "EX.W02.C10.P10",
+          "EX.W02.C10.P11",
+          "EX.W02.C10.P12",
+          "EX.W02.C11.P01",
+          "EX.W02.C11.P02",
+          "EX.W02.C11.P03",
+          "EX.W02.C11.P04",
+          "EX.W02.C11.P05",
+          "EX.W02.C11.P06",
+          "EX.W02.C11.P07",
+          "EX.W02.C11.P08",
+          "EX.W02.C11.P09",
+          "EX.W02.C11.P10",
+          "EX.W02.C11.P11",
+          "EX.W02.C11.P12",
+          "EX.W02.C12.P01",
+          "EX.W02.C12.P02",
+          "EX.W02.C12.P03",
+          "EX.W02.C12.P04",
+          "EX.W02.C12.P05",
+          "EX.W02.C12.P06",
+          "EX.W02.C12.P07",
+          "EX.W02.C12.P08",
+          "EX.W02.C12.P09",
+          "EX.W02.C12.P10",
+          "EX.W02.C12.P11",
+          "EX.W02.C12.P12",
+          "EX.W03.C01.P01",
+          "EX.W03.C01.P02",
+          "EX.W03.C01.P03",
+          "EX.W03.C01.P04",
+          "EX.W03.C01.P05",
+          "EX.W03.C01.P06",
+          "EX.W03.C01.P07",
+          "EX.W03.C01.P08",
+          "EX.W03.C01.P09",
+          "EX.W03.C01.P10",
+          "EX.W03.C01.P11",
+          "EX.W03.C01.P12",
+          "EX.W03.C02.P01",
+          "EX.W03.C02.P02",
+          "EX.W03.C02.P03",
+          "EX.W03.C02.P04",
+          "EX.W03.C02.P05",
+          "EX.W03.C02.P06",
+          "EX.W03.C02.P07",
+          "EX.W03.C02.P08",
+          "EX.W03.C02.P09",
+          "EX.W03.C02.P10",
+          "EX.W03.C02.P11",
+          "EX.W03.C02.P12",
+          "EX.W03.C03.P01",
+          "EX.W03.C03.P02",
+          "EX.W03.C03.P03",
+          "EX.W03.C03.P04",
+          "EX.W03.C03.P05",
+          "EX.W03.C03.P06",
+          "EX.W03.C03.P07",
+          "EX.W03.C03.P08",
+          "EX.W03.C03.P09",
+          "EX.W03.C03.P10",
+          "EX.W03.C03.P11",
+          "EX.W03.C03.P12",
+          "EX.W03.C04.P01",
+          "EX.W03.C04.P02",
+          "EX.W03.C04.P03",
+          "EX.W03.C04.P04",
+          "EX.W03.C04.P05",
+          "EX.W03.C04.P06",
+          "EX.W03.C04.P07",
+          "EX.W03.C04.P08",
+          "EX.W03.C04.P09",
+          "EX.W03.C04.P10",
+          "EX.W03.C04.P11",
+          "EX.W03.C04.P12",
+          "EX.W03.C05.P01",
+          "EX.W03.C05.P02",
+          "EX.W03.C05.P03",
+          "EX.W03.C05.P04",
+          "EX.W03.C05.P05",
+          "EX.W03.C05.P06",
+          "EX.W03.C05.P07",
+          "EX.W03.C05.P08",
+          "EX.W03.C05.P09",
+          "EX.W03.C05.P10",
+          "EX.W03.C05.P11",
+          "EX.W03.C05.P12",
+          "EX.W03.C06.P01",
+          "EX.W03.C06.P02",
+          "EX.W03.C06.P03",
+          "EX.W03.C06.P04",
+          "EX.W03.C06.P05",
+          "EX.W03.C06.P06",
+          "EX.W03.C06.P07",
+          "EX.W03.C06.P08",
+          "EX.W03.C06.P09",
+          "EX.W03.C06.P10",
+          "EX.W03.C06.P11",
+          "EX.W03.C06.P12",
+          "EX.W03.C07.P01",
+          "EX.W03.C07.P02",
+          "EX.W03.C07.P03",
+          "EX.W03.C07.P04",
+          "EX.W03.C07.P05",
+          "EX.W03.C07.P06",
+          "EX.W03.C07.P07",
+          "EX.W03.C07.P08",
+          "EX.W03.C07.P09",
+          "EX.W03.C07.P10",
+          "EX.W03.C07.P11",
+          "EX.W03.C07.P12",
+          "EX.W03.C08.P01",
+          "EX.W03.C08.P02",
+          "EX.W03.C08.P03",
+          "EX.W03.C08.P04",
+          "EX.W03.C08.P05",
+          "EX.W03.C08.P06",
+          "EX.W03.C08.P07",
+          "EX.W03.C08.P08",
+          "EX.W03.C08.P09",
+          "EX.W03.C08.P10",
+          "EX.W03.C08.P11",
+          "EX.W03.C08.P12",
+          "EX.W03.C09.P01",
+          "EX.W03.C09.P02",
+          "EX.W03.C09.P03",
+          "EX.W03.C09.P04",
+          "EX.W03.C09.P05",
+          "EX.W03.C09.P06",
+          "EX.W03.C09.P07",
+          "EX.W03.C09.P08",
+          "EX.W03.C09.P09",
+          "EX.W03.C09.P10",
+          "EX.W03.C09.P11",
+          "EX.W03.C09.P12",
+          "EX.W03.C10.P01",
+          "EX.W03.C10.P02",
+          "EX.W03.C10.P03",
+          "EX.W03.C10.P04",
+          "EX.W03.C10.P05",
+          "EX.W03.C10.P06",
+          "EX.W03.C10.P07",
+          "EX.W03.C10.P08",
+          "EX.W03.C10.P09",
+          "EX.W03.C10.P10",
+          "EX.W03.C10.P11",
+          "EX.W03.C10.P12",
+          "EX.W03.C11.P01",
+          "EX.W03.C11.P02",
+          "EX.W03.C11.P03",
+          "EX.W03.C11.P04",
+          "EX.W03.C11.P05",
+          "EX.W03.C11.P06",
+          "EX.W03.C11.P07",
+          "EX.W03.C11.P08",
+          "EX.W03.C11.P09",
+          "EX.W03.C11.P10",
+          "EX.W03.C11.P11",
+          "EX.W03.C11.P12",
+          "EX.W03.C12.P01",
+          "EX.W03.C12.P02",
+          "EX.W03.C12.P03",
+          "EX.W03.C12.P04",
+          "EX.W03.C12.P05",
+          "EX.W03.C12.P06",
+          "EX.W03.C12.P07",
+          "EX.W03.C12.P08",
+          "EX.W03.C12.P09",
+          "EX.W03.C12.P10",
+          "EX.W03.C12.P11",
+          "EX.W03.C12.P12",
+          "EX.W04.C01.P01",
+          "EX.W04.C01.P02",
+          "EX.W04.C01.P03",
+          "EX.W04.C01.P04",
+          "EX.W04.C01.P05",
+          "EX.W04.C01.P06",
+          "EX.W04.C01.P07",
+          "EX.W04.C01.P08",
+          "EX.W04.C01.P09",
+          "EX.W04.C01.P10",
+          "EX.W04.C01.P11",
+          "EX.W04.C01.P12",
+          "EX.W04.C02.P01",
+          "EX.W04.C02.P02",
+          "EX.W04.C02.P03",
+          "EX.W04.C02.P04",
+          "EX.W04.C02.P05",
+          "EX.W04.C02.P06",
+          "EX.W04.C02.P07",
+          "EX.W04.C02.P08",
+          "EX.W04.C02.P09",
+          "EX.W04.C02.P10",
+          "EX.W04.C02.P11",
+          "EX.W04.C02.P12",
+          "EX.W04.C03.P01",
+          "EX.W04.C03.P02",
+          "EX.W04.C03.P03",
+          "EX.W04.C03.P04",
+          "EX.W04.C03.P05",
+          "EX.W04.C03.P06",
+          "EX.W04.C03.P07",
+          "EX.W04.C03.P08",
+          "EX.W04.C03.P09",
+          "EX.W04.C03.P10",
+          "EX.W04.C03.P11",
+          "EX.W04.C03.P12",
+          "EX.W04.C04.P01",
+          "EX.W04.C04.P02",
+          "EX.W04.C04.P03",
+          "EX.W04.C04.P04",
+          "EX.W04.C04.P05",
+          "EX.W04.C04.P06",
+          "EX.W04.C04.P07",
+          "EX.W04.C04.P08",
+          "EX.W04.C04.P09",
+          "EX.W04.C04.P10",
+          "EX.W04.C04.P11",
+          "EX.W04.C04.P12",
+          "EX.W04.C05.P01",
+          "EX.W04.C05.P02",
+          "EX.W04.C05.P03",
+          "EX.W04.C05.P04",
+          "EX.W04.C05.P05",
+          "EX.W04.C05.P06",
+          "EX.W04.C05.P07",
+          "EX.W04.C05.P08",
+          "EX.W04.C05.P09",
+          "EX.W04.C05.P10",
+          "EX.W04.C05.P11",
+          "EX.W04.C05.P12",
+          "EX.W04.C06.P01",
+          "EX.W04.C06.P02",
+          "EX.W04.C06.P03",
+          "EX.W04.C06.P04",
+          "EX.W04.C06.P05",
+          "EX.W04.C06.P06",
+          "EX.W04.C06.P07",
+          "EX.W04.C06.P08",
+          "EX.W04.C06.P09",
+          "EX.W04.C06.P10",
+          "EX.W04.C06.P11",
+          "EX.W04.C06.P12",
+          "EX.W04.C07.P01",
+          "EX.W04.C07.P02",
+          "EX.W04.C07.P03",
+          "EX.W04.C07.P04",
+          "EX.W04.C07.P05",
+          "EX.W04.C07.P06",
+          "EX.W04.C07.P07",
+          "EX.W04.C07.P08",
+          "EX.W04.C07.P09",
+          "EX.W04.C07.P10",
+          "EX.W04.C07.P11",
+          "EX.W04.C07.P12",
+          "EX.W04.C08.P01",
+          "EX.W04.C08.P02",
+          "EX.W04.C08.P03",
+          "EX.W04.C08.P04",
+          "EX.W04.C08.P05",
+          "EX.W04.C08.P06",
+          "EX.W04.C08.P07",
+          "EX.W04.C08.P08",
+          "EX.W04.C08.P09",
+          "EX.W04.C08.P10",
+          "EX.W04.C08.P11",
+          "EX.W04.C08.P12",
+          "EX.W04.C09.P01",
+          "EX.W04.C09.P02",
+          "EX.W04.C09.P03",
+          "EX.W04.C09.P04",
+          "EX.W04.C09.P05",
+          "EX.W04.C09.P06",
+          "EX.W04.C09.P07",
+          "EX.W04.C09.P08",
+          "EX.W04.C09.P09",
+          "EX.W04.C09.P10",
+          "EX.W04.C09.P11",
+          "EX.W04.C09.P12",
+          "EX.W04.C10.P01",
+          "EX.W04.C10.P02",
+          "EX.W04.C10.P03",
+          "EX.W04.C10.P04",
+          "EX.W04.C10.P05",
+          "EX.W04.C10.P06",
+          "EX.W04.C10.P07",
+          "EX.W04.C10.P08",
+          "EX.W04.C10.P09",
+          "EX.W04.C10.P10",
+          "EX.W04.C10.P11",
+          "EX.W04.C10.P12",
+          "EX.W04.C11.P01",
+          "EX.W04.C11.P02",
+          "EX.W04.C11.P03",
+          "EX.W04.C11.P04",
+          "EX.W04.C11.P05",
+          "EX.W04.C11.P06",
+          "EX.W04.C11.P07",
+          "EX.W04.C11.P08",
+          "EX.W04.C11.P09",
+          "EX.W04.C11.P10",
+          "EX.W04.C11.P11",
+          "EX.W04.C11.P12",
+          "EX.W04.C12.P01",
+          "EX.W04.C12.P02",
+          "EX.W04.C12.P03",
+          "EX.W04.C12.P04",
+          "EX.W04.C12.P05",
+          "EX.W04.C12.P06",
+          "EX.W04.C12.P07",
+          "EX.W04.C12.P08",
+          "EX.W04.C12.P09",
+          "EX.W04.C12.P10",
+          "EX.W04.C12.P11",
+          "EX.W04.C12.P12",
+          "EX.W05.C01.P01",
+          "EX.W05.C01.P02",
+          "EX.W05.C01.P03",
+          "EX.W05.C01.P04",
+          "EX.W05.C01.P05",
+          "EX.W05.C01.P06",
+          "EX.W05.C01.P07",
+          "EX.W05.C01.P08",
+          "EX.W05.C01.P09",
+          "EX.W05.C01.P10",
+          "EX.W05.C01.P11",
+          "EX.W05.C01.P12",
+          "EX.W05.C02.P01",
+          "EX.W05.C02.P02",
+          "EX.W05.C02.P03",
+          "EX.W05.C02.P04",
+          "EX.W05.C02.P05",
+          "EX.W05.C02.P06",
+          "EX.W05.C02.P07",
+          "EX.W05.C02.P08",
+          "EX.W05.C02.P09",
+          "EX.W05.C02.P10",
+          "EX.W05.C02.P11",
+          "EX.W05.C02.P12",
+          "EX.W05.C03.P01",
+          "EX.W05.C03.P02",
+          "EX.W05.C03.P03",
+          "EX.W05.C03.P04",
+          "EX.W05.C03.P05",
+          "EX.W05.C03.P06",
+          "EX.W05.C03.P07",
+          "EX.W05.C03.P08",
+          "EX.W05.C03.P09",
+          "EX.W05.C03.P10",
+          "EX.W05.C03.P11",
+          "EX.W05.C03.P12",
+          "EX.W05.C04.P01",
+          "EX.W05.C04.P02",
+          "EX.W05.C04.P03",
+          "EX.W05.C04.P04",
+          "EX.W05.C04.P05",
+          "EX.W05.C04.P06",
+          "EX.W05.C04.P07",
+          "EX.W05.C04.P08",
+          "EX.W05.C04.P09",
+          "EX.W05.C04.P10",
+          "EX.W05.C04.P11",
+          "EX.W05.C04.P12",
+          "EX.W05.C05.P01",
+          "EX.W05.C05.P02",
+          "EX.W05.C05.P03",
+          "EX.W05.C05.P04",
+          "EX.W05.C05.P05",
+          "EX.W05.C05.P06",
+          "EX.W05.C05.P07",
+          "EX.W05.C05.P08",
+          "EX.W05.C05.P09",
+          "EX.W05.C05.P10",
+          "EX.W05.C05.P11",
+          "EX.W05.C05.P12",
+          "EX.W05.C06.P01",
+          "EX.W05.C06.P02",
+          "EX.W05.C06.P03",
+          "EX.W05.C06.P04",
+          "EX.W05.C06.P05",
+          "EX.W05.C06.P06",
+          "EX.W05.C06.P07",
+          "EX.W05.C06.P08",
+          "EX.W05.C06.P09",
+          "EX.W05.C06.P10",
+          "EX.W05.C06.P11",
+          "EX.W05.C06.P12",
+          "EX.W05.C07.P01",
+          "EX.W05.C07.P02",
+          "EX.W05.C07.P03",
+          "EX.W05.C07.P04",
+          "EX.W05.C07.P05",
+          "EX.W05.C07.P06",
+          "EX.W05.C07.P07",
+          "EX.W05.C07.P08",
+          "EX.W05.C07.P09",
+          "EX.W05.C07.P10",
+          "EX.W05.C07.P11",
+          "EX.W05.C07.P12",
+          "EX.W05.C08.P01",
+          "EX.W05.C08.P02",
+          "EX.W05.C08.P03",
+          "EX.W05.C08.P04",
+          "EX.W05.C08.P05",
+          "EX.W05.C08.P06",
+          "EX.W05.C08.P07",
+          "EX.W05.C08.P08",
+          "EX.W05.C08.P09",
+          "EX.W05.C08.P10",
+          "EX.W05.C08.P11",
+          "EX.W05.C08.P12",
+          "EX.W05.C09.P01",
+          "EX.W05.C09.P02",
+          "EX.W05.C09.P03",
+          "EX.W05.C09.P04",
+          "EX.W05.C09.P05",
+          "EX.W05.C09.P06",
+          "EX.W05.C09.P07",
+          "EX.W05.C09.P08",
+          "EX.W05.C09.P09",
+          "EX.W05.C09.P10",
+          "EX.W05.C09.P11",
+          "EX.W05.C09.P12",
+          "EX.W05.C10.P01",
+          "EX.W05.C10.P02",
+          "EX.W05.C10.P03",
+          "EX.W05.C10.P04",
+          "EX.W05.C10.P05",
+          "EX.W05.C10.P06",
+          "EX.W05.C10.P07",
+          "EX.W05.C10.P08",
+          "EX.W05.C10.P09",
+          "EX.W05.C10.P10",
+          "EX.W05.C10.P11",
+          "EX.W05.C10.P12",
+          "EX.W05.C11.P01",
+          "EX.W05.C11.P02",
+          "EX.W05.C11.P03",
+          "EX.W05.C11.P04",
+          "EX.W05.C11.P05",
+          "EX.W05.C11.P06",
+          "EX.W05.C11.P07",
+          "EX.W05.C11.P08",
+          "EX.W05.C11.P09",
+          "EX.W05.C11.P10",
+          "EX.W05.C11.P11",
+          "EX.W05.C11.P12",
+          "EX.W05.C12.P01",
+          "EX.W05.C12.P02",
+          "EX.W05.C12.P03",
+          "EX.W05.C12.P04",
+          "EX.W05.C12.P05",
+          "EX.W05.C12.P06",
+          "EX.W05.C12.P07",
+          "EX.W05.C12.P08",
+          "EX.W05.C12.P09",
+          "EX.W05.C12.P10",
+          "EX.W05.C12.P11",
+          "EX.W05.C12.P12",
+          "EX.W06.C01.P01",
+          "EX.W06.C01.P02",
+          "EX.W06.C01.P03",
+          "EX.W06.C01.P04",
+          "EX.W06.C01.P05",
+          "EX.W06.C01.P06",
+          "EX.W06.C01.P07",
+          "EX.W06.C01.P08",
+          "EX.W06.C01.P09",
+          "EX.W06.C01.P10",
+          "EX.W06.C01.P11",
+          "EX.W06.C01.P12",
+          "EX.W06.C02.P01",
+          "EX.W06.C02.P02",
+          "EX.W06.C02.P03",
+          "EX.W06.C02.P04",
+          "EX.W06.C02.P05",
+          "EX.W06.C02.P06",
+          "EX.W06.C02.P07",
+          "EX.W06.C02.P08",
+          "EX.W06.C02.P09",
+          "EX.W06.C02.P10",
+          "EX.W06.C02.P11",
+          "EX.W06.C02.P12",
+          "EX.W06.C03.P01",
+          "EX.W06.C03.P02",
+          "EX.W06.C03.P03",
+          "EX.W06.C03.P04",
+          "EX.W06.C03.P05",
+          "EX.W06.C03.P06",
+          "EX.W06.C03.P07",
+          "EX.W06.C03.P08",
+          "EX.W06.C03.P09",
+          "EX.W06.C03.P10",
+          "EX.W06.C03.P11",
+          "EX.W06.C03.P12",
+          "EX.W06.C04.P01",
+          "EX.W06.C04.P02",
+          "EX.W06.C04.P03",
+          "EX.W06.C04.P04",
+          "EX.W06.C04.P05",
+          "EX.W06.C04.P06",
+          "EX.W06.C04.P07",
+          "EX.W06.C04.P08",
+          "EX.W06.C04.P09",
+          "EX.W06.C04.P10",
+          "EX.W06.C04.P11",
+          "EX.W06.C04.P12",
+          "EX.W06.C05.P01",
+          "EX.W06.C05.P02",
+          "EX.W06.C05.P03",
+          "EX.W06.C05.P04",
+          "EX.W06.C05.P05",
+          "EX.W06.C05.P06",
+          "EX.W06.C05.P07",
+          "EX.W06.C05.P08",
+          "EX.W06.C05.P09",
+          "EX.W06.C05.P10",
+          "EX.W06.C05.P11",
+          "EX.W06.C05.P12",
+          "EX.W06.C06.P01",
+          "EX.W06.C06.P02",
+          "EX.W06.C06.P03",
+          "EX.W06.C06.P04",
+          "EX.W06.C06.P05",
+          "EX.W06.C06.P06",
+          "EX.W06.C06.P07",
+          "EX.W06.C06.P08",
+          "EX.W06.C06.P09",
+          "EX.W06.C06.P10",
+          "EX.W06.C06.P11",
+          "EX.W06.C06.P12",
+          "EX.W06.C07.P01",
+          "EX.W06.C07.P02",
+          "EX.W06.C07.P03",
+          "EX.W06.C07.P04",
+          "EX.W06.C07.P05",
+          "EX.W06.C07.P06",
+          "EX.W06.C07.P07",
+          "EX.W06.C07.P08",
+          "EX.W06.C07.P09",
+          "EX.W06.C07.P10",
+          "EX.W06.C07.P11",
+          "EX.W06.C07.P12",
+          "EX.W06.C08.P01",
+          "EX.W06.C08.P02",
+          "EX.W06.C08.P03",
+          "EX.W06.C08.P04",
+          "EX.W06.C08.P05",
+          "EX.W06.C08.P06",
+          "EX.W06.C08.P07",
+          "EX.W06.C08.P08",
+          "EX.W06.C08.P09",
+          "EX.W06.C08.P10",
+          "EX.W06.C08.P11",
+          "EX.W06.C08.P12",
+          "EX.W06.C09.P01",
+          "EX.W06.C09.P02",
+          "EX.W06.C09.P03",
+          "EX.W06.C09.P04",
+          "EX.W06.C09.P05",
+          "EX.W06.C09.P06",
+          "EX.W06.C09.P07",
+          "EX.W06.C09.P08",
+          "EX.W06.C09.P09",
+          "EX.W06.C09.P10",
+          "EX.W06.C09.P11",
+          "EX.W06.C09.P12",
+          "EX.W06.C10.P01",
+          "EX.W06.C10.P02",
+          "EX.W06.C10.P03",
+          "EX.W06.C10.P04",
+          "EX.W06.C10.P05",
+          "EX.W06.C10.P06",
+          "EX.W06.C10.P07",
+          "EX.W06.C10.P08",
+          "EX.W06.C10.P09",
+          "EX.W06.C10.P10",
+          "EX.W06.C10.P11",
+          "EX.W06.C10.P12",
+          "EX.W06.C11.P01",
+          "EX.W06.C11.P02",
+          "EX.W06.C11.P03",
+          "EX.W06.C11.P04",
+          "EX.W06.C11.P05",
+          "EX.W06.C11.P06",
+          "EX.W06.C11.P07",
+          "EX.W06.C11.P08",
+          "EX.W06.C11.P09",
+          "EX.W06.C11.P10",
+          "EX.W06.C11.P11",
+          "EX.W06.C11.P12",
+          "EX.W06.C12.P01",
+          "EX.W06.C12.P02",
+          "EX.W06.C12.P03",
+          "EX.W06.C12.P04",
+          "EX.W06.C12.P05",
+          "EX.W06.C12.P06",
+          "EX.W06.C12.P07",
+          "EX.W06.C12.P08",
+          "EX.W06.C12.P09",
+          "EX.W06.C12.P10",
+          "EX.W06.C12.P11",
+          "EX.W06.C12.P12",
+          "EX.W07.C01.P01",
+          "EX.W07.C01.P02",
+          "EX.W07.C01.P03",
+          "EX.W07.C01.P04",
+          "EX.W07.C01.P05",
+          "EX.W07.C01.P06",
+          "EX.W07.C01.P07",
+          "EX.W07.C01.P08",
+          "EX.W07.C01.P09",
+          "EX.W07.C01.P10",
+          "EX.W07.C01.P11",
+          "EX.W07.C01.P12",
+          "EX.W07.C02.P01",
+          "EX.W07.C02.P02",
+          "EX.W07.C02.P03",
+          "EX.W07.C02.P04",
+          "EX.W07.C02.P05",
+          "EX.W07.C02.P06",
+          "EX.W07.C02.P07",
+          "EX.W07.C02.P08",
+          "EX.W07.C02.P09",
+          "EX.W07.C02.P10",
+          "EX.W07.C02.P11",
+          "EX.W07.C02.P12",
+          "EX.W07.C03.P01",
+          "EX.W07.C03.P02",
+          "EX.W07.C03.P03",
+          "EX.W07.C03.P04",
+          "EX.W07.C03.P05",
+          "EX.W07.C03.P06",
+          "EX.W07.C03.P07",
+          "EX.W07.C03.P08",
+          "EX.W07.C03.P09",
+          "EX.W07.C03.P10",
+          "EX.W07.C03.P11",
+          "EX.W07.C03.P12",
+          "EX.W07.C04.P01",
+          "EX.W07.C04.P02",
+          "EX.W07.C04.P03",
+          "EX.W07.C04.P04",
+          "EX.W07.C04.P05",
+          "EX.W07.C04.P06",
+          "EX.W07.C04.P07",
+          "EX.W07.C04.P08",
+          "EX.W07.C04.P09",
+          "EX.W07.C04.P10",
+          "EX.W07.C04.P11",
+          "EX.W07.C04.P12",
+          "EX.W07.C05.P01",
+          "EX.W07.C05.P02",
+          "EX.W07.C05.P03",
+          "EX.W07.C05.P04",
+          "EX.W07.C05.P05",
+          "EX.W07.C05.P06",
+          "EX.W07.C05.P07",
+          "EX.W07.C05.P08",
+          "EX.W07.C05.P09",
+          "EX.W07.C05.P10",
+          "EX.W07.C05.P11",
+          "EX.W07.C05.P12",
+          "EX.W07.C06.P01",
+          "EX.W07.C06.P02",
+          "EX.W07.C06.P03",
+          "EX.W07.C06.P04",
+          "EX.W07.C06.P05",
+          "EX.W07.C06.P06",
+          "EX.W07.C06.P07",
+          "EX.W07.C06.P08",
+          "EX.W07.C06.P09",
+          "EX.W07.C06.P10",
+          "EX.W07.C06.P11",
+          "EX.W07.C06.P12",
+          "EX.W07.C07.P01",
+          "EX.W07.C07.P02",
+          "EX.W07.C07.P03",
+          "EX.W07.C07.P04",
+          "EX.W07.C07.P05",
+          "EX.W07.C07.P06",
+          "EX.W07.C07.P07",
+          "EX.W07.C07.P08",
+          "EX.W07.C07.P09",
+          "EX.W07.C07.P10",
+          "EX.W07.C07.P11",
+          "EX.W07.C07.P12",
+          "EX.W07.C08.P01",
+          "EX.W07.C08.P02",
+          "EX.W07.C08.P03",
+          "EX.W07.C08.P04",
+          "EX.W07.C08.P05",
+          "EX.W07.C08.P06",
+          "EX.W07.C08.P07",
+          "EX.W07.C08.P08",
+          "EX.W07.C08.P09",
+          "EX.W07.C08.P10",
+          "EX.W07.C08.P11",
+          "EX.W07.C08.P12",
+          "EX.W07.C09.P01",
+          "EX.W07.C09.P02",
+          "EX.W07.C09.P03",
+          "EX.W07.C09.P04",
+          "EX.W07.C09.P05",
+          "EX.W07.C09.P06",
+          "EX.W07.C09.P07",
+          "EX.W07.C09.P08",
+          "EX.W07.C09.P09",
+          "EX.W07.C09.P10",
+          "EX.W07.C09.P11",
+          "EX.W07.C09.P12",
+          "EX.W07.C10.P01",
+          "EX.W07.C10.P02",
+          "EX.W07.C10.P03",
+          "EX.W07.C10.P04",
+          "EX.W07.C10.P05",
+          "EX.W07.C10.P06",
+          "EX.W07.C10.P07",
+          "EX.W07.C10.P08",
+          "EX.W07.C10.P09",
+          "EX.W07.C10.P10",
+          "EX.W07.C10.P11",
+          "EX.W07.C10.P12",
+          "EX.W07.C11.P01",
+          "EX.W07.C11.P02",
+          "EX.W07.C11.P03",
+          "EX.W07.C11.P04",
+          "EX.W07.C11.P05",
+          "EX.W07.C11.P06",
+          "EX.W07.C11.P07",
+          "EX.W07.C11.P08",
+          "EX.W07.C11.P09",
+          "EX.W07.C11.P10",
+          "EX.W07.C11.P11",
+          "EX.W07.C11.P12",
+          "EX.W07.C12.P01",
+          "EX.W07.C12.P02",
+          "EX.W07.C12.P03",
+          "EX.W07.C12.P04",
+          "EX.W07.C12.P05",
+          "EX.W07.C12.P06",
+          "EX.W07.C12.P07",
+          "EX.W07.C12.P08",
+          "EX.W07.C12.P09",
+          "EX.W07.C12.P10",
+          "EX.W07.C12.P11",
+          "EX.W07.C12.P12",
+          "EX.W08.C01.P01",
+          "EX.W08.C01.P02",
+          "EX.W08.C01.P03",
+          "EX.W08.C01.P04",
+          "EX.W08.C01.P05",
+          "EX.W08.C01.P06",
+          "EX.W08.C01.P07",
+          "EX.W08.C01.P08",
+          "EX.W08.C01.P09",
+          "EX.W08.C01.P10",
+          "EX.W08.C01.P11",
+          "EX.W08.C01.P12",
+          "EX.W08.C02.P01",
+          "EX.W08.C02.P02",
+          "EX.W08.C02.P03",
+          "EX.W08.C02.P04",
+          "EX.W08.C02.P05",
+          "EX.W08.C02.P06",
+          "EX.W08.C02.P07",
+          "EX.W08.C02.P08",
+          "EX.W08.C02.P09",
+          "EX.W08.C02.P10",
+          "EX.W08.C02.P11",
+          "EX.W08.C02.P12",
+          "EX.W08.C03.P01",
+          "EX.W08.C03.P02",
+          "EX.W08.C03.P03",
+          "EX.W08.C03.P04",
+          "EX.W08.C03.P05",
+          "EX.W08.C03.P06",
+          "EX.W08.C03.P07",
+          "EX.W08.C03.P08",
+          "EX.W08.C03.P09",
+          "EX.W08.C03.P10",
+          "EX.W08.C03.P11",
+          "EX.W08.C03.P12",
+          "EX.W08.C04.P01",
+          "EX.W08.C04.P02",
+          "EX.W08.C04.P03",
+          "EX.W08.C04.P04",
+          "EX.W08.C04.P05",
+          "EX.W08.C04.P06",
+          "EX.W08.C04.P07",
+          "EX.W08.C04.P08",
+          "EX.W08.C04.P09",
+          "EX.W08.C04.P10",
+          "EX.W08.C04.P11",
+          "EX.W08.C04.P12",
+          "EX.W08.C05.P01",
+          "EX.W08.C05.P02",
+          "EX.W08.C05.P03",
+          "EX.W08.C05.P04",
+          "EX.W08.C05.P05",
+          "EX.W08.C05.P06",
+          "EX.W08.C05.P07",
+          "EX.W08.C05.P08",
+          "EX.W08.C05.P09",
+          "EX.W08.C05.P10",
+          "EX.W08.C05.P11",
+          "EX.W08.C05.P12",
+          "EX.W08.C06.P01",
+          "EX.W08.C06.P02",
+          "EX.W08.C06.P03",
+          "EX.W08.C06.P04",
+          "EX.W08.C06.P05",
+          "EX.W08.C06.P06",
+          "EX.W08.C06.P07",
+          "EX.W08.C06.P08",
+          "EX.W08.C06.P09",
+          "EX.W08.C06.P10",
+          "EX.W08.C06.P11",
+          "EX.W08.C06.P12",
+          "EX.W08.C07.P01",
+          "EX.W08.C07.P02",
+          "EX.W08.C07.P03",
+          "EX.W08.C07.P04",
+          "EX.W08.C07.P05",
+          "EX.W08.C07.P06",
+          "EX.W08.C07.P07",
+          "EX.W08.C07.P08",
+          "EX.W08.C07.P09",
+          "EX.W08.C07.P10",
+          "EX.W08.C07.P11",
+          "EX.W08.C07.P12",
+          "EX.W08.C08.P01",
+          "EX.W08.C08.P02",
+          "EX.W08.C08.P03",
+          "EX.W08.C08.P04",
+          "EX.W08.C08.P05",
+          "EX.W08.C08.P06",
+          "EX.W08.C08.P07",
+          "EX.W08.C08.P08",
+          "EX.W08.C08.P09",
+          "EX.W08.C08.P10",
+          "EX.W08.C08.P11",
+          "EX.W08.C08.P12",
+          "EX.W08.C09.P01",
+          "EX.W08.C09.P02",
+          "EX.W08.C09.P03",
+          "EX.W08.C09.P04",
+          "EX.W08.C09.P05",
+          "EX.W08.C09.P06",
+          "EX.W08.C09.P07",
+          "EX.W08.C09.P08",
+          "EX.W08.C09.P09",
+          "EX.W08.C09.P10",
+          "EX.W08.C09.P11",
+          "EX.W08.C09.P12",
+          "EX.W08.C10.P01",
+          "EX.W08.C10.P02",
+          "EX.W08.C10.P03",
+          "EX.W08.C10.P04",
+          "EX.W08.C10.P05",
+          "EX.W08.C10.P06",
+          "EX.W08.C10.P07",
+          "EX.W08.C10.P08",
+          "EX.W08.C10.P09",
+          "EX.W08.C10.P10",
+          "EX.W08.C10.P11",
+          "EX.W08.C10.P12",
+          "EX.W08.C11.P01",
+          "EX.W08.C11.P02",
+          "EX.W08.C11.P03",
+          "EX.W08.C11.P04",
+          "EX.W08.C11.P05",
+          "EX.W08.C11.P06",
+          "EX.W08.C11.P07",
+          "EX.W08.C11.P08",
+          "EX.W08.C11.P09",
+          "EX.W08.C11.P10",
+          "EX.W08.C11.P11",
+          "EX.W08.C11.P12",
+          "EX.W08.C12.P01",
+          "EX.W08.C12.P02",
+          "EX.W08.C12.P03",
+          "EX.W08.C12.P04",
+          "EX.W08.C12.P05",
+          "EX.W08.C12.P06",
+          "EX.W08.C12.P07",
+          "EX.W08.C12.P08",
+          "EX.W08.C12.P09",
+          "EX.W08.C12.P10",
+          "EX.W08.C12.P11",
+          "EX.W08.C12.P12",
+          "EX.W09.C01.P01",
+          "EX.W09.C01.P02",
+          "EX.W09.C01.P03",
+          "EX.W09.C01.P04",
+          "EX.W09.C01.P05",
+          "EX.W09.C01.P06",
+          "EX.W09.C01.P07",
+          "EX.W09.C01.P08",
+          "EX.W09.C01.P09",
+          "EX.W09.C01.P10",
+          "EX.W09.C01.P11",
+          "EX.W09.C01.P12",
+          "EX.W09.C02.P01",
+          "EX.W09.C02.P02",
+          "EX.W09.C02.P03",
+          "EX.W09.C02.P04",
+          "EX.W09.C02.P05",
+          "EX.W09.C02.P06",
+          "EX.W09.C02.P07",
+          "EX.W09.C02.P08",
+          "EX.W09.C02.P09",
+          "EX.W09.C02.P10",
+          "EX.W09.C02.P11",
+          "EX.W09.C02.P12",
+          "EX.W09.C03.P01",
+          "EX.W09.C03.P02",
+          "EX.W09.C03.P03",
+          "EX.W09.C03.P04",
+          "EX.W09.C03.P05",
+          "EX.W09.C03.P06",
+          "EX.W09.C03.P07",
+          "EX.W09.C03.P08",
+          "EX.W09.C03.P09",
+          "EX.W09.C03.P10",
+          "EX.W09.C03.P11",
+          "EX.W09.C03.P12",
+          "EX.W09.C04.P01",
+          "EX.W09.C04.P02",
+          "EX.W09.C04.P03",
+          "EX.W09.C04.P04",
+          "EX.W09.C04.P05",
+          "EX.W09.C04.P06",
+          "EX.W09.C04.P07",
+          "EX.W09.C04.P08",
+          "EX.W09.C04.P09",
+          "EX.W09.C04.P10",
+          "EX.W09.C04.P11",
+          "EX.W09.C04.P12",
+          "EX.W09.C05.P01",
+          "EX.W09.C05.P02",
+          "EX.W09.C05.P03",
+          "EX.W09.C05.P04",
+          "EX.W09.C05.P05",
+          "EX.W09.C05.P06",
+          "EX.W09.C05.P07",
+          "EX.W09.C05.P08",
+          "EX.W09.C05.P09",
+          "EX.W09.C05.P10",
+          "EX.W09.C05.P11",
+          "EX.W09.C05.P12",
+          "EX.W09.C06.P01",
+          "EX.W09.C06.P02",
+          "EX.W09.C06.P03",
+          "EX.W09.C06.P04",
+          "EX.W09.C06.P05",
+          "EX.W09.C06.P06",
+          "EX.W09.C06.P07",
+          "EX.W09.C06.P08",
+          "EX.W09.C06.P09",
+          "EX.W09.C06.P10",
+          "EX.W09.C06.P11",
+          "EX.W09.C06.P12",
+          "EX.W09.C07.P01",
+          "EX.W09.C07.P02",
+          "EX.W09.C07.P03",
+          "EX.W09.C07.P04",
+          "EX.W09.C07.P05",
+          "EX.W09.C07.P06",
+          "EX.W09.C07.P07",
+          "EX.W09.C07.P08",
+          "EX.W09.C07.P09",
+          "EX.W09.C07.P10",
+          "EX.W09.C07.P11",
+          "EX.W09.C07.P12",
+          "EX.W09.C08.P01",
+          "EX.W09.C08.P02",
+          "EX.W09.C08.P03",
+          "EX.W09.C08.P04",
+          "EX.W09.C08.P05",
+          "EX.W09.C08.P06",
+          "EX.W09.C08.P07",
+          "EX.W09.C08.P08",
+          "EX.W09.C08.P09",
+          "EX.W09.C08.P10",
+          "EX.W09.C08.P11",
+          "EX.W09.C08.P12",
+          "EX.W09.C09.P01",
+          "EX.W09.C09.P02",
+          "EX.W09.C09.P03",
+          "EX.W09.C09.P04",
+          "EX.W09.C09.P05",
+          "EX.W09.C09.P06",
+          "EX.W09.C09.P07",
+          "EX.W09.C09.P08",
+          "EX.W09.C09.P09",
+          "EX.W09.C09.P10",
+          "EX.W09.C09.P11",
+          "EX.W09.C09.P12",
+          "EX.W09.C10.P01",
+          "EX.W09.C10.P02",
+          "EX.W09.C10.P03",
+          "EX.W09.C10.P04",
+          "EX.W09.C10.P05",
+          "EX.W09.C10.P06",
+          "EX.W09.C10.P07",
+          "EX.W09.C10.P08",
+          "EX.W09.C10.P09",
+          "EX.W09.C10.P10",
+          "EX.W09.C10.P11",
+          "EX.W09.C10.P12",
+          "EX.W09.C11.P01",
+          "EX.W09.C11.P02",
+          "EX.W09.C11.P03",
+          "EX.W09.C11.P04",
+          "EX.W09.C11.P05",
+          "EX.W09.C11.P06",
+          "EX.W09.C11.P07",
+          "EX.W09.C11.P08",
+          "EX.W09.C11.P09",
+          "EX.W09.C11.P10",
+          "EX.W09.C11.P11",
+          "EX.W09.C11.P12",
+          "EX.W09.C12.P01",
+          "EX.W09.C12.P02",
+          "EX.W09.C12.P03",
+          "EX.W09.C12.P04",
+          "EX.W09.C12.P05",
+          "EX.W09.C12.P06",
+          "EX.W09.C12.P07",
+          "EX.W09.C12.P08",
+          "EX.W09.C12.P09",
+          "EX.W09.C12.P10",
+          "EX.W09.C12.P11",
+          "EX.W09.C12.P12",
+          "EX.W10.C01.P01",
+          "EX.W10.C01.P02",
+          "EX.W10.C01.P03",
+          "EX.W10.C01.P04",
+          "EX.W10.C01.P05",
+          "EX.W10.C01.P06",
+          "EX.W10.C01.P07",
+          "EX.W10.C01.P08",
+          "EX.W10.C01.P09",
+          "EX.W10.C01.P10",
+          "EX.W10.C01.P11",
+          "EX.W10.C01.P12",
+          "EX.W10.C02.P01",
+          "EX.W10.C02.P02",
+          "EX.W10.C02.P03",
+          "EX.W10.C02.P04",
+          "EX.W10.C02.P05",
+          "EX.W10.C02.P06",
+          "EX.W10.C02.P07",
+          "EX.W10.C02.P08",
+          "EX.W10.C02.P09",
+          "EX.W10.C02.P10",
+          "EX.W10.C02.P11",
+          "EX.W10.C02.P12",
+          "EX.W10.C03.P01",
+          "EX.W10.C03.P02",
+          "EX.W10.C03.P03",
+          "EX.W10.C03.P04",
+          "EX.W10.C03.P05",
+          "EX.W10.C03.P06",
+          "EX.W10.C03.P07",
+          "EX.W10.C03.P08",
+          "EX.W10.C03.P09",
+          "EX.W10.C03.P10",
+          "EX.W10.C03.P11",
+          "EX.W10.C03.P12",
+          "EX.W10.C04.P01",
+          "EX.W10.C04.P02",
+          "EX.W10.C04.P03",
+          "EX.W10.C04.P04",
+          "EX.W10.C04.P05",
+          "EX.W10.C04.P06",
+          "EX.W10.C04.P07",
+          "EX.W10.C04.P08",
+          "EX.W10.C04.P09",
+          "EX.W10.C04.P10",
+          "EX.W10.C04.P11",
+          "EX.W10.C04.P12",
+          "EX.W10.C05.P01",
+          "EX.W10.C05.P02",
+          "EX.W10.C05.P03",
+          "EX.W10.C05.P04",
+          "EX.W10.C05.P05",
+          "EX.W10.C05.P06",
+          "EX.W10.C05.P07",
+          "EX.W10.C05.P08",
+          "EX.W10.C05.P09",
+          "EX.W10.C05.P10",
+          "EX.W10.C05.P11",
+          "EX.W10.C05.P12",
+          "EX.W10.C06.P01",
+          "EX.W10.C06.P02",
+          "EX.W10.C06.P03",
+          "EX.W10.C06.P04",
+          "EX.W10.C06.P05",
+          "EX.W10.C06.P06",
+          "EX.W10.C06.P07",
+          "EX.W10.C06.P08",
+          "EX.W10.C06.P09",
+          "EX.W10.C06.P10",
+          "EX.W10.C06.P11",
+          "EX.W10.C06.P12",
+          "EX.W10.C07.P01",
+          "EX.W10.C07.P02",
+          "EX.W10.C07.P03",
+          "EX.W10.C07.P04",
+          "EX.W10.C07.P05",
+          "EX.W10.C07.P06",
+          "EX.W10.C07.P07",
+          "EX.W10.C07.P08",
+          "EX.W10.C07.P09",
+          "EX.W10.C07.P10",
+          "EX.W10.C07.P11",
+          "EX.W10.C07.P12",
+          "EX.W10.C08.P01",
+          "EX.W10.C08.P02",
+          "EX.W10.C08.P03",
+          "EX.W10.C08.P04",
+          "EX.W10.C08.P05",
+          "EX.W10.C08.P06",
+          "EX.W10.C08.P07",
+          "EX.W10.C08.P08",
+          "EX.W10.C08.P09",
+          "EX.W10.C08.P10",
+          "EX.W10.C08.P11",
+          "EX.W10.C08.P12",
+          "EX.W10.C09.P01",
+          "EX.W10.C09.P02",
+          "EX.W10.C09.P03",
+          "EX.W10.C09.P04",
+          "EX.W10.C09.P05",
+          "EX.W10.C09.P06",
+          "EX.W10.C09.P07",
+          "EX.W10.C09.P08",
+          "EX.W10.C09.P09",
+          "EX.W10.C09.P10",
+          "EX.W10.C09.P11",
+          "EX.W10.C09.P12",
+          "EX.W10.C10.P01",
+          "EX.W10.C10.P02",
+          "EX.W10.C10.P03",
+          "EX.W10.C10.P04",
+          "EX.W10.C10.P05",
+          "EX.W10.C10.P06",
+          "EX.W10.C10.P07",
+          "EX.W10.C10.P08",
+          "EX.W10.C10.P09",
+          "EX.W10.C10.P10",
+          "EX.W10.C10.P11",
+          "EX.W10.C10.P12",
+          "EX.W10.C11.P01",
+          "EX.W10.C11.P02",
+          "EX.W10.C11.P03",
+          "EX.W10.C11.P04",
+          "EX.W10.C11.P05",
+          "EX.W10.C11.P06",
+          "EX.W10.C11.P07",
+          "EX.W10.C11.P08",
+          "EX.W10.C11.P09",
+          "EX.W10.C11.P10",
+          "EX.W10.C11.P11",
+          "EX.W10.C11.P12",
+          "EX.W10.C12.P01",
+          "EX.W10.C12.P02",
+          "EX.W10.C12.P03",
+          "EX.W10.C12.P04",
+          "EX.W10.C12.P05",
+          "EX.W10.C12.P06",
+          "EX.W10.C12.P07",
+          "EX.W10.C12.P08",
+          "EX.W10.C12.P09",
+          "EX.W10.C12.P10",
+          "EX.W10.C12.P11",
+          "EX.W10.C12.P12",
+          "EX.W11.C01.P01",
+          "EX.W11.C01.P02",
+          "EX.W11.C01.P03",
+          "EX.W11.C01.P04",
+          "EX.W11.C01.P05",
+          "EX.W11.C01.P06",
+          "EX.W11.C01.P07",
+          "EX.W11.C01.P08",
+          "EX.W11.C01.P09",
+          "EX.W11.C01.P10",
+          "EX.W11.C01.P11",
+          "EX.W11.C01.P12",
+          "EX.W11.C02.P01",
+          "EX.W11.C02.P02",
+          "EX.W11.C02.P03",
+          "EX.W11.C02.P04",
+          "EX.W11.C02.P05",
+          "EX.W11.C02.P06",
+          "EX.W11.C02.P07",
+          "EX.W11.C02.P08",
+          "EX.W11.C02.P09",
+          "EX.W11.C02.P10",
+          "EX.W11.C02.P11",
+          "EX.W11.C02.P12",
+          "EX.W11.C03.P01",
+          "EX.W11.C03.P02",
+          "EX.W11.C03.P03",
+          "EX.W11.C03.P04",
+          "EX.W11.C03.P05",
+          "EX.W11.C03.P06",
+          "EX.W11.C03.P07",
+          "EX.W11.C03.P08",
+          "EX.W11.C03.P09",
+          "EX.W11.C03.P10",
+          "EX.W11.C03.P11",
+          "EX.W11.C03.P12",
+          "EX.W11.C04.P01",
+          "EX.W11.C04.P02",
+          "EX.W11.C04.P03",
+          "EX.W11.C04.P04",
+          "EX.W11.C04.P05",
+          "EX.W11.C04.P06",
+          "EX.W11.C04.P07",
+          "EX.W11.C04.P08",
+          "EX.W11.C04.P09",
+          "EX.W11.C04.P10",
+          "EX.W11.C04.P11",
+          "EX.W11.C04.P12",
+          "EX.W11.C05.P01",
+          "EX.W11.C05.P02",
+          "EX.W11.C05.P03",
+          "EX.W11.C05.P04",
+          "EX.W11.C05.P05",
+          "EX.W11.C05.P06",
+          "EX.W11.C05.P07",
+          "EX.W11.C05.P08",
+          "EX.W11.C05.P09",
+          "EX.W11.C05.P10",
+          "EX.W11.C05.P11",
+          "EX.W11.C05.P12",
+          "EX.W11.C06.P01",
+          "EX.W11.C06.P02",
+          "EX.W11.C06.P03",
+          "EX.W11.C06.P04",
+          "EX.W11.C06.P05",
+          "EX.W11.C06.P06",
+          "EX.W11.C06.P07",
+          "EX.W11.C06.P08",
+          "EX.W11.C06.P09",
+          "EX.W11.C06.P10",
+          "EX.W11.C06.P11",
+          "EX.W11.C06.P12",
+          "EX.W11.C07.P01",
+          "EX.W11.C07.P02",
+          "EX.W11.C07.P03",
+          "EX.W11.C07.P04",
+          "EX.W11.C07.P05",
+          "EX.W11.C07.P06",
+          "EX.W11.C07.P07",
+          "EX.W11.C07.P08",
+          "EX.W11.C07.P09",
+          "EX.W11.C07.P10",
+          "EX.W11.C07.P11",
+          "EX.W11.C07.P12",
+          "EX.W11.C08.P01",
+          "EX.W11.C08.P02",
+          "EX.W11.C08.P03",
+          "EX.W11.C08.P04",
+          "EX.W11.C08.P05",
+          "EX.W11.C08.P06",
+          "EX.W11.C08.P07",
+          "EX.W11.C08.P08",
+          "EX.W11.C08.P09",
+          "EX.W11.C08.P10",
+          "EX.W11.C08.P11",
+          "EX.W11.C08.P12",
+          "EX.W11.C09.P01",
+          "EX.W11.C09.P02",
+          "EX.W11.C09.P03",
+          "EX.W11.C09.P04",
+          "EX.W11.C09.P05",
+          "EX.W11.C09.P06",
+          "EX.W11.C09.P07",
+          "EX.W11.C09.P08",
+          "EX.W11.C09.P09",
+          "EX.W11.C09.P10",
+          "EX.W11.C09.P11",
+          "EX.W11.C09.P12",
+          "EX.W11.C10.P01",
+          "EX.W11.C10.P02",
+          "EX.W11.C10.P03",
+          "EX.W11.C10.P04",
+          "EX.W11.C10.P05",
+          "EX.W11.C10.P06",
+          "EX.W11.C10.P07",
+          "EX.W11.C10.P08",
+          "EX.W11.C10.P09",
+          "EX.W11.C10.P10",
+          "EX.W11.C10.P11",
+          "EX.W11.C10.P12",
+          "EX.W11.C11.P01",
+          "EX.W11.C11.P02",
+          "EX.W11.C11.P03",
+          "EX.W11.C11.P04",
+          "EX.W11.C11.P05",
+          "EX.W11.C11.P06",
+          "EX.W11.C11.P07",
+          "EX.W11.C11.P08",
+          "EX.W11.C11.P09",
+          "EX.W11.C11.P10",
+          "EX.W11.C11.P11",
+          "EX.W11.C11.P12",
+          "EX.W11.C12.P01",
+          "EX.W11.C12.P02",
+          "EX.W11.C12.P03",
+          "EX.W11.C12.P04",
+          "EX.W11.C12.P05",
+          "EX.W11.C12.P06",
+          "EX.W11.C12.P07",
+          "EX.W11.C12.P08",
+          "EX.W11.C12.P09",
+          "EX.W11.C12.P10",
+          "EX.W11.C12.P11",
+          "EX.W11.C12.P12",
+          "EX.W12.C01.P01",
+          "EX.W12.C01.P02",
+          "EX.W12.C01.P03",
+          "EX.W12.C01.P04",
+          "EX.W12.C01.P05",
+          "EX.W12.C01.P06",
+          "EX.W12.C01.P07",
+          "EX.W12.C01.P08",
+          "EX.W12.C01.P09",
+          "EX.W12.C01.P10",
+          "EX.W12.C01.P11",
+          "EX.W12.C01.P12",
+          "EX.W12.C02.P01",
+          "EX.W12.C02.P02",
+          "EX.W12.C02.P03",
+          "EX.W12.C02.P04",
+          "EX.W12.C02.P05",
+          "EX.W12.C02.P06",
+          "EX.W12.C02.P07",
+          "EX.W12.C02.P08",
+          "EX.W12.C02.P09",
+          "EX.W12.C02.P10",
+          "EX.W12.C02.P11",
+          "EX.W12.C02.P12",
+          "EX.W12.C03.P01",
+          "EX.W12.C03.P02",
+          "EX.W12.C03.P03",
+          "EX.W12.C03.P04",
+          "EX.W12.C03.P05",
+          "EX.W12.C03.P06",
+          "EX.W12.C03.P07",
+          "EX.W12.C03.P08",
+          "EX.W12.C03.P09",
+          "EX.W12.C03.P10",
+          "EX.W12.C03.P11",
+          "EX.W12.C03.P12",
+          "EX.W12.C04.P01",
+          "EX.W12.C04.P02",
+          "EX.W12.C04.P03",
+          "EX.W12.C04.P04",
+          "EX.W12.C04.P05",
+          "EX.W12.C04.P06",
+          "EX.W12.C04.P07",
+          "EX.W12.C04.P08",
+          "EX.W12.C04.P09",
+          "EX.W12.C04.P10",
+          "EX.W12.C04.P11",
+          "EX.W12.C04.P12",
+          "EX.W12.C05.P01",
+          "EX.W12.C05.P02",
+          "EX.W12.C05.P03",
+          "EX.W12.C05.P04",
+          "EX.W12.C05.P05",
+          "EX.W12.C05.P06",
+          "EX.W12.C05.P07",
+          "EX.W12.C05.P08",
+          "EX.W12.C05.P09",
+          "EX.W12.C05.P10",
+          "EX.W12.C05.P11",
+          "EX.W12.C05.P12",
+          "EX.W12.C06.P01",
+          "EX.W12.C06.P02",
+          "EX.W12.C06.P03",
+          "EX.W12.C06.P04",
+          "EX.W12.C06.P05",
+          "EX.W12.C06.P06",
+          "EX.W12.C06.P07",
+          "EX.W12.C06.P08",
+          "EX.W12.C06.P09",
+          "EX.W12.C06.P10",
+          "EX.W12.C06.P11",
+          "EX.W12.C06.P12",
+          "EX.W12.C07.P01",
+          "EX.W12.C07.P02",
+          "EX.W12.C07.P03",
+          "EX.W12.C07.P04",
+          "EX.W12.C07.P05",
+          "EX.W12.C07.P06",
+          "EX.W12.C07.P07",
+          "EX.W12.C07.P08",
+          "EX.W12.C07.P09",
+          "EX.W12.C07.P10",
+          "EX.W12.C07.P11",
+          "EX.W12.C07.P12",
+          "EX.W12.C08.P01",
+          "EX.W12.C08.P02",
+          "EX.W12.C08.P03",
+          "EX.W12.C08.P04",
+          "EX.W12.C08.P05",
+          "EX.W12.C08.P06",
+          "EX.W12.C08.P07",
+          "EX.W12.C08.P08",
+          "EX.W12.C08.P09",
+          "EX.W12.C08.P10",
+          "EX.W12.C08.P11",
+          "EX.W12.C08.P12",
+          "EX.W12.C09.P01",
+          "EX.W12.C09.P02",
+          "EX.W12.C09.P03",
+          "EX.W12.C09.P04",
+          "EX.W12.C09.P05",
+          "EX.W12.C09.P06",
+          "EX.W12.C09.P07",
+          "EX.W12.C09.P08",
+          "EX.W12.C09.P09",
+          "EX.W12.C09.P10",
+          "EX.W12.C09.P11",
+          "EX.W12.C09.P12",
+          "EX.W12.C10.P01",
+          "EX.W12.C10.P02",
+          "EX.W12.C10.P03",
+          "EX.W12.C10.P04",
+          "EX.W12.C10.P05",
+          "EX.W12.C10.P06",
+          "EX.W12.C10.P07",
+          "EX.W12.C10.P08",
+          "EX.W12.C10.P09",
+          "EX.W12.C10.P10",
+          "EX.W12.C10.P11",
+          "EX.W12.C10.P12",
+          "EX.W12.C11.P01",
+          "EX.W12.C11.P02",
+          "EX.W12.C11.P03",
+          "EX.W12.C11.P04",
+          "EX.W12.C11.P05",
+          "EX.W12.C11.P06",
+          "EX.W12.C11.P07",
+          "EX.W12.C11.P08",
+          "EX.W12.C11.P09",
+          "EX.W12.C11.P10",
+          "EX.W12.C11.P11",
+          "EX.W12.C11.P12",
+          "EX.W12.C12.P01",
+          "EX.W12.C12.P02",
+          "EX.W12.C12.P03",
+          "EX.W12.C12.P04",
+          "EX.W12.C12.P05",
+          "EX.W12.C12.P06",
+          "EX.W12.C12.P07",
+          "EX.W12.C12.P08",
+          "EX.W12.C12.P09",
+          "EX.W12.C12.P10",
+          "EX.W12.C12.P11",
+          "EX.W12.C12.P12"
+        ],
+        "verified_steps": 0
+      },
+      "source_verified_before_and_after": true,
+      "network_requests": 0,
+      "model_calls": 0,
+      "work_messages_posted": 0,
+      "hosted_authority_granted": false,
+      "elapsed_ms": 640.484,
+      "receipt_sha256": "43c4c19d691254329564538a9238bafbff24f71fd1c105777216524ecc5047a0"
+    },
+    {
+      "schema": "atlas.native.federation-call/v1",
+      "component_id": "GF9_ROSETTA_R2",
+      "operation": "packet_roundtrip",
+      "namespace": "GF9_SYNTHETIC_PACKET",
+      "source_commit": "b98790a8baa0e1f7c7abb89211f319c7000c6653",
+      "source_lock_sha256": "f24f6d99e0b57a435626fe4f708a4ea35709cd401050f8a1ec5fdd2ba1f88f20",
+      "input_sha256": "c3985bd2ddc6f20320a0b2331a86a23fa96037c02161344d5278fd8d4a8d0fe4",
+      "result_sha256": "02e63e77df5f5dcbcf58032d00762fb30e8834b0bdabb228894cbb5282e3f282",
+      "result": {
+        "exact_roundtrip": true,
+        "message": {
+          "a": "07533cf7a6b6",
+          "c": 12,
+          "grade": "MODELED_NOT_MEASURED",
+          "m": "H12.S12",
+          "meaning": "MATHEMATICAL_EXERCISE_ONLY",
+          "numerical": "0.932666",
+          "op": "TEACH",
+          "s": "Latn",
+          "scope": "SYNTHETIC_WORK",
+          "status": "HOLD",
+          "v": 2
+        },
+        "numerical_validation": true,
+        "recovered": {
+          "a": "07533cf7a6b6",
+          "c": 12,
+          "grade": "MODELED_NOT_MEASURED",
+          "m": "H12.S12",
+          "meaning": "MATHEMATICAL_EXERCISE_ONLY",
+          "numerical": "0.932666",
+          "op": "TEACH",
+          "s": "Latn",
+          "scope": "SYNTHETIC_WORK",
+          "status": "HOLD",
+          "v": 2
+        },
+        "recovery": "RECOVERED_CRC_VERIFIED_NOT_AUTHENTICATED",
+        "scope": "BOUNDED_SYNTHETIC_PROTOCOL_COMPUTATION",
+        "sender_authenticated": false,
+        "wire_bytes": 648,
+        "wire_sha256": "0d7336c7f5b2f649e0ed276892edeef75850ebcc791099d0e175d2de264306e1"
+      },
+      "source_verified_before_and_after": true,
+      "network_requests": 0,
+      "model_calls": 0,
+      "work_messages_posted": 0,
+      "hosted_authority_granted": false,
+      "elapsed_ms": 23.931,
+      "receipt_sha256": "1a9c9242bd2574e3906cf6df313668e5e48c167a573e7cdbbc960c3e12d9a151"
+    },
+    {
+      "schema": "atlas.native.federation-call/v1",
+      "component_id": "UNIFIED_ATLAS1728_PYTHON",
+      "operation": "source_status",
+      "namespace": "ARIADNE_HSN_SOURCE",
+      "source_commit": "c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c",
+      "source_lock_sha256": "36452baf84ea238460fa87da4a634c0f0cbcb0a6cb32c4451a131e7b430f75a0",
+      "input_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "result_sha256": "e4dbece1fb1548abcd02c872ea88e23b5893fcf0b9f361356ce63973bc5ea485",
+      "result": {
+        "historical_topics": 4516,
+        "houses": 12,
+        "nodes": 1728,
+        "original_source_verified": true,
+        "semantic_crosswalk_accepted": false,
+        "source_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+        "spheres": 144
+      },
+      "source_verified_before_and_after": true,
+      "network_requests": 0,
+      "model_calls": 0,
+      "work_messages_posted": 0,
+      "hosted_authority_granted": false,
+      "elapsed_ms": 169.482,
+      "receipt_sha256": "cdeb518fdedd6e8e4e1121524b3c66c1ecc427ca9efa30d45515ef3518640098"
+    },
+    {
+      "schema": "atlas.native.federation-call/v1",
+      "component_id": "UNIFIED_ATLAS1728_PYTHON",
+      "operation": "node_reference",
+      "namespace": "ARIADNE_HSN_SOURCE",
+      "source_commit": "c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c",
+      "source_lock_sha256": "36452baf84ea238460fa87da4a634c0f0cbcb0a6cb32c4451a131e7b430f75a0",
+      "input_sha256": "d81dc88cfc57c7abab2a4653c2b0ddb8986acbbc7da843fdbda2e050a7e05c59",
+      "result_sha256": "5b1465a2d8db2c8854e9b98f1e47d7b007fca3d7405a9d72f0314f9410723850",
+      "result": {
+        "coordinate": "H01.S01.N01",
+        "kind": "DOMAIN_SPECIALIZATION",
+        "original_source_verified": true,
+        "registry_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+        "source_body_returned": false,
+        "source_record_sha256": "84b56459ebf3d62614d1a7553a65d7494f3dfff91a95f137c1505a276fba4388",
+        "sphere": "H01.S01"
+      },
+      "source_verified_before_and_after": true,
+      "network_requests": 0,
+      "model_calls": 0,
+      "work_messages_posted": 0,
+      "hosted_authority_granted": false,
+      "elapsed_ms": 151.758,
+      "receipt_sha256": "d9352ffb05a650fe53cbcd3cd51c74e4c643dffe32326a10e4046d37e568ce34"
+    },
+    {
+      "schema": "atlas.native.federation-call/v1",
+      "component_id": "UNIFIED_ATLAS1728_PYTHON",
+      "operation": "build_summary",
+      "namespace": "ARIADNE_HSN_SOURCE",
+      "source_commit": "c5a9a82995bf5a4f48f76ef1807d2ff61bc5126c",
+      "source_lock_sha256": "36452baf84ea238460fa87da4a634c0f0cbcb0a6cb32c4451a131e7b430f75a0",
+      "input_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "result_sha256": "cb68f453ce99d1e4d8fdb3cdacdfbe20cba678c472430795ace0a4f0edb34c3a",
+      "result": {
+        "automatic_semantic_equivalence": false,
+        "baseline_lookup_comparisons": 1493856,
+        "build_digest_sha256": "18d400f12b087549511276cb833b3d33c13360ab19e111d64d93d0d6c082c949",
+        "canon_modified": false,
+        "distinct_per_node_metrics": 1728,
+        "genuinely_measured_civilizational_gains": 0,
+        "gpt_parameters_modified": false,
+        "historical_topic_sha256": "a306c7306a79754b033e9f8c41c0de5ff5176b4544a6a80b5c740e2f8d2cc903",
+        "host_deployed": false,
+        "house_modules": 12,
+        "independent_adapter_verification": true,
+        "independent_model_wakes": 0,
+        "indexed_lookup_comparisons": 1728,
+        "local_compile_elapsed_ms": 423.266,
+        "module_node_checks": 20736,
+        "node_upgrades": 1728,
+        "original_source_bytes_verified": true,
+        "private_modes_ingested": false,
+        "resident_experts_authenticated": 0,
+        "rights_at_host_return_verified": false,
+        "schema": "atlas.one.1728-unified-source-upgrade/v1",
+        "source_bodies_returned": false,
+        "source_edition": "Ariadne v0.7",
+        "source_sha256": "07533cf7a6b6f567259962bf73efee9b22b47cbacb429499787800e07864e5a6",
+        "sphere_pathways": 144,
+        "strictly_improved_lookup_metrics": 1727,
+        "terminal_sphere_digest": "cd4938eb987281be95d3168a1c18ecbea33044542427fa626193e728aa5dda3f",
+        "unchanged_lookup_metrics": 1,
+        "unreviewed_topic_candidate_edges": 22580,
+        "work_implementation_status": "LOCAL_CODE_PROFILES_AND_VERIFICATION_ONLY"
+      },
+      "source_verified_before_and_after": true,
+      "network_requests": 0,
+      "model_calls": 0,
+      "work_messages_posted": 0,
+      "hosted_authority_granted": false,
+      "elapsed_ms": 1329.195,
+      "receipt_sha256": "f93a5c58350b9eace38495161a7f88444f997be8364df8370ce65e5bf99d39ac"
+    }
+  ],
+  "network_requests": 0,
+  "model_calls": 0,
+  "work_messages_posted": 0,
+  "elapsed_seconds": 5.865,
+  "original_source_bodies_returned": false,
+  "source_sha256": "d890b67161463f0ef389826087695f422dd5160bb415f7d4a9d136ddd4e32975"
+}

@@ -45,7 +45,9 @@ class RuntimeTests(unittest.TestCase):
         self.memory.append(review(topic="T2"))
         checkpoint = self.memory.verify()
         coordinates = ["H01.S01.N01", "H02.S02.N02", "H12.S12.N12"]
-        expected = {hsn: topic_view(self.db, hsn, self.memory) for hsn in coordinates}
+        anchor = {"expected_tip": checkpoint["tip"], "expected_count": checkpoint["count"]}
+        expected = {hsn: topic_view(self.db, hsn, self.memory, memory_checkpoint=anchor)
+                    for hsn in coordinates}
         actual = self.runtime.topic_views(self.db, self.memory, coordinates,
                     expected_tip=checkpoint["tip"], expected_count=checkpoint["count"])
         self.assertEqual(actual, expected)
