@@ -68,7 +68,28 @@ def validate_ingestion(packet: Any) -> IngestionResult:
         status = packet.get("raw_export_status")
         if type(status) is not str or status not in RAW_EXPORT_STATES:
             problems.append("raw_export_status_missing_or_invalid")
-        if not isinstance(packet.get("source_root"), str) or not packet.get("source_root"):
+        if "claim_complete" in packet and type(packet["claim_complete"]) is not bool:
+            problems.append("claim_complete_flag_untyped")
+        if packet.get("claim_complete") is True and status != "raw_complete_hashed":
+            problems.append("claim_complete_without_hashed_export")
+        if any(field in packet and packet[field] is not False for field in ("canon", "deployment")):
+            problems.append("ingestion_packet_claimed_normative_authority")
+        # Top-level source-mode labels are untrusted declarations, not host rights proofs.
+        # Hold private/unknown labels before any Work/public-source integration.
+        source_modes = {
+            "source_class": {"Work", "Public", "Synthetic"},
+            "source_mode": {"work", "public", "consented_work", "synthetic"},
+            "mode": {"Work", "Public", "Synthetic", "work", "public", "synthetic"},
+        }
+        for field, allowed in source_modes.items():
+            if field in packet and (type(packet[field]) is not str or packet[field] not in allowed):
+                problems.append("untrusted_source_mode")
+        if "authority" in packet and (type(packet["authority"]) is not str or packet["authority"] != "none"):
+            problems.append("untrusted_authority_claim")
+        for field in ("ratified", "host_attested", "rights_verified"):
+            if field in packet and packet[field] is not False:
+                problems.append("untrusted_authority_claim")
+        if type(packet.get("source_root")) is not str or not packet.get("source_root").strip():
             problems.append("source_root_missing")
         if status == "raw_complete_hashed":
             manifest = packet.get("source_root_manifest")
@@ -76,14 +97,16 @@ def validate_ingestion(packet: Any) -> IngestionResult:
                 problems.append("manifest_missing")
             else:
                 for path, hash_value in manifest.items():
-                    if not isinstance(path, str) or not path or not isinstance(hash_value, str) or re.fullmatch(r"[a-f0-9]{64}", hash_value) is None:
+                    if type(path) is not str or not path.strip() or not isinstance(hash_value, str) or re.fullmatch(r"[a-f0-9]{64}", hash_value) is None:
                         problems.append("manifest_entry_invalid")
                         break
             if not isinstance(packet.get("whole_export_sha256"), str) or re.fullmatch(r"[a-f0-9]{64}", packet.get("whole_export_sha256", "")) is None:
                 problems.append("whole_export_digest_missing")
     try:
         hashed = digest(original)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, UnicodeError):
+        # Invalid Unicode scalars cannot be encoded for a UTF-8 digest. HOLD
+        # the reported packet instead of leaking an uncaught exception.
         hashed = None
         problems.append("payload_not_json_serializable")
     return IngestionResult("QUARANTINED" if problems else "SOURCE_REPORTED_ONLY", tuple(dict.fromkeys(problems)), original, hashed)
