@@ -1,0 +1,105 @@
+{
+  "schema_version": "0.1.0",
+  "source_mode": "synthetic",
+  "raw_export_status": "raw_partial",
+  "source_roots": [
+    {
+      "surface": "synthetic",
+      "root_ref": "synthetic:fixture-001"
+    }
+  ],
+  "preserved": true,
+  "completeness_claim": false,
+  "lifecycle": {
+    "stage": "CANDIDATE",
+    "flags": [],
+    "authority": "none",
+    "canon": false,
+    "deployed": false
+  },
+  "nodes": [
+    {
+      "id": "s1",
+      "type": "SourceSurface",
+      "label": "Fictional demonstration surface",
+      "source_ref": "synthetic:fixture-001"
+    },
+    {
+      "id": "m1",
+      "type": "RawExportManifest",
+      "label": "Explicit partial export",
+      "source_ref": "synthetic:fixture-001"
+    },
+    {
+      "id": "a1",
+      "type": "Artifact",
+      "label": "Public-safe example artifact",
+      "source_ref": "synthetic:fixture-001"
+    },
+    {
+      "id": "c1",
+      "type": "Claim",
+      "label": "Provisional claim: demonstration requires review",
+      "source_ref": "synthetic:fixture-001"
+    },
+    {
+      "id": "e1",
+      "type": "Evidence",
+      "label": "Synthetic observation, not a verified fact",
+      "source_ref": "synthetic:fixture-001"
+    },
+    {
+      "id": "r1",
+      "type": "ReviewLane",
+      "label": "Independent fact-check requested"
+    },
+    {
+      "id": "g1",
+      "type": "CanonGate",
+      "label": "Human-root gate; unresolved"
+    },
+    {
+      "id": "t1",
+      "type": "Receipt",
+      "label": "Local fixture receipt only",
+      "source_ref": "synthetic:fixture-001"
+    }
+  ],
+  "edges": [
+    {
+      "from": "m1",
+      "to": "s1",
+      "type": "derived_from"
+    },
+    {
+      "from": "a1",
+      "to": "m1",
+      "type": "derived_from"
+    },
+    {
+      "from": "a1",
+      "to": "c1",
+      "type": "claims"
+    },
+    {
+      "from": "e1",
+      "to": "c1",
+      "type": "supports"
+    },
+    {
+      "from": "c1",
+      "to": "r1",
+      "type": "reviewed_by"
+    },
+    {
+      "from": "c1",
+      "to": "g1",
+      "type": "gated_by"
+    },
+    {
+      "from": "t1",
+      "to": "a1",
+      "type": "preserved_as"
+    }
+  ]
+}
