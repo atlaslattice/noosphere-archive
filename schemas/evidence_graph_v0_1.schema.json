@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/atlaslattice/noosphere-archive/blob/main/schemas/evidence_graph_v0_1.schema.json",
+  "title": "Atlas public evidence graph candidate v0.1",
+  "description": "Source-only shape contract. JSON Schema cannot verify signatures, source rights, scientific validity, current consent or host release.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "graph_id",
+    "purpose",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "atlas.evidence.graph/v0.1"
+    },
+    "graph_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,159}$"
+    },
+    "purpose": {
+      "const": "PUBLIC_EVIDENCE_REVIEW"
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge"
+      }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "label",
+        "state"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]{0,159}$"
+        },
+        "type": {
+          "enum": [
+            "SourceSurface",
+            "RawExportManifest",
+            "Artifact",
+            "Claim",
+            "Evidence",
+            "Contradiction",
+            "Delta",
+            "ReviewLane",
+            "CanonGate",
+            "ActionPacket",
+            "Receipt",
+            "Supersession"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "state": {
+          "enum": [
+            "RAW",
+            "PARSED",
+            "CLAIM",
+            "CANDIDATE",
+            "REVIEWED",
+            "RATIFIED",
+            "CANON",
+            "DEPLOYED"
+          ]
+        },
+        "flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "CONTRADICTED",
+              "SUPERSEDED",
+              "QUARANTINED"
+            ]
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "raw_export_status": {
+          "enum": [
+            "raw_missing",
+            "raw_partial",
+            "raw_complete_unhashed",
+            "raw_complete_hashed",
+            "raw_source_unavailable"
+          ]
+        },
+        "manifest_digest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_root_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hash_receipt_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "RawExportManifest"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "raw_export_status"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "raw_export_status": {
+                "const": "raw_complete_hashed"
+              }
+            },
+            "required": [
+              "raw_export_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "manifest_digest_sha256",
+              "source_root_ref",
+              "hash_receipt_ref"
+            ]
+          }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "sha256",
+        "rights",
+        "scope",
+        "observed_at"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "rights": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "enum": [
+            "PUBLIC_METADATA",
+            "SYNTHETIC_FIXTURE"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from",
+        "to",
+        "type"
+      ],
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "derived_from",
+            "claims",
+            "supports",
+            "contradicts",
+            "supersedes",
+            "reviewed_by",
+            "gated_by",
+            "implemented_as",
+            "preserved_as",
+            "quarantined_as"
+          ]
+        }
+      }
+    }
+  }
+}

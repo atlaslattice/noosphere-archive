@@ -1,0 +1,29 @@
+name: Public evidence-graph contract checks
+
+on:
+  pull_request:
+    paths:
+      - 'tools/validate_evidence_graph.py'
+      - 'schemas/evidence_graph_v0_1.schema.json'
+      - 'examples/evidence_graph_v0_1.synthetic.json'
+      - 'tests/test_evidence_contract.py'
+      - '.github/workflows/evidence-graph-contracts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile fail-closed validator
+        run: python -m py_compile tools/validate_evidence_graph.py
+      - name: Run public source-only contract tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate synthetic graph only, without host access
+        run: python tools/validate_evidence_graph.py examples/evidence_graph_v0_1.synthetic.json
